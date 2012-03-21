@@ -10,4 +10,8 @@
 
 @interface HTECHViewController : UIViewController
 
+- (IBAction)Login:(id)sender;
+- (IBAction)ForgotPassword:(id)sender;
+- (IBAction)CreateProfile:(id)sender;
+
 @end
