@@ -3,7 +3,7 @@
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -86,6 +86,7 @@
                     </view>
                 </viewController>
             </objects>
+            <point key="canvasLocation" x="83" y="265"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="72Z-fa-fRS">
@@ -115,7 +116,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="682" y="358"/>
+            <point key="canvasLocation" x="526" y="265"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="Brl-Yb-uXH">
@@ -169,7 +170,7 @@
                     </view>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="602" y="922"/>
+            <point key="canvasLocation" x="526" y="870"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

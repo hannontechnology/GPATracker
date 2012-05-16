@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F2D9A7F15264A3B0011E3A5 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F2D9A7D15264A3B0011E3A5 /* CoreData.xcdatamodeld */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A56151559EA00BD72F0 /* CoreGraphics.framework */; };
@@ -21,6 +22,8 @@
 		1F754A76151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A7C151559EA00BD72F0 /* InfoPlist.strings */; };
 		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
+		1F89358F15168BA10071D4AF /* HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89358E15168BA10071D4AF /* HomePage.m */; };
+		1F89359315168E600071D4AF /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* CreateProfile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,26 +37,32 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F2D9A7E15264A3B0011E3A5 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPATracker.entitlements; sourceTree = "<group>"; };
 		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A52151559EA00BD72F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F754A54151559EA00BD72F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1F754A56151559EA00BD72F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		1F754A5A151559EA00BD72F0 /* GPATracker-Info.plist */ = {isa = PBXFileReference; path = "GPATracker-Info.plist"; sourceTree = "<group>"; };
+		1F754A5A151559EA00BD72F0 /* GPATracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPATracker-Info.plist"; sourceTree = "<group>"; };
 		1F754A5C151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F754A5E151559EA00BD72F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F754A60151559EA00BD72F0 /* GPATracker-Prefix.pch */ = {isa = PBXFileReference; path = "GPATracker-Prefix.pch"; sourceTree = "<group>"; };
-		1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */ = {isa = PBXFileReference; path = HTECHAppDelegate.h; sourceTree = "<group>"; };
+		1F754A60151559EA00BD72F0 /* GPATracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPATracker-Prefix.pch"; sourceTree = "<group>"; };
+		1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTECHAppDelegate.h; sourceTree = "<group>"; };
 		1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTECHAppDelegate.m; sourceTree = "<group>"; };
 		1F754A65151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F754A68151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		1F754A6A151559EA00BD72F0 /* HTECHViewController.h */ = {isa = PBXFileReference; path = HTECHViewController.h; sourceTree = "<group>"; };
+		1F754A6A151559EA00BD72F0 /* HTECHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTECHViewController.h; sourceTree = "<group>"; };
 		1F754A6B151559EA00BD72F0 /* HTECHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTECHViewController.m; sourceTree = "<group>"; };
 		1F754A72151559EA00BD72F0 /* GPATrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GPATrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A73151559EA00BD72F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		1F754A7B151559EA00BD72F0 /* GPATrackerTests-Info.plist */ = {isa = PBXFileReference; path = "GPATrackerTests-Info.plist"; sourceTree = "<group>"; };
+		1F754A7B151559EA00BD72F0 /* GPATrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPATrackerTests-Info.plist"; sourceTree = "<group>"; };
 		1F754A7D151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1F754A7F151559EA00BD72F0 /* GPATrackerTests.h */ = {isa = PBXFileReference; path = GPATrackerTests.h; sourceTree = "<group>"; };
+		1F754A7F151559EA00BD72F0 /* GPATrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPATrackerTests.h; sourceTree = "<group>"; };
 		1F754A80151559EA00BD72F0 /* GPATrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPATrackerTests.m; sourceTree = "<group>"; };
+		1F89358D15168BA10071D4AF /* HomePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePage.h; sourceTree = "<group>"; };
+		1F89358E15168BA10071D4AF /* HomePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePage.m; sourceTree = "<group>"; };
+		1F89359115168E600071D4AF /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProfile.h; sourceTree = "<group>"; };
+		1F89359215168E600071D4AF /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProfile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,13 +122,19 @@
 		1F754A58151559EA00BD72F0 /* GPATracker */ = {
 			isa = PBXGroup;
 			children = (
+				1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */,
 				1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */,
 				1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */,
 				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
+				1F89359115168E600071D4AF /* CreateProfile.h */,
+				1F89359215168E600071D4AF /* CreateProfile.m */,
+				1F89358D15168BA10071D4AF /* HomePage.h */,
+				1F89358E15168BA10071D4AF /* HomePage.m */,
 				1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */,
 				1F754A6A151559EA00BD72F0 /* HTECHViewController.h */,
 				1F754A6B151559EA00BD72F0 /* HTECHViewController.m */,
 				1F754A59151559EA00BD72F0 /* Supporting Files */,
+				1F2D9A7D15264A3B0011E3A5 /* CoreData.xcdatamodeld */,
 			);
 			path = GPATracker;
 			sourceTree = "<group>";
@@ -265,6 +280,9 @@
 				1F754A5F151559EA00BD72F0 /* main.m in Sources */,
 				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
 				1F754A6C151559EA00BD72F0 /* HTECHViewController.m in Sources */,
+				1F89358F15168BA10071D4AF /* HomePage.m in Sources */,
+				1F89359315168E600071D4AF /* CreateProfile.m in Sources */,
+				1F2D9A7F15264A3B0011E3A5 /* CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +390,7 @@
 		1F754A85151559EA00BD72F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GPATracker/GPATracker.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
 				INFOPLIST_FILE = "GPATracker/GPATracker-Info.plist";
@@ -383,6 +402,7 @@
 		1F754A86151559EA00BD72F0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GPATracker/GPATracker.entitlements;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
 				INFOPLIST_FILE = "GPATracker/GPATracker-Info.plist";
@@ -444,6 +464,7 @@
 				1F754A86151559EA00BD72F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F754A87151559EA00BD72F0 /* Build configuration list for PBXNativeTarget "GPATrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -452,8 +473,22 @@
 				1F754A89151559EA00BD72F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F2D9A7D15264A3B0011E3A5 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F2D9A7E15264A3B0011E3A5 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 1F2D9A7E15264A3B0011E3A5 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F754A45151559EA00BD72F0 /* Project object */;
 }
