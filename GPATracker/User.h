@@ -2,18 +2,20 @@
 //  User.h
 //  GPATracker
 //
-//  Created by terryah on 12-05-17.
-//  Copyright (c) 2012 Hannon Technology. All rights reserved.
+//  Created by terryah on 12-05-18.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface User : UIDocument
-@property (nonatomic, retain) NSString *emailAddress;
-@property (nonatomic, retain) NSString *password;
-@property (nonatomic, retain) NSString *autoLogin;
-@property (nonatomic, retain) NSString *userFirstName;
-@property (nonatomic, retain) NSString *userLastName;
 
--(id)initWithName:(NSString *)emailAddress password:(NSString *)password autoLogin:(NSString *)autoLogin userFirstName:(NSString *)userFirstName userLastName:(NSString *)userLastName;
+@interface User : NSManagedObject
+
+@property (nonatomic, retain) NSString * userFirstName;
+@property (nonatomic, retain) NSString * userID;
+@property (nonatomic, retain) NSString * userLastName;
+@property (nonatomic, retain) NSString * userName;
+@property (nonatomic, retain) NSString * userPassword;
+
 @end
