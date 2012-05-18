@@ -14,4 +14,8 @@
 - (IBAction)ForgotPassword:(id)sender;
 - (IBAction)CreateProfile:(id)sender;
 
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@property (weak, nonatomic) IBOutlet UITextField *userNameField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordField;
+@property (weak, nonatomic) IBOutlet UILabel *status;
 @end

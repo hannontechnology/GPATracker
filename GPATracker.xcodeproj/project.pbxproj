@@ -25,6 +25,7 @@
 		1F89358F15168BA10071D4AF /* HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89358E15168BA10071D4AF /* HomePage.m */; };
 		1F89359315168E600071D4AF /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* CreateProfile.m */; };
 		1FB5DF381566A0EC00CD3A8B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5DF371566A0EC00CD3A8B /* User.m */; };
+		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		1F89359215168E600071D4AF /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProfile.m; sourceTree = "<group>"; };
 		1FB5DF361566A0EC00CD3A8B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		1FB5DF371566A0EC00CD3A8B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		1FB5DF411566A9DD00CD3A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */,
 				1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */,
 				1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */,
 				1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */,
@@ -114,6 +117,7 @@
 		1F754A51151559EA00BD72F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FB5DF411566A9DD00CD3A8B /* CoreData.framework */,
 				1F754A52151559EA00BD72F0 /* UIKit.framework */,
 				1F754A54151559EA00BD72F0 /* Foundation.framework */,
 				1F754A56151559EA00BD72F0 /* CoreGraphics.framework */,

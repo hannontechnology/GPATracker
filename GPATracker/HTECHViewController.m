@@ -7,16 +7,38 @@
 //
 
 #import "HTECHViewController.h"
+#import "User.h"
 
 @interface HTECHViewController ()
 
 @end
 
 @implementation HTECHViewController
+@synthesize managedObjectContext;
+@synthesize userNameField;
+@synthesize passwordField;
+@synthesize status;
+
 
 - (IBAction)Login:(id)sender
 {
+    NSManagedObjectContext *moc = [self managedObjectContext];
+
+    NSString *entityName = @"User"; // Put your entity name here
+    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
     
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"User.userName = %@ and User.password = %@", userNameField.text, passwordField.text];
+    NSLog(@"filtering data based on User.userName = %@ and User.password = %@", userNameField.text, passwordField.text);
+
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    
+    if (results == nil)
+    {
+        status.text = @"Username or Password incorrect";
+    }
 }
 
 - (IBAction)ForgotPassword:(id)sender
@@ -54,6 +76,9 @@
 
 - (void)viewDidUnload
 {
+    [self setUserNameField:nil];
+    [self setPasswordField:nil];
+    [self setStatus:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
