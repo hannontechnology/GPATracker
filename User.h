@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by terryah on 12-05-18.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hannon Technology. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -13,9 +13,9 @@
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSString * userFirstName;
-@property (nonatomic, retain) NSString * userID;
 @property (nonatomic, retain) NSString * userLastName;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * userPassword;
+@property (nonatomic, retain) NSNumber * autoLogon;
 
 @end

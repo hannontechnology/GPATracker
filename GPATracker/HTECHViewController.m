@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by terryah on 12-03-17.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hannon Technology. All rights reserved.
 //
 
 #import "HTECHViewController.h"
@@ -38,6 +38,10 @@
     if (results == nil)
     {
         status.text = @"Username or Password incorrect";
+    }
+    else
+    {
+        [self performSegueWithIdentifier: @"segueHomePage" sender: self];
     }
 }
 
@@ -92,4 +96,8 @@
     }
 }
 
+-(IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+} 
 @end

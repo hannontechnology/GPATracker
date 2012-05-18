@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by terryah on 12-03-18.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hannon Technology. All rights reserved.
 //
 
 #import "HomePage.h"

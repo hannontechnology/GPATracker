@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by terryah on 12-05-18.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hannon Technology. All rights reserved.
 //
 
 #import "User.h"
@@ -12,9 +12,9 @@
 @implementation User
 
 @dynamic userFirstName;
-@dynamic userID;
 @dynamic userLastName;
 @dynamic userName;
 @dynamic userPassword;
+@dynamic autoLogon;
 
 @end

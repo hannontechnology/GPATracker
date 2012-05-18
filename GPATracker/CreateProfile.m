@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by terryah on 12-03-18.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hannon Technology. All rights reserved.
 //
 
 #import "CreateProfile.h"
@@ -13,6 +13,10 @@
 @end
 
 @implementation CreateProfile
+@synthesize usernameField;
+@synthesize passwordField;
+@synthesize firstNameField;
+@synthesize lastNameField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +35,10 @@
 
 - (void)viewDidUnload
 {
+    [self setUsernameField:nil];
+    [self setPasswordField:nil];
+    [self setFirstNameField:nil];
+    [self setLastNameField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
