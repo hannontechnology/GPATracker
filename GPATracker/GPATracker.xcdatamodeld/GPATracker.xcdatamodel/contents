@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="autoLogon" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userFirstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userLastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="userPassword" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
+    </elements>
+</model>

@@ -15,6 +15,7 @@
 @dynamic userLastName;
 @dynamic userName;
 @dynamic userPassword;
+@dynamic userEmail;
 @dynamic autoLogon;
 
 @end

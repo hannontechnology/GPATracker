@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * userLastName;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSString * userPassword;
+@property (nonatomic, retain) NSString * userEmail;
 @property (nonatomic, retain) NSNumber * autoLogon;
 
 @end

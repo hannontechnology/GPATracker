@@ -15,7 +15,9 @@
 - (IBAction)CreateProfile:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
+@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UILabel *status;
