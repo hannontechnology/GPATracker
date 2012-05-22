@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+@class DataCollection;
+
 @interface HTECHAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) DataCollection *dataCollection;
 
 @end

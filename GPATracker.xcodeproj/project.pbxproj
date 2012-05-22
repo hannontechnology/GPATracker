@@ -24,6 +24,7 @@
 		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
 		1F89358F15168BA10071D4AF /* HomePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89358E15168BA10071D4AF /* HomePage.m */; };
 		1F89359315168E600071D4AF /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* CreateProfile.m */; };
+		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
 		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
 		1FB5DF461566C7E900CD3A8B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5DF451566C7E900CD3A8B /* User.m */; };
 /* End PBXBuildFile section */
@@ -65,6 +66,8 @@
 		1F89358E15168BA10071D4AF /* HomePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePage.m; sourceTree = "<group>"; };
 		1F89359115168E600071D4AF /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProfile.h; sourceTree = "<group>"; };
 		1F89359215168E600071D4AF /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProfile.m; sourceTree = "<group>"; };
+		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollection.h; sourceTree = "<group>"; };
+		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCollection.m; sourceTree = "<group>"; };
 		1FB5DF411566A9DD00CD3A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1FB5DF441566C7E900CD3A8B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
 		1FB5DF451566C7E900CD3A8B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
 				1FB5DF441566C7E900CD3A8B /* User.h */,
 				1FB5DF451566C7E900CD3A8B /* User.m */,
+				1F9B8D77156C165E00CFB46C /* DataCollection.h */,
+				1F9B8D78156C165E00CFB46C /* DataCollection.m */,
 				1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */,
 				1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */,
 				1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */,
@@ -293,6 +298,7 @@
 				1F89359315168E600071D4AF /* CreateProfile.m in Sources */,
 				1FB5DF461566C7E900CD3A8B /* User.m in Sources */,
 				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
+				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

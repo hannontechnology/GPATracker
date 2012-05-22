@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+@class DataCollection;
+
 @interface HTECHViewController : UIViewController
 
 - (IBAction)Login:(id)sender;
@@ -15,9 +18,9 @@
 - (IBAction)CreateProfile:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) DataCollection *dataCollection;
+
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UILabel *status;
