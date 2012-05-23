@@ -18,7 +18,8 @@
 
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword; 
 - (NSArray *)retrieveUsers:(NSString *)inputUserName; 
-- (NSArray *)retrieveUsers; 
+- (NSArray *)retrieveUsers;
+- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail;
 - (NSUInteger)countOfUserList;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

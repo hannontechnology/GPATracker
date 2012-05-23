@@ -95,6 +95,31 @@
     return results;
 }
 
+- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"User"; // Put your entity name here
+    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+
+    User *newUser = [NSEntityDescription
+                     insertNewObjectForEntityForName:entityName
+                     inManagedObjectContext:moc];
+    newUser.userName = inputUserName;
+    newUser.userPassword = inputUserPassword;
+    newUser.userFirstName = inputUserFirstName;
+    newUser.userLastName = inputUserLastName;
+    newUser.userEmail = inputUserEmail;
+    newUser.autoLogon = 0;
+    NSError *error;
+    if (![moc save:&error])
+    {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        return -1;
+    }
+    return 0;
+}
+
 - (void)saveContext
 {
     NSError *error = nil;
