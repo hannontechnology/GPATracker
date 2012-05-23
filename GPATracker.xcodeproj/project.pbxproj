@@ -28,6 +28,8 @@
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
 		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
 		1FB5DF461566C7E900CD3A8B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5DF451566C7E900CD3A8B /* User.m */; };
+		2DE6CB46156C94C9009B560B /* gradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6CB45156C94C9009B560B /* gradingScheme.m */; };
+		2DE6CB49156C94D9009B560B /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6CB48156C94D9009B560B /* School.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,10 @@
 		1FB5DF411566A9DD00CD3A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		1FB5DF441566C7E900CD3A8B /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = ../User.h; sourceTree = "<group>"; };
 		1FB5DF451566C7E900CD3A8B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
+		2DE6CB43156C94C1009B560B /* gradingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gradingScheme.h; sourceTree = "<group>"; };
+		2DE6CB45156C94C9009B560B /* gradingScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = gradingScheme.m; sourceTree = "<group>"; };
+		2DE6CB47156C94D2009B560B /* School.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = School.h; sourceTree = "<group>"; };
+		2DE6CB48156C94D9009B560B /* School.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = School.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,10 @@
 		1F754A58151559EA00BD72F0 /* GPATracker */ = {
 			isa = PBXGroup;
 			children = (
+				2DE6CB48156C94D9009B560B /* School.m */,
+				2DE6CB47156C94D2009B560B /* School.h */,
+				2DE6CB45156C94C9009B560B /* gradingScheme.m */,
+				2DE6CB43156C94C1009B560B /* gradingScheme.h */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
 				1F1DC03C156C79EC005C671A /* Semester.h */,
 				1F1DC03D156C79EC005C671A /* Semester.m */,
@@ -305,6 +315,8 @@
 				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
 				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
 				1F1DC03E156C79EC005C671A /* Semester.m in Sources */,
+				2DE6CB46156C94C9009B560B /* gradingScheme.m in Sources */,
+				2DE6CB49156C94D9009B560B /* School.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
