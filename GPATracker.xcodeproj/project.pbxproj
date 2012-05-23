@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1DC03E156C79EC005C671A /* Semester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1DC03D156C79EC005C671A /* Semester.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F1DC03C156C79EC005C671A /* Semester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Semester.h; sourceTree = "<group>"; };
+		1F1DC03D156C79EC005C671A /* Semester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Semester.m; sourceTree = "<group>"; };
 		1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPATracker.entitlements; sourceTree = "<group>"; };
 		1F447033156AD48F0045242C /* GPATracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPATracker.xcdatamodel; sourceTree = "<group>"; };
 		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				1F1DC03C156C79EC005C671A /* Semester.h */,
+				1F1DC03D156C79EC005C671A /* Semester.m */,
 				1FB5DF441566C7E900CD3A8B /* User.h */,
 				1FB5DF451566C7E900CD3A8B /* User.m */,
 				1F9B8D77156C165E00CFB46C /* DataCollection.h */,
@@ -299,6 +304,7 @@
 				1FB5DF461566C7E900CD3A8B /* User.m in Sources */,
 				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
 				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
+				1F1DC03E156C79EC005C671A /* Semester.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

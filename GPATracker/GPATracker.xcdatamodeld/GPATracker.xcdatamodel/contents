@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Semester" representedClassName="Semester" syncable="YES">
+        <attribute name="semesterName" attributeType="Integer 16" defaultValueString="0" syncable="YES">
+            <userInfo>
+                <entry key="0" value="Spring"/>
+                <entry key="1" value="Summer"/>
+                <entry key="2" value="Fall"/>
+            </userInfo>
+        </attribute>
+    </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="autoLogon" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
@@ -10,5 +19,6 @@
     </entity>
     <elements>
         <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
+        <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="60"/>
     </elements>
 </model>
