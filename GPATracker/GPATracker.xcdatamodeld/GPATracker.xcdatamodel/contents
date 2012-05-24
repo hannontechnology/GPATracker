@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="GradingScheme" syncable="YES">
+        <attribute name="gradeA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeAMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeAPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeB" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeBMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeBPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeC" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeCMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeCPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeD" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gradeF" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="School" syncable="YES">
+        <attribute name="schoolActualCGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="schoolCalcCGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="schoolDetail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolEndYear" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="schoolId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolStartYear" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="schoolGradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" syncable="YES"/>
+    </entity>
     <entity name="Semester" representedClassName="Semester" syncable="YES">
         <attribute name="semesterName" attributeType="Integer 16" defaultValueString="0" syncable="YES">
             <userInfo>
@@ -18,7 +41,9 @@
         <attribute name="userPassword" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
         <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="60"/>
+        <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
+        <element name="GradingScheme" positionX="160" positionY="192" width="128" height="210"/>
+        <element name="School" positionX="160" positionY="192" width="128" height="165"/>
     </elements>
 </model>

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface gradingScheme : UIViewController
+@interface gradingScheme : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * gradeAPlus;
 @property (nonatomic, retain) NSNumber * gradeA;
@@ -23,6 +23,6 @@
 @property (nonatomic, retain) NSNumber * gradeF;
 
 
--(id)initGradingScheme:(NSNumber *)schoolId gradeAPlus:(NSNumber *)gradeAPlus gradeA:(NSNumber *)gradeA gradeAMinus:(NSNumber *)gradeAMinus gradeBPlus:(NSNumber *)gradeBPlus gradeB:(NSNumber *)gradeB gradeBMinus:(NSNumber *)gradeBMinus gradeCPlus:(NSNumber *)gradeCPlus gradeC:(NSNumber *)gradeC gradeCMinus:(NSNumber *)gradeCMinus gradeD:(NSNumber *)gradeD gradeF:(NSNumber *)gradeF;
+// -(id)initGradingScheme:(NSNumber *)schoolId gradeAPlus:(NSNumber *)gradeAPlus gradeA:(NSNumber *)gradeA gradeAMinus:(NSNumber *)gradeAMinus gradeBPlus:(NSNumber *)gradeBPlus gradeB:(NSNumber *)gradeB gradeBMinus:(NSNumber *)gradeBMinus gradeCPlus:(NSNumber *)gradeCPlus gradeC:(NSNumber *)gradeC gradeCMinus:(NSNumber *)gradeCMinus gradeD:(NSNumber *)gradeD gradeF:(NSNumber *)gradeF;
 
 @end

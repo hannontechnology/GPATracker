@@ -13,7 +13,7 @@
 
 @synthesize gradeAPlus=_gradeAPlus,gradeA=_gradeA,gradeAMinus=_gradeAMinus,gradeBPlus=_gradeBPlus,gradeB=_gradeB,gradeBMinus=_gradeBMinus,gradeCPlus=_gradeCPlus,gradeC=_gradeC,gradeCMinus=_gradeCMinus,gradeD=_gradeD,gradeF=_gradeF;
 
--(id)initGradingScheme:(NSNumber *)schoolId gradeAPlus:(NSNumber *)gradeAPlus gradeA:(NSNumber *)gradeA gradeAMinus:(NSNumber *)gradeAMinus gradeBPlus:(NSNumber *)gradeBPlus gradeB:(NSNumber *)gradeB gradeBMinus:(NSNumber *)gradeBMinus gradeCPlus:(NSNumber *)gradeCPlus gradeC:(NSNumber *)gradeC gradeCMinus:(NSNumber *)gradeCMinus gradeD:(NSNumber *)gradeD gradeF:(NSNumber *)gradeF {
+/*-(id)initGradingScheme:(NSNumber *)schoolId gradeAPlus:(NSNumber *)gradeAPlus gradeA:(NSNumber *)gradeA gradeAMinus:(NSNumber *)gradeAMinus gradeBPlus:(NSNumber *)gradeBPlus gradeB:(NSNumber *)gradeB gradeBMinus:(NSNumber *)gradeBMinus gradeCPlus:(NSNumber *)gradeCPlus gradeC:(NSNumber *)gradeC gradeCMinus:(NSNumber *)gradeCMinus gradeD:(NSNumber *)gradeD gradeF:(NSNumber *)gradeF {
     
     self=[super init];
     if (self) {
@@ -32,6 +32,6 @@
         return self;
     }
     return nil;
-}
+}*/
 
 @end

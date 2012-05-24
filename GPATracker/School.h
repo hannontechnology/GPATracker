@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface School : UIViewController
+@interface School : NSManagedObject
 
-@property (nonatomic, copy) NSNumber * schoolId;
-@property (nonatomic, copy) NSString * schoolName;
-@property (nonatomic, copy) NSString * schoolDetail;
-@property (nonatomic, copy) NSDate * startYear;
-@property (nonatomic, copy) NSDate * endYear;
+@property (nonatomic, retain) NSNumber * schoolId;
+@property (nonatomic, retain) NSString * schoolName;
+@property (nonatomic, retain) NSString * schoolDetail;
+@property (nonatomic, retain) NSDate * startYear;
+@property (nonatomic, retain) NSDate * endYear;
+
+- (id)initWithschoolId:(NSNumber *)schoolId schoolName:(NSString *)schoolName schoolDetail:(NSString *)schoolDetail startYear:(NSDate *)startYear endYear:(NSDate *)endYear;
 
 @end
