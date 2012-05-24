@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+@class DataCollection;
 
-@interface School : NSManagedObject
+@interface School : UIViewController
 
 @property (nonatomic, retain) NSNumber * schoolId;
 @property (nonatomic, retain) NSString * schoolName;
