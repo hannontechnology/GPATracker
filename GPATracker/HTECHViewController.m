@@ -19,6 +19,7 @@
 @synthesize userNameField;
 @synthesize passwordField;
 @synthesize status;
+@synthesize autoLoginSelector;
 
 
 - (IBAction)Login:(id)sender
@@ -88,10 +89,30 @@
     
 }
 
+- (IBAction)setAutoLogin:(id)sender
+{
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    DataCollection *data = [[DataCollection alloc] init];
+    
+    NSError *error = nil;
+    NSArray *results = [data retrieveUsers:userNameField.text];
+    
+    if (results == nil)
+    {
+        status.text = @"Database Error: Could not connect to Database";
+    }
+    else
+    {
+        if ([results count] > 0)
+        {
+            [self performSegueWithIdentifier: @"sequeHomePage" sender: self];
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -99,6 +120,7 @@
     [self setUserNameField:nil];
     [self setPasswordField:nil];
     [self setStatus:nil];
+    [self setAutoLoginSelector:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

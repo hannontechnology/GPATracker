@@ -95,6 +95,23 @@
     return results;
 }
 
+- (NSArray *)retrieveAutoLogin:(NSNumber *)inputAutoLogin
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"User"; // Put your entity name here
+    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = %@", inputAutoLogin];
+    NSLog(@"filtering data based on userName = %@", inputAutoLogin);
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    return results;
+}
+
 - (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail
 {
     NSManagedObjectContext *moc = [self managedObjectContext];

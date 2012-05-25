@@ -17,6 +17,7 @@
 - (IBAction)ForgotPassword:(id)sender;
 - (IBAction)CreateProfile:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
+- (IBAction)setAutoLogin:(id)sender;
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) DataCollection *dataCollection;
@@ -24,4 +25,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UILabel *status;
+@property (weak, nonatomic) IBOutlet UISwitch *autoLoginSelector;
 @end
