@@ -100,7 +100,7 @@
     DataCollection *data = [[DataCollection alloc] init];
     
     NSError *error = nil;
-    NSArray *results = [data retrieveUsers:userNameField.text];
+    NSArray *results = [data retrieveAutoLogin];
     
     if (results == nil)
     {
@@ -110,6 +110,7 @@
     {
         if ([results count] > 0)
         {
+            NSLog(@"Goto Home Page");
             [self performSegueWithIdentifier: @"sequeHomePage" sender: self];
         }
     }

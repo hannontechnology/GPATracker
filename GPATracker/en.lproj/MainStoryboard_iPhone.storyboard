@@ -355,6 +355,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YpD-cD-kdX"/>
                     <connections>
+                        <outlet property="autoLoginField" destination="zDu-SJ-MAx" id="oeR-q0-Gv2"/>
                         <outlet property="emailField" destination="a4f-90-a1D" id="fWO-hR-teH"/>
                         <outlet property="firstNameField" destination="Ymy-ua-wMm" id="Msr-sq-lz7"/>
                         <outlet property="lastNameField" destination="Bgj-xa-T6S" id="nVB-LW-xiu"/>
@@ -374,6 +375,7 @@
             <relationships>
                 <relationship kind="action" name="Accept:"/>
                 <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
@@ -388,6 +390,7 @@
                 <relationship kind="action" name="CreateProfile:"/>
                 <relationship kind="action" name="ForgotPassword:"/>
                 <relationship kind="action" name="Login:"/>
+                <relationship kind="action" name="setAutoLogin:"/>
                 <relationship kind="action" name="textFieldReturn:"/>
                 <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
@@ -408,7 +411,7 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="8Vr-6R-z6K"/>
         <segue reference="RMc-kv-Sr6"/>
+        <segue reference="t3h-h1-EUh"/>
     </inferredMetricsTieBreakers>
 </document>

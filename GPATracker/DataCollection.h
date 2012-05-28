@@ -19,8 +19,8 @@
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword; 
 - (NSArray *)retrieveUsers:(NSString *)inputUserName; 
 - (NSArray *)retrieveUsers;
-- (NSArray *)retrieveAutoLogin:(NSNumber *)inputAutoLogin;
-- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail;
+- (NSArray *)retrieveAutoLogin;
+- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin;
 - (NSUInteger)countOfUserList;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

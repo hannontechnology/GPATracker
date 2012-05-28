@@ -22,6 +22,7 @@
 @synthesize firstNameField;
 @synthesize lastNameField;
 @synthesize emailField;
+@synthesize autoLoginField;
 @synthesize status;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,6 +48,7 @@
     [self setLastNameField:nil];
     [self setEmailField:nil];
     [self setStatus:nil];
+    [self setAutoLoginField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -67,9 +69,14 @@
     
     NSError *error = nil;
     NSArray *results = [data retrieveUsers:usernameField.text];
+    NSNumber *autoLogin = 0;
     
     if ([results count] == 0)
     {
+        if (autoLoginField.on)
+        {
+            autoLogin = [NSNumber numberWithInt:1];
+        }
         if ([passwordField.text length] == 0)
         {
             status.text = @"Password field is Required.";
@@ -88,7 +95,7 @@
         }
         else
         {
-            int addResult = [data addUser:(NSString *)usernameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text];
+            int addResult = [data addUser:(NSString *)usernameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text autoLogin:(NSNumber *)autoLogin];
             if (addResult == 0)
             {
                 [self performSegueWithIdentifier: @"sequeHomePage2" sender: self];

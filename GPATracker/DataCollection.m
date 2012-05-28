@@ -95,7 +95,7 @@
     return results;
 }
 
-- (NSArray *)retrieveAutoLogin:(NSNumber *)inputAutoLogin
+- (NSArray *)retrieveAutoLogin
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
@@ -104,15 +104,15 @@
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = %@", inputAutoLogin];
-    NSLog(@"filtering data based on userName = %@", inputAutoLogin);
+    request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = 1"];
+    NSLog(@"filtering data based on autoLogon = 1");
     
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     return results;
 }
 
-- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail
+- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
@@ -127,7 +127,7 @@
     newUser.userFirstName = inputUserFirstName;
     newUser.userLastName = inputUserLastName;
     newUser.userEmail = inputUserEmail;
-    newUser.autoLogon = 0;
+    newUser.autoLogon = inputAutoLogin;
     NSError *error;
     if (![moc save:&error])
     {
