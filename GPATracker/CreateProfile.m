@@ -98,7 +98,12 @@
             int addResult = [data addUser:(NSString *)usernameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text autoLogin:(NSNumber *)autoLogin];
             if (addResult == 0)
             {
-                [self performSegueWithIdentifier: @"segueHomePage2" sender: self];
+                if (autoLoginField.on)
+                {
+                    [data removeAutoLogin];
+                    [data setAutoLogin:usernameField.text];
+                }
+               [self performSegueWithIdentifier: @"segueHomePage2" sender: self];
             }
             else 
             {
