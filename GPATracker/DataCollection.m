@@ -112,6 +112,68 @@
     return results;
 }
 
+- (void)removeAutoLogin
+{
+    int count = 0;
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"User"; // Put your entity name here
+    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = 1"];
+    NSLog(@"filtering data based on autoLogon = 1");
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    
+    for (User *item in results) {
+        if (item.autoLogon == [NSNumber numberWithInt:1])
+        {
+            item.autoLogon = [NSNumber numberWithInt:0];
+            count++;
+        }
+    }
+    if (count > 0)
+    {
+        if (![moc save:&error])
+        {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+}
+
+- (void)setAutoLogin:(NSString *)inputUserName
+{
+    int count = 0;
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"User"; // Put your entity name here
+    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"userName = %@", inputUserName];
+    NSLog(@"filtering data based on userName = %@", inputUserName);
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    
+    for (User *item in results) {
+        item.autoLogon = [NSNumber numberWithInt:1];
+        count++;
+    }
+    if (count > 0)
+    {
+        if (![moc save:&error])
+        {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+        }
+    }
+    
+}
+
 - (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin
 {
     NSManagedObjectContext *moc = [self managedObjectContext];

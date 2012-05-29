@@ -98,7 +98,7 @@
             int addResult = [data addUser:(NSString *)usernameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text autoLogin:(NSNumber *)autoLogin];
             if (addResult == 0)
             {
-                [self performSegueWithIdentifier: @"sequeHomePage2" sender: self];
+                [self performSegueWithIdentifier: @"segueHomePage2" sender: self];
             }
             else 
             {

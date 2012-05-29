@@ -20,6 +20,8 @@
 - (NSArray *)retrieveUsers:(NSString *)inputUserName; 
 - (NSArray *)retrieveUsers;
 - (NSArray *)retrieveAutoLogin;
+- (void)removeAutoLogin;
+- (void)setAutoLogin:(NSString *)inputUserName; 
 - (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin;
 - (NSUInteger)countOfUserList;
 - (void)saveContext;

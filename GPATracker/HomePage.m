@@ -7,6 +7,7 @@
 //
 
 #import "HomePage.h"
+#import "HTECHViewController.h"
 
 @interface HomePage ()
 
@@ -40,4 +41,13 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"segueLogout"])
+	{
+        HTECHViewController *HTECHViewController = [segue destinationViewController];
+        
+        HTECHViewController.getData = @"Logout";
+	}
+}
 @end

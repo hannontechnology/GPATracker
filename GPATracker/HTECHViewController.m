@@ -20,6 +20,7 @@
 @synthesize passwordField;
 @synthesize status;
 @synthesize autoLoginSelector;
+@synthesize getData;
 
 
 - (IBAction)Login:(id)sender
@@ -57,7 +58,12 @@
         }
         else
         {
-            [self performSegueWithIdentifier: @"sequeHomePage" sender: self];
+            if (autoLoginSelector.on)
+            {
+                [data removeAutoLogin];
+                [data setAutoLogin:userNameField.text];
+            }
+            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
         }
     }
 }
@@ -97,6 +103,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if (self.getData == @"Logout")
+    {
+        return;
+    }
     DataCollection *data = [[DataCollection alloc] init];
     
     NSError *error = nil;
@@ -111,7 +126,7 @@
         if ([results count] > 0)
         {
             NSLog(@"Goto Home Page");
-            [self performSegueWithIdentifier: @"sequeHomePage" sender: self];
+            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
         }
     }
 }
