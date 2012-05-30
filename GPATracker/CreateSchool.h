@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITextField * schooldetailField;
 @property (weak, nonatomic) IBOutlet UITextField * schoolstartyearField;
 @property (weak, nonatomic) IBOutlet UITextField * schoolendyearField;
+@property (weak, nonatomic) IBOutlet UILabel * status;
 - (IBAction)Accept:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 - (IBAction)SetGradingScheme:(id)sender;

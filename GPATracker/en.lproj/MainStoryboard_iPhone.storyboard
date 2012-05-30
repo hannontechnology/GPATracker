@@ -227,6 +227,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="4Vt-0f-ZtF" kind="modal" id="uqT-o3-mjR"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="528" y="-369"/>
@@ -497,8 +500,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="t3h-h1-EUh"/>
-        <segue reference="7bY-NR-q4g"/>
-    </inferredMetricsTieBreakers>
 </document>

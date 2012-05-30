@@ -13,6 +13,13 @@
 @end
 
 @implementation CreateSchool
+@synthesize dataCollection = _dataCollection;
+@synthesize school = _school;
+@synthesize schoolnameField;
+@synthesize schooldetailField;
+@synthesize schoolstartyearField;
+@synthesize schoolendyearField;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,7 +38,10 @@
 
 - (void)viewDidUnload
 {
-    [super viewDidUnload];
+    [self setSchoolnameField:nil];
+    [self setSchooldetailField:nil];
+    [self setSchoolstartyearField:nil];
+    [self setSchoolendyearField:nil];
     // Release any retained subviews of the main view.
 }
 
@@ -40,4 +50,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)Accept:(id)sender
+{
+    if ([schoolnameField.text length] == 0)
+    {
+        
+    }
+        
+}
 @end
