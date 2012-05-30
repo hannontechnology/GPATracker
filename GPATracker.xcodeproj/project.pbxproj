@@ -31,6 +31,8 @@
 		2DE6CB46156C94C9009B560B /* gradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6CB45156C94C9009B560B /* gradingScheme.m */; };
 		2DE6CB49156C94D9009B560B /* School.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6CB48156C94D9009B560B /* School.m */; };
 		2DE6CB571575B67C009B560B /* CreateSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6CB561575B67C009B560B /* CreateSchool.m */; };
+		34E800901575E271003A2969 /* SemesterDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8008F1575E271003A2969 /* SemesterDetails.m */; };
+		34E800941575E60D003A2969 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E800931575E60D003A2969 /* Course.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,10 @@
 		2DE6CB48156C94D9009B560B /* School.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = School.m; sourceTree = "<group>"; };
 		2DE6CB551575B67C009B560B /* CreateSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSchool.h; sourceTree = "<group>"; };
 		2DE6CB561575B67C009B560B /* CreateSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSchool.m; sourceTree = "<group>"; };
+		34E8008E1575E271003A2969 /* SemesterDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterDetails.h; sourceTree = "<group>"; };
+		34E8008F1575E271003A2969 /* SemesterDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterDetails.m; sourceTree = "<group>"; };
+		34E800921575E60D003A2969 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		34E800931575E60D003A2969 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,10 @@
 				2DE6CB45156C94C9009B560B /* gradingScheme.m */,
 				2DE6CB43156C94C1009B560B /* gradingScheme.h */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				34E800921575E60D003A2969 /* Course.h */,
+				34E800931575E60D003A2969 /* Course.m */,
+				34E8008E1575E271003A2969 /* SemesterDetails.h */,
+				34E8008F1575E271003A2969 /* SemesterDetails.m */,
 				1F1DC03C156C79EC005C671A /* Semester.h */,
 				1F1DC03D156C79EC005C671A /* Semester.m */,
 				1FB5DF441566C7E900CD3A8B /* User.h */,
@@ -323,6 +333,8 @@
 				2DE6CB46156C94C9009B560B /* gradingScheme.m in Sources */,
 				2DE6CB49156C94D9009B560B /* School.m in Sources */,
 				2DE6CB571575B67C009B560B /* CreateSchool.m in Sources */,
+				34E800901575E271003A2969 /* SemesterDetails.m in Sources */,
+				34E800941575E60D003A2969 /* Course.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
