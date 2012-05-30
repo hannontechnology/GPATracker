@@ -15,7 +15,9 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (nonatomic, copy) NSArray *masterUserList;
+@property (nonatomic, copy) NSArray *masterSchoolList;
 
+// User Section
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword; 
 - (NSArray *)retrieveUsers:(NSString *)inputUserName; 
 - (NSArray *)retrieveUsers;
@@ -26,5 +28,12 @@
 - (NSUInteger)countOfUserList;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
+// School Section
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName;
+- (NSArray *)retrieveSchools;
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSDate *)inputSchoolStartYear schoolEndYear:(NSDate *)inputSchoolEndYear;
+- (NSUInteger)countOfSchoolList;
+
 
 @end

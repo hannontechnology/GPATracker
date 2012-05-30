@@ -7,6 +7,8 @@
 //
 
 #import "CreateSchool.h"
+#import "School.h"
+#import "DataCollection.h"
 
 @interface CreateSchool ()
 
@@ -19,6 +21,7 @@
 @synthesize schooldetailField;
 @synthesize schoolstartyearField;
 @synthesize schoolendyearField;
+@synthesize status;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,6 +45,7 @@
     [self setSchooldetailField:nil];
     [self setSchoolstartyearField:nil];
     [self setSchoolendyearField:nil];
+    [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
@@ -54,8 +58,47 @@
 {
     if ([schoolnameField.text length] == 0)
     {
-        
+        status.text = @"School Name is Required.";
     }
+    
+    DataCollection *data = [DataCollection alloc];
+    NSError *error = nil;
+    NSArray *results = [data retrieveSchools:schoolnameField.text];
+    
+    if ([results count] == 0)
+    {
+        if ([schooldetailField.text length] == 0)
+        {
+            status.text = @"School Detail Field is Required.";
+        }
+        else if ([schoolstartyearField.text length] == 0)
+        {
+            status.text = @"School Start Year field is Required.";
+        }
+        else
+        {
+            int addResult = [data addSchool:(NSString *)schoolnameField.text schoolDetail:(NSString *)schooldetailField.text schoolStartYear:(NSDate *)schoolstartyearField.text schoolEndYear:(NSDate *)schoolendyearField.text];
+        }
+            if (addResult == 0)
+            {
+                [self performSegueWithIdentifier: @"segueCSchoolHome" sender: self];
+            }
+            else 
+            {
+                status.text = @"Create user failed!";
+            }
+    }
+    else
+    {
+        status.text = @"School Name already taken.";
+    }    
+   
         
 }
+
+- (IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+} 
+
 @end

@@ -8,6 +8,8 @@
 
 #import "DataCollection.h"
 #import "User.h"
+#import "School.h"
+#import "gradingScheme.h"
 
 @interface DataCollection ()
 - (void)initializeDefaultDataList;
@@ -18,6 +20,7 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 @synthesize masterUserList = _masterUserList;
+@synthesize masterSchoolList = _masterSchoolList;
 
 - (void)initializeDefaultDataList {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -78,6 +81,23 @@
     
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
+    return results;
+}
+
+// Terry Please inform me if I did this wrong
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"School";
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolName = %@", inputSchoolName];
+    NSLog(@"filtering data based on schoolName = %@", inputSchoolName);
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:& error];
     return results;
 }
 
@@ -197,6 +217,30 @@
         return -1;
     }
     return 0;
+}
+
+// Terry again here
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSDate *)inputSchoolStartYear schoolEndYear:(NSDate *)inputSchoolEndYear
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"School";
+    NSLog(@"Setting upa Fetched Results Controller for the Entity named %@", entityName);
+    
+    School *newSchool = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
+    newSchool.schoolName = inputSchoolName;
+    newSchool.schoolDetail = inputSchoolDetail;
+    newSchool.startYear = inputSchoolStartYear;
+    newSchool.endYear = inputSchoolEndYear;
+    // Missing for grading scheme
+    NSError *error;
+    if (![moc save:&error])
+    {
+        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
+        return -1;
+    }
+    return 0;
+
 }
 
 - (void)saveContext
