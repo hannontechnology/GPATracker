@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface gradingScheme : NSManagedObject
+@interface gradingScheme : UIViewController
 
 @property (nonatomic, retain) NSNumber * gradeAPlus;
 @property (nonatomic, retain) NSNumber * gradeA;

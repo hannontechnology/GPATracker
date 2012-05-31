@@ -126,7 +126,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZZ0-oF-eQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="CNd-Id-kSs" customClass="CreateSchool" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="byP-L9-6gL">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="Pnn-Vn-ZxD">
@@ -235,13 +235,13 @@
             </objects>
             <point key="canvasLocation" x="528" y="-369"/>
         </scene>
-        <!--View Controller-->
+        <!--Grading Scheme-->
         <scene sceneID="whD-F6-xM4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKX-JG-MaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="ZUl-mP-nEF" sceneMemberID="viewController">
+                <viewController id="ZUl-mP-nEF" customClass="gradingScheme" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ti4-fY-UiB">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="c29-1j-p0C">
@@ -289,7 +289,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7R3-4x-IAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4Vt-0f-ZtF" customClass="HomePage" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="omT-cx-RNW">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QgC-NR-W35">
@@ -350,7 +350,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbF-fV-1zd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jTa-PL-kSl" customClass="School" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anK-qs-iDa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="qRr-De-2u3">
@@ -378,6 +378,7 @@
                     </view>
                     <connections>
                         <segue destination="ZUl-mP-nEF" kind="modal" id="syg-YU-DI2"/>
+                        <segue destination="4Vt-0f-ZtF" kind="modal" id="2Le-ve-RW8"/>
                     </connections>
                 </viewController>
             </objects>
@@ -594,6 +595,9 @@
         </class>
         <class className="School" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/School.h"/>
+        </class>
+        <class className="gradingScheme" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/gradingScheme.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
