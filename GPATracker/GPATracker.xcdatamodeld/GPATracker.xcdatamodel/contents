@@ -38,6 +38,8 @@
         <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" syncable="YES"/>
     </entity>
     <entity name="Semester" representedClassName="Semester" syncable="YES">
+        <attribute name="detailFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="semesterCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="semesterName" attributeType="Integer 16" defaultValueString="0" syncable="YES">
             <userInfo>
                 <entry key="0" value="Spring"/>
@@ -63,9 +65,9 @@
         <element name="Course" positionX="-8370" positionY="-11088" width="128" height="180"/>
         <element name="GradingScheme" positionX="160" positionY="192" width="128" height="210"/>
         <element name="School" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="60"/>
+        <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="90"/>
         <element name="SemesterDetails" positionX="-8372" positionY="-11232" width="128" height="90"/>
         <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
-        <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="165"/>
     </elements>
 </model>
