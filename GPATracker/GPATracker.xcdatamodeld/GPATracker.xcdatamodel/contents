@@ -40,13 +40,6 @@
     <entity name="Semester" representedClassName="Semester" syncable="YES">
         <attribute name="detailFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="semesterCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="semesterName" attributeType="Integer 16" defaultValueString="0" syncable="YES">
-            <userInfo>
-                <entry key="0" value="Spring"/>
-                <entry key="1" value="Summer"/>
-                <entry key="2" value="Fall"/>
-            </userInfo>
-        </attribute>
     </entity>
     <entity name="SemesterDetails" representedClassName="SemesterDetails" syncable="YES">
         <attribute name="semesterCode" attributeType="Integer 16" minValueString="0" indexed="YES" syncable="YES"/>
@@ -66,7 +59,7 @@
         <element name="GradingScheme" positionX="160" positionY="192" width="128" height="210"/>
         <element name="School" positionX="160" positionY="192" width="128" height="165"/>
         <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="90"/>
+        <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="75"/>
         <element name="SemesterDetails" positionX="-8372" positionY="-11232" width="128" height="90"/>
         <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
     </elements>
