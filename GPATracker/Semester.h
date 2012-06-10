@@ -2,7 +2,7 @@
 //  Semester.h
 //  GPATracker
 //
-//  Created by terryah on 12-05-22.
+//  Created by terryah on 12-06-10.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -12,6 +12,7 @@
 
 @interface Semester : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * semesterName;
+@property (nonatomic, retain) NSNumber * semesterCode;
+@property (nonatomic, retain) NSNumber * detailFlag;
 
 @end

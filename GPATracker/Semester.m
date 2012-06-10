@@ -2,7 +2,7 @@
 //  Semester.m
 //  GPATracker
 //
-//  Created by terryah on 12-05-22.
+//  Created by terryah on 12-06-10.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @implementation Semester
 
-@dynamic semesterName;
+@dynamic semesterCode;
+@dynamic detailFlag;
 
 @end
