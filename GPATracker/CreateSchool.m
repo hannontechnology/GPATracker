@@ -56,6 +56,8 @@
 
 - (IBAction)Accept:(id)sender
 {
+    int addResult;
+    
     if ([schoolnameField.text length] == 0)
     {
         status.text = @"School Name is Required.";
@@ -77,7 +79,7 @@
         }
         else
         {
-            int addResult = [data addSchool:(NSString *)schoolnameField.text schoolDetail:(NSString *)schooldetailField.text schoolStartYear:(NSDate *)schoolstartyearField.text schoolEndYear:(NSDate *)schoolendyearField.text];
+            addResult = [data addSchool:(NSString *)schoolnameField.text schoolDetail:(NSString *)schooldetailField.text schoolStartYear:(NSDate *)schoolstartyearField.text schoolEndYear:(NSDate *)schoolendyearField.text];
         }
             if (addResult == 0)
             {
