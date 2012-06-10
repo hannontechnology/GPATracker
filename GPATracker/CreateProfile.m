@@ -67,7 +67,7 @@
     }
     DataCollection *data = [DataCollection alloc];
     
-    NSError *error = nil;
+    //NSError *error = nil;
     NSArray *results = [data retrieveUsers:usernameField.text];
     NSNumber *autoLogin = 0;
     

@@ -11,6 +11,6 @@
 
 @implementation Course
 
-@synthesize courseID = _courseID, courseName = _courseName, description = _description, units = _units, calculatedGrade = _calculatedGrade, desiredGrade = _desiredGrade, isPassFail = _isPassFail, includeInGPA = _includeInGPA;
+@synthesize courseID = _courseID, courseName = _courseName, description = _description, units = _units, calculatedGrade = _calculatedGrade, desiredGrade = _desiredGrade, isPassFail = _isPassFail, includeInGPA = _includeInGPA, actualGrade = _actualGrade;
 
 @end

@@ -27,7 +27,7 @@
 {
     DataCollection *data = [[DataCollection alloc] init];
     
-    NSError *error = nil;
+    //NSError *error = nil;
     NSArray *results = [data retrieveUsers:userNameField.text];
 
     if (results == nil)
@@ -114,7 +114,7 @@
     }
     DataCollection *data = [[DataCollection alloc] init];
     
-    NSError *error = nil;
+    //NSError *error = nil;
     NSArray *results = [data retrieveAutoLogin];
     
     if (results == nil)

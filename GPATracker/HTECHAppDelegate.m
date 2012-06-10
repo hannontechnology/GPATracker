@@ -20,8 +20,12 @@
 {
     DataCollection *data = [[DataCollection alloc] init];
     
-    NSError *error = nil;
+    //NSError *error = nil;
     NSArray *results = [data retrieveUsers];
+    if ([results count] > 0)
+    {
+        NSLog(@"Data Found!");
+    }
     // Override point for customization after application launch.
     return YES;
 }

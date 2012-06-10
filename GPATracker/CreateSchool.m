@@ -64,7 +64,7 @@
     }
     
     DataCollection *data = [DataCollection alloc];
-    NSError *error = nil;
+    //NSError *error = nil;
     NSArray *results = [data retrieveSchools:schoolnameField.text];
     
     if ([results count] == 0)
