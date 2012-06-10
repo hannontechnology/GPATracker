@@ -24,6 +24,8 @@
 @synthesize emailField;
 @synthesize autoLoginField;
 @synthesize status;
+@synthesize getData;
+@synthesize userName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,6 +40,31 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    if (self.getData != @"Edit")
+    {
+        return;
+    }
+    DataCollection *data = [[DataCollection alloc] init];
+    
+    //NSError *error = nil;
+    NSArray *results = [data retrieveAutoLogin];
+    
+    if (results == nil)
+    {
+        status.text = @"Database Error: Could not connect to Database";
+    }
+    else
+    {
+        if ([results count] > 0)
+        {
+            NSLog(@"Load Profile Page");
+        }
+    }
 }
 
 - (void)viewDidUnload

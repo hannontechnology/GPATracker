@@ -21,6 +21,7 @@
 @synthesize status;
 @synthesize autoLoginSelector;
 @synthesize getData;
+@synthesize userName;
 
 
 - (IBAction)Login:(id)sender

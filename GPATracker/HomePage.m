@@ -8,12 +8,14 @@
 
 #import "HomePage.h"
 #import "HTECHViewController.h"
+#import "CreateProfile.h"
 
 @interface HomePage ()
 
 @end
 
 @implementation HomePage
+@synthesize userName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,5 +51,11 @@
         
         HTECHViewController.getData = @"Logout";
 	}
+    else if ([segue.identifier isEqualToString:@"segueEditProfile"])
+    {
+        CreateProfile *CreateProfile = [segue destinationViewController];
+        
+        CreateProfile.getData = @"Edit";
+    }
 }
 @end

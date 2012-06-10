@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSString *getData;
+@property (strong, nonatomic) NSString *userName;
 
 @property (weak, nonatomic) IBOutlet UITextField *usernameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;

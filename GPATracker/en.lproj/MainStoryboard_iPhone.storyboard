@@ -300,7 +300,11 @@
                                     <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                     <items>
-                                        <barButtonItem title="Profile" id="gvn-re-cjU"/>
+                                        <barButtonItem title="Profile" id="gvn-re-cjU">
+                                            <connections>
+                                                <segue destination="U6t-Kr-aKV" kind="modal" identifier="segueEditProfile" id="Qq4-QW-OJt"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </items>
                                 </toolbar>
                                 <prototypes>
@@ -605,7 +609,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="RMc-kv-Sr6"/>
-    </inferredMetricsTieBreakers>
 </document>

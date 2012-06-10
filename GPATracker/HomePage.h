@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePage : UIViewController
+@property (strong, nonatomic) NSString *userName;
 
 @end
