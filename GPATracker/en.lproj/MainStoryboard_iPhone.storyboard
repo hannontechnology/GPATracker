@@ -289,7 +289,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7R3-4x-IAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4Vt-0f-ZtF" customClass="HomePage" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="omT-cx-RNW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QgC-NR-W35">
@@ -431,8 +431,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="Login:" destination="2" eventType="touchUpInside" id="XdB-BA-9cL"/>
-                                    <segue destination="2" kind="modal" modalTransitionStyle="flipHorizontal" id="RMc-kv-Sr6"/>
+                                    <action selector="Canceled:" destination="U6t-Kr-aKV" eventType="touchUpInside" id="ZcL-fa-COc"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="uJ6-sN-CSF">
@@ -547,6 +546,7 @@
                         <outlet property="status" destination="NeP-H9-Qq6" id="u4H-rW-hFu"/>
                         <outlet property="usernameField" destination="fzo-Vp-7NC" id="0pn-Qg-YXf"/>
                         <segue destination="4Vt-0f-ZtF" kind="modal" identifier="segueHomePage2" id="t3h-h1-EUh"/>
+                        <segue destination="2" kind="modal" identifier="segueLoginReturn" id="GSF-4C-KpX"/>
                     </connections>
                 </viewController>
             </objects>
@@ -558,6 +558,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateProfile.h"/>
             <relationships>
                 <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Canceled:"/>
                 <relationship kind="action" name="textFieldReturn:"/>
                 <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
@@ -611,4 +612,9 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="EQR-g5-3GL"/>
+        <segue reference="t3h-h1-EUh"/>
+        <segue reference="GSF-4C-KpX"/>
+    </inferredMetricsTieBreakers>
 </document>

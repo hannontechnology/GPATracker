@@ -10,6 +10,7 @@
 #import "User.h"
 #import "DataCollection.h"
 #import "HomePage.h"
+#import "HTECHViewController.h"
 
 @interface CreateProfile ()
 
@@ -224,6 +225,18 @@
     }    
 }
 
+- (IBAction)Canceled:(id)sender
+{
+    if (getData == @"Edit")
+    {
+        [self performSegueWithIdentifier: @"segueHomePage2" sender: self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier: @"segueLoginReturn" sender: self];
+    }
+}
+
 - (IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];
@@ -236,6 +249,13 @@
         HomePage *HomePage = [segue destinationViewController];
         
         HomePage.userName = userName;
+	}
+	else if ([segue.identifier isEqualToString:@"segueLoginReturn"])
+	{
+        HTECHViewController *HTECHViewController = [segue destinationViewController];
+        
+        HTECHViewController.getData  = @"Logout";
+        HTECHViewController.userName = userName;
 	}
 }
 @end

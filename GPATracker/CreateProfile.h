@@ -27,5 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *status;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 - (IBAction)Accept:(id)sender;
+- (IBAction)Canceled:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 @end
