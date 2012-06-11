@@ -541,6 +541,7 @@
                         <outlet property="autoLoginField" destination="zDu-SJ-MAx" id="oeR-q0-Gv2"/>
                         <outlet property="emailField" destination="a4f-90-a1D" id="fWO-hR-teH"/>
                         <outlet property="firstNameField" destination="Ymy-ua-wMm" id="Msr-sq-lz7"/>
+                        <outlet property="headerText" destination="sLO-zB-GyV" id="DST-1V-iue"/>
                         <outlet property="lastNameField" destination="Bgj-xa-T6S" id="nVB-LW-xiu"/>
                         <outlet property="passwordField" destination="Q5I-Bw-Qva" id="2Wb-VM-mTp"/>
                         <outlet property="status" destination="NeP-H9-Qq6" id="u4H-rW-hFu"/>
@@ -561,6 +562,7 @@
                 <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
                 <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="status" candidateClass="UILabel"/>

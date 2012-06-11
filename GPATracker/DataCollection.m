@@ -180,7 +180,8 @@
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     
-    for (User *item in results) {
+    for (User *item in results)
+    {
         item.autoLogon = [NSNumber numberWithInt:1];
         count++;
     }
@@ -217,6 +218,34 @@
         return -1;
     }
     return 0;
+}
+
+- (int)updateUser:(NSArray *)inputUser
+{
+    for (User *item in inputUser)
+    {
+        NSManagedObjectContext *moc = [self managedObjectContext];
+        
+        NSString *entityName = @"User"; // Put your entity name here
+        NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+        
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        
+        NSError *error = nil;
+        NSArray *results = [moc executeFetchRequest:request error:&error];
+        
+        if ([results count] > 0)
+        {
+            results = inputUser;
+        }
+
+        if (![moc save:&error])
+        {
+            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+            return -1;
+        }
+        return 0;
+    }
 }
 
 // Terry again here

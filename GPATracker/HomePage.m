@@ -49,13 +49,15 @@
 	{
         HTECHViewController *HTECHViewController = [segue destinationViewController];
         
-        HTECHViewController.getData = @"Logout";
+        HTECHViewController.getData  = @"Logout";
+        HTECHViewController.userName = userName;
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
         CreateProfile *CreateProfile = [segue destinationViewController];
         
-        CreateProfile.getData = @"Edit";
+        CreateProfile.getData  = @"Edit";
+        CreateProfile.userName = userName;
     }
 }
 @end

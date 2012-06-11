@@ -25,6 +25,8 @@
 - (void)removeAutoLogin;
 - (void)setAutoLogin:(NSString *)inputUserName; 
 - (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin;
+- (int)updateUser:(NSArray *)inputUser;
+
 - (NSUInteger)countOfUserList;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

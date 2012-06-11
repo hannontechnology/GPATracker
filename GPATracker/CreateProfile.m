@@ -9,12 +9,14 @@
 #import "CreateProfile.h"
 #import "User.h"
 #import "DataCollection.h"
+#import "HomePage.h"
 
 @interface CreateProfile ()
 
 @end
 
 @implementation CreateProfile
+@synthesize headerText;
 @synthesize dataCollection = _dataCollection;
 @synthesize user = _user;
 @synthesize usernameField;
@@ -52,7 +54,7 @@
     DataCollection *data = [[DataCollection alloc] init];
     
     //NSError *error = nil;
-    NSArray *results = [data retrieveAutoLogin];
+    NSArray *results = [data retrieveUsers:userName];
     
     if (results == nil)
     {
@@ -63,6 +65,19 @@
         if ([results count] > 0)
         {
             NSLog(@"Load Profile Page");
+            headerText.title = @"Edit Profile";
+            for (User *item in results)
+            {
+                usernameField.text  = item.userName;
+                passwordField.text  = item.userPassword;
+                firstNameField.text = item.userFirstName;
+                lastNameField.text  = item.userLastName;
+                emailField.text     = item.userEmail;
+                if (item.autoLogon == [NSNumber numberWithInt:1])
+                {
+                    autoLoginField.on = YES;
+                }
+            }
         }
     }
 }
@@ -76,6 +91,7 @@
     [self setEmailField:nil];
     [self setStatus:nil];
     [self setAutoLoginField:nil];
+    [self setHeaderText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -98,7 +114,71 @@
     NSArray *results = [data retrieveUsers:usernameField.text];
     NSNumber *autoLogin = 0;
     
-    if ([results count] == 0)
+    if (getData == @"Edit")
+    {
+        if (autoLoginField.on)
+        {
+            autoLogin = [NSNumber numberWithInt:1];
+        }
+        if ([passwordField.text length] == 0)
+        {
+            status.text = @"Password field is Required.";
+        }
+        else if ([firstNameField.text length] == 0)
+        {
+            status.text = @"First Name field is Required.";
+        }
+        else if ([lastNameField.text length] == 0)
+        {
+            status.text = @"Last Name field is Required.";
+        }
+        else if ([emailField.text length] == 0)
+        {
+            status.text = @"Email field is Required.";
+        }
+        else
+        {
+            userName = usernameField.text;
+            DataCollection *data = [[DataCollection alloc] init];
+            
+            //NSError *error = nil;
+            NSArray *results = [data retrieveUsers:userName];
+            
+            if (results == nil)
+            {
+                status.text = @"Database Error: Could not connect to Database";
+            }
+            else
+            {
+                if ([results count] > 0)
+                {
+                    NSLog(@"Save Profile Page");
+                    for (User *item in results)
+                    {
+                        item.userName      = usernameField.text;
+                        item.userPassword  = passwordField.text;
+                        item.userFirstName = firstNameField.text;
+                        item.userLastName  = lastNameField.text;
+                        item.userEmail     = emailField.text;
+                        item.autoLogon     = autoLogin;
+                    }
+                    if ([data updateUser:results] == 0)
+                    {
+                        if (autoLoginField.on)
+                        {
+                            [data removeAutoLogin];
+                            [data setAutoLogin:usernameField.text];
+                        }
+                        [self performSegueWithIdentifier: @"segueHomePage2" sender: self];
+                    }
+                    else 
+                    {
+                    }
+                }
+            }
+        }      
+    }
+    else if ([results count] == 0)
     {
         if (autoLoginField.on)
         {
@@ -148,4 +228,14 @@
 {
     [sender resignFirstResponder];
 } 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"segueHomePage2"])
+	{
+        HomePage *HomePage = [segue destinationViewController];
+        
+        HomePage.userName = userName;
+	}
+}
 @end

@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
 @property (weak, nonatomic) IBOutlet UISwitch *autoLoginField;
 @property (weak, nonatomic) IBOutlet UILabel *status;
+@property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 - (IBAction)Accept:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 @end

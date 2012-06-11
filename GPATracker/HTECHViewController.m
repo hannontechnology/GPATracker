@@ -9,6 +9,7 @@
 #import "HTECHViewController.h"
 #import "User.h"
 #import "DataCollection.h"
+#import "HomePage.h"
 
 @interface HTECHViewController ()
 @end
@@ -64,6 +65,7 @@
                 [data removeAutoLogin];
                 [data setAutoLogin:userNameField.text];
             }
+            userName = userNameField.text;
             [self performSegueWithIdentifier: @"segueHomePage" sender: self];
         }
     }
@@ -127,6 +129,10 @@
         if ([results count] > 0)
         {
             NSLog(@"Goto Home Page");
+            for (User *item in results)
+            {
+                userName = item.userName;
+            }
             [self performSegueWithIdentifier: @"segueHomePage" sender: self];
         }
     }
@@ -158,4 +164,14 @@
 {
     [sender resignFirstResponder];
 } 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"segueHomePage"])
+	{
+        HomePage *HomePage = [segue destinationViewController];
+        
+        HomePage.userName = userName;
+	}
+}
 @end
