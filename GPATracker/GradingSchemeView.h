@@ -23,5 +23,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *gradeCMinus;
 @property (weak, nonatomic) IBOutlet UITextField *gradeD;
 @property (weak, nonatomic) IBOutlet UITextField *gradeF;
+- (IBAction)Done:(UIBarButtonItem *)sender;
 
 @end

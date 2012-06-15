@@ -31,7 +31,7 @@
 		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
 		1FB5DF461566C7E900CD3A8B /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB5DF451566C7E900CD3A8B /* User.m */; };
 		2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */; };
-		2DE6CB571575B67C009B560B /* CreateSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DE6CB561575B67C009B560B /* CreateSchool.m */; };
+		2D1EC191158AFFBA00EFB538 /* CreateSchool.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC190158AFFBA00EFB538 /* CreateSchool.m */; };
 		34E800901575E271003A2969 /* SemesterDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8008F1575E271003A2969 /* SemesterDetails.m */; };
 		34E800941575E60D003A2969 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E800931575E60D003A2969 /* Course.m */; };
 /* End PBXBuildFile section */
@@ -86,8 +86,8 @@
 		1FB5DF451566C7E900CD3A8B /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = ../User.m; sourceTree = "<group>"; };
 		2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeView.h; sourceTree = "<group>"; };
 		2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeView.m; sourceTree = "<group>"; };
-		2DE6CB551575B67C009B560B /* CreateSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSchool.h; sourceTree = "<group>"; };
-		2DE6CB561575B67C009B560B /* CreateSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSchool.m; sourceTree = "<group>"; };
+		2D1EC18F158AFFBA00EFB538 /* CreateSchool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSchool.h; sourceTree = "<group>"; };
+		2D1EC190158AFFBA00EFB538 /* CreateSchool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSchool.m; sourceTree = "<group>"; };
 		34E8008E1575E271003A2969 /* SemesterDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterDetails.h; sourceTree = "<group>"; };
 		34E8008F1575E271003A2969 /* SemesterDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterDetails.m; sourceTree = "<group>"; };
 		34E800921575E60D003A2969 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -172,10 +172,10 @@
 				1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */,
 				1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */,
 				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
+				2D1EC18F158AFFBA00EFB538 /* CreateSchool.h */,
+				2D1EC190158AFFBA00EFB538 /* CreateSchool.m */,
 				2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */,
 				2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */,
-				2DE6CB551575B67C009B560B /* CreateSchool.h */,
-				2DE6CB561575B67C009B560B /* CreateSchool.m */,
 				1F89359115168E600071D4AF /* CreateProfile.h */,
 				1F89359215168E600071D4AF /* CreateProfile.m */,
 				1F89358D15168BA10071D4AF /* HomePage.h */,
@@ -334,13 +334,13 @@
 				1FB5DF461566C7E900CD3A8B /* User.m in Sources */,
 				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
 				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
-				2DE6CB571575B67C009B560B /* CreateSchool.m in Sources */,
 				34E800901575E271003A2969 /* SemesterDetails.m in Sources */,
 				34E800941575E60D003A2969 /* Course.m in Sources */,
 				1F8D0AA715852638000D2B40 /* Semester.m in Sources */,
 				1F395B55158ACFDA009F879F /* SchoolDetails.m in Sources */,
 				1F395B59158AD0EE009F879F /* GradingScheme.m in Sources */,
 				2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */,
+				2D1EC191158AFFBA00EFB538 /* CreateSchool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
