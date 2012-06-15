@@ -271,11 +271,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ykC-ev-llk">
-                                <rect key="frame" x="80" y="115" width="160" height="230"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -293,7 +288,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7R3-4x-IAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4Vt-0f-ZtF" customClass="HomePage" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="omT-cx-RNW">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QgC-NR-W35">
@@ -398,7 +393,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryr-lK-fKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="U6t-Kr-aKV" customClass="CreateProfile" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yJM-Qi-d60">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="YHp-XC-duf">
