@@ -8,7 +8,7 @@
 
 #import "DataCollection.h"
 #import "User.h"
-#import "School.h"
+#import "SchoolDetails.h"
 #import "gradingScheme.h"
 
 @interface DataCollection ()
@@ -253,10 +253,10 @@
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
-    NSString *entityName = @"School";
+    NSString *entityName = @"SchoolDetails";
     NSLog(@"Setting upa Fetched Results Controller for the Entity named %@", entityName);
     
-    School *newSchool = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
+    SchoolDetails *newSchool = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
     newSchool.schoolName = inputSchoolName;
     newSchool.schoolDetail = inputSchoolDetail;
     newSchool.startYear = inputSchoolStartYear;

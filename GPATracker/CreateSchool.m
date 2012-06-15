@@ -16,6 +16,7 @@
 
 @implementation CreateSchool
 @synthesize dataCollection = _dataCollection;
+@synthesize schoolNameField;
 @synthesize school = _school;
 @synthesize schoolnameField;
 @synthesize schooldetailField;
@@ -45,6 +46,7 @@
     [self setSchooldetailField:nil];
     [self setSchoolstartyearField:nil];
     [self setSchoolendyearField:nil];
+    [self setSchoolNameField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -103,4 +105,6 @@
     [sender resignFirstResponder];
 } 
 
+- (IBAction)Cancel:(id)sender {
+}
 @end
