@@ -1,28 +1,27 @@
 //
-//  gradingScheme.h
+//  GradingScheme.h
 //  GPATracker
 //
-//  Created by David Stevens on 12-05-10.
-//  Copyright (c) 2012 Hannon Technology. All rights reserved.
+//  Created by terryah on 12-06-14.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-
-@interface gradingScheme : UIViewController
-
-@property (nonatomic, retain) NSNumber * gradeAPlus;
-@property (nonatomic, retain) NSNumber * gradeA;
-@property (nonatomic, retain) NSNumber * gradeAMinus;
-@property (nonatomic, retain) NSNumber * gradeBPlus;
-@property (nonatomic, retain) NSNumber * gradeB;
-@property (nonatomic, retain) NSNumber * gradeBMinus;
-@property (nonatomic, retain) NSNumber * gradeCPlus;
-@property (nonatomic, retain) NSNumber * gradeC;
-@property (nonatomic, retain) NSNumber * gradeCMinus;
-@property (nonatomic, retain) NSNumber * gradeD;
-@property (nonatomic, retain) NSNumber * gradeF;
+#import <CoreData/CoreData.h>
 
 
-// -(id)initGradingScheme:(NSNumber *)schoolId gradeAPlus:(NSNumber *)gradeAPlus gradeA:(NSNumber *)gradeA gradeAMinus:(NSNumber *)gradeAMinus gradeBPlus:(NSNumber *)gradeBPlus gradeB:(NSNumber *)gradeB gradeBMinus:(NSNumber *)gradeBMinus gradeCPlus:(NSNumber *)gradeCPlus gradeC:(NSNumber *)gradeC gradeCMinus:(NSNumber *)gradeCMinus gradeD:(NSNumber *)gradeD gradeF:(NSNumber *)gradeF;
+@interface GradingScheme : NSManagedObject
+
+@property (nonatomic, retain) NSDecimalNumber * gradeA;
+@property (nonatomic, retain) NSDecimalNumber * gradeAMinus;
+@property (nonatomic, retain) NSDecimalNumber * gradeAPlus;
+@property (nonatomic, retain) NSDecimalNumber * gradeB;
+@property (nonatomic, retain) NSDecimalNumber * gradeBMinus;
+@property (nonatomic, retain) NSDecimalNumber * gradeBPlus;
+@property (nonatomic, retain) NSDecimalNumber * gradeC;
+@property (nonatomic, retain) NSDecimalNumber * gradeCMinus;
+@property (nonatomic, retain) NSDecimalNumber * gradeCPlus;
+@property (nonatomic, retain) NSDecimalNumber * gradeD;
+@property (nonatomic, retain) NSDecimalNumber * gradeF;
 
 @end
