@@ -11,7 +11,7 @@
         <attribute name="isPassFail" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="units" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="GradingScheme" syncable="YES">
+    <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">
         <attribute name="gradeA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradeAMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradeAPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
