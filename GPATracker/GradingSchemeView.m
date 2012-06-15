@@ -13,6 +13,17 @@
 @end
 
 @implementation GradingSchemeView
+@synthesize gradeAPlus;
+@synthesize gradeA;
+@synthesize gradeAMinus;
+@synthesize gradeBPlus;
+@synthesize gradeB;
+@synthesize gradeBMinus;
+@synthesize gradeCPlus;
+@synthesize gradeC;
+@synthesize gradeCMinus;
+@synthesize gradeD;
+@synthesize gradeF;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,6 +42,17 @@
 
 - (void)viewDidUnload
 {
+    [self setGradeAPlus:nil];
+    [self setGradeA:nil];
+    [self setGradeAMinus:nil];
+    [self setGradeBPlus:nil];
+    [self setGradeB:nil];
+    [self setGradeBMinus:nil];
+    [self setGradeCPlus:nil];
+    [self setGradeC:nil];
+    [self setGradeCMinus:nil];
+    [self setGradeD:nil];
+    [self setGradeF:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
