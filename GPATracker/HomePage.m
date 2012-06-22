@@ -7,7 +7,7 @@
 //
 
 #import "HomePage.h"
-#import "HTECHViewController.h"
+#import "LoginView.h"
 #import "CreateProfile.h"
 
 @interface HomePage ()
@@ -47,10 +47,10 @@
 {
 	if ([segue.identifier isEqualToString:@"segueLogout"])
 	{
-        HTECHViewController *HTECHViewController = [segue destinationViewController];
+        LoginView *LoginView = [segue destinationViewController];
         
-        HTECHViewController.getData  = @"Logout";
-        HTECHViewController.userName = userName;
+        LoginView.getData  = @"Logout";
+        LoginView.userName = userName;
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
