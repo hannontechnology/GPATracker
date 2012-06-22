@@ -18,7 +18,7 @@
 		1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */; };
 		1F754A66151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */; };
 		1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */; };
-		1F754A6C151559EA00BD72F0 /* HTECHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A6B151559EA00BD72F0 /* HTECHViewController.m */; };
+		1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A6B151559EA00BD72F0 /* LoginView.m */; };
 		1F754A74151559EA00BD72F0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A73151559EA00BD72F0 /* SenTestingKit.framework */; };
 		1F754A75151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A76151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
@@ -65,8 +65,8 @@
 		1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTECHAppDelegate.m; sourceTree = "<group>"; };
 		1F754A65151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		1F754A68151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		1F754A6A151559EA00BD72F0 /* HTECHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTECHViewController.h; sourceTree = "<group>"; };
-		1F754A6B151559EA00BD72F0 /* HTECHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTECHViewController.m; sourceTree = "<group>"; };
+		1F754A6A151559EA00BD72F0 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		1F754A6B151559EA00BD72F0 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		1F754A72151559EA00BD72F0 /* GPATrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GPATrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A73151559EA00BD72F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		1F754A7B151559EA00BD72F0 /* GPATrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPATrackerTests-Info.plist"; sourceTree = "<group>"; };
@@ -181,8 +181,8 @@
 				1F89358D15168BA10071D4AF /* HomePage.h */,
 				1F89358E15168BA10071D4AF /* HomePage.m */,
 				1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */,
-				1F754A6A151559EA00BD72F0 /* HTECHViewController.h */,
-				1F754A6B151559EA00BD72F0 /* HTECHViewController.m */,
+				1F754A6A151559EA00BD72F0 /* LoginView.h */,
+				1F754A6B151559EA00BD72F0 /* LoginView.m */,
 				1F754A59151559EA00BD72F0 /* Supporting Files */,
 			);
 			path = GPATracker;
@@ -328,7 +328,7 @@
 			files = (
 				1F754A5F151559EA00BD72F0 /* main.m in Sources */,
 				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
-				1F754A6C151559EA00BD72F0 /* HTECHViewController.m in Sources */,
+				1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */,
 				1F89358F15168BA10071D4AF /* HomePage.m in Sources */,
 				1F89359315168E600071D4AF /* CreateProfile.m in Sources */,
 				1FB5DF461566C7E900CD3A8B /* User.m in Sources */,
