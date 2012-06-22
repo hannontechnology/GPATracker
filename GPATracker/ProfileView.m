@@ -211,6 +211,7 @@
                     [data removeAutoLogin];
                     [data setAutoLogin:usernameField.text];
                 }
+                userName = usernameField.text;
                [self performSegueWithIdentifier: @"segueHomePage2" sender: self];
             }
             else 
