@@ -25,7 +25,7 @@
 		1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A7C151559EA00BD72F0 /* InfoPlist.strings */; };
 		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
 		1F89358F15168BA10071D4AF /* HomePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89358E15168BA10071D4AF /* HomePageView.m */; };
-		1F89359315168E600071D4AF /* CreateProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* CreateProfile.m */; };
+		1F89359315168E600071D4AF /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* ProfileView.m */; };
 		1F8D0AA715852638000D2B40 /* Semester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D0AA615852638000D2B40 /* Semester.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
 		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
@@ -75,8 +75,8 @@
 		1F754A80151559EA00BD72F0 /* GPATrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPATrackerTests.m; sourceTree = "<group>"; };
 		1F89358D15168BA10071D4AF /* HomePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageView.h; sourceTree = "<group>"; };
 		1F89358E15168BA10071D4AF /* HomePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageView.m; sourceTree = "<group>"; };
-		1F89359115168E600071D4AF /* CreateProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProfile.h; sourceTree = "<group>"; };
-		1F89359215168E600071D4AF /* CreateProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProfile.m; sourceTree = "<group>"; };
+		1F89359115168E600071D4AF /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
+		1F89359215168E600071D4AF /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
 		1F8D0AA515852638000D2B40 /* Semester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Semester.h; sourceTree = "<group>"; };
 		1F8D0AA615852638000D2B40 /* Semester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Semester.m; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollection.h; sourceTree = "<group>"; };
@@ -176,8 +176,8 @@
 				2D1EC190158AFFBA00EFB538 /* CreateSchool.m */,
 				2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */,
 				2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */,
-				1F89359115168E600071D4AF /* CreateProfile.h */,
-				1F89359215168E600071D4AF /* CreateProfile.m */,
+				1F89359115168E600071D4AF /* ProfileView.h */,
+				1F89359215168E600071D4AF /* ProfileView.m */,
 				1F89358D15168BA10071D4AF /* HomePageView.h */,
 				1F89358E15168BA10071D4AF /* HomePageView.m */,
 				1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */,
@@ -330,7 +330,7 @@
 				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
 				1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */,
 				1F89358F15168BA10071D4AF /* HomePageView.m in Sources */,
-				1F89359315168E600071D4AF /* CreateProfile.m in Sources */,
+				1F89359315168E600071D4AF /* ProfileView.m in Sources */,
 				1FB5DF461566C7E900CD3A8B /* User.m in Sources */,
 				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
 				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
