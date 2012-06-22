@@ -9,7 +9,7 @@
 #import "CreateProfile.h"
 #import "User.h"
 #import "DataCollection.h"
-#import "HomePage.h"
+#import "HomePageView.h"
 #import "LoginView.h"
 
 @interface CreateProfile ()
@@ -246,9 +246,9 @@
 {
 	if ([segue.identifier isEqualToString:@"segueHomePage2"])
 	{
-        HomePage *HomePage = [segue destinationViewController];
+        HomePageView *HomePageView = [segue destinationViewController];
         
-        HomePage.userName = userName;
+        HomePageView.userName = userName;
 	}
 	else if ([segue.identifier isEqualToString:@"segueLoginReturn"])
 	{
