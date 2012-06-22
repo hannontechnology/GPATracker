@@ -258,9 +258,9 @@
     
     SchoolDetails *newSchool = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
     newSchool.schoolName = inputSchoolName;
-    newSchool.schoolDetail = inputSchoolDetail;
-    newSchool.startYear = inputSchoolStartYear;
-    newSchool.endYear = inputSchoolEndYear;
+    //newSchool.schoolDetail = inputSchoolDetail;
+    //newSchool.startYear = inputSchoolStartYear;
+    //newSchool.endYear = inputSchoolEndYear;
     // Missing for grading scheme
     NSError *error;
     if (![moc save:&error])
