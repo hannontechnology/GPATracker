@@ -1,14 +1,14 @@
 //
-//  SemesterView.m
+//  AddSemesterView.m
 //  GPATracker
 //
 //  Created by Aiste Guden on 12-06-23.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SemesterView.h"
+#import "AddSemesterView.h"
 
-@implementation SemesterView
+@implementation AddSemesterView
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,9 +48,4 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-- (IBAction)AddSemester:(id)sender {
-    [self performSegueWithIdentifier: @"addSemesterSegue" sender: self];    
-
-}
 @end

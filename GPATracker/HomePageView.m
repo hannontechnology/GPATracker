@@ -68,4 +68,9 @@
         SchoolView.userName = userName;
     }
 }
+- (IBAction)EditSchool:(id)sender {
+}
+
+- (IBAction)AddSchool:(id)sender {
+}
 @end

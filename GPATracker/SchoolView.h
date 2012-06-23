@@ -13,16 +13,8 @@
 
 @interface SchoolView : UIViewController
 
-@property (strong, nonatomic) NSString *getData;
-@property (strong, nonatomic) NSString *userName;
+- (IBAction)AddSemester:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UITextField *schoolName;
-@property (weak, nonatomic) IBOutlet UITextField *schoolDetails;
-@property (weak, nonatomic) IBOutlet UITextField *schoolStartYear;
-@property (weak, nonatomic) IBOutlet UITextField *schoolEndYear;
-
-- (IBAction)gradingScheme:(UIButton *)sender;
-- (IBAction)Accept:(UIButton *)sender;
-- (IBAction)Cancel:(UIButton *)sender;
+- (IBAction)EditSemester:(id)sender;
 
 @end

@@ -1,14 +1,18 @@
 //
-//  SemesterView.m
+//  CreateSchoolView.m
 //  GPATracker
 //
 //  Created by Aiste Guden on 12-06-23.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SemesterView.h"
+#import "CreateSchoolView.h"
 
-@implementation SemesterView
+@implementation CreateSchoolView
+@synthesize SchoolName;
+@synthesize SchoolDetails;
+@synthesize SchoolStartYear;
+@synthesize SchoolEndYear;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +41,10 @@
 
 - (void)viewDidUnload
 {
+    [self setSchoolName:nil];
+    [self setSchoolDetails:nil];
+    [self setSchoolStartYear:nil];
+    [self setSchoolEndYear:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,9 +56,12 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)EditGradingScheme:(id)sender {
+}
 
-- (IBAction)AddSemester:(id)sender {
-    [self performSegueWithIdentifier: @"addSemesterSegue" sender: self];    
+- (IBAction)Accept:(id)sender {
+}
 
+- (IBAction)Cancel:(id)sender {
 }
 @end

@@ -70,4 +70,9 @@
         HomePageView.userName = userName;
 	}
 }
+- (IBAction)AddSemester:(id)sender {
+}
+
+- (IBAction)EditSemester:(id)sender {
+}
 @end

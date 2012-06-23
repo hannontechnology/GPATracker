@@ -10,5 +10,7 @@
 
 @interface HomePageView : UIViewController
 @property (strong, nonatomic) NSString *userName;
+- (IBAction)EditSchool:(id)sender;
+- (IBAction)AddSchool:(id)sender;
 
 @end

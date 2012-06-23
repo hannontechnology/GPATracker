@@ -122,7 +122,7 @@
         <scene sceneID="eSH-0R-Eyd">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpL-aR-DKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="rTr-Dy-jam" customClass="SchoolView" sceneMemberID="viewController">
+                <viewController id="rTr-Dy-jam" customClass="CreateSchoolView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vhV-sJ-jWM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -146,6 +146,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="Cancel:" destination="rTr-Dy-jam" eventType="touchUpInside" id="DRe-lZ-R0u"/>
                                     <segue destination="4Vt-0f-ZtF" kind="modal" identifier="segueSchool2HomePage" id="2Ye-wb-4Wg"/>
                                 </connections>
                             </button>
@@ -160,6 +161,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="Accept:" destination="rTr-Dy-jam" eventType="touchUpInside" id="ucZ-sv-sT9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R3Z-LV-n71">
                                 <rect key="frame" x="54" y="313" width="213" height="37"/>
@@ -172,6 +176,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="EditGradingScheme:" destination="rTr-Dy-jam" eventType="touchUpInside" id="fVh-zU-Id5"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="School Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cSX-fr-Y5n">
                                 <rect key="frame" x="20" y="60" width="115" height="21"/>
@@ -229,12 +236,17 @@
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="SchoolDetails" destination="ICN-0j-4nc" id="HOb-uX-1Jw"/>
+                        <outlet property="SchoolEndYear" destination="IhN-fL-FQc" id="vIt-kE-bTJ"/>
+                        <outlet property="SchoolName" destination="Leh-hM-d6u" id="WoN-Gr-8GG"/>
+                        <outlet property="SchoolStartYear" destination="49G-sl-Elc" id="N35-h4-Wnb"/>
                         <outlet property="schoolDetails" destination="ICN-0j-4nc" id="muV-us-cQB"/>
                         <outlet property="schoolEndYear" destination="IhN-fL-FQc" id="P7z-Ue-Dl7"/>
                         <outlet property="schoolName" destination="Leh-hM-d6u" id="Ovt-dc-CvE"/>
                         <outlet property="schoolStartYear" destination="49G-sl-Elc" id="Urn-bP-EfJ"/>
                         <segue destination="3JW-qW-ne5" kind="modal" identifier="SelectGradingSchemeSegue" id="w6R-uN-V2U"/>
                         <segue destination="jTa-PL-kSl" kind="modal" identifier="FromEditToSchoolSegue" id="57Q-XA-UJC"/>
+                        <segue destination="4Vt-0f-ZtF" kind="modal" identifier="FromEditSchoolToHomeSegue" id="CWD-0l-eSm"/>
                     </connections>
                 </viewController>
             </objects>
@@ -513,10 +525,15 @@
                                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="MNm-1h-ius">
                                             <color key="tintColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
+                                                <action selector="AddSchool:" destination="4Vt-0f-ZtF" id="gvG-1P-UV6"/>
                                                 <segue destination="rTr-Dy-jam" kind="modal" identifier="CreateSchoolSegue" id="Hsu-kt-jqY"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="vv0-pU-Ihj"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="vv0-pU-Ihj">
+                                            <connections>
+                                                <action selector="EditSchool:" destination="4Vt-0f-ZtF" id="L8h-OY-axo"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -526,6 +543,7 @@
                     <navigationItem key="navigationItem" id="M03-db-wfA"/>
                     <connections>
                         <segue destination="jTa-PL-kSl" kind="modal" identifier="SchoolDetails" id="Kxg-8L-a9N"/>
+                        <segue destination="rTr-Dy-jam" kind="modal" identifier="AddEditSchoolSegue" id="gSO-ad-dR7"/>
                     </connections>
                 </viewController>
             </objects>
@@ -534,7 +552,7 @@
         <scene sceneID="sex-xc-PNd">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbF-fV-1zd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="jTa-PL-kSl" customClass="School" sceneMemberID="viewController">
+                <viewController id="jTa-PL-kSl" customClass="SchoolView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anK-qs-iDa">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -559,9 +577,17 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="School" id="Wb9-P2-EP1">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="WvA-Mx-e0E"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="VHa-0J-SNU"/>
+                                    <navigationItem title="School Name" id="Wb9-P2-EP1">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="WvA-Mx-e0E">
+                                            <connections>
+                                                <action selector="AddSemester:" destination="jTa-PL-kSl" id="bTe-Pc-4Qe"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="VHa-0J-SNU">
+                                            <connections>
+                                                <action selector="EditSemester:" destination="jTa-PL-kSl" id="wav-YN-lgG"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -569,13 +595,38 @@
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <segue destination="4Vt-0f-ZtF" kind="modal" id="2Le-ve-RW8"/>
-                        <segue destination="l0e-Af-tgM" kind="modal" identifier="AddSemesterSegue" id="scZ-Pw-9Jv"/>
-                        <segue destination="rTr-Dy-jam" kind="modal" identifier="EditSchoolSegue" id="tYX-du-PR9"/>
+                        <segue destination="4Vt-0f-ZtF" kind="modal" identifier="ReturnToHomeFromSchoolSegue" id="2Le-ve-RW8"/>
+                        <segue destination="l0e-Af-tgM" kind="modal" identifier="ViewSemesterSegue" id="scZ-Pw-9Jv"/>
+                        <segue destination="9kM-3K-edT" kind="modal" identifier="AddSemesterSegue" id="uMh-ba-Emu"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="993" y="265"/>
+        </scene>
+        <scene sceneID="Oav-7O-nVZ">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggE-8J-57j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="9kM-3K-edT" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x71-vS-tKX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="qOy-G5-fxL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Add Semester" id="o6b-ME-PfX"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="jTa-PL-kSl" kind="modal" identifier="ReturnAddSemToSchoolViewSegue" id="uB7-JB-EUK"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1509" y="251"/>
         </scene>
         <scene sceneID="Brl-Yb-uXH">
             <objects>
@@ -805,6 +856,18 @@
         <class className="AddCourseView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
         </class>
+        <class className="CreateSchoolView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateSchoolView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="EditGradingScheme:"/>
+                <relationship kind="outlet" name="SchoolDetails" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="SchoolEndYear" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="SchoolName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="SchoolStartYear" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="GradingSchemeView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeView.h"/>
             <relationships>
@@ -824,6 +887,10 @@
         </class>
         <class className="HomePageView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageView.h"/>
+            <relationships>
+                <relationship kind="action" name="AddSchool:"/>
+                <relationship kind="action" name="EditSchool:"/>
+            </relationships>
         </class>
         <class className="LoginView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
@@ -858,13 +925,8 @@
         <class className="SchoolView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolView.h"/>
             <relationships>
-                <relationship kind="action" name="Accept:" candidateClass="UIButton"/>
-                <relationship kind="action" name="Cancel:" candidateClass="UIButton"/>
-                <relationship kind="action" name="gradingScheme:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="schoolDetails" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolEndYear" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolStartYear" candidateClass="UITextField"/>
+                <relationship kind="action" name="AddSemester:"/>
+                <relationship kind="action" name="EditSemester:"/>
             </relationships>
         </class>
         <class className="SelectGradingSchemeView" superclassName="UIViewController">
