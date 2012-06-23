@@ -9,6 +9,7 @@
 #import "HomePageView.h"
 #import "LoginView.h"
 #import "ProfileView.h"
+#import "SchoolView.h"
 
 @interface HomePageView ()
 
@@ -58,6 +59,13 @@
         
         ProfileView.getData  = @"Edit";
         ProfileView.userName = userName;
+    }
+    else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
+    {
+        SchoolView *SchoolView = [segue destinationViewController];
+        
+        SchoolView.getData  = @"New";
+        SchoolView.userName = userName;
     }
 }
 @end
