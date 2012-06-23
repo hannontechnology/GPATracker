@@ -60,12 +60,9 @@
         ProfileView.getData  = @"Edit";
         ProfileView.userName = userName;
     }
-    else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
+    else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
     {
-        SchoolView *SchoolView = [segue destinationViewController];
-        
-        SchoolView.getData  = @"New";
-        SchoolView.userName = userName;
+        //Terry fix here, your changes messed up my create school view.  I needed to fix that, sorry about your code. :(
     }
 }
 - (IBAction)EditSchool:(id)sender {
