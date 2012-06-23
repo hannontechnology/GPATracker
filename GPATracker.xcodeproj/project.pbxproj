@@ -34,6 +34,7 @@
 		2D1EC191158AFFBA00EFB538 /* SchoolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC190158AFFBA00EFB538 /* SchoolView.m */; };
 		3475F09A15966E0F006D400F /* SemesterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09815966E0F006D400F /* SemesterView.m */; };
 		3475F0A015967139006D400F /* AddCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09E15967139006D400F /* AddCourseView.m */; };
+		3475F0A5159674DB006D400F /* SelectGradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */; };
 		34C2C36215966A8300AEC8E3 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C2C36115966A8300AEC8E3 /* Course.m */; };
 		34E800901575E271003A2969 /* SemesterDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E8008F1575E271003A2969 /* SemesterDetails.m */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,8 @@
 		3475F09815966E0F006D400F /* SemesterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterView.m; sourceTree = "<group>"; };
 		3475F09D15967139006D400F /* AddCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseView.h; sourceTree = "<group>"; };
 		3475F09E15967139006D400F /* AddCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseView.m; sourceTree = "<group>"; };
+		3475F0A2159674DB006D400F /* SelectGradingSchemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGradingSchemeView.h; sourceTree = "<group>"; };
+		3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectGradingSchemeView.m; sourceTree = "<group>"; };
 		34C2C36015966A8300AEC8E3 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		34C2C36115966A8300AEC8E3 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		34E8008E1575E271003A2969 /* SemesterDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterDetails.h; sourceTree = "<group>"; };
@@ -178,6 +181,8 @@
 				1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */,
 				1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */,
 				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
+				3475F0A2159674DB006D400F /* SelectGradingSchemeView.h */,
+				3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */,
 				3475F09D15967139006D400F /* AddCourseView.h */,
 				3475F09E15967139006D400F /* AddCourseView.m */,
 				3475F09715966E0F006D400F /* SemesterView.h */,
@@ -353,6 +358,7 @@
 				34C2C36215966A8300AEC8E3 /* Course.m in Sources */,
 				3475F09A15966E0F006D400F /* SemesterView.m in Sources */,
 				3475F0A015967139006D400F /* AddCourseView.m in Sources */,
+				3475F0A5159674DB006D400F /* SelectGradingSchemeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
