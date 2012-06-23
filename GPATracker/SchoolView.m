@@ -1,25 +1,14 @@
 //
-//  CreateSchool.m
+//  SchoolView.m
 //  GPATracker
 //
-//  Created by David Stevens on 12-06-14.
+//  Created by Aiste Guden on 12-06-23.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "SchoolView.h"
-#import "HomePageView.h"
-
-@interface SchoolView ()
-
-@end
 
 @implementation SchoolView
-@synthesize schoolName;
-@synthesize schoolDetails;
-@synthesize schoolStartYear;
-@synthesize schoolEndYear;
-@synthesize getData;
-@synthesize userName;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -30,49 +19,42 @@
     return self;
 }
 
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - View lifecycle
+
+/*
+// Implement loadView to create a view hierarchy programmatically, without using a nib.
+- (void)loadView
+{
+}
+*/
+
+/*
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
 }
+*/
 
 - (void)viewDidUnload
 {
-    [self setSchoolName:nil];
-    [self setSchoolDetails:nil];
-    [self setSchoolStartYear:nil];
-    [self setSchoolEndYear:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)gradingScheme:(UIButton *)sender {
-}
-
-- (IBAction)Accept:(UIButton *)sender {
-}
-
-- (IBAction)Cancel:(UIButton *)sender {
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-	if ([segue.identifier isEqualToString:@"segueSchool2HomePage"])
-	{
-        HomePageView *HomePageView = [segue destinationViewController];
-        
-        //HomePageView.getData  = @"Logout";
-        HomePageView.userName = userName;
-	}
-}
-- (IBAction)AddSemester:(id)sender {
-}
-
-- (IBAction)EditSemester:(id)sender {
-}
 @end

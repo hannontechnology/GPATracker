@@ -924,10 +924,6 @@
         </class>
         <class className="SchoolView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolView.h"/>
-            <relationships>
-                <relationship kind="action" name="AddSemester:"/>
-                <relationship kind="action" name="EditSemester:"/>
-            </relationships>
         </class>
         <class className="SelectGradingSchemeView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGradingSchemeView.h"/>
