@@ -11,6 +11,8 @@
 
 @implementation SemesterDetails
 
-@synthesize semesterCode = _semesterCode, semesterName = _semesterName, semesterYear = _semesterYear;
+@dynamic semesterCode;
+@dynamic semesterName;
+@dynamic semesterYear;
 
 @end

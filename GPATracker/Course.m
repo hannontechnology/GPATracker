@@ -2,7 +2,7 @@
 //  Course.m
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-05-29.
+//  Created by Aiste Guden on 12-06-23.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,14 @@
 
 @implementation Course
 
-@synthesize courseID = _courseID, courseName = _courseName, description = _description, units = _units, calculatedGrade = _calculatedGrade, desiredGrade = _desiredGrade, isPassFail = _isPassFail, includeInGPA = _includeInGPA, actualGrade = _actualGrade;
+@dynamic actualGrade;
+@dynamic calculatedGrade;
+@dynamic courseID;
+@dynamic courseName;
+@dynamic description;
+@dynamic desiredGrade;
+@dynamic includeInGPA;
+@dynamic isPassFail;
+@dynamic units;
 
 @end
