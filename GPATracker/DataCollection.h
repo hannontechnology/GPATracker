@@ -35,7 +35,11 @@
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName;
 - (NSArray *)retrieveSchools;
 - (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSDate *)inputSchoolStartYear schoolEndYear:(NSDate *)inputSchoolEndYear;
+- (int)updateSchool:(NSArray *)inputSchool;
 - (NSUInteger)countOfSchoolList;
 
+// Grading Scheme Section
+//- (NSArray *)retrieveGradingScheme:(NSString *)
+//- (int)addGradingScheme:(
 
 @end

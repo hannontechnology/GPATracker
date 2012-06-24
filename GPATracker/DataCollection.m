@@ -84,7 +84,7 @@
     return results;
 }
 
-// Terry Please inform me if I did this wrong
+
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -258,9 +258,9 @@
     
     SchoolDetails *newSchool = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
     newSchool.schoolName = inputSchoolName;
-    //newSchool.schoolDetail = inputSchoolDetail;
-    //newSchool.startYear = inputSchoolStartYear;
-    //newSchool.endYear = inputSchoolEndYear;
+    newSchool.schoolDetails = inputSchoolDetail;
+    newSchool.schoolStartYear = inputSchoolStartYear;
+    newSchool.schoolEndYear = inputSchoolEndYear;
     // Missing for grading scheme
     NSError *error;
     if (![moc save:&error])
@@ -271,6 +271,8 @@
     return 0;
 
 }
+
+
 
 - (void)saveContext
 {

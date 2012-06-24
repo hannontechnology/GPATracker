@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DataCollection;
+
 @interface SchoolView : UIViewController
 
 @end

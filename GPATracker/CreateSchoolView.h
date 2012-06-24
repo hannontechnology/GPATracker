@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DataCollection;
+
 @interface CreateSchoolView : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *SchoolName;
 @property (weak, nonatomic) IBOutlet UITextField *SchoolDetails;
