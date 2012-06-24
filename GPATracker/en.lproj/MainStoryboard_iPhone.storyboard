@@ -968,9 +968,48 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UG2-Fu-9kd">
+                                <rect key="frame" x="87" y="364" width="140" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Accept">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Accept:" destination="jPn-jD-ygd" eventType="touchUpInside" id="o1L-VP-v0z"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="w4e-sG-Cpf">
+                                <rect key="frame" x="87" y="409" width="140" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Cancel:" destination="jPn-jD-ygd" eventType="touchUpInside" id="Jy8-f9-7In"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="actualGrade" destination="0ZI-hy-EJ0" id="eea-mz-Y1h"/>
+                        <outlet property="courseID" destination="JUG-XJ-z53" id="xdm-KJ-SJ7"/>
+                        <outlet property="courseName" destination="saY-nf-8gQ" id="mpV-2A-SXN"/>
+                        <outlet property="description" destination="eWP-Rc-dlq" id="Rxf-vt-uWF"/>
+                        <outlet property="desiredGrade" destination="7r7-kv-MOL" id="NK0-GE-fCb"/>
+                        <outlet property="units" destination="92w-vB-2Hc" id="WJE-FF-0nV"/>
+                        <segue destination="l0e-Af-tgM" kind="modal" identifier="AddCourseToSemesterViewSegue" id="Nif-G2-Fee"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1013" y="1445"/>
@@ -979,6 +1018,16 @@
     <classes>
         <class className="AddCourseView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="outlet" name="actualGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="desiredGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="units" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="CreateSchoolView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateSchoolView.h"/>

@@ -9,6 +9,12 @@
 #import "AddCourseView.h"
 
 @implementation AddCourseView
+@synthesize courseID;
+@synthesize courseName;
+@synthesize units;
+@synthesize desiredGrade;
+@synthesize actualGrade;
+@synthesize description;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +43,12 @@
 
 - (void)viewDidUnload
 {
+    [self setCourseID:nil];
+    [self setCourseName:nil];
+    [self setUnits:nil];
+    [self setDesiredGrade:nil];
+    [self setActualGrade:nil];
+    [self setDescription:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -48,4 +60,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (IBAction)Accept:(id)sender {
+}
+
+- (IBAction)Cancel:(id)sender {
+}
 @end
