@@ -13,6 +13,8 @@
 @synthesize SchoolDetails;
 @synthesize SchoolStartYear;
 @synthesize SchoolEndYear;
+@synthesize CalculatedGPA;
+@synthesize ActualGPA;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +47,8 @@
     [self setSchoolDetails:nil];
     [self setSchoolStartYear:nil];
     [self setSchoolEndYear:nil];
+    [self setCalculatedGPA:nil];
+    [self setActualGPA:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

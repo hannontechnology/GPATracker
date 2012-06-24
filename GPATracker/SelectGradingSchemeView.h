@@ -9,7 +9,17 @@
 #import <UIKit/UIKit.h>
 
 @class DataCollection;
+@class GradingScheme;
 
-@interface SelectGradingSchemeView : UIViewController
+@interface SelectGradingSchemeView : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource> {
+    IBOutlet UILabel *mlabel;
+    NSMutableArray *arrayNo;
+    IBOutlet UIPickerView *pickerView;
+}
+
+@property (nonatomic, retain) UILabel *mlabel;
+@property (weak, nonatomic) IBOutlet UIPickerView *GradingSchemePicker;
+
+
 
 @end

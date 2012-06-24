@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1938" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <deployment defaultVersion="1280" identifier="iOS"/>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="933"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--Login View-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -119,6 +120,7 @@
             </objects>
             <point key="canvasLocation" x="83" y="265"/>
         </scene>
+        <!--Create School View-->
         <scene sceneID="eSH-0R-Eyd">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpL-aR-DKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -181,7 +183,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="School Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cSX-fr-Y5n">
-                                <rect key="frame" x="20" y="60" width="115" height="21"/>
+                                <rect key="frame" x="9" y="60" width="115" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -212,30 +214,58 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="School Details:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QdH-uu-Lns">
-                                <rect key="frame" x="20" y="99" width="114" height="21"/>
+                                <rect key="frame" x="9" y="99" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Tcd-Zc-Dhz">
-                                <rect key="frame" x="20" y="138" width="82" height="21"/>
+                                <rect key="frame" x="9" y="138" width="82" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Tfj-GX-GFx">
-                                <rect key="frame" x="20" y="177" width="76" height="21"/>
+                                <rect key="frame" x="9" y="177" width="76" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calculated GPA:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9iH-JC-GFS">
+                                <rect key="frame" x="9" y="214" width="126" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Actual GPA:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4df-Qj-eZA">
+                                <rect key="frame" x="9" y="253" width="93" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="5ZZ-U5-IXd">
+                                <rect key="frame" x="138" y="209" width="162" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="gtN-Tr-zjQ">
+                                <rect key="frame" x="138" y="248" width="162" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
+                        <outlet property="ActualGPA" destination="gtN-Tr-zjQ" id="aVo-wL-QMm"/>
+                        <outlet property="CalculatedGPA" destination="5ZZ-U5-IXd" id="3q5-7i-deF"/>
                         <outlet property="SchoolDetails" destination="ICN-0j-4nc" id="HOb-uX-1Jw"/>
                         <outlet property="SchoolEndYear" destination="IhN-fL-FQc" id="vIt-kE-bTJ"/>
                         <outlet property="SchoolName" destination="Leh-hM-d6u" id="WoN-Gr-8GG"/>
@@ -252,6 +282,7 @@
             </objects>
             <point key="canvasLocation" x="517" y="-366"/>
         </scene>
+        <!--Select Grading Scheme View-->
         <scene sceneID="mHn-Hb-POy">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zg5-pW-Zzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -267,8 +298,12 @@
                                     <navigationItem title="Select Grading Scheme" id="RDy-iO-QU4"/>
                                 </items>
                             </navigationBar>
+                            <pickerView contentMode="scaleToFill" id="rAg-eq-JnW">
+                                <rect key="frame" x="0.0" y="141" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1048656548" green="0.15088828500000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <segue destination="ZUl-mP-nEF" kind="modal" identifier="CustomizeGradingSchemeSegue" id="jeg-I2-9e1"/>
@@ -277,6 +312,7 @@
             </objects>
             <point key="canvasLocation" x="961" y="-384"/>
         </scene>
+        <!--Grading Scheme View-->
         <scene sceneID="whD-F6-xM4">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKX-JG-MaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -476,6 +512,7 @@
             </objects>
             <point key="canvasLocation" x="1389" y="-386"/>
         </scene>
+        <!--Home Page View-->
         <scene sceneID="72Z-fa-fRS">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7R3-4x-IAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -549,6 +586,7 @@
             </objects>
             <point key="canvasLocation" x="526" y="265"/>
         </scene>
+        <!--School View-->
         <scene sceneID="sex-xc-PNd">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbF-fV-1zd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -603,6 +641,7 @@
             </objects>
             <point key="canvasLocation" x="993" y="265"/>
         </scene>
+        <!--View Controller-->
         <scene sceneID="Oav-7O-nVZ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggE-8J-57j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -653,6 +692,7 @@
             </objects>
             <point key="canvasLocation" x="1509" y="251"/>
         </scene>
+        <!--Profile View-->
         <scene sceneID="Brl-Yb-uXH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryr-lK-fKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -816,6 +856,7 @@
             </objects>
             <point key="canvasLocation" x="526" y="870"/>
         </scene>
+        <!--Semester View-->
         <scene sceneID="3tP-wh-HuV">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-R4-mKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -864,6 +905,7 @@
             </objects>
             <point key="canvasLocation" x="1013" y="870"/>
         </scene>
+        <!--Add Course View-->
         <scene sceneID="bl6-TV-cJ1">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUd-Pi-XQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1035,6 +1077,8 @@
                 <relationship kind="action" name="Accept:"/>
                 <relationship kind="action" name="Cancel:"/>
                 <relationship kind="action" name="EditGradingScheme:"/>
+                <relationship kind="outlet" name="ActualGPA" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="CalculatedGPA" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="SchoolDetails" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="SchoolEndYear" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="SchoolName" candidateClass="UITextField"/>
@@ -1100,6 +1144,9 @@
         </class>
         <class className="SelectGradingSchemeView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGradingSchemeView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="GradingSchemePicker" candidateClass="UIPickerView"/>
+            </relationships>
         </class>
         <class className="SemesterView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterView.h"/>
