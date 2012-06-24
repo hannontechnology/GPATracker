@@ -28,9 +28,9 @@
         <attribute name="schoolActualGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="schoolCalculatedGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="schoolDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="schoolEndYear" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="schoolEndYear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="schoolStartYear" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="schoolStartYear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" syncable="YES"/>
     </entity>

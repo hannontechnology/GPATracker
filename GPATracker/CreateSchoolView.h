@@ -2,7 +2,7 @@
 //  CreateSchoolView.h
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-06-23.
+//  Created by David Stevens on 12-06-23.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -10,14 +10,21 @@
 
 @class DataCollection;
 @class SchoolDetails;
+@class SelectGradingSchemeView;
 
 @interface CreateSchoolView : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *SchoolName;
-@property (weak, nonatomic) IBOutlet UITextField *SchoolDetails;
-@property (weak, nonatomic) IBOutlet UITextField *SchoolStartYear;
-@property (weak, nonatomic) IBOutlet UITextField *SchoolEndYear;
-@property (weak, nonatomic) IBOutlet UITextField *CalculatedGPA;
-@property (weak, nonatomic) IBOutlet UITextField *ActualGPA;
+@property (strong, nonatomic) SchoolDetails *school;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSString *schoolName;
+@property (weak, nonatomic) IBOutlet UITextField *schoolNameField;
+@property (weak, nonatomic) IBOutlet UITextField *schoolDetailsField;
+@property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;
+@property (weak, nonatomic) IBOutlet UITextField *schoolEndYearField;
+@property (weak, nonatomic) IBOutlet UITextField *calculatedGPAField;
+@property (weak, nonatomic) IBOutlet UITextField *actualGPAField;
+@property (weak, nonatomic) IBOutlet UILabel *status;
+@property (strong, nonatomic) NSString *getData;
+@property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 - (IBAction)EditGradingScheme:(id)sender;
 - (IBAction)Accept:(id)sender;

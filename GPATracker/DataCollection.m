@@ -249,7 +249,7 @@
 }
 
 // Terry again here
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSDate *)inputSchoolStartYear schoolEndYear:(NSDate *)inputSchoolEndYear
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear;
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     

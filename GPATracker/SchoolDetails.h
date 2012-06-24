@@ -12,12 +12,12 @@
 
 @interface SchoolDetails : NSManagedObject
 
-@property (nonatomic, retain) NSDecimalNumber * schoolActualGPA;
-@property (nonatomic, retain) NSDecimalNumber * schoolCalculatedGPA;
+@property (nonatomic, retain) NSString * schoolActualGPA;
+@property (nonatomic, retain) NSString * schoolCalculatedGPA;
 @property (nonatomic, retain) NSString * schoolDetails;
-@property (nonatomic, retain) NSDate * schoolEndYear;
+@property (nonatomic, retain) NSString * schoolEndYear;
 @property (nonatomic, retain) NSString * schoolName;
-@property (nonatomic, retain) NSDate * schoolStartYear;
+@property (nonatomic, retain) NSString * schoolStartYear;
 @property (nonatomic, retain) NSString * userName;
 @property (nonatomic, retain) NSManagedObject *gradingScheme;
 

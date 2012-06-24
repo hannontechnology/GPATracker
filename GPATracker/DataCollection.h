@@ -34,7 +34,7 @@
 // School Section
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName;
 - (NSArray *)retrieveSchools;
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSDate *)inputSchoolStartYear schoolEndYear:(NSDate *)inputSchoolEndYear;
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear;
 - (int)updateSchool:(NSArray *)inputSchool;
 - (NSUInteger)countOfSchoolList;
 
