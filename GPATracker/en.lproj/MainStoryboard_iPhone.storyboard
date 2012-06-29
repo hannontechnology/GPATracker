@@ -126,7 +126,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TpL-aR-DKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="rTr-Dy-jam" customClass="CreateSchoolView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vhV-sJ-jWM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="Pnn-Vn-ZxD">
@@ -288,7 +288,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zg5-pW-Zzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="3JW-qW-ne5" customClass="SelectGradingSchemeView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y0O-h8-VG0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="28n-nb-4LN">
@@ -318,7 +318,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKX-JG-MaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ZUl-mP-nEF" customClass="GradingSchemeView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ti4-fY-UiB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="c29-1j-p0C">
@@ -518,7 +518,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7R3-4x-IAZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="4Vt-0f-ZtF" customClass="HomePageView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="omT-cx-RNW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="QgC-NR-W35">
@@ -592,7 +592,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbF-fV-1zd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jTa-PL-kSl" customClass="SchoolView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anK-qs-iDa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8Cl-CK-qnw">
@@ -647,7 +647,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggE-8J-57j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="9kM-3K-edT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x71-vS-tKX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="qOy-G5-fxL">
@@ -692,13 +692,13 @@
             </objects>
             <point key="canvasLocation" x="1509" y="251"/>
         </scene>
-        <!--Profile View-->
+        <!--Profile Edit View-->
         <scene sceneID="Brl-Yb-uXH">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ryr-lK-fKI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="U6t-Kr-aKV" customClass="ProfileView" sceneMemberID="viewController">
+                <viewController id="U6t-Kr-aKV" customClass="ProfileEditView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yJM-Qi-d60">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="YHp-XC-duf">
@@ -862,7 +862,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-R4-mKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l0e-Af-tgM" customClass="SemesterView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ur-Fj-48T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OWc-mz-226">
@@ -911,7 +911,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUd-Pi-XQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jPn-jD-ygd" customClass="AddCourseView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d5z-Ch-q3A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="tO7-X2-YiK">
@@ -1077,12 +1077,14 @@
                 <relationship kind="action" name="Accept:"/>
                 <relationship kind="action" name="Cancel:"/>
                 <relationship kind="action" name="EditGradingScheme:"/>
-                <relationship kind="outlet" name="ActualGPA" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="CalculatedGPA" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="SchoolDetails" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="SchoolEndYear" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="SchoolName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="SchoolStartYear" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="actualGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="calculatedGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="GradingSchemeView" superclassName="UIViewController">
@@ -1123,8 +1125,8 @@
                 <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
             </relationships>
         </class>
-        <class className="ProfileView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileView.h"/>
+        <class className="ProfileEditView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditView.h"/>
             <relationships>
                 <relationship kind="action" name="Accept:"/>
                 <relationship kind="action" name="Canceled:"/>
@@ -1162,4 +1164,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="EQR-g5-3GL"/>
+        <segue reference="GSF-4C-KpX"/>
+    </inferredMetricsTieBreakers>
 </document>

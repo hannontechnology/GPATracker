@@ -25,7 +25,7 @@
 		1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A7C151559EA00BD72F0 /* InfoPlist.strings */; };
 		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
 		1F89358F15168BA10071D4AF /* HomePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89358E15168BA10071D4AF /* HomePageView.m */; };
-		1F89359315168E600071D4AF /* ProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* ProfileView.m */; };
+		1F89359315168E600071D4AF /* ProfileEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F89359215168E600071D4AF /* ProfileEditView.m */; };
 		1F8D0AA715852638000D2B40 /* Semester.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8D0AA615852638000D2B40 /* Semester.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
 		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
@@ -33,7 +33,7 @@
 		2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */; };
 		2D905D67159798D5008867A0 /* GradingSchemePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D905D66159798D5008867A0 /* GradingSchemePickerView.m */; };
 		34575F2F15967E0C002DFB20 /* AddSemesterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34575F2D15967E0C002DFB20 /* AddSemesterView.m */; };
-		3466CF7915967BAF00C1FB18 /* CreateSchoolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3466CF7715967BAF00C1FB18 /* CreateSchoolView.m */; };
+		3466CF7915967BAF00C1FB18 /* SchoolEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3466CF7715967BAF00C1FB18 /* SchoolEditView.m */; };
 		3475F09A15966E0F006D400F /* SemesterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09815966E0F006D400F /* SemesterView.m */; };
 		3475F0A015967139006D400F /* AddCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09E15967139006D400F /* AddCourseView.m */; };
 		3475F0A5159674DB006D400F /* SelectGradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */; };
@@ -82,8 +82,8 @@
 		1F754A80151559EA00BD72F0 /* GPATrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPATrackerTests.m; sourceTree = "<group>"; };
 		1F89358D15168BA10071D4AF /* HomePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageView.h; sourceTree = "<group>"; };
 		1F89358E15168BA10071D4AF /* HomePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageView.m; sourceTree = "<group>"; };
-		1F89359115168E600071D4AF /* ProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileView.h; sourceTree = "<group>"; };
-		1F89359215168E600071D4AF /* ProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileView.m; sourceTree = "<group>"; };
+		1F89359115168E600071D4AF /* ProfileEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ProfileEditView.h; sourceTree = "<group>"; };
+		1F89359215168E600071D4AF /* ProfileEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditView.m; sourceTree = "<group>"; };
 		1F8D0AA515852638000D2B40 /* Semester.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Semester.h; sourceTree = "<group>"; };
 		1F8D0AA615852638000D2B40 /* Semester.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Semester.m; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollection.h; sourceTree = "<group>"; };
@@ -97,8 +97,8 @@
 		2D905D66159798D5008867A0 /* GradingSchemePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradingSchemePickerView.m; path = ../GradingSchemePickerView.m; sourceTree = "<group>"; };
 		34575F2C15967E0C002DFB20 /* AddSemesterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSemesterView.h; sourceTree = "<group>"; };
 		34575F2D15967E0C002DFB20 /* AddSemesterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSemesterView.m; sourceTree = "<group>"; };
-		3466CF7615967BAF00C1FB18 /* CreateSchoolView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSchoolView.h; sourceTree = "<group>"; };
-		3466CF7715967BAF00C1FB18 /* CreateSchoolView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSchoolView.m; sourceTree = "<group>"; };
+		3466CF7615967BAF00C1FB18 /* SchoolEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SchoolEditView.h; sourceTree = "<group>"; };
+		3466CF7715967BAF00C1FB18 /* SchoolEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolEditView.m; sourceTree = "<group>"; };
 		3475F09715966E0F006D400F /* SemesterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterView.h; sourceTree = "<group>"; };
 		3475F09815966E0F006D400F /* SemesterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterView.m; sourceTree = "<group>"; };
 		3475F09D15967139006D400F /* AddCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseView.h; sourceTree = "<group>"; };
@@ -201,8 +201,8 @@
 				34C7925F15968447004AA2FA /* SchoolView.m */,
 				34575F2C15967E0C002DFB20 /* AddSemesterView.h */,
 				34575F2D15967E0C002DFB20 /* AddSemesterView.m */,
-				3466CF7615967BAF00C1FB18 /* CreateSchoolView.h */,
-				3466CF7715967BAF00C1FB18 /* CreateSchoolView.m */,
+				3466CF7615967BAF00C1FB18 /* SchoolEditView.h */,
+				3466CF7715967BAF00C1FB18 /* SchoolEditView.m */,
 				3475F0A2159674DB006D400F /* SelectGradingSchemeView.h */,
 				3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */,
 				3475F09D15967139006D400F /* AddCourseView.h */,
@@ -211,8 +211,8 @@
 				3475F09815966E0F006D400F /* SemesterView.m */,
 				2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */,
 				2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */,
-				1F89359115168E600071D4AF /* ProfileView.h */,
-				1F89359215168E600071D4AF /* ProfileView.m */,
+				1F89359115168E600071D4AF /* ProfileEditView.h */,
+				1F89359215168E600071D4AF /* ProfileEditView.m */,
 				1F89358D15168BA10071D4AF /* HomePageView.h */,
 				1F89358E15168BA10071D4AF /* HomePageView.m */,
 				1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */,
@@ -365,7 +365,7 @@
 				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
 				1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */,
 				1F89358F15168BA10071D4AF /* HomePageView.m in Sources */,
-				1F89359315168E600071D4AF /* ProfileView.m in Sources */,
+				1F89359315168E600071D4AF /* ProfileEditView.m in Sources */,
 				1FB5DF461566C7E900CD3A8B /* User.m in Sources */,
 				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
 				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
@@ -378,7 +378,7 @@
 				3475F09A15966E0F006D400F /* SemesterView.m in Sources */,
 				3475F0A015967139006D400F /* AddCourseView.m in Sources */,
 				3475F0A5159674DB006D400F /* SelectGradingSchemeView.m in Sources */,
-				3466CF7915967BAF00C1FB18 /* CreateSchoolView.m in Sources */,
+				3466CF7915967BAF00C1FB18 /* SchoolEditView.m in Sources */,
 				34575F2F15967E0C002DFB20 /* AddSemesterView.m in Sources */,
 				34C7926015968447004AA2FA /* SchoolView.m in Sources */,
 				348338B4159689C4009B5D1E /* SemesterYearPickerViewController.m in Sources */,

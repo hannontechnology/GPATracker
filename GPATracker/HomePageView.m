@@ -8,7 +8,7 @@
 
 #import "HomePageView.h"
 #import "LoginView.h"
-#import "ProfileView.h"
+#import "ProfileEditView.h"
 #import "SchoolView.h"
 
 @interface HomePageView ()
@@ -55,10 +55,10 @@
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
-        ProfileView *ProfileView = [segue destinationViewController];
+        ProfileEditView *ProfileEditView = [segue destinationViewController];
         
-        ProfileView.getData  = @"Edit";
-        ProfileView.userName = userName;
+        ProfileEditView.getData  = @"Edit";
+        ProfileEditView.userName = userName;
     }
     else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
     {
