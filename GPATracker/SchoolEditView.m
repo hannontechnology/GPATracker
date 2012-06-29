@@ -27,6 +27,7 @@
 @synthesize calculatedGPAField;
 @synthesize actualGPAField;
 @synthesize getData;
+@synthesize userName;
 @synthesize status;
 @synthesize headerText;
 
@@ -161,7 +162,7 @@
         }
     }
     else {
-/*        int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetails:<#(NSString *)#>schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text];
+    /*    int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetails:<#(NSString *)#>schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text];
         if (addResult == 0) {
             if (getData == @"Edit") {
                 schoolName = schoolNameField.text;
@@ -177,9 +178,6 @@
             status.text = @"Create school failed.";
         }*/
     }
-    //else {
-   //     status.text = @"School name already taken.";
-    //}
 }
     
 

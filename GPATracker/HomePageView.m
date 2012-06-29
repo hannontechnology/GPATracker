@@ -9,7 +9,7 @@
 #import "HomePageView.h"
 #import "LoginView.h"
 #import "ProfileEditView.h"
-#import "SchoolView.h"
+#import "SchoolEditView.h"
 
 @interface HomePageView ()
 
@@ -62,7 +62,10 @@
     }
     else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
     {
-        //Terry fix here, your changes messed up my create school view.  I needed to fix that, sorry about your code. :(
+        SchoolEditView *SchoolEditView = [segue destinationViewController];
+        
+        SchoolEditView.getData  = @"Edit";
+        SchoolEditView.userName = userName;
     }
 }
 - (IBAction)EditSchool:(id)sender {

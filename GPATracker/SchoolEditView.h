@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *actualGPAField;
 @property (weak, nonatomic) IBOutlet UILabel *status;
 @property (strong, nonatomic) NSString *getData;
+@property (strong, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 - (IBAction)EditGradingScheme:(id)sender;

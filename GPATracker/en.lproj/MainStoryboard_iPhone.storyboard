@@ -264,16 +264,13 @@
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="ActualGPA" destination="gtN-Tr-zjQ" id="aVo-wL-QMm"/>
-                        <outlet property="CalculatedGPA" destination="5ZZ-U5-IXd" id="3q5-7i-deF"/>
-                        <outlet property="SchoolDetails" destination="ICN-0j-4nc" id="HOb-uX-1Jw"/>
-                        <outlet property="SchoolEndYear" destination="IhN-fL-FQc" id="vIt-kE-bTJ"/>
-                        <outlet property="SchoolName" destination="Leh-hM-d6u" id="WoN-Gr-8GG"/>
-                        <outlet property="SchoolStartYear" destination="49G-sl-Elc" id="N35-h4-Wnb"/>
-                        <outlet property="schoolDetails" destination="ICN-0j-4nc" id="muV-us-cQB"/>
-                        <outlet property="schoolEndYear" destination="IhN-fL-FQc" id="P7z-Ue-Dl7"/>
-                        <outlet property="schoolName" destination="Leh-hM-d6u" id="Ovt-dc-CvE"/>
-                        <outlet property="schoolStartYear" destination="49G-sl-Elc" id="Urn-bP-EfJ"/>
+                        <outlet property="actualGPAField" destination="gtN-Tr-zjQ" id="es4-Fe-2xn"/>
+                        <outlet property="calculatedGPAField" destination="5ZZ-U5-IXd" id="FDa-QI-B4r"/>
+                        <outlet property="headerText" destination="pYI-ki-AYp" id="Yuc-lM-3AD"/>
+                        <outlet property="schoolDetailsField" destination="ICN-0j-4nc" id="16i-AA-FwD"/>
+                        <outlet property="schoolEndYearField" destination="IhN-fL-FQc" id="4Tp-X7-iyn"/>
+                        <outlet property="schoolNameField" destination="Leh-hM-d6u" id="J5H-E1-kbe"/>
+                        <outlet property="schoolStartYearField" destination="49G-sl-Elc" id="LEU-Fn-pC4"/>
                         <segue destination="3JW-qW-ne5" kind="modal" identifier="SelectGradingSchemeSegue" id="w6R-uN-V2U"/>
                         <segue destination="jTa-PL-kSl" kind="modal" identifier="FromEditToSchoolSegue" id="57Q-XA-UJC"/>
                         <segue destination="4Vt-0f-ZtF" kind="modal" identifier="FromEditSchoolToHomeSegue" id="CWD-0l-eSm"/>
@@ -1057,13 +1054,111 @@
             <point key="canvasLocation" x="1013" y="1445"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddCourseView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="outlet" name="actualGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="desiredGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="units" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="GradingSchemeView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeView.h"/>
+            <relationships>
+                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="gradeA" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeAMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeAPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeB" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeBMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeBPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeC" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeCMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeCPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeD" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeF" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="HomePageView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageView.h"/>
+            <relationships>
+                <relationship kind="action" name="AddSchool:"/>
+                <relationship kind="action" name="EditSchool:"/>
+            </relationships>
+        </class>
+        <class className="LoginView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
+            <relationships>
+                <relationship kind="action" name="CreateProfile:"/>
+                <relationship kind="action" name="ForgotPassword:"/>
+                <relationship kind="action" name="Login:"/>
+                <relationship kind="action" name="setAutoLogin:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ProfileEditView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Canceled:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="usernameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SchoolEditView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="EditGradingScheme:"/>
+                <relationship kind="outlet" name="actualGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="calculatedGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SchoolView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolView.h"/>
+        </class>
+        <class className="SelectGradingSchemeView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGradingSchemeView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="GradingSchemePicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="mlabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="SemesterView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterView.h"/>
+            <relationships>
+                <relationship kind="action" name="addCourse:"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="EQR-g5-3GL"/>
-        <segue reference="GSF-4C-KpX"/>
-    </inferredMetricsTieBreakers>
 </document>
