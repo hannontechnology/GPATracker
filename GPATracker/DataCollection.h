@@ -32,9 +32,10 @@
 - (NSURL *)applicationDocumentsDirectory;
 
 // School Section
-- (NSArray *)retrieveSchools:(NSString *)inputSchoolName;
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+- (NSArray *)retrieveSchoolList:(NSString *)inputUserName;
 - (NSArray *)retrieveSchools;
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear;
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;
 - (int)updateSchool:(NSArray *)inputSchool;
 - (NSUInteger)countOfSchoolList;
 

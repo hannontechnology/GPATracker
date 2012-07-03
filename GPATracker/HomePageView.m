@@ -10,6 +10,8 @@
 #import "LoginView.h"
 #import "ProfileEditView.h"
 #import "SchoolEditView.h"
+#import "DataCollection.h"
+#import "SchoolDetails.h"
 
 @interface HomePageView ()
 
@@ -31,6 +33,31 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    DataCollection *data = [[DataCollection alloc] init];
+    
+    //NSError *error = nil;
+    NSArray *results = [data retrieveSchoolList:(NSString *)self.userName];
+    
+    if (results == nil)
+    {
+        return;
+    }
+    else
+    {
+        if ([results count] > 0)
+        {
+            NSLog(@"School List:");
+            for (SchoolDetails *item in results)
+            {
+                NSLog(@"School Found: %@",item.schoolName);
+            }
+        }
+    }
 }
 
 - (void)viewDidUnload
@@ -67,7 +94,14 @@
         SchoolEditView.getData  = @"Edit";
         SchoolEditView.userName = userName;
     }
+    else if ([segue.identifier isEqualToString:@"CreateSchoolSegue"])
+    {
+        SchoolEditView *SchoolEditView = [segue destinationViewController];
+        
+        SchoolEditView.userName = userName;
+    }
 }
+
 - (IBAction)EditSchool:(id)sender {
 }
 

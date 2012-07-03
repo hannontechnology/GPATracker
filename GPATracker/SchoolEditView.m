@@ -56,22 +56,27 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewDidAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated
+{
     [super viewDidAppear:animated];
     
-    if (self.getData != @"Edit") {
+    if (self.getData != @"Edit")
+    {
         return;
     }
     
     DataCollection *data = [[DataCollection alloc] init];
-    NSArray *results = [data retrieveSchools:schoolName];
-    if (results == nil) {
+    NSArray *results = [data retrieveSchools:schoolName userName:(NSString *)userName];
+    if (results == nil)
+    {
         status.text = @"Database Error: Could not connect to Database.";
     }
-    else if ([results count] > 0) {
+    else if ([results count] > 0)
+    {
         NSLog(@"Load School Edit Page");
         headerText.title = @"Edit School";
-        for (SchoolDetails *item in results) {
+        for (SchoolDetails *item in results)
+        {
             schoolNameField.text = item.schoolName;
             schoolDetailsField.text = item.schoolDetails;
             schoolStartYearField.text = item.schoolStartYear;
@@ -117,76 +122,112 @@
         return;
     }
     DataCollection *data = [DataCollection alloc];
-    NSArray *results = [data retrieveSchools:schoolNameField.text];
-    if (getData == @"Edit") {
-        if ([schoolNameField.text length] == 0) {
+    NSArray *results = [data retrieveSchools:schoolNameField.text userName:(NSString *)userName];
+    if (getData == @"Edit")
+    {
+        if ([schoolNameField.text length] == 0)
+        {
             status.text = @"School name field is Required.";
         }
-        else if ([schoolStartYearField.text length] == 0) {
+        else if ([schoolStartYearField.text length] == 0)
+        {
             status.text = @"School start year field is Required.";
         }
-        else {
-        schoolName = schoolNameField.text;
-        DataCollection *data = [[DataCollection alloc]init];
-        NSArray *results = [data retrieveSchools:schoolName];
-        if (results == nil){
-            status.text = @"Database Error: Could not connect to Database.";
-        }
-        else {
-            if ([results count] > 0) {
-                NSLog(@"Save School Page");
-                for (SchoolDetails *item in results){
-                    item.schoolName = schoolNameField.text;
-                    item.schoolDetails = schoolDetailsField.text;
-                    item.schoolStartYear = schoolStartYearField.text;
-                    item.schoolEndYear = schoolEndYearField.text;
-                    item.schoolCalculatedGPA = calculatedGPAField.text;
-                    item.schoolActualGPA = actualGPAField.text;
-                }
-                if ([data updateSchool:results] == 0){
-                    [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
-                }
-                else {
+        else 
+        {
+            schoolName = schoolNameField.text;
+            DataCollection *data = [[DataCollection alloc]init];
+            NSArray *results = [data retrieveSchools:schoolName userName:(NSString *)userName];
+            if (results == nil)
+            {
+                status.text = @"Database Error: Could not connect to Database.";
+            }
+            else
+            {
+                if ([results count] > 0)
+                {
+                    NSLog(@"Save School Page");
+                    for (SchoolDetails *item in results)
+                    {
+                        item.schoolName = schoolNameField.text;
+                        item.schoolDetails = schoolDetailsField.text;
+                        item.schoolStartYear = schoolStartYearField.text;
+                        item.schoolEndYear = schoolEndYearField.text;
+                        item.schoolCalculatedGPA = calculatedGPAField.text;
+                        item.schoolActualGPA = actualGPAField.text;
+                        item.userName = userName;
+                    }
+                    if ([data updateSchool:results] == 0)
+                    {
+                        [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                    }
+                    else
+                    {
                     
+                    }
                 }
             }
         }
-        }
     
-    }else if ([results count] == 0){
-        if ([schoolNameField.text length] == 0){
+    }
+    else if ([results count] == 0)
+    {
+        if ([schoolNameField.text length] == 0)
+        {
             status.text = @"School Name field is Required.";
         }
         else if ([schoolStartYearField.text length] == 0) {
             status.text = @"School start year field is Required.";
         }
-    }
-    else {
-    /*    int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetails:<#(NSString *)#>schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text];
-        if (addResult == 0) {
-            if (getData == @"Edit") {
-                schoolName = schoolNameField.text;
-                [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
-            }
-            else {
-                schoolName = schoolNameField.text;
-                [self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
-            }
-            
+        else
+        {
+            int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetail:(NSString *)schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text userName:(NSString *)userName];
+            if (addResult == 0)
+            {
+                if (getData == @"Edit")
+                {
+                    schoolName = schoolNameField.text;
+                    [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                }
+                else
+                {
+                    schoolName = schoolNameField.text;
+                    [self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
+                }
+            }   
         }
-        else {
-            status.text = @"Create school failed.";
-        }*/
+    }
+    else
+    {
+        status.text = @"Create school failed.";
     }
 }
     
 
-- (IBAction)Cancel:(id)sender {
-    if (getData == @"Edit") {
+- (IBAction)Cancel:(id)sender
+{
+    if (getData == @"Edit")
+    {
         [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
     }
-    else {
+    else
+    {
         [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"segueSchool2HomePage"])
+    {
+        HomePageView *HomePageView = [segue destinationViewController];
+        
+        HomePageView.userName = userName;
+    }
+}
+
+- (IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+} 
 @end

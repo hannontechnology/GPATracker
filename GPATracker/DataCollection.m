@@ -84,23 +84,6 @@
     return results;
 }
 
-
-- (NSArray *)retrieveSchools:(NSString *)inputSchoolName
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"School";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat: @"schoolName = %@", inputSchoolName];
-    NSLog(@"filtering data based on schoolName = %@", inputSchoolName);
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:& error];
-    return results;
-}
-
 - (NSArray *)retrieveUsers
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -244,12 +227,45 @@
             NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
             return -1;
         }
-        return 0;
     }
+    return 0;
 }
 
 // Terry again here
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear;
+
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"SchoolDetails";
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolName = %@ AND userName = %@", inputSchoolName, inputUserName];
+    NSLog(@"filtering data based on schoolName = %@", inputSchoolName);
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:& error];
+    return results;
+}
+
+- (NSArray *)retrieveSchoolList:(NSString *)inputUserName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"SchoolDetails";
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@", inputUserName];
+    NSLog(@"filtering data based on userName = %@", inputUserName);
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:& error];
+    return results;
+}
+
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
@@ -261,6 +277,7 @@
     newSchool.schoolDetails = inputSchoolDetail;
     newSchool.schoolStartYear = inputSchoolStartYear;
     newSchool.schoolEndYear = inputSchoolEndYear;
+    newSchool.userName = inputUserName;
     // Missing for grading scheme
     NSError *error;
     if (![moc save:&error])
@@ -269,10 +286,7 @@
         return -1;
     }
     return 0;
-
 }
-
-
 
 - (void)saveContext
 {
