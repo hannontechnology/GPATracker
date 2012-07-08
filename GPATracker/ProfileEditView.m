@@ -9,7 +9,7 @@
 #import "ProfileEditView.h"
 #import "User.h"
 #import "DataCollection.h"
-#import "HomePageView.h"
+#import "HomePageTableView.h"
 #import "LoginView.h"
 
 @interface ProfileEditView ()
@@ -247,9 +247,10 @@
 {
 	if ([segue.identifier isEqualToString:@"segueHomePage2"])
 	{
-        HomePageView *HomePageView = [segue destinationViewController];
+        UINavigationController *navCon = [segue destinationViewController];
+        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         
-        HomePageView.userName = userName;
+        HomePageTableView.userName = userName;
 	}
 	else if ([segue.identifier isEqualToString:@"segueLoginReturn"])
 	{

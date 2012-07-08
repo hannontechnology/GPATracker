@@ -9,7 +9,7 @@
 #import "SchoolEditView.h"
 #import "SchoolDetails.h"
 #import "DataCollection.h"
-#import "HomePageView.h"
+#import "HomePageTableView.h"
 #import "SelectGradingSchemeView.h"
 
 @interface SchoolEditView ()
@@ -192,15 +192,20 @@
                 else
                 {
                     schoolName = schoolNameField.text;
-                    [self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
+                    //[self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
+                    [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
                 }
             }   
+            else
+            {
+                status.text = @"Create school failed.";
+            }
         }
     }
     else
     {
-        status.text = @"Create school failed.";
-    }
+        status.text = @"School Name already taken.";
+    }    
 }
     
 
@@ -220,9 +225,10 @@
 {
 	if ([segue.identifier isEqualToString:@"segueSchool2HomePage"])
     {
-        HomePageView *HomePageView = [segue destinationViewController];
+        UINavigationController *navCon = [segue destinationViewController];
+        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         
-        HomePageView.userName = userName;
+        HomePageTableView.userName = userName;
     }
 }
 

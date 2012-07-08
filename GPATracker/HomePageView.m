@@ -19,6 +19,11 @@
 
 @implementation HomePageView
 @synthesize userName;
+@synthesize schoolTitle;
+@synthesize schoolSubTitle;
+@synthesize homePageTableView;
+@synthesize homePageCell;
+@synthesize schoolList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,37 +36,74 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    
     DataCollection *data = [[DataCollection alloc] init];
     
+    self.userName = @"terryah";
+
     //NSError *error = nil;
-    NSArray *results = [data retrieveSchoolList:(NSString *)self.userName];
+    schoolList = [data retrieveSchoolList:(NSString *)self.userName];
     
-    if (results == nil)
+    if (schoolList == nil)
     {
         return;
     }
     else
     {
-        if ([results count] > 0)
+        if ([schoolList count] > 0)
         {
             NSLog(@"School List:");
-            for (SchoolDetails *item in results)
+            for (SchoolDetails *item in schoolList)
             {
-                NSLog(@"School Found: %@",item.schoolName);
+                NSLog(@"School Found: %@ - %@",item.schoolName, item.schoolDetails);
             }
         }
     }
+
+    [super viewDidLoad];
+    
+    [self.homePageTableView reloadData];
+	// Do any additional setup after loading the view.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 2;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    //return [schoolList count];
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *cellIdentifier = @"homePageCell";
+    
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    homePageCell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if(homePageCell == nil) {
+        homePageCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    SchoolDetails *selectedObject = [schoolList objectAtIndex:indexPath.row];
+//    homePageCell.textLabel.text = [selectedObject schoolName];
+    schoolTitle.text = [selectedObject schoolName];
+    
+    return homePageCell;
 }
 
 - (void)viewDidUnload
 {
+    [self setSchoolTitle:nil];
+    [self setSchoolSubTitle:nil];
+    [self setHomePageCell:nil];
+    [self setHomePageTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -87,7 +129,7 @@
         ProfileEditView.getData  = @"Edit";
         ProfileEditView.userName = userName;
     }
-    else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
+    else if ([segue.identifier isEqualToString:@"EditSchoolSegue"])
     {
         SchoolEditView *SchoolEditView = [segue destinationViewController];
         

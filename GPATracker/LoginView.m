@@ -9,7 +9,7 @@
 #import "LoginView.h"
 #import "User.h"
 #import "DataCollection.h"
-#import "HomePageView.h"
+#import "HomePageTableView.h"
 
 @interface LoginView ()
 @end
@@ -169,9 +169,10 @@
 {
 	if ([segue.identifier isEqualToString:@"segueHomePage"])
 	{
-        HomePageView *HomePageView = [segue destinationViewController];
+        UINavigationController *navCon = [segue destinationViewController];
+        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         
-        HomePageView.userName = userName;
+        HomePageTableView.userName = userName;
 	}
 }
 @end
