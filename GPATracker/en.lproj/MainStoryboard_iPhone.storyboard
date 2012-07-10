@@ -256,7 +256,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Select Grading Scheme" id="RDy-iO-QU4"/>
+                                    <navigationItem title="Select Grading Scheme" id="RDy-iO-QU4">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="pXr-Mo-rfa">
+                                            <connections>
+                                                <action selector="Save:" destination="3JW-qW-ne5" id="fzJ-EC-MQi"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <pickerView contentMode="scaleToFill" id="rAg-eq-JnW">
@@ -287,7 +293,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Grading Scheme" id="je8-vb-ioY">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="hWE-vM-NiY">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hWE-vM-NiY">
                                             <connections>
                                                 <action selector="Done:" destination="ZUl-mP-nEF" id="3St-46-DsN"/>
                                             </connections>
@@ -1119,9 +1125,9 @@
         <class className="SchoolEditView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditView.h"/>
             <relationships>
-                <relationship kind="action" name="Accept:"/>
                 <relationship kind="action" name="Cancel:"/>
                 <relationship kind="action" name="EditGradingScheme:"/>
+                <relationship kind="action" name="Save:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="textFieldReturn:"/>
                 <relationship kind="outlet" name="actualGPAField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="calculatedGPAField" candidateClass="UITextField"/>
@@ -1139,6 +1145,7 @@
         <class className="SelectGradingSchemeView" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGradingSchemeView.h"/>
             <relationships>
+                <relationship kind="action" name="Save:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="GradingSchemePicker" candidateClass="UIPickerView"/>
                 <relationship kind="outlet" name="mlabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>

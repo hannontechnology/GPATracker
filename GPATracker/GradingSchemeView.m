@@ -63,5 +63,6 @@
 }
 
 - (IBAction)Done:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
 }
 @end

@@ -75,4 +75,7 @@
     return [arrayNo objectAtIndex:row];
 }
 
+- (IBAction)Save:(UIBarButtonItem *)sender {
+    [self performSegueWithIdentifier:@"CustomizeGradingSchemeSegue" sender:self];
+}
 @end

@@ -20,6 +20,7 @@
 @property (nonatomic, retain) UILabel *mlabel;
 @property (weak, nonatomic) IBOutlet UIPickerView *GradingSchemePicker;
 
+- (IBAction)Save:(UIBarButtonItem *)sender;
 
 
 @end
