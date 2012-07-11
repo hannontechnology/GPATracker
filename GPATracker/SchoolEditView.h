@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 - (IBAction)EditGradingScheme:(id)sender;
-- (IBAction)Save:(UIBarButtonItem *)sender;
+- (IBAction)Accept:(UIBarButtonItem *)sender;
 - (IBAction)Cancel:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 @end

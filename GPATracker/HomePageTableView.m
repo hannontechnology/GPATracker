@@ -10,7 +10,7 @@
 #import "DataCollection.h"
 #import "SchoolDetails.h"
 #import "LoginView.h"
-#import "ProfileEditView.h"
+#import "ProfileEditTableView.h"
 #import "SchoolEditView.h"
 
 @interface HomePageTableView ()
@@ -123,10 +123,12 @@
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
-        ProfileEditView *ProfileEditView = [segue destinationViewController];
+        ProfileEditTableView *ProfileEditTableView = [segue destinationViewController];
+//        UINavigationController *navCon = [segue destinationViewController];
+//        ProfileEditTableView *ProfileEditTableView = [navCon.viewControllers objectAtIndex:0];
         
-        ProfileEditView.getData  = @"Edit";
-        ProfileEditView.userName = self.userName;
+        ProfileEditTableView.setStatus = @"Edit";
+        ProfileEditTableView.userName = self.userName;
     }
     else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
     {

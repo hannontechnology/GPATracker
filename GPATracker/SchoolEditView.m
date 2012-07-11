@@ -119,7 +119,7 @@
     
 }
 
-- (IBAction)Save:(UIBarButtonItem *)sender {
+- (IBAction)Accept:(UIBarButtonItem *)sender {
     if ([schoolNameField.text length] == 0) {
         status.text = @"School Name field is required.";
         return;
