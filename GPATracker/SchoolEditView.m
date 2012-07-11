@@ -81,8 +81,8 @@
             schoolDetailsField.text = item.schoolDetails;
             schoolStartYearField.text = item.schoolStartYear;
             schoolEndYearField.text = item.schoolEndYear;
-            calculatedGPAField.text = item.schoolCalculatedGPA;
-            actualGPAField.text = item.schoolActualGPA;
+            //calculatedGPAField.text = item.schoolCalculatedGPA;
+            //actualGPAField.text = item.schoolActualGPA;
         }
         
     }
@@ -153,8 +153,8 @@
                         item.schoolDetails = schoolDetailsField.text;
                         item.schoolStartYear = schoolStartYearField.text;
                         item.schoolEndYear = schoolEndYearField.text;
-                        item.schoolCalculatedGPA = calculatedGPAField.text;
-                        item.schoolActualGPA = actualGPAField.text;
+                        //item.schoolCalculatedGPA = calculatedGPAField.text;
+                        //item.schoolActualGPA = actualGPAField.text;
                         item.userName = userName;
                     }
                     if ([data updateSchool:results] == 0)
