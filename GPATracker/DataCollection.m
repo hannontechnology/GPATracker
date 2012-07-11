@@ -42,6 +42,7 @@
     return nil;
 }
 
+//Code for handling User information
 - (NSUInteger)countOfUserList {
     return [self.masterUserList count];
 }
@@ -231,8 +232,7 @@
     return 0;
 }
 
-// Terry again here
-
+//Code for handling school information
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -287,6 +287,53 @@
     }
     return 0;
 }
+
+- (int)deleteSchool:(NSString *)inputSchoolName userName:(NSString *)inputUserName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"SchoolDetails";
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@", inputUserName, inputSchoolName];
+    NSLog(@"filtering data based on userName = %@ AND schoolName = %@", inputUserName, inputSchoolName);
+    
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:& error];
+
+    for (id item in results)
+    {
+        [moc deleteObject:item];
+    }
+
+    if (![moc save:&error])
+    {
+        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
+        return -1;
+    }
+    NSLog(@"Delete Successful!");
+    return 0;
+}
+
+- (int)deleteSchool:(NSManagedObject *)inputSchool
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    [moc deleteObject:inputSchool];
+    
+    NSError *error = nil;
+    if (![moc save:&error])
+    {
+        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
+        return -1;
+    }
+    NSLog(@"Delete Successful!");
+    return 0;
+}
+
+
+
+
 
 - (void)saveContext
 {

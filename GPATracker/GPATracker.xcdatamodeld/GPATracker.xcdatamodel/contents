@@ -3,9 +3,9 @@
     <entity name="Course" representedClassName="Course" syncable="YES">
         <attribute name="actualGrade" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="calculatedGrade" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="courseDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseID" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="courseName" attributeType="String" syncable="YES"/>
-        <attribute name="description" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="desiredGrade" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="includeInGPA" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="isPassFail" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -23,6 +23,7 @@
         <attribute name="gradeCPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradeD" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradeF" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="school" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="gradingScheme" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <entity name="SchoolDetails" representedClassName="SchoolDetails" syncable="YES">
         <attribute name="schoolActualGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -32,7 +33,8 @@
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolStartYear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" syncable="YES"/>
+        <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
+        <relationship name="users" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schools" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Semester" representedClassName="Semester" syncable="YES">
         <attribute name="detailFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -50,6 +52,7 @@
         <attribute name="userLastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="userPassword" attributeType="String" syncable="YES"/>
+        <relationship name="schools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="users" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <elements>
         <element name="Course" positionX="-8370" positionY="-11088" width="128" height="180"/>

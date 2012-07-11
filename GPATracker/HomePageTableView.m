@@ -14,49 +14,54 @@
 #import "SchoolEditView.h"
 
 @interface HomePageTableView ()
-
 @end
 
 @implementation HomePageTableView
-@synthesize userName;
+@synthesize userName = _userName;
 @synthesize homePageTableView;
-@synthesize schoolList;
+@synthesize schoolList = _schoolList;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
+    if (self)
+    {
+        self.schoolList = [[NSArray alloc] init];
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
     DataCollection *data = [[DataCollection alloc] init];
     
     //NSError *error = nil;
-    schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+    self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
     
-    if (schoolList == nil)
+    if (self.schoolList == nil)
     {
         return;
     }
     else
     {
-        if ([schoolList count] > 0)
+        if ([self.schoolList count] > 0)
         {
             NSLog(@"School List:");
-            for (SchoolDetails *item in schoolList)
+            for (SchoolDetails *item in self.schoolList)
             {
                 NSLog(@"School Found: %@ - %@",item.schoolName, item.schoolDetails);
             }
         }
     }
     
-    [super viewDidLoad];
+    [super viewWillAppear:(BOOL)animated];
+//    
+//    [self.tableView reloadData];
+}
 
-    [self.homePageTableView reloadData];
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -89,7 +94,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [schoolList count];
+    return [self.schoolList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -101,7 +106,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    SchoolDetails *selectedObject = [schoolList objectAtIndex:indexPath.row];
+    SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
     cell.textLabel.text = [selectedObject schoolName];
     
     return cell;
@@ -114,68 +119,67 @@
         LoginView *LoginView = [segue destinationViewController];
         
         LoginView.getData  = @"Logout";
-        LoginView.userName = userName;
+        LoginView.userName = self.userName;
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
         ProfileEditView *ProfileEditView = [segue destinationViewController];
         
         ProfileEditView.getData  = @"Edit";
-        ProfileEditView.userName = userName;
+        ProfileEditView.userName = self.userName;
     }
     else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
     {
         SchoolEditView *SchoolEditView = [segue destinationViewController];
         
         SchoolEditView.getData  = @"Edit";
-        SchoolEditView.userName = userName;
+        SchoolEditView.userName = self.userName;
     }
     else if ([segue.identifier isEqualToString:@"CreateSchoolSegue"])
     {
         SchoolEditView *SchoolEditView = [segue destinationViewController];
         
-        SchoolEditView.userName = userName;
+        SchoolEditView.userName = self.userName;
     }
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DataCollection *data = [[DataCollection alloc] init];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+        NSManagedObject *schoolToDelete = [self.schoolList objectAtIndex:indexPath.row];
+        [data deleteSchool:schoolToDelete];
+        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
-
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
 {
+    SchoolDetails *movedSchool = [self.schoolList objectAtIndex:fromIndexPath.row];
+    
 }
 */
-
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
 
 #pragma mark - Table view delegate
 

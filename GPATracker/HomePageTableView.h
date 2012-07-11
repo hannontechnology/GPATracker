@@ -9,10 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePageTableView : UITableViewController
-{
-    NSArray *schoolList;
-}
-@property (strong, retain) NSArray *schoolList;
+@property (strong, nonatomic) NSArray *schoolList;
 @property (strong, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UITableView *homePageTableView;
 
