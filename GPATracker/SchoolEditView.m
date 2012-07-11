@@ -113,10 +113,13 @@
         return;
     }
     //DataCollection *data = [DataCollection alloc];
+    else {
+        [self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
+    }
     
 }
 
-- (IBAction)Accept:(id)sender {
+- (IBAction)Save:(UIBarButtonItem *)sender {
     if ([schoolNameField.text length] == 0) {
         status.text = @"School Name field is required.";
         return;
@@ -163,7 +166,7 @@
                     }
                     else
                     {
-                    
+                    // do nothing
                     }
                 }
             }
@@ -192,7 +195,6 @@
                 else
                 {
                     schoolName = schoolNameField.text;
-                    //[self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
                     [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
                 }
             }   
