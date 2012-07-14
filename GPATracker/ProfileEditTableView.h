@@ -18,6 +18,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UISwitch *autoLoginField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 
 @end
