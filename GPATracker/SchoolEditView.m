@@ -19,7 +19,6 @@
 @implementation SchoolEditView
 @synthesize school = _school;
 @synthesize dataCollection = _dataCollection;
-@synthesize schoolName;
 @synthesize schoolNameField;
 @synthesize schoolDetailsField;
 @synthesize schoolStartYearField;
@@ -28,6 +27,7 @@
 @synthesize actualGPAField;
 @synthesize getData;
 @synthesize userName;
+@synthesize schoolName;
 @synthesize status;
 @synthesize headerText;
 

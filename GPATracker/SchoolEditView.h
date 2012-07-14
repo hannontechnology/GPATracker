@@ -15,7 +15,6 @@
 @interface SchoolEditView : UIViewController
 @property (strong, nonatomic) SchoolDetails *school;
 @property (strong, nonatomic) DataCollection *dataCollection;
-@property (strong, nonatomic) NSString *schoolName;
 @property (weak, nonatomic) IBOutlet UITextField *schoolNameField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolDetailsField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;
@@ -25,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *status;
 @property (strong, nonatomic) NSString *getData;
 @property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *schoolName;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 - (IBAction)EditGradingScheme:(id)sender;

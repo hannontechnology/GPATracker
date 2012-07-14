@@ -117,7 +117,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="83" y="265"/>
+            <point key="canvasLocation" x="-322" y="241"/>
         </scene>
         <!--School Edit View-->
         <scene sceneID="eSH-0R-Eyd">
@@ -248,7 +248,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="517" y="-366"/>
+            <point key="canvasLocation" x="638" y="-401"/>
         </scene>
         <!--Select Grading Scheme View-->
         <scene sceneID="mHn-Hb-POy">
@@ -284,7 +284,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="961" y="-384"/>
+            <point key="canvasLocation" x="1119" y="-401"/>
         </scene>
         <!--Grading Scheme View-->
         <scene sceneID="whD-F6-xM4">
@@ -484,7 +484,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1389" y="-386"/>
+            <point key="canvasLocation" x="1599" y="-401"/>
         </scene>
         <!--School Edit View-->
         <scene sceneID="sex-xc-PNd">
@@ -500,8 +500,17 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="o3L-RT-YuK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellSemesterList1" id="o3L-RT-YuK">
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellSemesterList2" id="dq4-OW-95W">
+                                        <rect key="frame" x="0.0" y="66" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -537,7 +546,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="993" y="265"/>
+            <point key="canvasLocation" x="1119" y="241"/>
         </scene>
         <!--Semester Edit Table View - Add Semester-->
         <scene sceneID="GVr-sf-dYG">
@@ -634,7 +643,11 @@
                     </view>
                 </viewController>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="1539" y="2136"/>
+=======
+            <point key="canvasLocation" x="1599" y="241"/>
+>>>>>>> b620177516aa177ea7301c2292276d441b0c351c
         </scene>
         <!--Home Page Table View - School List-->
         <scene sceneID="Lwr-K1-gYp">
@@ -662,7 +675,7 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homePageCell1" id="6Pf-El-8Pa">
+                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homePageCell1" id="6Pf-El-8Pa">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -670,6 +683,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <gestureRecognizers/>
                                 <connections>
                                     <segue destination="USk-0t-HId" kind="push" identifier="segueSemesterList" id="dD8-jg-26M"/>
                                 </connections>
@@ -683,16 +697,17 @@
                     <navigationItem key="navigationItem" title="School List" id="hji-wZ-Tzb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="daQ-qP-Zdz">
                             <connections>
-                                <segue destination="rTr-Dy-jam" kind="modal" identifier="CreateSchoolSegue" id="SLI-jb-Aho"/>
+                                <segue destination="rTr-Dy-jam" kind="modal" identifier="segueCreateSchool" id="SLI-jb-Aho"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="homePageTableView" destination="daI-Jd-Nch" id="fZB-xJ-Y74"/>
+                        <segue destination="rTr-Dy-jam" kind="modal" identifier="segueEditSchool" id="m1y-00-6GI"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="526" y="882"/>
+            <point key="canvasLocation" x="638" y="241"/>
         </scene>
         <!--Course List View-->
         <scene sceneID="3tP-wh-HuV">
@@ -741,7 +756,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1539" y="870"/>
+            <point key="canvasLocation" x="1599" y="880"/>
         </scene>
         <!--Profile Edit Table View - Create Profile-->
         <scene sceneID="doR-w5-7aq">
@@ -929,7 +944,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1008" y="870"/>
+            <point key="canvasLocation" x="638" y="880"/>
         </scene>
         <!--Semester Table View - Semester List-->
         <scene sceneID="rD3-1f-wf6">
@@ -968,7 +983,11 @@
                     </connections>
                 </tableViewController>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="468" y="1491"/>
+=======
+            <point key="canvasLocation" x="1119" y="880"/>
+>>>>>>> b620177516aa177ea7301c2292276d441b0c351c
         </scene>
         <!--Add Course View-->
         <scene sceneID="bl6-TV-cJ1">
@@ -1119,7 +1138,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1013" y="1445"/>
+            <point key="canvasLocation" x="1599" y="1521"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vle-3D-yDl">
@@ -1138,7 +1157,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="83" y="882"/>
+            <point key="canvasLocation" x="157" y="241"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fl1-ki-c2M">
@@ -1157,7 +1176,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1509" y="1452"/>
+            <point key="canvasLocation" x="157" y="880"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="j5q-dT-uUa">
