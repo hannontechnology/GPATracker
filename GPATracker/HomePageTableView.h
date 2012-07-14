@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface HomePageTableView : UITableViewController
+{
+    IBOutlet UIAlertView *alert;
+}
 @property (strong, nonatomic) NSArray *schoolList;
 @property (strong, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UITableView *homePageTableView;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
--(IBAction) longPressed:(UILongPressGestureRecognizer *)recognizer;
+-(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 
 @end

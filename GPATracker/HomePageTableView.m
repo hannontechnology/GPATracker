@@ -20,6 +20,7 @@
 @synthesize userName = _userName;
 @synthesize homePageTableView;
 @synthesize schoolList = _schoolList;
+@synthesize selectedIndexPath = _selectedIndexPath;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -33,6 +34,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
+                                          initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 2.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+
     DataCollection *data = [[DataCollection alloc] init];
     
     //NSError *error = nil;
@@ -130,14 +137,16 @@
         ProfileEditTableView.setStatus = @"Edit";
         ProfileEditTableView.userName = self.userName;
     }
-    else if ([segue.identifier isEqualToString:@"AddEditSchoolSegue"])
+    else if ([segue.identifier isEqualToString:@"segueEditSchool"])
     {
+        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
         SchoolEditView *SchoolEditView = [segue destinationViewController];
         
-        SchoolEditView.getData  = @"Edit";
-        SchoolEditView.userName = self.userName;
+        SchoolEditView.getData    = @"Edit";
+        SchoolEditView.userName   = self.userName;
+        SchoolEditView.schoolName = [selectedObject schoolName];
     }
-    else if ([segue.identifier isEqualToString:@"CreateSchoolSegue"])
+    else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
     {
         SchoolEditView *SchoolEditView = [segue destinationViewController];
         
@@ -182,11 +191,39 @@
     return YES;
 }
 
--(IBAction) longPressed:(UILongPressGestureRecognizer *)recognizer
+-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
+    if ( gestureRecognizer.state != UIGestureRecognizerStateBegan )
+        return; // discard everything else
+
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
     
+    self.selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (self.selectedIndexPath == nil)
+        NSLog(@"long press on table view but not on a row");
+    else
+        NSLog(@"long press on table view at row %d", self.selectedIndexPath.row);
+
+    alert = [[UIAlertView alloc] initWithTitle:@"Edit/Delete" message:@"Please edit or delete item" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Edit", @"Delete", nil];
+    [alert show];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self performSegueWithIdentifier: @"segueEditSchool" sender: self];
+    }
+    else if (buttonIndex == 2)
+    {
+        DataCollection *data = [[DataCollection alloc] init];
+        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+        NSManagedObject *schoolToDelete = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
+        [data deleteSchool:schoolToDelete];
+        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -637,7 +637,6 @@
                                 </view>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="eG6-WG-ZbS" appends="YES" id="ucH-Cq-16M"/>
                                     <segue destination="USk-0t-HId" kind="push" identifier="segueSemesterList" id="dD8-jg-26M"/>
                                 </connections>
                             </tableViewCell>
@@ -650,19 +649,15 @@
                     <navigationItem key="navigationItem" title="School List" id="hji-wZ-Tzb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="daQ-qP-Zdz">
                             <connections>
-                                <segue destination="rTr-Dy-jam" kind="modal" identifier="CreateSchoolSegue" id="SLI-jb-Aho"/>
+                                <segue destination="rTr-Dy-jam" kind="modal" identifier="segueCreateSchool" id="SLI-jb-Aho"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="homePageTableView" destination="daI-Jd-Nch" id="fZB-xJ-Y74"/>
+                        <segue destination="rTr-Dy-jam" kind="modal" identifier="segueEditSchool" id="m1y-00-6GI"/>
                     </connections>
                 </tableViewController>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="eG6-WG-ZbS">
-                    <connections>
-                        <action selector="longPressed:" destination="01w-Dg-l3t" id="4Kd-Kw-a6b"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="638" y="241"/>
         </scene>
@@ -1123,106 +1118,6 @@
             <point key="canvasLocation" x="157" y="880"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddCourseView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="outlet" name="actualGrade" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseID" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="desiredGrade" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="units" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="GradingSchemeView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeView.h"/>
-            <relationships>
-                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="gradeA" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeAMinus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeAPlus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeB" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBMinus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBPlus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeC" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCMinus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCPlus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeD" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeF" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="HomePageTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="longPressed:" candidateClass="UILongPressGestureRecognizer"/>
-                <relationship kind="outlet" name="homePageTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="LoginView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
-            <relationships>
-                <relationship kind="action" name="CreateProfile:"/>
-                <relationship kind="action" name="ForgotPassword:"/>
-                <relationship kind="action" name="Login:"/>
-                <relationship kind="action" name="setAutoLogin:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ProfileEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SchoolEditView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="EditGradingScheme:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="actualGPAField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="calculatedGPAField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SelectGradingSchemeView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGradingSchemeView.h"/>
-            <relationships>
-                <relationship kind="action" name="Save:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="GradingSchemePicker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="mlabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
-            </relationships>
-        </class>
-        <class className="SemesterView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterView.h"/>
-            <relationships>
-                <relationship kind="action" name="addCourse:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
