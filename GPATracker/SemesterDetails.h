@@ -2,7 +2,7 @@
 //  SemesterDetails.h
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-05-29.
+//  Created by Aiste Guden on 12-07-14.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,5 +15,7 @@
 @property (nonatomic, retain) NSNumber * semesterCode;
 @property (nonatomic, retain) NSString * semesterName;
 @property (nonatomic, retain) NSNumber * semesterYear;
+@property (nonatomic, retain) NSString * schoolName;
+@property (nonatomic, retain) NSString * userName;
 
 @end

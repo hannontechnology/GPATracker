@@ -36,14 +36,12 @@
         <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="users" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schools" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Semester" representedClassName="Semester" syncable="YES">
-        <attribute name="detailFlag" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="semesterCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-    </entity>
     <entity name="SemesterDetails" representedClassName="SemesterDetails" syncable="YES">
+        <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semesterCode" attributeType="Integer 16" minValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="semesterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semesterYear" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="autoLogon" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -58,7 +56,6 @@
         <element name="Course" positionX="-8370" positionY="-11088" width="128" height="180"/>
         <element name="GradingScheme" positionX="160" positionY="192" width="128" height="210"/>
         <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="165"/>
-        <element name="Semester" positionX="-8649" positionY="-11229" width="128" height="75"/>
         <element name="SemesterDetails" positionX="-8372" positionY="-11232" width="128" height="90"/>
         <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
     </elements>

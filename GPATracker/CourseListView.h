@@ -1,5 +1,5 @@
 //
-//  SemesterView.h
+//  CourseListView.h
 //  GPATracker
 //
 //  Created by Aiste Guden on 12-06-23.
@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SemesterView : UIViewController
-- (IBAction)addCourse:(id)sender;
+@interface CourseListView : UITableViewController
 
 @end

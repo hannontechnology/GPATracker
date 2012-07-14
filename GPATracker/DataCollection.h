@@ -46,4 +46,9 @@
 //- (NSArray *)retrieveGradingScheme:(NSString *)
 //- (int)addGradingScheme:(
 
+// Semester Section
+- (NSArray *)retrieveSemesterList:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+
+// Course Section
+
 @end
