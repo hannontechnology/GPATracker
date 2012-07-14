@@ -32,7 +32,7 @@
 		2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */; };
 		2D905D67159798D5008867A0 /* GradingSchemePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D905D66159798D5008867A0 /* GradingSchemePickerView.m */; };
 		3466CF7915967BAF00C1FB18 /* SchoolEditView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3466CF7715967BAF00C1FB18 /* SchoolEditView.m */; };
-		3475F09A15966E0F006D400F /* CourseListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09815966E0F006D400F /* CourseListView.m */; };
+		3475F09A15966E0F006D400F /* CourseListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09815966E0F006D400F /* CourseListTableView.m */; };
 		3475F0A015967139006D400F /* AddCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09E15967139006D400F /* AddCourseView.m */; };
 		3475F0A5159674DB006D400F /* SelectGradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */; };
 		348338B4159689C4009B5D1E /* SemesterYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */; };
@@ -95,8 +95,8 @@
 		2D905D66159798D5008867A0 /* GradingSchemePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradingSchemePickerView.m; path = ../GradingSchemePickerView.m; sourceTree = "<group>"; };
 		3466CF7615967BAF00C1FB18 /* SchoolEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolEditView.h; sourceTree = "<group>"; };
 		3466CF7715967BAF00C1FB18 /* SchoolEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolEditView.m; sourceTree = "<group>"; };
-		3475F09715966E0F006D400F /* CourseListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListView.h; sourceTree = "<group>"; };
-		3475F09815966E0F006D400F /* CourseListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListView.m; sourceTree = "<group>"; };
+		3475F09715966E0F006D400F /* CourseListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CourseListTableView.h; sourceTree = "<group>"; };
+		3475F09815966E0F006D400F /* CourseListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListTableView.m; sourceTree = "<group>"; };
 		3475F09D15967139006D400F /* AddCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseView.h; sourceTree = "<group>"; };
 		3475F09E15967139006D400F /* AddCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseView.m; sourceTree = "<group>"; };
 		3475F0A2159674DB006D400F /* SelectGradingSchemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectGradingSchemeView.h; sourceTree = "<group>"; };
@@ -211,8 +211,8 @@
 				3475F0A3159674DB006D400F /* SelectGradingSchemeView.m */,
 				3475F09D15967139006D400F /* AddCourseView.h */,
 				3475F09E15967139006D400F /* AddCourseView.m */,
-				3475F09715966E0F006D400F /* CourseListView.h */,
-				3475F09815966E0F006D400F /* CourseListView.m */,
+				3475F09715966E0F006D400F /* CourseListTableView.h */,
+				3475F09815966E0F006D400F /* CourseListTableView.m */,
 				2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */,
 				2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */,
 				1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */,
@@ -369,7 +369,7 @@
 				1F395B59158AD0EE009F879F /* GradingScheme.m in Sources */,
 				2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */,
 				34C2C36215966A8300AEC8E3 /* Course.m in Sources */,
-				3475F09A15966E0F006D400F /* CourseListView.m in Sources */,
+				3475F09A15966E0F006D400F /* CourseListTableView.m in Sources */,
 				3475F0A015967139006D400F /* AddCourseView.m in Sources */,
 				3475F0A5159674DB006D400F /* SelectGradingSchemeView.m in Sources */,
 				3466CF7915967BAF00C1FB18 /* SchoolEditView.m in Sources */,
