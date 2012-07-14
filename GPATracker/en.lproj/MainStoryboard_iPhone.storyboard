@@ -866,11 +866,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create Profile" id="PD9-2u-dkn">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Id7-Eq-MeI">
-                            <connections>
-                                <action selector="Cancel:" destination="MG7-Ge-mPq" id="eEH-H7-SxS"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="1mn-s7-Zna">
                             <connections>
                                 <action selector="Accept:" destination="MG7-Ge-mPq" id="FPV-0X-fu6"/>
@@ -879,7 +874,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="autoLoginField" destination="h1G-R7-g7F" id="SeO-Ly-OHP"/>
-                        <outlet property="cancelButton" destination="Id7-Eq-MeI" id="LXR-Sd-kL6"/>
                         <outlet property="emailField" destination="Ons-xA-lvm" id="xaQ-qJ-I5H"/>
                         <outlet property="firstNameField" destination="RIp-0y-hmf" id="ZCx-VZ-7Hd"/>
                         <outlet property="headerText" destination="PD9-2u-dkn" id="N1l-Iu-MEt"/>
@@ -1118,4 +1112,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="M8A-5E-H1d"/>
+    </inferredMetricsTieBreakers>
 </document>

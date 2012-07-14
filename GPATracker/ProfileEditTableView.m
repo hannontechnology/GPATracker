@@ -30,7 +30,6 @@
 @synthesize passwordField;
 @synthesize autoLoginField;
 @synthesize headerText;
-@synthesize cancelButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -59,6 +58,10 @@
     
     if (self.setStatus != @"Edit")
     {
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+        //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+        self.navigationItem.hidesBackButton = YES;
         return;
     }
     DataCollection *data = [[DataCollection alloc] init];
@@ -101,7 +104,6 @@
     [self setPasswordField:nil];
     [self setAutoLoginField:nil];
     [self setHeaderText:nil];
-    [self setCancelButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
