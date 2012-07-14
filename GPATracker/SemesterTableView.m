@@ -17,6 +17,9 @@
 @end
 
 @implementation SemesterTableView
+@synthesize userName = _userName;
+@synthesize schoolName = _schoolName;
+@synthesize semesterList = _semesterList;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
