@@ -6,10 +6,10 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SemesterView.h"
+#import "CourseListView.h"
 
-@implementation SemesterView
-
+@implementation CourseListView
+/*
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -52,5 +52,5 @@
 - (IBAction)AddSemester:(id)sender {
     [self performSegueWithIdentifier: @"addSemesterSegue" sender: self];    
 
-}
+}*/
 @end

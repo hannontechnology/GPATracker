@@ -10,6 +10,7 @@
 #import "User.h"
 #import "SchoolDetails.h"
 #import "gradingScheme.h"
+#import "SemesterDetails.h"
 
 @interface DataCollection ()
 - (void)initializeDefaultDataList;
@@ -254,7 +255,7 @@
     NSManagedObjectContext *moc = [self managedObjectContext];
     
     NSString *entityName = @"SchoolDetails";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     
     request.predicate = [NSPredicate predicateWithFormat: @"userName = %@", inputUserName];
@@ -263,6 +264,22 @@
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:& error];
     return results;
+}
+
+- (NSArray *)retrieveSemesterList:(NSString *)inputSchoolName userName:(NSString *)inputUserName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"SemesterDetails";
+    NSLog(@"Setting up Fetched Results Controller for Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@", inputUserName, inputSchoolName];
+    
+    NSLog(@"Filtering data based on userName = %@ AND schoolName = %@", inputUserName, inputSchoolName);
+    
+    NSError *error = nil;
+    NSArray*results = [moc executeFetchRequest:request error:& error];
 }
 
 - (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;
