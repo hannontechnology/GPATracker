@@ -13,4 +13,6 @@
 @property (strong, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UITableView *homePageTableView;
 
+-(IBAction) longPressed:(UILongPressGestureRecognizer *)recognizer;
+
 @end

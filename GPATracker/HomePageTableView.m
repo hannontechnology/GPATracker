@@ -182,6 +182,10 @@
     return YES;
 }
 
+-(IBAction) longPressed:(UILongPressGestureRecognizer *)recognizer
+{
+    
+}
 
 #pragma mark - Table view delegate
 
