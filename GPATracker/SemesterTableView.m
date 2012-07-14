@@ -36,6 +36,23 @@
     DataCollection *data = [[DataCollection alloc] init];
     
     self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+    
+    if (self.semesterList == nil) 
+    {
+        return;
+    }
+    else 
+    {
+        if([self.semesterList count] > 0)
+        {
+            NSLog(@"Semester List:");
+            for(SemesterDetails *item in self.semesterList)
+            {
+                NSLog(@"Semester Found: %@, %@, %@, %@", item.userName, item.semesterName, item.semesterYear, item.semesterCode);
+            }
+        }
+    }
+    [super viewWillAppear:(BOOL)animated];
 }
 
 - (void)viewDidLoad
@@ -46,7 +63,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -65,28 +82,36 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.semesterList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"semesterListCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    SemesterDetails *selectedObject = [self.semesterList objectAtIndex:indexPath.row];
+    cell.textLabel.text = [selectedObject semesterName];
     
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

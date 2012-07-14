@@ -9,7 +9,7 @@
 #import "HomePageTableView.h"
 #import "DataCollection.h"
 #import "SchoolDetails.h"
-#import "LoginView.h"
+#import "LoginView.h"	
 #import "ProfileEditTableView.h"
 #import "SchoolEditView.h"
 
