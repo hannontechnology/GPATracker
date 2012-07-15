@@ -95,7 +95,7 @@
 		2D905D66159798D5008867A0 /* GradingSchemePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GradingSchemePickerView.m; path = ../GradingSchemePickerView.m; sourceTree = "<group>"; };
 		3466CF7615967BAF00C1FB18 /* SchoolEditView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolEditView.h; sourceTree = "<group>"; };
 		3466CF7715967BAF00C1FB18 /* SchoolEditView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolEditView.m; sourceTree = "<group>"; };
-		3475F09715966E0F006D400F /* CourseListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = CourseListTableView.h; sourceTree = "<group>"; };
+		3475F09715966E0F006D400F /* CourseListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListTableView.h; sourceTree = "<group>"; };
 		3475F09815966E0F006D400F /* CourseListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListTableView.m; sourceTree = "<group>"; };
 		3475F09D15967139006D400F /* AddCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseView.h; sourceTree = "<group>"; };
 		3475F09E15967139006D400F /* AddCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseView.m; sourceTree = "<group>"; };
