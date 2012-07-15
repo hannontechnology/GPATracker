@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseListView : UITableViewController
+@interface CourseListTableView : UITableViewController
 
 @end
