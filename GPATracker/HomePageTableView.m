@@ -18,7 +18,6 @@
 
 @implementation HomePageTableView
 @synthesize userName = _userName;
-@synthesize homePageTableView;
 @synthesize schoolList = _schoolList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 
@@ -79,7 +78,6 @@
 
 - (void)viewDidUnload
 {
-    [self setHomePageTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
