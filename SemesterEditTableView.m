@@ -7,12 +7,25 @@
 //
 
 #import "SemesterEditTableView.h"
+#import "SemesterDetails.h"
+#import "DataCollection.h"
+#import "SemesterTableView.h"
 
 @interface SemesterEditTableView ()
 
 @end
 
 @implementation SemesterEditTableView
+@synthesize semesterNameField;
+@synthesize semesterYearField;
+@synthesize semesterCodeField;
+@synthesize headerText;
+
+@synthesize getData;
+@synthesize userName;
+@synthesize schoolName;
+@synthesize semester;
+@synthesize dataCollection;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,6 +49,11 @@
 
 - (void)viewDidUnload
 {
+    [self setSemesterNameField:nil];
+    [self setSemesterNameField:nil];
+    [self setSemesterYearField:nil];
+    [self setSemesterCodeField:nil];
+    [self setHeaderText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -122,6 +140,11 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
 }
 
 @end

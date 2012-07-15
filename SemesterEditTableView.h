@@ -8,6 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+@class DataCollection;
+@class SemesterDetails;
+
 @interface SemesterEditTableView : UITableViewController
+@property (weak, nonatomic) IBOutlet UITextField *semesterNameField;
+@property (weak, nonatomic) IBOutlet UITextField *semesterYearField;
+@property (weak, nonatomic) IBOutlet UITextField *semesterCodeField;
+@property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
+
+@property (strong, nonatomic) NSString *getData;
+@property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *schoolName;
+@property (strong, nonatomic) SemesterDetails *semester;
+@property (strong, nonatomic) DataCollection *dataCollection;
+
+
+// TODO: Implement these functions!
+
+- (IBAction)Accept:(UIBarButtonItem *)sender;
+- (IBAction)Cancel:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
 
 @end
