@@ -110,7 +110,11 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    if ([segue.identifier isEqualToString:@"segueAddSemester"])
+    {
+        SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
+        
+    }
 }
 /*
 // Override to support conditional editing of the table view.
