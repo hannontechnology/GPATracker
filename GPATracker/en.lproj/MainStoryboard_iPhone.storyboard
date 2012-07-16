@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -11,7 +12,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="LoginView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f6g-Wo-Mj8">
@@ -598,12 +599,12 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVE-hO-6vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="01w-Dg-l3t" customClass="HomePageTableView" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="daI-Jd-Nch">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="75" sectionHeaderHeight="22" sectionFooterHeight="22" id="daI-Jd-Nch">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="V7C-6q-tOT">
-                            <rect key="frame" x="0.0" y="66" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="97" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
                                 <barButtonItem title="Profile" id="oKm-Zn-EdE">
@@ -619,16 +620,42 @@
                             </items>
                         </toolbar>
                         <prototypes>
-                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homePageCell1" id="6Pf-El-8Pa">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homePageCell1" rowHeight="75" id="6Pf-El-8Pa" customClass="HomePageTableCell1">
+                                <rect key="frame" x="0.0" y="22" width="320" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="74"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="NYe-6c-DeK">
+                                            <rect key="frame" x="20" y="3" width="202" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cHu-2m-PqY">
+                                            <rect key="frame" x="20" y="26" width="202" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="bE5-dC-8wI">
+                                            <rect key="frame" x="20" y="50" width="202" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <gestureRecognizers/>
                                 <connections>
+                                    <outlet property="cellLabel1" destination="NYe-6c-DeK" id="1I6-Zp-lRq"/>
+                                    <outlet property="cellLabel2" destination="cHu-2m-PqY" id="qDP-ID-cr8"/>
+                                    <outlet property="cellLabel3" destination="bE5-dC-8wI" id="ud5-dh-cQn"/>
                                     <segue destination="USk-0t-HId" kind="push" identifier="segueSemesterList" id="dD8-jg-26M"/>
                                 </connections>
                             </tableViewCell>
@@ -646,7 +673,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="homePageTableView" destination="daI-Jd-Nch" id="fZB-xJ-Y74"/>
                         <segue destination="rTr-Dy-jam" kind="modal" identifier="segueEditSchool" id="m1y-00-6GI"/>
                     </connections>
                 </tableViewController>
@@ -708,7 +734,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="YTG-zN-KQM" customClass="SemesterEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZeJ-JM-scU">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -843,6 +869,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <action selector="textFieldReturn:" destination="MG7-Ge-mPq" eventType="editingDidEndOnExit" id="BEQ-kJ-3lN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -867,6 +896,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <connections>
+                                                        <action selector="textFieldReturn:" destination="MG7-Ge-mPq" eventType="editingDidEndOnExit" id="y0j-8M-21t"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -891,6 +923,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                                    <connections>
+                                                        <action selector="textFieldReturn:" destination="MG7-Ge-mPq" eventType="editingDidEndOnExit" id="EIN-Js-kSv"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -919,6 +954,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textFieldReturn:" destination="MG7-Ge-mPq" eventType="editingDidEndOnExit" id="nxn-sI-IXZ"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -943,6 +981,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="textFieldReturn:" destination="MG7-Ge-mPq" eventType="editingDidEndOnExit" id="vfj-mI-Cj0"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1220,6 +1261,121 @@
             <point key="canvasLocation" x="157" y="880"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddCourseView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="outlet" name="actualGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="desiredGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="units" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CourseListTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseListTableView.h"/>
+        </class>
+        <class className="GradingSchemeView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeView.h"/>
+            <relationships>
+                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="gradeA" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeAMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeAPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeB" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeBMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeBPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeC" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeCMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeCPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeD" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeF" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="HomePageTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableCell1.h"/>
+        </class>
+        <class className="HomePageTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+            </relationships>
+        </class>
+        <class className="LoginView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
+            <relationships>
+                <relationship kind="action" name="CreateProfile:"/>
+                <relationship kind="action" name="ForgotPassword:"/>
+                <relationship kind="action" name="Login:"/>
+                <relationship kind="action" name="setAutoLogin:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ProfileEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SchoolEditView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="EditGradingScheme:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="actualGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="calculatedGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SelectGradingSchemeView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectGradingSchemeView.h"/>
+            <relationships>
+                <relationship kind="action" name="Save:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="GradingSchemePicker" candidateClass="UIPickerView"/>
+                <relationship kind="outlet" name="mlabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pickerView" candidateClass="UIPickerView"/>
+            </relationships>
+        </class>
+        <class className="SemesterEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="semesterCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="semesterNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="semesterYearField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SemesterTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterTableView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

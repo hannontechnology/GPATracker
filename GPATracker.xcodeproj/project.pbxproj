@@ -26,6 +26,7 @@
 		1F754A76151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A7C151559EA00BD72F0 /* InfoPlist.strings */; };
 		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
+		1F95470D15B29D4B002D2D61 /* HomePageTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* HomePageTableCell1.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
 		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
 		1FB771C515AE1E86006BC18A /* ProfileEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */; };
@@ -84,6 +85,8 @@
 		1F754A7D151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F754A7F151559EA00BD72F0 /* GPATrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPATrackerTests.h; sourceTree = "<group>"; };
 		1F754A80151559EA00BD72F0 /* GPATrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPATrackerTests.m; sourceTree = "<group>"; };
+		1F95470B15B29D4B002D2D61 /* HomePageTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableCell1.m; sourceTree = "<group>"; };
+		1F95470C15B29D4B002D2D61 /* HomePageTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableCell1.h; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollection.h; sourceTree = "<group>"; };
 		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCollection.m; sourceTree = "<group>"; };
 		1FB5DF411566A9DD00CD3A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -199,6 +202,8 @@
 				1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */,
 				1F0C5C0E15A754D2001A6BEA /* HomePageTableView.h */,
 				1F0C5C0F15A754D2001A6BEA /* HomePageTableView.m */,
+				1F95470B15B29D4B002D2D61 /* HomePageTableCell1.m */,
+				1F95470C15B29D4B002D2D61 /* HomePageTableCell1.h */,
 				348338B2159689C4009B5D1E /* SemesterYearPickerViewController.h */,
 				348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */,
 				34C7925E15968447004AA2FA /* SchoolView.h */,
@@ -383,6 +388,7 @@
 				34EDF98115B2159000C5FFA0 /* SemesterEditTableView.m in Sources */,
 				34EDF98415B21C9C00C5FFA0 /* SemesterTableView.m in Sources */,
 				34EDF98A15B225C700C5FFA0 /* SemesterDetails.m in Sources */,
+				1F95470D15B29D4B002D2D61 /* HomePageTableCell1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

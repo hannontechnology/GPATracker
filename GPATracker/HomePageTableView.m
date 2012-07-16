@@ -12,6 +12,7 @@
 #import "LoginView.h"	
 #import "ProfileEditTableView.h"
 #import "SchoolEditView.h"
+#import "HomePageTableCell1.h"
 
 @interface HomePageTableView ()
 @end
@@ -105,14 +106,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"homePageCell1";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    HomePageTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[HomePageTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
-    cell.textLabel.text = [selectedObject schoolName];
+    cell.cellLabel1.text = [selectedObject schoolName];
+    cell.cellLabel2.text = [selectedObject schoolDetails];
+    cell.cellLabel3.text = [selectedObject schoolStartYear];
+    
     
     return cell;
 }
