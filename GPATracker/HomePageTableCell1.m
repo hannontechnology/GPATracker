@@ -12,6 +12,7 @@
 @synthesize cellLabel1;
 @synthesize cellLabel2;
 @synthesize cellLabel3;
+@synthesize cellLabelGPA;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -157,7 +157,6 @@
                         item.schoolStartYear = schoolStartYearField.text;
                         item.schoolEndYear = schoolEndYearField.text;
                         //item.schoolCalculatedGPA = calculatedGPAField.text;
-                        //item.schoolActualGPA = actualGPAField.text;
                         item.userName = userName;
                     }
                     if ([data updateSchool:results] == 0)

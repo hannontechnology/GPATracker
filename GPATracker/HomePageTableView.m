@@ -105,6 +105,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    DataCollection *data = [[DataCollection alloc] init];
+    self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+
     static NSString *CellIdentifier = @"homePageCell1";
     HomePageTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -115,7 +119,8 @@
     SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
     cell.cellLabel1.text = [selectedObject schoolName];
     cell.cellLabel2.text = [selectedObject schoolDetails];
-    cell.cellLabel3.text = [selectedObject schoolStartYear];
+    cell.cellLabel3.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject schoolStartYear], [selectedObject schoolEndYear]];
+    cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@", [selectedObject schoolActualGPA].stringValue];
     
     
     return cell;

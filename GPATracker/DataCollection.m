@@ -295,6 +295,15 @@
     newSchool.schoolStartYear = inputSchoolStartYear;
     newSchool.schoolEndYear = inputSchoolEndYear;
     newSchool.userName = inputUserName;
+    
+    int temp1 = arc4random()%433;
+    double temp2 = (double)temp1/100;
+    NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(temp2)];
+    NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+    
+    newSchool.schoolActualGPA = temp3;
+    newSchool.schoolCalculatedGPA = temp4;
+    
     // Missing for grading scheme
     NSError *error;
     if (![moc save:&error])
