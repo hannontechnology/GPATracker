@@ -1,91 +1,54 @@
 //
-//  CreateSchoolView.m
+//  SchoolEditTableView.m
 //  GPATracker
 //
-//  Created by David Stevens on 12-06-23.
+//  Created by David Stevens on 12-07-16.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "SchoolEditView.h"
+#import "SchoolEditTableView.h"
 #import "SchoolDetails.h"
 #import "DataCollection.h"
 #import "HomePageTableView.h"
-#import "SelectGradingSchemeView.h"
 
-@interface SchoolEditView ()
+@class DataCollection;
+@class SchoolDetails;
+//@class GradingScheme;
+
+@interface SchoolEditTableView ()
+- (IBAction)Cancel:(id)sender;
+- (IBAction)Save:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
 
 @end
 
-@implementation SchoolEditView
-@synthesize school = _school;
-@synthesize dataCollection = _dataCollection;
+@implementation SchoolEditTableView
 @synthesize schoolNameField;
+@synthesize userName;
 @synthesize schoolDetailsField;
 @synthesize schoolStartYearField;
 @synthesize schoolEndYearField;
-@synthesize calculatedGPAField;
-@synthesize actualGPAField;
-@synthesize getData;
-@synthesize userName;
-@synthesize schoolName;
-@synthesize status;
+@synthesize setStatus;
 @synthesize headerText;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
     }
     return self;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    
-    if (self.getData != @"Edit")
-    {
-        return;
-    }
-    
-    DataCollection *data = [[DataCollection alloc] init];
-    NSArray *results = [data retrieveSchools:schoolName userName:(NSString *)userName];
-    if (results == nil)
-    {
-        status.text = @"Database Error: Could not connect to Database.";
-    }
-    else if ([results count] > 0)
-    {
-        NSLog(@"Load School Edit Page");
-        headerText.title = @"Edit School";
-        for (SchoolDetails *item in results)
-        {
-            schoolNameField.text = item.schoolName;
-            schoolDetailsField.text = item.schoolDetails;
-            schoolStartYearField.text = item.schoolStartYear;
-            schoolEndYearField.text = item.schoolEndYear;
-            //calculatedGPAField.text = item.schoolCalculatedGPA;
-            //actualGPAField.text = item.schoolActualGPA;
-        }
-        
-    }
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+ 
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -94,53 +57,73 @@
     [self setSchoolDetailsField:nil];
     [self setSchoolStartYearField:nil];
     [self setSchoolEndYearField:nil];
-    [self setCalculatedGPAField:nil];
-    [self setActualGPAField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-- (IBAction)EditGradingScheme:(id)sender {
-    if ([schoolNameField.text length] == 0) {
-        status.text = @"School Name field is required.";
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    //cancelButton.
+    
+    if (self.setStatus != @"Edit")
+    {
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+        //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+        self.navigationItem.hidesBackButton = YES;
         return;
     }
-    //DataCollection *data = [DataCollection alloc];
-    else {
-        [self performSegueWithIdentifier:@"SelectGradingSchemeSegue" sender:self];
-    }
+    DataCollection *data = [[DataCollection alloc] init];
     
+    //NSError *error = nil;
+    NSArray *results = [data retrieveUsers:userName];
+    
+    if (results == nil)
+    {
+        //status.text = @"Database Error: Could not connect to Database";
+    }
+    else
+    {
+        if ([results count] > 0)
+        {
+            NSLog(@"Load School Page");
+            headerText.title = @"Edit School";
+            for (SchoolDetails *item in results)
+            {
+                schoolNameField.text  = item.schoolName;
+                schoolDetailsField.text = item.schoolDetails;
+                schoolStartYearField.text = item.schoolStartYear;
+                schoolEndYearField.text = item.schoolEndYear;
+            }
+        }
+    }
+
 }
 
-- (IBAction)Accept:(UIBarButtonItem *)sender {
+- (IBAction)Save:(id)sender{
     if ([schoolNameField.text length] == 0) {
-        status.text = @"School Name field is required.";
+        //setStatus.text = @"School Name field is required.";
         return;
     }
     DataCollection *data = [DataCollection alloc];
     NSArray *results = [data retrieveSchools:schoolNameField.text userName:(NSString *)userName];
-    if (getData == @"Edit")
+    if (setStatus == @"Edit")
     {
         if ([schoolNameField.text length] == 0)
         {
-            status.text = @"School name field is Required.";
+            //status.text = @"School name field is Required.";
         }
         else if ([schoolStartYearField.text length] == 0)
         {
-            status.text = @"School start year field is Required.";
+            //status.text = @"School start year field is Required.";
         }
         else 
         {
-            schoolName = schoolNameField.text;
+            schoolNameField = schoolNameField.text;
             DataCollection *data = [[DataCollection alloc]init];
-            NSArray *results = [data retrieveSchools:schoolName userName:(NSString *)userName];
+            NSArray *results = [data retrieveSchools:schoolNameField userName:(NSString *)userName];
             if (results == nil)
             {
                 status.text = @"Database Error: Could not connect to Database.";
@@ -165,12 +148,12 @@
                     }
                     else
                     {
-                    // do nothing
+                        // do nothing
                     }
                 }
             }
         }
-    
+        
     }
     else if ([results count] == 0)
     {
@@ -208,11 +191,19 @@
         status.text = @"School Name already taken.";
     }    
 }
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (IBAction)gradingScheme:(UIButton *)sender{
     
+}
 
 - (IBAction)Cancel:(id)sender
 {
-    if (getData == @"Edit")
+    if (setStatus == @"Edit")
     {
         [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
     }
@@ -227,14 +218,13 @@
 	if ([segue.identifier isEqualToString:@"segueSchool2HomePage"])
     {
         UINavigationController *navCon = [segue destinationViewController];
-        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
-        
-        HomePageTableView.userName = userName;
+        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+        SchoolEditTableView.userName = userName;
     }
 }
 
 - (IBAction)textFieldReturn:(id)sender
 {
     [sender resignFirstResponder];
-} 
-@end
+    
+} @end

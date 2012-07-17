@@ -12,7 +12,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="LoginView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f6g-Wo-Mj8">
@@ -120,11 +120,11 @@
             </objects>
             <point key="canvasLocation" x="-322" y="241"/>
         </scene>
-        <!--Table View Controller - Root View Controller-->
+        <!--School Edit Table View-->
         <scene sceneID="woZ-Kz-P8a">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26i-sz-waC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tableViewController id="doq-fP-RTd" sceneMemberID="viewController">
+                <tableViewController id="doq-fP-RTd" customClass="SchoolEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="7e5-b0-eJf">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,59 +170,90 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="O7T-EF-vwf">
+                                                    <rect key="frame" x="122" y="7" width="158" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="98w-tG-YY5">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Degree Information" id="s4Q-1p-sHt">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="t24-cA-rTI">
-                                        <rect key="frame" x="0.0" y="226" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="c8a-B5-02Q">
-                                        <rect key="frame" x="0.0" y="271" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Vua-1w-4KF">
-                                        <rect key="frame" x="0.0" y="315" width="320" height="45"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1hV-JM-BUI">
+                                        <rect key="frame" x="0.0" y="135" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="xgh-Vz-zRZ">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5cb-gK-uaw">
+                                                    <rect key="frame" x="20" y="11" width="94" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="iOZ-Zs-DiK">
+                                                    <rect key="frame" x="122" y="6" width="158" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="QTH-Ha-Y3W">
+                                        <rect key="frame" x="0.0" y="179" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0hy-gU-zDf">
+                                                    <rect key="frame" x="20" y="11" width="94" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="2x1-Lu-5x0">
+                                                    <rect key="frame" x="122" y="6" width="158" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="s4Q-1p-sHt">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="t24-cA-rTI">
+                                        <rect key="frame" x="0.0" y="244" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QCT-Gk-J1T">
                                                     <rect key="frame" x="20" y="3" width="260" height="37"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal">
+                                                    <state key="normal" title="Grading Scheme">
                                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="highlighted">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="editGradingScheme:" destination="doq-fP-RTd" eventType="touchUpInside" id="3jZ-DN-uCD"/>
+                                                        <action selector="gradingScheme:" destination="doq-fP-RTd" eventType="touchUpInside" id="qNl-Tl-2Fa"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -232,7 +263,19 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="aCg-aX-fOD"/>
+                    <navigationItem key="navigationItem" id="aCg-aX-fOD">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="bgf-Rn-rSP">
+                            <connections>
+                                <action selector="Save:" destination="doq-fP-RTd" id="8fg-zs-uTX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="schoolDescription" destination="O7T-EF-vwf" id="TI6-DI-TYf"/>
+                        <outlet property="schoolEndYear" destination="2x1-Lu-5x0" id="rBs-1o-ncM"/>
+                        <outlet property="schoolName" destination="H78-Gi-B5L" id="nOV-PZ-nvu"/>
+                        <outlet property="schoolStartYear" destination="iOZ-Zs-DiK" id="gb3-yM-sUI"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="203" y="-404"/>
@@ -250,174 +293,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-331" y="-404"/>
-        </scene>
-        <!--School Edit View-->
-        <scene sceneID="eSH-0R-Eyd">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TpL-aR-DKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="rTr-Dy-jam" customClass="SchoolEditView" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vhV-sJ-jWM">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" id="Pnn-Vn-ZxD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Create School" id="pYI-ki-AYp">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Tkv-dD-cad">
-                                            <connections>
-                                                <action selector="Cancel:" destination="rTr-Dy-jam" id="kn2-Q5-F4Q"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZkK-Vw-nig">
-                                            <connections>
-                                                <action selector="Accept:" destination="rTr-Dy-jam" id="dbJ-yZ-TJd"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="R3Z-LV-n71">
-                                <rect key="frame" x="54" y="228" width="213" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Grading Scheme">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="EditGradingScheme:" destination="rTr-Dy-jam" eventType="touchUpInside" id="fVh-zU-Id5"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="School Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cSX-fr-Y5n">
-                                <rect key="frame" x="9" y="60" width="115" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Leh-hM-d6u">
-                                <rect key="frame" x="138" y="55" width="162" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldReturn:" destination="rTr-Dy-jam" eventType="editingDidEndOnExit" id="6O7-6q-HuD"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ICN-0j-4nc">
-                                <rect key="frame" x="138" y="94" width="162" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldReturn:" destination="rTr-Dy-jam" eventType="editingDidEndOnExit" id="cT8-30-8Hx"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="49G-sl-Elc">
-                                <rect key="frame" x="138" y="133" width="162" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldReturn:" destination="rTr-Dy-jam" eventType="editingDidEndOnExit" id="gWg-LK-BS7"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="IhN-fL-FQc">
-                                <rect key="frame" x="138" y="172" width="162" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldReturn:" destination="rTr-Dy-jam" eventType="editingDidEndOnExit" id="MQo-Ga-QFN"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="School Details:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QdH-uu-Lns">
-                                <rect key="frame" x="9" y="99" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Start Year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Tcd-Zc-Dhz">
-                                <rect key="frame" x="9" y="138" width="82" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="End Year:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Tfj-GX-GFx">
-                                <rect key="frame" x="9" y="177" width="76" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="lpI-P4-bWt">
-                                <rect key="frame" x="20" y="307" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <connections>
-                        <outlet property="headerText" destination="pYI-ki-AYp" id="Yuc-lM-3AD"/>
-                        <outlet property="schoolDetailsField" destination="ICN-0j-4nc" id="wca-eA-tNa"/>
-                        <outlet property="schoolEndYearField" destination="IhN-fL-FQc" id="4Tp-X7-iyn"/>
-                        <outlet property="schoolNameField" destination="Leh-hM-d6u" id="J5H-E1-kbe"/>
-                        <outlet property="schoolStartYearField" destination="49G-sl-Elc" id="LEU-Fn-pC4"/>
-                        <outlet property="status" destination="lpI-P4-bWt" id="WQX-5U-411"/>
-                        <segue destination="3JW-qW-ne5" kind="modal" identifier="SelectGradingSchemeSegue" id="w6R-uN-V2U"/>
-                        <segue destination="jTa-PL-kSl" kind="modal" identifier="FromEditToSchoolSegue" id="57Q-XA-UJC"/>
-                        <segue destination="0Nu-ll-EVV" kind="modal" identifier="segueSchool2HomePage" id="sfA-Nb-gsO"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="638" y="-384"/>
-        </scene>
-        <!--Select Grading Scheme View-->
-        <scene sceneID="mHn-Hb-POy">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zg5-pW-Zzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="3JW-qW-ne5" customClass="SelectGradingSchemeView" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Y0O-h8-VG0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" id="28n-nb-4LN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Select Grading Scheme" id="RDy-iO-QU4">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="pXr-Mo-rfa">
-                                            <connections>
-                                                <action selector="Save:" destination="3JW-qW-ne5" id="fzJ-EC-MQi"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <pickerView contentMode="scaleToFill" id="rAg-eq-JnW">
-                                <rect key="frame" x="0.0" y="141" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                    <connections>
-                        <segue destination="ZUl-mP-nEF" kind="modal" identifier="CustomizeGradingSchemeSegue" id="jeg-I2-9e1"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="1119" y="-401"/>
+            <point key="canvasLocation" x="-122" y="-404"/>
         </scene>
         <!--Grading Scheme View-->
         <scene sceneID="whD-F6-xM4">
@@ -425,7 +301,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKX-JG-MaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ZUl-mP-nEF" customClass="GradingSchemeView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ti4-fY-UiB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="c29-1j-p0C">
@@ -613,7 +489,7 @@
                         <outlet property="gradeCPlus" destination="yvM-fR-dyZ" id="99P-UE-x1d"/>
                         <outlet property="gradeD" destination="mwb-eJ-LdZ" id="s67-VS-YA4"/>
                         <outlet property="gradeF" destination="Ogs-DI-MSS" id="SF6-ai-E6d"/>
-                        <segue destination="jTa-PL-kSl" kind="modal" identifier="GradetoSchoolSegue" id="dBe-gB-mxw"/>
+                        <segue destination="jTa-PL-kSl" kind="modal" identifier="segueGradetoSchool" id="dBe-gB-mxw"/>
                     </connections>
                 </viewController>
             </objects>
@@ -625,7 +501,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JbF-fV-1zd" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jTa-PL-kSl" customClass="SemesterTableView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anK-qs-iDa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8Cl-CK-qnw">
@@ -732,7 +608,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVE-hO-6vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="01w-Dg-l3t" customClass="HomePageTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="80" sectionHeaderHeight="10" sectionFooterHeight="10" id="daI-Jd-Nch">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="V7C-6q-tOT">
@@ -813,14 +689,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="School List" id="hji-wZ-Tzb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="daQ-qP-Zdz">
-                            <connections>
-                                <segue destination="rTr-Dy-jam" kind="modal" identifier="segueCreateSchool" id="SLI-jb-Aho"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="daQ-qP-Zdz"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="rTr-Dy-jam" kind="modal" identifier="segueEditSchool" id="m1y-00-6GI"/>
+                        <segue destination="gjN-gY-YcA" kind="modal" identifier="segueEditSchool" id="SEY-Qc-A3O"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -832,7 +704,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-R4-mKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l0e-Af-tgM" customClass="CourseListTableView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ur-Fj-48T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OWc-mz-226">
@@ -881,7 +753,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="YTG-zN-KQM" customClass="SemesterEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZeJ-JM-scU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -991,7 +863,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znG-BI-5DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="MG7-Ge-mPq" customClass="ProfileEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="HiJ-Ql-9yH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1194,7 +1066,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-VG-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="USk-0t-HId" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qh7-y3-oMJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1224,7 +1096,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUd-Pi-XQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jPn-jD-ygd" customClass="AddCourseView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d5z-Ch-q3A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="tO7-X2-YiK">
@@ -1408,9 +1280,122 @@
             <point key="canvasLocation" x="157" y="880"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="AddCourseView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="outlet" name="actualGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseID" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="desiredGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="units" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CourseListTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseListTableView.h"/>
+        </class>
+        <class className="GradingSchemeView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeView.h"/>
+            <relationships>
+                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="gradeA" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeAMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeAPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeB" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeBMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeBPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeC" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeCMinus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeCPlus" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeD" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="gradeF" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="HomePageTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HomePageTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+            </relationships>
+        </class>
+        <class className="LoginView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
+            <relationships>
+                <relationship kind="action" name="CreateProfile:"/>
+                <relationship kind="action" name="ForgotPassword:"/>
+                <relationship kind="action" name="Login:"/>
+                <relationship kind="action" name="setAutoLogin:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ProfileEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SchoolEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="Save:"/>
+                <relationship kind="action" name="gradingScheme:" candidateClass="UIButton"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SemesterEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="semesterCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="semesterNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="semesterYearField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SemesterTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterTableView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="scZ-Pw-9Jv"/>
+        <segue reference="miI-a3-jJY"/>
+    </inferredMetricsTieBreakers>
 </document>
