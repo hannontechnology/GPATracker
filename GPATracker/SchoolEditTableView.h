@@ -7,8 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-@class DataCollection;
-@class SchoolDetails;
 //@class SelectGradingSchemeView;
 
 @interface SchoolEditTableView : UITableViewController
@@ -16,6 +14,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *schoolNameField;
 @property (strong, nonatomic) NSString *setStatus;
 @property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSString *schoolName;
 
 @property (weak, nonatomic) IBOutlet UITextField *schoolDetailsField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;

@@ -34,6 +34,7 @@
 
 // School Section
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName;
 - (NSArray *)retrieveSchoolList:(NSString *)inputUserName;
 - (NSArray *)retrieveSchools;
 - (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;

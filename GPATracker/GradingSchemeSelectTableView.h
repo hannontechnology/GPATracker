@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface GradingSchemeSelectTableView : UITableViewController
+@property (weak, nonatomic) IBOutlet UITableViewCell *gradingAPlus433;
+@property (weak, nonatomic) IBOutlet UITableViewCell *gradingAPlus400;
+@property (weak, nonatomic) IBOutlet UITableViewCell *gradingCustom;
 
 @end

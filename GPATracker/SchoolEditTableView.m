@@ -13,7 +13,7 @@
 
 @class DataCollection;
 @class SchoolDetails;
-//@class GradingScheme;
+@class GradingScheme;
 
 @interface SchoolEditTableView ()
 - (IBAction)Cancel:(id)sender;
@@ -25,6 +25,7 @@
 @implementation SchoolEditTableView
 @synthesize schoolNameField;
 @synthesize userName;
+@synthesize schoolName;
 @synthesize schoolDetailsField;
 @synthesize schoolStartYearField;
 @synthesize schoolEndYearField;
@@ -121,12 +122,12 @@
         }
         else 
         {
-            schoolNameField = schoolNameField.text;
+            schoolName = schoolNameField.text;
             DataCollection *data = [[DataCollection alloc]init];
-            NSArray *results = [data retrieveSchools:schoolNameField userName:(NSString *)userName];
+            NSArray *results = [data retrieveSchools:schoolName userName:(NSString *)userName];
             if (results == nil)
             {
-                status.text = @"Database Error: Could not connect to Database.";
+                //setStatus.text = @"Database Error: Could not connect to Database.";
             }
             else
             {
@@ -139,7 +140,6 @@
                         item.schoolDetails = schoolDetailsField.text;
                         item.schoolStartYear = schoolStartYearField.text;
                         item.schoolEndYear = schoolEndYearField.text;
-                        //item.schoolCalculatedGPA = calculatedGPAField.text;
                         item.userName = userName;
                     }
                     if ([data updateSchool:results] == 0)
@@ -159,17 +159,17 @@
     {
         if ([schoolNameField.text length] == 0)
         {
-            status.text = @"School Name field is Required.";
+            //status.text = @"School Name field is Required.";
         }
         else if ([schoolStartYearField.text length] == 0) {
-            status.text = @"School start year field is Required.";
+            //status.text = @"School start year field is Required.";
         }
         else
         {
             int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetail:(NSString *)schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text userName:(NSString *)userName];
             if (addResult == 0)
             {
-                if (getData == @"Edit")
+                if (setStatus == @"Edit")
                 {
                     schoolName = schoolNameField.text;
                     [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
@@ -182,13 +182,13 @@
             }   
             else
             {
-                status.text = @"Create school failed.";
+                //status.text = @"Create school failed.";
             }
         }
     }
     else
     {
-        status.text = @"School Name already taken.";
+        //status.text = @"School Name already taken.";
     }    
 }
 
