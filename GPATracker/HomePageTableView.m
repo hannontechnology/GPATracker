@@ -11,7 +11,7 @@
 #import "SchoolDetails.h"
 #import "LoginView.h"	
 #import "ProfileEditTableView.h"
-//#import "SchoolEditView.h"
+#import "SchoolEditTableView.h"
 #import "HomePageTableCell1.h"
 
 @interface HomePageTableView ()
@@ -105,7 +105,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     DataCollection *data = [[DataCollection alloc] init];
     self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
 
@@ -128,6 +127,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    DataCollection *data = [[DataCollection alloc] init];
+    self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+    NSLog(@"prepareForSegue Event of HomePageTableView");
 	if ([segue.identifier isEqualToString:@"segueLogout"])
 	{
         LoginView *LoginView = [segue destinationViewController];
@@ -144,21 +146,24 @@
         ProfileEditTableView.setStatus = @"Edit";
         ProfileEditTableView.userName = self.userName;
     }
-//    else if ([segue.identifier isEqualToString:@"segueEditSchool"])
-//    {
-//        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
-//        SchoolEditView *SchoolEditView = [segue destinationViewController];
-//        
-//        SchoolEditView.getData    = @"Edit";
-//        SchoolEditView.userName   = self.userName;
-//        SchoolEditView.schoolName = [selectedObject schoolName];
-//    }
-//    else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
-//    {
-//        SchoolEditView *SchoolEditView = [segue destinationViewController];
-//        
-//        SchoolEditView.userName = self.userName;
-//    }
+    else if ([segue.identifier isEqualToString:@"segueEditSchool"])
+    {
+        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        
+        SchoolEditTableView.setStatus  = @"Edit";
+        SchoolEditTableView.userName   = self.userName;
+        SchoolEditTableView.schoolName = [selectedObject schoolName];
+    }
+    else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
+    {
+        NSLog(@"prepareForSegue Event of HomePageTableView for segueCreateSchool");
+        UINavigationController *navCon = [segue destinationViewController];
+        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+        
+        SchoolEditTableView.userName = self.userName;
+        NSLog(@"prepareForSegue Event of HomePageTableView for segueCreateSchool - Data sent");
+    }
 }
 
 // Override to support conditional editing of the table view.

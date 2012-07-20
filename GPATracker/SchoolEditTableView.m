@@ -24,8 +24,8 @@
 
 @implementation SchoolEditTableView
 @synthesize schoolNameField;
-@synthesize userName;
-@synthesize schoolName;
+@synthesize userName = _userName;
+@synthesize schoolName = _schoolName;
 @synthesize schoolDetailsField;
 @synthesize schoolStartYearField;
 @synthesize schoolEndYearField;
@@ -68,6 +68,8 @@
     
     //cancelButton.
     
+    NSLog(@"viewWillAppear Event of SchoolEditTableView");
+    
     if (self.setStatus != @"Edit")
     {
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
@@ -79,7 +81,7 @@
     DataCollection *data = [[DataCollection alloc] init];
     
     //NSError *error = nil;
-    NSArray *results = [data retrieveUsers:userName];
+    NSArray *results = [data retrieveSchools:(NSString *)self.schoolName userName:(NSString *)self.userName];
     
     if (results == nil)
     {
@@ -109,7 +111,7 @@
         return;
     }
     DataCollection *data = [DataCollection alloc];
-    NSArray *results = [data retrieveSchools:schoolNameField.text userName:(NSString *)userName];
+    NSArray *results = [data retrieveSchools:schoolNameField.text userName:(NSString *)self.userName];
     if (setStatus == @"Edit")
     {
         if ([schoolNameField.text length] == 0)
@@ -122,9 +124,9 @@
         }
         else 
         {
-            schoolName = schoolNameField.text;
+            self.schoolName = schoolNameField.text;
             DataCollection *data = [[DataCollection alloc]init];
-            NSArray *results = [data retrieveSchools:schoolName userName:(NSString *)userName];
+            NSArray *results = [data retrieveSchools:self.schoolName userName:(NSString *)self.userName];
             if (results == nil)
             {
                 //setStatus.text = @"Database Error: Could not connect to Database.";
@@ -140,7 +142,7 @@
                         item.schoolDetails = schoolDetailsField.text;
                         item.schoolStartYear = schoolStartYearField.text;
                         item.schoolEndYear = schoolEndYearField.text;
-                        item.userName = userName;
+                        item.userName = self.userName;
                     }
                     if ([data updateSchool:results] == 0)
                     {
@@ -166,17 +168,17 @@
         }
         else
         {
-            int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetail:(NSString *)schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text userName:(NSString *)userName];
+            int addResult = [data addSchool:(NSString *)schoolNameField.text schoolDetail:(NSString *)schoolDetailsField.text schoolStartYear:(NSString *)schoolStartYearField.text schoolEndYear:(NSString *)schoolEndYearField.text userName:(NSString *)self.userName];
             if (addResult == 0)
             {
                 if (setStatus == @"Edit")
                 {
-                    schoolName = schoolNameField.text;
+                    self.schoolName = schoolNameField.text;
                     [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
                 }
                 else
                 {
-                    schoolName = schoolNameField.text;
+                    self.schoolName = schoolNameField.text;
                     [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
                 }
             }   
@@ -220,9 +222,10 @@
 {
 	if ([segue.identifier isEqualToString:@"segueSchool2HomePage"])
     {
-        UINavigationController *navCon = [segue destinationViewController];
-        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
-        SchoolEditTableView.userName = userName;
+//        UINavigationController *navCon = [segue destinationViewController];
+//        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        SchoolEditTableView.userName = self.userName;
     }
 }
 
