@@ -7,15 +7,17 @@
 //
 
 #import "GradingSchemeSelectTableView.h"
+#import "GradingSchemeTableView.h"
+#import "GradingScheme.h"
 
 @interface GradingSchemeSelectTableView ()
 
 @end
 
 @implementation GradingSchemeSelectTableView
-@synthesize gradingAPlus433;
-@synthesize gradingAPlus400;
-@synthesize gradingCustom;
+//@synthesize gradingAPlus433;
+//@synthesize gradingAPlus400;
+//@synthesize gradingCustom;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -39,9 +41,9 @@
 
 - (void)viewDidUnload
 {
-    [self setGradingAPlus433:nil];
-    [self setGradingAPlus400:nil];
-    [self setGradingCustom:nil];
+//    [self setGradingAPlus433:nil];
+//    [self setGradingAPlus400:nil];
+//    [self setGradingCustom:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -52,6 +54,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
+#pragma mark - delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Navigation logic may go here. Create and push another view controller.
+    if (indexPath.row == 0) {
+        GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
+    }
+     //GradingSchemeTableView *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     //[self.navigationController pushViewController:detailViewController animated:YES];
+    
+}
 
 @end

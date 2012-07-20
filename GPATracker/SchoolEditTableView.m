@@ -198,7 +198,10 @@
 }
 
 - (IBAction)gradingScheme:(UIButton *)sender{
-    
+    if (self.setStatus != @"Edit")
+    {
+        
+    }
 }
 
 - (IBAction)Cancel:(id)sender
