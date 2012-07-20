@@ -280,6 +280,7 @@
     
     NSError *error = nil;
     NSArray*results = [moc executeFetchRequest:request error:& error];
+    return results;
 }
 
 - (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;

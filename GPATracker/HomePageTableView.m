@@ -13,6 +13,7 @@
 #import "ProfileEditTableView.h"
 #import "SchoolEditTableView.h"
 #import "HomePageTableCell1.h"
+#import "SemesterTableView.h"
 
 @interface HomePageTableView ()
 @end
@@ -129,6 +130,7 @@
 {
     DataCollection *data = [[DataCollection alloc] init];
     self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
+
     NSLog(@"prepareForSegue Event of HomePageTableView");
 	if ([segue.identifier isEqualToString:@"segueLogout"])
 	{
@@ -163,6 +165,16 @@
         
         SchoolEditTableView.userName = self.userName;
         NSLog(@"prepareForSegue Event of HomePageTableView for segueCreateSchool - Data sent");
+    }
+    else if ([segue.identifier isEqualToString:@"segueSemesterList"])
+    {
+        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
+        SemesterTableView *SemesterTableView = [segue destinationViewController];
+        //        UINavigationController *navCon = [segue destinationViewController];
+        //        ProfileEditTableView *ProfileEditTableView = [navCon.viewControllers objectAtIndex:0];
+        
+        SemesterTableView.userName = self.userName;
+        SemesterTableView.schoolName = [selectedObject schoolName];
     }
 }
 
