@@ -12,7 +12,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="LoginView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f6g-Wo-Mj8">
@@ -108,6 +108,8 @@
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="wNN-zL-R0k"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="autoLoginSelector" destination="47t-Cj-aY9" id="iY4-Fp-0eu"/>
                         <outlet property="passwordField" destination="xRu-tR-5ow" id="XQ1-ze-TA4"/>
@@ -126,7 +128,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26i-sz-waC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="doq-fP-RTd" customClass="SchoolEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="7e5-b0-eJf">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -271,6 +273,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="schoolDetailsField" destination="O7T-EF-vwf" id="LX6-sN-leE"/>
                         <outlet property="schoolEndYearField" destination="2x1-Lu-5x0" id="W7S-lO-AFm"/>
@@ -280,22 +287,32 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="203" y="-404"/>
+            <point key="canvasLocation" x="157" y="-404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="isu-b5-E5q">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qp1-f9-6VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="gjN-gY-YcA" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="gjN-gY-YcA" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Qmp-4T-S58">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="foG-xG-C6p">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="doq-fP-RTd" kind="relationship" relationship="rootViewController" id="o2U-7x-MXr"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="-122" y="-404"/>
+            <point key="canvasLocation" x="-322" y="-404"/>
         </scene>
         <!--Grading Scheme View-->
         <scene sceneID="whD-F6-xM4">
@@ -303,7 +320,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SKX-JG-MaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="ZUl-mP-nEF" customClass="GradingSchemeView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ti4-fY-UiB">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="c29-1j-p0C">
@@ -479,6 +496,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="gradeA" destination="BXe-YP-Ci9" id="rLy-1j-LgW"/>
                         <outlet property="gradeAMinus" destination="2vu-bY-1ss" id="LlD-Oz-PJ7"/>
@@ -494,7 +516,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2363" y="-377"/>
+            <point key="canvasLocation" x="1600" y="-404"/>
         </scene>
         <!--Grading Scheme Select Table View-->
         <scene sceneID="XFq-c5-wP6">
@@ -502,7 +524,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6E-XD-vcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ujy-oW-DyU" customClass="GradingSchemeSelectTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z0P-TY-c4O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -567,6 +589,11 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" id="MX7-Vf-RCX"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="gradingAPlus400" destination="Qb5-EV-Qjl" id="WPC-Kt-igN"/>
                         <outlet property="gradingAPlus433" destination="hQI-IG-rnC" id="u04-VW-AAv"/>
@@ -575,7 +602,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="644" y="-389"/>
+            <point key="canvasLocation" x="638" y="-404"/>
         </scene>
         <!--Grading Scheme Table View-->
         <scene sceneID="cSj-ex-k0t">
@@ -583,7 +610,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGb-eW-Kcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="1tm-RG-Rrr" customClass="GradingSchemeTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="y8P-BP-6Ss">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -869,6 +896,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ORw-px-iY5"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="AMinusField" destination="uDp-Pg-kHK" id="qd9-Ph-Pz5"/>
                         <outlet property="APlusField" destination="OqS-Hm-f6V" id="UFa-gw-2r7"/>
@@ -887,7 +919,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1054" y="-393"/>
+            <point key="canvasLocation" x="1121" y="-404"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Oav-7O-nVZ">
@@ -895,7 +927,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ggE-8J-57j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="9kM-3K-edT" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x71-vS-tKX">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="qOy-G5-fxL">
@@ -933,6 +965,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.49999999999999961"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="3153" y="169"/>
@@ -943,25 +980,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVE-hO-6vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="01w-Dg-l3t" customClass="HomePageTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="80" sectionHeaderHeight="10" sectionFooterHeight="10" id="daI-Jd-Nch">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="V7C-6q-tOT">
-                            <rect key="frame" x="0.0" y="138" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem title="Profile" id="oKm-Zn-EdE">
-                                    <connections>
-                                        <segue destination="MG7-Ge-mPq" kind="push" identifier="segueEditProfile" id="fGJ-Vg-Bh6"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem title="Logout" id="1kc-j2-QKn">
-                                    <connections>
-                                        <segue destination="2" kind="modal" identifier="segueLogout" id="68m-8u-amb"/>
-                                    </connections>
-                                </barButtonItem>
-                            </items>
-                        </toolbar>
                         <prototypes>
                             <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="homePageCell1" rowHeight="80" id="6Pf-El-8Pa" customClass="HomePageTableCell1">
                                 <rect key="frame" x="0.0" y="46" width="320" height="82"/>
@@ -1023,6 +1044,18 @@
                             <outlet property="delegate" destination="01w-Dg-l3t" id="qZo-cf-WK5"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Profile" id="oKm-Zn-EdE">
+                            <connections>
+                                <segue destination="MG7-Ge-mPq" kind="push" identifier="segueEditProfile" id="fGJ-Vg-Bh6"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem title="Logout" id="1kc-j2-QKn">
+                            <connections>
+                                <segue destination="2" kind="modal" identifier="segueLogout" id="68m-8u-amb"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="School List" id="hji-wZ-Tzb">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="daQ-qP-Zdz">
                             <connections>
@@ -1030,6 +1063,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="doq-fP-RTd" kind="push" identifier="segueEditSchool" id="3xK-NI-FQs"/>
                     </connections>
@@ -1043,11 +1081,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-R4-mKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l0e-Af-tgM" customClass="CourseListTableView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ur-Fj-48T">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OWc-mz-226">
-                                <rect key="frame" x="0.0" y="44" width="320" height="423"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="335"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1080,12 +1118,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="LeE-cy-jqB"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="jPn-jD-ygd" kind="modal" identifier="addCourseSegue" id="UWn-H0-WtB"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1983" y="870"/>
+            <point key="canvasLocation" x="1121" y="880"/>
         </scene>
         <!--Semester Edit Table View - Add Semester-->
         <scene sceneID="I7w-Fp-qPP">
@@ -1093,7 +1136,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="YTG-zN-KQM" customClass="SemesterEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZeJ-JM-scU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1172,6 +1215,11 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Semester" id="SKv-FE-rvS"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="headerText" destination="SKv-FE-rvS" id="QPH-E1-5PL"/>
                         <outlet property="semesterCodeField" destination="q6q-Oi-89S" id="Jf4-tD-vKR"/>
@@ -1180,23 +1228,33 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2146" y="189"/>
+            <point key="canvasLocation" x="2079" y="241"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pq6-VH-shm">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JS9-dR-AM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="faI-Ep-duc" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="faI-Ep-duc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Op1-Mq-iBw"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="flY-Fm-nfl">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qgY-Mn-C7a">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="YTG-zN-KQM" kind="relationship" relationship="rootViewController" id="miI-a3-jJY"/>
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1664" y="189"/>
+            <point key="canvasLocation" x="1600" y="241"/>
         </scene>
         <!--Profile Edit Table View - Create Profile-->
         <scene sceneID="doR-w5-7aq">
@@ -1204,7 +1262,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znG-BI-5DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="MG7-Ge-mPq" customClass="ProfileEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="HiJ-Ql-9yH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1386,6 +1444,11 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="autoLoginField" destination="h1G-R7-g7F" id="SeO-Ly-OHP"/>
                         <outlet property="emailField" destination="Ons-xA-lvm" id="xaQ-qJ-I5H"/>
@@ -1407,7 +1470,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-VG-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="USk-0t-HId" customClass="SemesterTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qh7-y3-oMJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1427,6 +1490,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Semester List" id="81P-J7-Sfv"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="faI-Ep-duc" kind="modal" identifier="segueAddSemester" id="L7J-iE-DTD"/>
                         <segue destination="l0e-Af-tgM" kind="push" identifier="segueSemester2Course" id="i9p-dN-SWc"/>
@@ -1434,7 +1502,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1199" y="798"/>
+            <point key="canvasLocation" x="1121" y="241"/>
         </scene>
         <!--Add Course View-->
         <scene sceneID="bl6-TV-cJ1">
@@ -1442,7 +1510,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUd-Pi-XQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jPn-jD-ygd" customClass="AddCourseView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d5z-Ch-q3A">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="tO7-X2-YiK">
@@ -1574,6 +1642,11 @@
                         </subviews>
                         <color key="backgroundColor" red="0.20439785260000001" green="0.445000638" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="actualGrade" destination="0ZI-hy-EJ0" id="eea-mz-Y1h"/>
                         <outlet property="courseID" destination="JUG-XJ-z53" id="xdm-KJ-SJ7"/>
@@ -1585,20 +1658,29 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1599" y="1521"/>
+            <point key="canvasLocation" x="1600" y="880"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vle-3D-yDl">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rD-EY-j2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="0Nu-ll-EVV" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="0Nu-ll-EVV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="NuJ-qh-b86"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="mmj-YD-RBT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uHK-3F-ezk">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="01w-Dg-l3t" kind="relationship" relationship="rootViewController" id="fzg-Bq-Y4C"/>
                     </connections>
@@ -1610,14 +1692,23 @@
         <scene sceneID="fl1-ki-c2M">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDb-8X-C0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="tww-Fb-Zzg" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="tww-Fb-Zzg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="j2y-zw-abB"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="54G-2e-aTB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cr0-z4-F5A">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="MG7-Ge-mPq" kind="relationship" relationship="rootViewController" id="TK2-3c-oR0"/>
                     </connections>
@@ -1626,134 +1717,6 @@
             <point key="canvasLocation" x="157" y="880"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="AddCourseView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddCourseView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="outlet" name="actualGrade" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseID" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="description" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="desiredGrade" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="units" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CourseListTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseListTableView.h"/>
-        </class>
-        <class className="GradingSchemeSelectTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeSelectTableView.h"/>
-        </class>
-        <class className="GradingSchemeTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeTableView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="gradeAField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeAMinusField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeAPlusField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBMinusField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBPlusField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCMinusField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCPlusField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeDField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeFField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="GradingSchemeView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeView.h"/>
-            <relationships>
-                <relationship kind="action" name="Done:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="gradeA" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeAMinus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeAPlus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeB" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBMinus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeBPlus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeC" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCMinus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeCPlus" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeD" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="gradeF" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="HomePageTableCell1" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableCell1.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HomePageTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
-                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
-            </relationships>
-        </class>
-        <class className="LoginView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
-            <relationships>
-                <relationship kind="action" name="CreateProfile:"/>
-                <relationship kind="action" name="ForgotPassword:"/>
-                <relationship kind="action" name="Login:"/>
-                <relationship kind="action" name="setAutoLogin:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ProfileEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SchoolEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="Save:"/>
-                <relationship kind="action" name="gradingScheme:" candidateClass="UIButton"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SemesterEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="semesterCodeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="semesterNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="semesterYearField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SemesterTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterTableView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
