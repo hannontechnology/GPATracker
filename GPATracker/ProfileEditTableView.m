@@ -24,8 +24,8 @@
 @synthesize firstNameField;
 @synthesize lastNameField;
 @synthesize emailField;
-@synthesize setStatus;
-@synthesize userName;
+@synthesize setEditStatus = _setEditStatus;
+@synthesize userName = _userName;
 @synthesize userNameField;
 @synthesize passwordField;
 @synthesize autoLoginField;
@@ -56,7 +56,7 @@
     
     //cancelButton.
     
-    if (self.setStatus != @"Edit")
+    if (self.setEditStatus != @"Edit")
     {
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
         //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
@@ -67,7 +67,7 @@
     DataCollection *data = [[DataCollection alloc] init];
     
     //NSError *error = nil;
-    NSArray *results = [data retrieveUsers:userName];
+    NSArray *results = [data retrieveUsers:self.userName];
     
     if (results == nil)
     {
@@ -122,7 +122,7 @@
     NSArray *results = [data retrieveUsers:userNameField.text];
     NSNumber *autoLogin = 0;
     
-    if (setStatus == @"Edit")
+    if (self.setEditStatus == @"Edit")
     {
         if (autoLoginField.on)
         {
@@ -146,11 +146,11 @@
         }
         else
         {
-            userName = userNameField.text;
+            self.userName = userNameField.text;
             DataCollection *data = [[DataCollection alloc] init];
             
             //NSError *error = nil;
-            NSArray *results = [data retrieveUsers:userName];
+            NSArray *results = [data retrieveUsers:self.userName];
             
             if (results == nil)
             {
@@ -218,7 +218,7 @@
                     [data removeAutoLogin];
                     [data setAutoLogin:userNameField.text];
                 }
-                userName = userNameField.text;
+                self.userName = userNameField.text;
                 [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
             }
             else 
@@ -235,7 +235,7 @@
 
 - (IBAction)Cancel:(id)sender
 {
-    if (setStatus == @"Edit")
+    if (self.setEditStatus == @"Edit")
     {
         [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
     }
@@ -258,14 +258,14 @@
 //        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         HomePageTableView *HomePageTableView = [segue destinationViewController];
         
-        HomePageTableView.userName = userName;
+        HomePageTableView.userName = self.userName;
 	}
 	else if ([segue.identifier isEqualToString:@"segueProfile2Login"])
 	{
         LoginView *LoginView = [segue destinationViewController];
         
         LoginView.getData  = @"Logout";
-        LoginView.userName = userName;
+        LoginView.userName = self.userName;
 	}
 }
 

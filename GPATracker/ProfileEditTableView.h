@@ -12,7 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (strong, nonatomic) NSString *setStatus;
+@property (strong, nonatomic) NSString *setEditStatus;
 @property (strong, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
