@@ -138,7 +138,12 @@
             else if ([results count] > 0)
             {
                 NSLog(@"Save Semester Page");
-                
+                for(SemesterDetails *item in results)
+                {
+                    item.semesterName = semesterNameField.text;
+                    item.semesterYear = [[NSNumber alloc] initWithUnsignedChar:semesterYearField.text];
+                    item.semesterCode = semesterYearField.text;
+                }
             }
         }
     }
