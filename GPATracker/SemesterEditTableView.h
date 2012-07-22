@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *setEditStatus;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *schoolName;
+@property (strong, nonatomic) NSString *semesterName;
 @property (strong, nonatomic) SemesterDetails *semester;
 @property (strong, nonatomic) DataCollection *dataCollection;
 
