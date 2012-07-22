@@ -300,7 +300,30 @@
     return results;
 }
 
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;
+- (int)addSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear semesterCode:(NSNumber *)inputSemesterCode userName:(NSString *)inputUserName schoolName:(NSString *)inputSchoolName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"SemesterDetails";
+    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+    
+    SemesterDetails *newSemester = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
+    newSemester.semesterName = inputSemesterName;
+    newSemester.semesterYear = inputSemesterYear;
+    newSemester.semesterCode = inputSemesterCode;
+    newSemester.userName = inputUserName;
+    newSemester.schoolName = inputSchoolName;
+    
+    NSError *error;
+    if(![moc save:&error])
+    {
+        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
+        return -1;
+    }
+    return 0;
+}
+
+- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
@@ -374,9 +397,6 @@
     NSLog(@"Delete Successful!");
     return 0;
 }
-
-
-
 
 
 - (void)saveContext

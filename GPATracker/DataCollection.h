@@ -50,6 +50,7 @@
 // Semester Section
 - (NSArray *)retrieveSemesterList:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+- (int)addSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear semesterCode:(NSNumber *)inputSemesterCode userName:(NSString *)inputUserName schoolName:(NSString *)inputSchoolName;
 
 // Course Section
 

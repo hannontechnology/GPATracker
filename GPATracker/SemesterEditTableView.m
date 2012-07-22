@@ -108,9 +108,9 @@
         return;
     }
     
-    DataCollection *semesterData = [DataCollection alloc];
+    DataCollection *data = [DataCollection alloc];
     
-    NSArray *results = [semesterData retrieveSemester:semesterName schoolName:schoolName userName:userName];
+    NSArray *results = [data retrieveSemester:semesterName schoolName:schoolName userName:userName];
     
     // TODO: add in logic for creating automated semester code
     
@@ -127,9 +127,9 @@
         else 
         {
             // Find semester and edit it
-            DataCollection *semesterData = [[DataCollection alloc] init];
+            DataCollection *data = [[DataCollection alloc] init];
             
-            NSArray *results = [semesterData retrieveSemester:semesterName schoolName:schoolName userName:userName];
+            NSArray *results = [data retrieveSemester:semesterName schoolName:schoolName userName:userName];
             
             if(results == nil)
             {
@@ -141,11 +141,66 @@
                 for(SemesterDetails *item in results)
                 {
                     item.semesterName = semesterNameField.text;
-                    item.semesterYear = [[NSNumber alloc] initWithUnsignedChar:semesterYearField.text];
-                    item.semesterCode = semesterYearField.text;
+                    
+                    // Cast text to NSNumber:
+                    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                    [f setNumberStyle:NSNumberFormatterNoStyle];
+                    NSNumber *s_year = [f numberFromString:semesterYearField.text];
+                    item.semesterYear = s_year;
+                    NSNumber *s_code = [f numberFromString:semesterCodeField.text];
+                    item.semesterCode = s_code;
                 }
             }
+            else {
+                // TODO: default behaviour = do nothing
+            }
         }
+    }
+    else if ([results count] == 0)
+    {
+        if ([semesterNameField.text length] == 0)
+        {
+            // TODO: error message
+        }
+        else if ([semesterYearField.text length] == 0)
+        {
+            // TODO: error message
+        }
+        else 
+        {
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterNoStyle];
+            
+            int addResult = [data addSemester:(NSString *)semesterNameField.text semesterYear:(NSNumber *)[f numberFromString:semesterYearField.text] semesterCode:(NSNumber *)[f numberFromString:semesterCodeField.text] userName:(NSString *)self.userName schoolName:(NSString *)self.schoolName];
+            
+            if(addResult == 0)
+            {
+                self.semesterName = semesterNameField.text;
+                [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
+            }
+            else 
+            {
+                // TODO: Error message
+            }
+        }
+    }
+    else 
+    {
+        // TODO: Error message - "Semester already exists"
+    }
+}
+
+- (IBAction)Cancel:(id)sender
+{
+        [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if([segue.identifier isEqualToString:@"segueEditSemesterToSemester"])
+    {
+        SemesterTableView *SemesterTableView = [segue destinationViewController];
+        SemesterTableView.userName = self.userName;
     }
 }
 
