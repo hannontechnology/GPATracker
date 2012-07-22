@@ -23,11 +23,4 @@
 @property (strong, nonatomic) SemesterDetails *semester;
 @property (strong, nonatomic) DataCollection *dataCollection;
 
-
-// TODO: Implement these functions!
-
-- (IBAction)Accept:(UIBarButtonItem *)sender;
-- (IBAction)Cancel:(id)sender;
-- (IBAction)textFieldReturn:(id)sender;
-
 @end

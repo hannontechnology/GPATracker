@@ -12,7 +12,9 @@
 #import "SemesterTableView.h"
 
 @interface SemesterEditTableView ()
-
+- (IBAction)Accept:(UIBarButtonItem *)sender;
+- (IBAction)Cancel:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
 @end
 
 @implementation SemesterEditTableView
@@ -20,7 +22,6 @@
 @synthesize semesterYearField;
 @synthesize semesterCodeField;
 @synthesize headerText;
-
 @synthesize setEditStatus;
 @synthesize userName;
 @synthesize schoolName;
