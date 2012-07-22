@@ -25,6 +25,7 @@
 @synthesize setEditStatus;
 @synthesize userName;
 @synthesize schoolName;
+@synthesize semesterName;
 @synthesize semester;
 @synthesize dataCollection;
 
@@ -48,6 +49,45 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    // Cancel Button
+    
+    if(self.setEditStatus != @"Edit")
+    {
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+        
+        self.navigationItem.leftBarButtonItem = cancelButton;
+        self.navigationItem.hidesBackButton = YES;
+        return;
+    }
+    
+    DataCollection *data = [[DataCollection alloc] init];
+    
+    NSArray *results = [data retrieveSemester:semesterName schoolName:schoolName userName:userName];
+    
+    if(results == nil)
+    {
+        // TODO: put in Error checking
+    }
+    else 
+    {
+        if([results count] > 0)
+        {
+            NSLog(@"Loading Semester Edit Page");
+            headerText.title = @"Edit Semester";
+            
+            for(SemesterDetails *item in results)
+            {
+                semesterNameField.text = item.semesterName;
+                semesterYearField.text = [NSString stringWithFormat:@"%@", [item semesterYear].stringValue];
+                semesterCodeField.text = [NSString stringWithFormat:@"%@", [item semesterCode].stringValue];
+            }
+        }
+    }
+}
+
 - (void)viewDidUnload
 {
     [self setSemesterNameField:nil];
@@ -58,6 +98,50 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (IBAction)Accept:(id)sender
+{
+    if(([semesterNameField.text length] == 0) || ([semesterYearField.text length] == 0))
+    {
+        // TODO: Error message
+        return;
+    }
+    
+    DataCollection *semesterData = [DataCollection alloc];
+    
+    NSArray *results = [semesterData retrieveSemester:semesterName schoolName:schoolName userName:userName];
+    
+    // TODO: add in logic for creating automated semester code
+    
+    if(self.setEditStatus == @"Edit")
+    {
+        if([semesterNameField.text length] == 0)
+        {
+            // TODO: Error message
+        }
+        else if([semesterYearField.text length] == 0)
+        {
+            // TODO: Error message
+        }
+        else 
+        {
+            // Find semester and edit it
+            DataCollection *semesterData = [[DataCollection alloc] init];
+            
+            NSArray *results = [semesterData retrieveSemester:semesterName schoolName:schoolName userName:userName];
+            
+            if(results == nil)
+            {
+                //TODO: Error message
+            }
+            else if ([results count] > 0)
+            {
+                NSLog(@"Save Semester Page");
+                
+            }
+        }
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
