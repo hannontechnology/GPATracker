@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
@@ -1042,7 +1043,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cm3-R4-mKM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="l0e-Af-tgM" customClass="CourseListTableView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ur-Fj-48T">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="OWc-mz-226">
@@ -1092,7 +1093,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="YTG-zN-KQM" customClass="SemesterEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZeJ-JM-scU">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1195,7 +1196,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="1786" y="189"/>
+            <point key="canvasLocation" x="1664" y="189"/>
         </scene>
         <!--Profile Edit Table View - Create Profile-->
         <scene sceneID="doR-w5-7aq">
@@ -1441,7 +1442,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUd-Pi-XQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="jPn-jD-ygd" customClass="AddCourseView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d5z-Ch-q3A">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="tO7-X2-YiK">
