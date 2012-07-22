@@ -21,7 +21,7 @@
 @synthesize semesterCodeField;
 @synthesize headerText;
 
-@synthesize getData;
+@synthesize setEditStatus;
 @synthesize userName;
 @synthesize schoolName;
 @synthesize semester;
