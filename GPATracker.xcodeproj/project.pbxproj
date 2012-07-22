@@ -1,0 +1,594 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F0C5C1015A754D2001A6BEA /* HomePageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C5C0F15A754D2001A6BEA /* HomePageTableView.m */; };
+		1F395B59158AD0EE009F879F /* GradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F395B58158AD0EE009F879F /* GradingScheme.m */; };
+		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
+		1F59F13A15AB5CDC007C788F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59F13915AB5CDC007C788F /* User.m */; };
+		1F59F13E15AB5F0D007C788F /* SchoolDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F59F13D15AB5F0D007C788F /* SchoolDetails.m */; };
+		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
+		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
+		1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A56151559EA00BD72F0 /* CoreGraphics.framework */; };
+		1F754A5D151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A5B151559EA00BD72F0 /* InfoPlist.strings */; };
+		1F754A5F151559EA00BD72F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A5E151559EA00BD72F0 /* main.m */; };
+		1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */; };
+		1F754A66151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */; };
+		1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */; };
+		1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A6B151559EA00BD72F0 /* LoginView.m */; };
+		1F754A74151559EA00BD72F0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A73151559EA00BD72F0 /* SenTestingKit.framework */; };
+		1F754A75151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
+		1F754A76151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
+		1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A7C151559EA00BD72F0 /* InfoPlist.strings */; };
+		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
+		1F95470D15B29D4B002D2D61 /* HomePageTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* HomePageTableCell1.m */; };
+		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
+		1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB5DF411566A9DD00CD3A8B /* CoreData.framework */; };
+		1FB771C515AE1E86006BC18A /* ProfileEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */; };
+		2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */; };
+		2D9C62AE15B51FE400B82973 /* SchoolEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */; };
+		2D9C62B215B5370700B82973 /* GradingSchemeSelectTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B115B5370700B82973 /* GradingSchemeSelectTableView.m */; };
+		2D9C62B515B5385300B82973 /* GradingSchemeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */; };
+		3475F09A15966E0F006D400F /* CourseListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09815966E0F006D400F /* CourseListTableView.m */; };
+		3475F0A015967139006D400F /* AddCourseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3475F09E15967139006D400F /* AddCourseView.m */; };
+		348338B4159689C4009B5D1E /* SemesterYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */; };
+		34C2C36215966A8300AEC8E3 /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C2C36115966A8300AEC8E3 /* Course.m */; };
+		34EDF98115B2159000C5FFA0 /* SemesterEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDF98015B2159000C5FFA0 /* SemesterEditTableView.m */; };
+		34EDF98415B21C9C00C5FFA0 /* SemesterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */; };
+		34EDF98A15B225C700C5FFA0 /* SemesterDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDF98915B225C700C5FFA0 /* SemesterDetails.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F754A77151559EA00BD72F0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F754A45151559EA00BD72F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F754A4D151559EA00BD72F0;
+			remoteInfo = GPATracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F0C5C0E15A754D2001A6BEA /* HomePageTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableView.h; sourceTree = "<group>"; };
+		1F0C5C0F15A754D2001A6BEA /* HomePageTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableView.m; sourceTree = "<group>"; };
+		1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPATracker.entitlements; sourceTree = "<group>"; };
+		1F395B57158AD0EE009F879F /* GradingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingScheme.h; sourceTree = "<group>"; };
+		1F395B58158AD0EE009F879F /* GradingScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingScheme.m; sourceTree = "<group>"; };
+		1F447033156AD48F0045242C /* GPATracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPATracker.xcdatamodel; sourceTree = "<group>"; };
+		1F59F13815AB5CDC007C788F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		1F59F13915AB5CDC007C788F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		1F59F13C15AB5F0D007C788F /* SchoolDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolDetails.h; sourceTree = "<group>"; };
+		1F59F13D15AB5F0D007C788F /* SchoolDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolDetails.m; sourceTree = "<group>"; };
+		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754A52151559EA00BD72F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F754A54151559EA00BD72F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1F754A56151559EA00BD72F0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1F754A5A151559EA00BD72F0 /* GPATracker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPATracker-Info.plist"; sourceTree = "<group>"; };
+		1F754A5C151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F754A5E151559EA00BD72F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F754A60151559EA00BD72F0 /* GPATracker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPATracker-Prefix.pch"; sourceTree = "<group>"; };
+		1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTECHAppDelegate.h; sourceTree = "<group>"; };
+		1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTECHAppDelegate.m; sourceTree = "<group>"; };
+		1F754A65151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		1F754A68151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		1F754A6A151559EA00BD72F0 /* LoginView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
+		1F754A6B151559EA00BD72F0 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
+		1F754A72151559EA00BD72F0 /* GPATrackerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GPATrackerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F754A73151559EA00BD72F0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1F754A7B151559EA00BD72F0 /* GPATrackerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GPATrackerTests-Info.plist"; sourceTree = "<group>"; };
+		1F754A7D151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F754A7F151559EA00BD72F0 /* GPATrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPATrackerTests.h; sourceTree = "<group>"; };
+		1F754A80151559EA00BD72F0 /* GPATrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPATrackerTests.m; sourceTree = "<group>"; };
+		1F95470B15B29D4B002D2D61 /* HomePageTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableCell1.m; sourceTree = "<group>"; };
+		1F95470C15B29D4B002D2D61 /* HomePageTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableCell1.h; sourceTree = "<group>"; };
+		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataCollection.h; sourceTree = "<group>"; };
+		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataCollection.m; sourceTree = "<group>"; };
+		1FB5DF411566A9DD00CD3A8B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		1FB771C315AE1E85006BC18A /* ProfileEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditTableView.h; sourceTree = "<group>"; };
+		1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditTableView.m; sourceTree = "<group>"; };
+		2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeView.h; sourceTree = "<group>"; };
+		2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeView.m; sourceTree = "<group>"; };
+		2D9C62AC15B51FE400B82973 /* SchoolEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolEditTableView.h; sourceTree = "<group>"; };
+		2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolEditTableView.m; sourceTree = "<group>"; };
+		2D9C62B015B5370700B82973 /* GradingSchemeSelectTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeSelectTableView.h; sourceTree = "<group>"; };
+		2D9C62B115B5370700B82973 /* GradingSchemeSelectTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeSelectTableView.m; sourceTree = "<group>"; };
+		2D9C62B315B5385200B82973 /* GradingSchemeTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeTableView.h; sourceTree = "<group>"; };
+		2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeTableView.m; sourceTree = "<group>"; };
+		3475F09715966E0F006D400F /* CourseListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListTableView.h; sourceTree = "<group>"; };
+		3475F09815966E0F006D400F /* CourseListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListTableView.m; sourceTree = "<group>"; };
+		3475F09D15967139006D400F /* AddCourseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseView.h; sourceTree = "<group>"; };
+		3475F09E15967139006D400F /* AddCourseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseView.m; sourceTree = "<group>"; };
+		348338B2159689C4009B5D1E /* SemesterYearPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterYearPickerViewController.h; sourceTree = "<group>"; };
+		348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterYearPickerViewController.m; sourceTree = "<group>"; };
+		34C2C36015966A8300AEC8E3 /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
+		34C2C36115966A8300AEC8E3 /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
+		34EDF97F15B2159000C5FFA0 /* SemesterEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SemesterEditTableView.h; path = ../SemesterEditTableView.h; sourceTree = "<group>"; };
+		34EDF98015B2159000C5FFA0 /* SemesterEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SemesterEditTableView.m; path = ../SemesterEditTableView.m; sourceTree = "<group>"; };
+		34EDF98215B21C9C00C5FFA0 /* SemesterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterTableView.h; sourceTree = "<group>"; };
+		34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterTableView.m; sourceTree = "<group>"; };
+		34EDF98815B225C700C5FFA0 /* SemesterDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterDetails.h; sourceTree = "<group>"; };
+		34EDF98915B225C700C5FFA0 /* SemesterDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterDetails.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F754A4B151559EA00BD72F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FB5DF421566A9DD00CD3A8B /* CoreData.framework in Frameworks */,
+				1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */,
+				1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */,
+				1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754A6E151559EA00BD72F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754A74151559EA00BD72F0 /* SenTestingKit.framework in Frameworks */,
+				1F754A75151559EA00BD72F0 /* UIKit.framework in Frameworks */,
+				1F754A76151559EA00BD72F0 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F754A43151559EA00BD72F0 = {
+			isa = PBXGroup;
+			children = (
+				1F754A58151559EA00BD72F0 /* GPATracker */,
+				1F754A79151559EA00BD72F0 /* GPATrackerTests */,
+				1F754A51151559EA00BD72F0 /* Frameworks */,
+				1F754A4F151559EA00BD72F0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F754A4F151559EA00BD72F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F754A4E151559EA00BD72F0 /* GPATracker.app */,
+				1F754A72151559EA00BD72F0 /* GPATrackerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F754A51151559EA00BD72F0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1FB5DF411566A9DD00CD3A8B /* CoreData.framework */,
+				1F754A52151559EA00BD72F0 /* UIKit.framework */,
+				1F754A54151559EA00BD72F0 /* Foundation.framework */,
+				1F754A56151559EA00BD72F0 /* CoreGraphics.framework */,
+				1F754A73151559EA00BD72F0 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F754A58151559EA00BD72F0 /* GPATracker */ = {
+			isa = PBXGroup;
+			children = (
+				34EDF98815B225C700C5FFA0 /* SemesterDetails.h */,
+				34EDF98915B225C700C5FFA0 /* SemesterDetails.m */,
+				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				1F59F13C15AB5F0D007C788F /* SchoolDetails.h */,
+				1F59F13D15AB5F0D007C788F /* SchoolDetails.m */,
+				1F59F13815AB5CDC007C788F /* User.h */,
+				1F59F13915AB5CDC007C788F /* User.m */,
+				34C2C36015966A8300AEC8E3 /* Course.h */,
+				34C2C36115966A8300AEC8E3 /* Course.m */,
+				1F395B57158AD0EE009F879F /* GradingScheme.h */,
+				1F395B58158AD0EE009F879F /* GradingScheme.m */,
+				1F9B8D77156C165E00CFB46C /* DataCollection.h */,
+				1F9B8D78156C165E00CFB46C /* DataCollection.m */,
+				1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */,
+				1F754A61151559EA00BD72F0 /* HTECHAppDelegate.h */,
+				1F754A62151559EA00BD72F0 /* HTECHAppDelegate.m */,
+				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
+				2D9C62B315B5385200B82973 /* GradingSchemeTableView.h */,
+				2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */,
+				2D9C62B015B5370700B82973 /* GradingSchemeSelectTableView.h */,
+				2D9C62B115B5370700B82973 /* GradingSchemeSelectTableView.m */,
+				2D9C62AC15B51FE400B82973 /* SchoolEditTableView.h */,
+				2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */,
+				34EDF98215B21C9C00C5FFA0 /* SemesterTableView.h */,
+				34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */,
+				1FB771C315AE1E85006BC18A /* ProfileEditTableView.h */,
+				1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */,
+				1F0C5C0E15A754D2001A6BEA /* HomePageTableView.h */,
+				1F0C5C0F15A754D2001A6BEA /* HomePageTableView.m */,
+				1F95470B15B29D4B002D2D61 /* HomePageTableCell1.m */,
+				1F95470C15B29D4B002D2D61 /* HomePageTableCell1.h */,
+				348338B2159689C4009B5D1E /* SemesterYearPickerViewController.h */,
+				348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */,
+				34EDF97F15B2159000C5FFA0 /* SemesterEditTableView.h */,
+				34EDF98015B2159000C5FFA0 /* SemesterEditTableView.m */,
+				3475F09D15967139006D400F /* AddCourseView.h */,
+				3475F09E15967139006D400F /* AddCourseView.m */,
+				3475F09715966E0F006D400F /* CourseListTableView.h */,
+				3475F09815966E0F006D400F /* CourseListTableView.m */,
+				2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */,
+				2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */,
+				1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */,
+				1F754A6A151559EA00BD72F0 /* LoginView.h */,
+				1F754A6B151559EA00BD72F0 /* LoginView.m */,
+				1F754A59151559EA00BD72F0 /* Supporting Files */,
+			);
+			path = GPATracker;
+			sourceTree = "<group>";
+		};
+		1F754A59151559EA00BD72F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F754A5A151559EA00BD72F0 /* GPATracker-Info.plist */,
+				1F754A5B151559EA00BD72F0 /* InfoPlist.strings */,
+				1F754A5E151559EA00BD72F0 /* main.m */,
+				1F754A60151559EA00BD72F0 /* GPATracker-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F754A79151559EA00BD72F0 /* GPATrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				1F754A7F151559EA00BD72F0 /* GPATrackerTests.h */,
+				1F754A80151559EA00BD72F0 /* GPATrackerTests.m */,
+				1F754A7A151559EA00BD72F0 /* Supporting Files */,
+			);
+			path = GPATrackerTests;
+			sourceTree = "<group>";
+		};
+		1F754A7A151559EA00BD72F0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F754A7B151559EA00BD72F0 /* GPATrackerTests-Info.plist */,
+				1F754A7C151559EA00BD72F0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F754A4D151559EA00BD72F0 /* GPATracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754A84151559EA00BD72F0 /* Build configuration list for PBXNativeTarget "GPATracker" */;
+			buildPhases = (
+				1F754A4A151559EA00BD72F0 /* Sources */,
+				1F754A4B151559EA00BD72F0 /* Frameworks */,
+				1F754A4C151559EA00BD72F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GPATracker;
+			productName = GPATracker;
+			productReference = 1F754A4E151559EA00BD72F0 /* GPATracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F754A71151559EA00BD72F0 /* GPATrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F754A87151559EA00BD72F0 /* Build configuration list for PBXNativeTarget "GPATrackerTests" */;
+			buildPhases = (
+				1F754A6D151559EA00BD72F0 /* Sources */,
+				1F754A6E151559EA00BD72F0 /* Frameworks */,
+				1F754A6F151559EA00BD72F0 /* Resources */,
+				1F754A70151559EA00BD72F0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F754A78151559EA00BD72F0 /* PBXTargetDependency */,
+			);
+			name = GPATrackerTests;
+			productName = GPATrackerTests;
+			productReference = 1F754A72151559EA00BD72F0 /* GPATrackerTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F754A45151559EA00BD72F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HTECH;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 1F754A48151559EA00BD72F0 /* Build configuration list for PBXProject "GPATracker" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1F754A43151559EA00BD72F0;
+			productRefGroup = 1F754A4F151559EA00BD72F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F754A4D151559EA00BD72F0 /* GPATracker */,
+				1F754A71151559EA00BD72F0 /* GPATrackerTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F754A4C151559EA00BD72F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754A5D151559EA00BD72F0 /* InfoPlist.strings in Resources */,
+				1F754A66151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard in Resources */,
+				1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754A6F151559EA00BD72F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F754A70151559EA00BD72F0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F754A4A151559EA00BD72F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754A5F151559EA00BD72F0 /* main.m in Sources */,
+				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
+				1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */,
+				1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */,
+				1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */,
+				1F395B59158AD0EE009F879F /* GradingScheme.m in Sources */,
+				2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */,
+				34C2C36215966A8300AEC8E3 /* Course.m in Sources */,
+				3475F09A15966E0F006D400F /* CourseListTableView.m in Sources */,
+				3475F0A015967139006D400F /* AddCourseView.m in Sources */,
+				348338B4159689C4009B5D1E /* SemesterYearPickerViewController.m in Sources */,
+				1F0C5C1015A754D2001A6BEA /* HomePageTableView.m in Sources */,
+				1F59F13A15AB5CDC007C788F /* User.m in Sources */,
+				1F59F13E15AB5F0D007C788F /* SchoolDetails.m in Sources */,
+				1FB771C515AE1E86006BC18A /* ProfileEditTableView.m in Sources */,
+				34EDF98115B2159000C5FFA0 /* SemesterEditTableView.m in Sources */,
+				34EDF98415B21C9C00C5FFA0 /* SemesterTableView.m in Sources */,
+				34EDF98A15B225C700C5FFA0 /* SemesterDetails.m in Sources */,
+				1F95470D15B29D4B002D2D61 /* HomePageTableCell1.m in Sources */,
+				2D9C62AE15B51FE400B82973 /* SchoolEditTableView.m in Sources */,
+				2D9C62B215B5370700B82973 /* GradingSchemeSelectTableView.m in Sources */,
+				2D9C62B515B5385300B82973 /* GradingSchemeTableView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F754A6D151559EA00BD72F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F754A78151559EA00BD72F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F754A4D151559EA00BD72F0 /* GPATracker */;
+			targetProxy = 1F754A77151559EA00BD72F0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1F754A5B151559EA00BD72F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F754A5C151559EA00BD72F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F754A65151559EA00BD72F0 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		1F754A67151559EA00BD72F0 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F754A68151559EA00BD72F0 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		1F754A7C151559EA00BD72F0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F754A7D151559EA00BD72F0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F754A82151559EA00BD72F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1F754A83151559EA00BD72F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F754A85151559EA00BD72F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GPATracker/GPATracker.entitlements;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
+				INFOPLIST_FILE = "GPATracker/GPATracker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1F754A86151559EA00BD72F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GPATracker/GPATracker.entitlements;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
+				INFOPLIST_FILE = "GPATracker/GPATracker-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1F754A88151559EA00BD72F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GPATracker.app/GPATracker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
+				INFOPLIST_FILE = "GPATrackerTests/GPATrackerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1F754A89151559EA00BD72F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GPATracker.app/GPATracker";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
+				INFOPLIST_FILE = "GPATrackerTests/GPATrackerTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F754A48151559EA00BD72F0 /* Build configuration list for PBXProject "GPATracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754A82151559EA00BD72F0 /* Debug */,
+				1F754A83151559EA00BD72F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754A84151559EA00BD72F0 /* Build configuration list for PBXNativeTarget "GPATracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754A85151559EA00BD72F0 /* Debug */,
+				1F754A86151559EA00BD72F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F754A87151559EA00BD72F0 /* Build configuration list for PBXNativeTarget "GPATrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F754A88151559EA00BD72F0 /* Debug */,
+				1F754A89151559EA00BD72F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F447033156AD48F0045242C /* GPATracker.xcdatamodel */,
+			);
+			currentVersion = 1F447033156AD48F0045242C /* GPATracker.xcdatamodel */;
+			path = GPATracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1F754A45151559EA00BD72F0 /* Project object */;
+}
