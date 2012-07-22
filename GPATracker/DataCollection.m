@@ -291,7 +291,7 @@
     NSLog(@"Setting up Fetched Results Controller for Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     
-    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@ AND semesterName", inputUserName, inputSchoolName, inputSemesterName];
+    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@ AND semesterName = %@", inputUserName, inputSchoolName, inputSemesterName];
     
     NSLog(@"Filtering data based on userName = %@ AND schoolName = %@ AND semesterName = %@", inputUserName, inputSchoolName, inputSemesterName);
     

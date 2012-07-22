@@ -23,9 +23,9 @@
 @synthesize semesterCodeField;
 @synthesize headerText;
 @synthesize setEditStatus;
-@synthesize userName;
-@synthesize schoolName;
-@synthesize semesterName;
+@synthesize userName = _userName;
+@synthesize schoolName = _schoolName;
+@synthesize semesterName = _semesterName;
 @synthesize semester;
 @synthesize dataCollection;
 
@@ -65,7 +65,7 @@
     
     DataCollection *data = [[DataCollection alloc] init];
     
-    NSArray *results = [data retrieveSemester:semesterName schoolName:schoolName userName:userName];
+    NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
     
     if(results == nil)
     {
@@ -110,7 +110,7 @@
     
     DataCollection *data = [DataCollection alloc];
     
-    NSArray *results = [data retrieveSemester:semesterName schoolName:schoolName userName:userName];
+    NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
     
     // TODO: add in logic for creating automated semester code
     
@@ -129,7 +129,7 @@
             // Find semester and edit it
             DataCollection *data = [[DataCollection alloc] init];
             
-            NSArray *results = [data retrieveSemester:semesterName schoolName:schoolName userName:userName];
+            NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
             
             if(results == nil)
             {
@@ -201,6 +201,7 @@
     {
         SemesterTableView *SemesterTableView = [segue destinationViewController];
         SemesterTableView.userName = self.userName;
+        SemesterTableView.schoolName = self.schoolName;
     }
 }
 

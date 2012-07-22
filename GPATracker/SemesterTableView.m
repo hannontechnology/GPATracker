@@ -20,6 +20,7 @@
 @synthesize userName = _userName;
 @synthesize schoolName = _schoolName;
 @synthesize semesterList = _semesterList;
+@synthesize selectedIndexPath = _selectedIndexPath;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,7 +35,6 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     DataCollection *data = [[DataCollection alloc] init];
-    
     self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
     
     if (self.semesterList == nil) 
@@ -94,7 +94,10 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"semesterListCell";
+    DataCollection *data = [[DataCollection alloc] init];
+    self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+
+    static NSString *CellIdentifier = @"semesterListCell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil)
@@ -110,10 +113,24 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    DataCollection *data = [[DataCollection alloc] init];
+    self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
     if ([segue.identifier isEqualToString:@"segueAddSemester"])
     {
+        UINavigationController *navCon = [segue destinationViewController];
+        SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
+        
+        SemesterEditTableView.userName = self.userName;
+        SemesterEditTableView.schoolName = self.schoolName;
+    }
+    else if ([segue.identifier isEqualToString:@"segueEditSemester"])
+    {
+        SemesterDetails *selectedObject = [self.semesterList objectAtIndex:self.selectedIndexPath.row];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
+        SemesterEditTableView.userName = self.userName;
+        SemesterEditTableView.schoolName = self.schoolName;
+        SemesterEditTableView.semesterName = [selectedObject semesterName];
     }
 }
 /*

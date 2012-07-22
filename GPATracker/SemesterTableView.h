@@ -13,5 +13,6 @@
 @property (strong, nonatomic) NSArray *semesterList;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *schoolName;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @end
