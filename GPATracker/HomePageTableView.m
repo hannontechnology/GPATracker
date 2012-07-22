@@ -46,22 +46,6 @@
     //NSError *error = nil;
     self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
     
-    if (self.schoolList == nil)
-    {
-        return;
-    }
-    else
-    {
-        if ([self.schoolList count] > 0)
-        {
-            NSLog(@"School List:");
-            for (SchoolDetails *item in self.schoolList)
-            {
-                NSLog(@"School Found: %@ - %@",item.schoolName, item.schoolDetails);
-            }
-        }
-    }
-    
     [super viewWillAppear:(BOOL)animated];
 //    
 //    [self.tableView reloadData];
@@ -121,8 +105,7 @@
     cell.cellLabel2.text = [selectedObject schoolDetails];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject schoolStartYear], [selectedObject schoolEndYear]];
     cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@", [selectedObject schoolActualGPA].stringValue];
-    
-    
+
     return cell;
 }
 
