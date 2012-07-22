@@ -1214,7 +1214,13 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Add Semester" id="SKv-FE-rvS"/>
+                    <navigationItem key="navigationItem" title="Add Semester" id="SKv-FE-rvS">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="TRf-Ch-YQE">
+                            <connections>
+                                <action selector="Accept:" destination="YTG-zN-KQM" id="KG0-Ad-iSo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1225,7 +1231,7 @@
                         <outlet property="semesterCodeField" destination="q6q-Oi-89S" id="Jf4-tD-vKR"/>
                         <outlet property="semesterNameField" destination="tn4-Jg-pyS" id="Y3o-pM-LB6"/>
                         <outlet property="semesterYearField" destination="swA-3z-dFr" id="dRF-RH-xZ5"/>
-                        <segue destination="USk-0t-HId" kind="modal" identifier="segueEditSemesterToSemester" id="9qa-yz-LcS"/>
+                        <segue destination="USk-0t-HId" kind="push" identifier="segueEditSemesterToSemester" id="9qa-yz-LcS"/>
                     </connections>
                 </tableViewController>
             </objects>
