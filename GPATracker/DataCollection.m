@@ -333,6 +333,7 @@
         NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
         
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@ AND semesterName = %@", item.userName, item.schoolName, item.semesterName];
         
         NSError *error = nil;
         NSArray *results = [moc executeFetchRequest:request error:&error];

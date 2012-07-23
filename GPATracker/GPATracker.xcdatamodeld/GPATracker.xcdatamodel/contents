@@ -3,13 +3,17 @@
     <entity name="Course" representedClassName="Course" syncable="YES">
         <attribute name="actualGrade" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="calculatedGrade" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="courseCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseID" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="courseName" attributeType="String" syncable="YES"/>
         <attribute name="desiredGrade" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="includeInGPA" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="isPassFail" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semesterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="units" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">
         <attribute name="gradeA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -53,7 +57,7 @@
         <relationship name="schools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="users" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="-8370" positionY="-11088" width="128" height="180"/>
+        <element name="Course" positionX="-8370" positionY="-11088" width="128" height="240"/>
         <element name="GradingScheme" positionX="160" positionY="192" width="128" height="210"/>
         <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="165"/>
         <element name="SemesterDetails" positionX="-8372" positionY="-11232" width="128" height="90"/>

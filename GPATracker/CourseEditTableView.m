@@ -7,12 +7,32 @@
 //
 
 #import "CourseEditTableView.h"
+#import "Course.h"
+#import "DataCollection.h"
+#import "HomePageTableView.h"
+#import "LoginView.h"
+
 
 @interface CourseEditTableView ()
+
+- (IBAction)Accept:(id)sender;
+- (IBAction)Cancel:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
 
 @end
 
 @implementation CourseEditTableView
+@synthesize setEditStatus = _setEditStatus;
+@synthesize userName = _userName;
+@synthesize courseCodeField;
+@synthesize courseNameField;
+@synthesize courseUnitsField;
+@synthesize courseDesiredGradeField;
+@synthesize courseActualGradeField;
+@synthesize coursePassFailField;
+@synthesize courseIncludeInGPAField;
+@synthesize courseDescriptionField;
+@synthesize headerText;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -21,6 +41,54 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    //cancelButton.
+    
+    if (self.setEditStatus != @"Edit")
+    {
+        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+        //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
+        self.navigationItem.leftBarButtonItem = cancelButton;
+        self.navigationItem.hidesBackButton = YES;
+        return;
+    }
+    DataCollection *data = [[DataCollection alloc] init];
+    
+    //NSError *error = nil;
+    NSArray *results = [data retrieveUsers:self.userName];
+    
+    if (results == nil)
+    {
+        //status.text = @"Database Error: Could not connect to Database";
+    }
+    else
+    {
+        if ([results count] > 0)
+        {
+            NSLog(@"Load Profile Page");
+            headerText.title = @"Edit Profile";
+            for (Course *item in results)
+            {
+                courseCodeField.text  = item.courseCode;
+                courseNameField.text  = item.courseName;
+                //courseUnitsField.text  = item.units;
+                //courseDesiredGradeField.text = item.desiredGrade;
+                //courseActualGradeField.text  = item.actualGrade;
+                if (item.isPassFail == [NSNumber numberWithInt:1])
+                {
+                    coursePassFailField.on = YES;
+                }
+                if (item.includeInGPA == [NSNumber numberWithInt:1])
+                {
+                    courseIncludeInGPAField.on = YES;
+                }
+            }
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -36,6 +104,15 @@
 
 - (void)viewDidUnload
 {
+    [self setCourseCodeField:nil];
+    [self setCourseNameField:nil];
+    [self setCourseUnitsField:nil];
+    [self setCourseDesiredGradeField:nil];
+    [self setCourseActualGradeField:nil];
+    [self setCoursePassFailField:nil];
+    [self setCourseIncludeInGPAField:nil];
+    [self setCourseDescriptionField:nil];
+    [self setHeaderText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -46,82 +123,141 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (IBAction)Accept:(id)sender
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if ([courseCodeField.text length] == 0)
+    {
+        //status.text = @"Username field is Required.";
+        return;
+    }
+    DataCollection *data = [DataCollection alloc];
     
-    // Configure the cell...
+    //NSError *error = nil;
+    NSArray *results = [data retrieveUsers:courseCodeField.text];
+    NSNumber *includeInGPA = 0;
+    NSNumber *isPassFail = 0;
     
-    return cell;
+    if (self.setEditStatus == @"Edit")
+    {
+        if (coursePassFailField.on)
+        {
+            isPassFail = [NSNumber numberWithInt:1];
+        }
+        if (courseIncludeInGPAField.on)
+        {
+            includeInGPA = [NSNumber numberWithInt:1];
+        }
+        if ([courseNameField.text length] == 0)
+        {
+            //status.text = @"Password field is Required.";
+        }
+        else
+        {
+            self.courseCode = courseCodeField.text;
+            DataCollection *data = [[DataCollection alloc] init];
+            
+            //NSError *error = nil;
+            NSArray *results = [data retrieveUsers:self.userName];
+            
+            if (results == nil)
+            {
+                //status.text = @"Database Error: Could not connect to Database";
+            }
+            else
+            {
+                if ([results count] > 0)
+                {
+                    NSLog(@"Save Profile Page");
+                    for (Course *item in results)
+                    {
+                        item.courseCode   = courseCodeField.text;
+                        item.courseName   = courseNameField.text;
+                        //item.units        = courseUnitsField.text;
+                        //item.desiredGrade = courseDesiredGradeField.text;
+                        //item.actualGrade  = courseActualGradeField.text;
+                        item.isPassFail   = isPassFail;
+                        item.includeInGPA = includeInGPA;
+                        item.courseDesc   = courseDescriptionField.text;
+                    }
+                    if ([data updateUser:results] == 0)
+                    {
+                        [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                    }
+                    else 
+                    {
+                    }
+                }
+            }
+        }      
+    }
+    else if ([results count] == 0)
+    {
+        if (coursePassFailField.on)
+        {
+            isPassFail = [NSNumber numberWithInt:1];
+        }
+        if (courseIncludeInGPAField.on)
+        {
+            includeInGPA = [NSNumber numberWithInt:1];
+        }
+        if ([courseNameField.text length] == 0)
+        {
+            //status.text = @"Password field is Required.";
+        }
+        else
+        {
+            //int addResult = [data addUser:(NSString *)userNameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text autoLogin:(NSNumber *)autoLogin];
+            //if (addResult == 0)
+            //{
+            //    self.userName = userNameField.text;
+            //    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+            //}
+            //else 
+            //{
+                //status.text = @"Create user failed!";
+            //}
+        }
+    }
+    else
+    {
+        //status.text = @"Username already taken.";
+    }    
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)Cancel:(id)sender
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if (self.setEditStatus == @"Edit")
+    {
+        [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
+    }
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)textFieldReturn:(id)sender
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+    [sender resignFirstResponder];
+} 
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+	if ([segue.identifier isEqualToString:@"segueProfile2HomePage"])
+	{
+        //        UINavigationController *navCon = [segue destinationViewController];
+        //        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
+        HomePageTableView *HomePageTableView = [segue destinationViewController];
+        
+        HomePageTableView.userName = self.userName;
+	}
+	else if ([segue.identifier isEqualToString:@"segueProfile2Login"])
+	{
+        LoginView *LoginView = [segue destinationViewController];
+        
+        LoginView.getData  = @"Logout";
+        LoginView.userName = self.userName;
+	}
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
-
 @end
