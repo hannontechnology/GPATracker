@@ -102,6 +102,8 @@
 
 - (IBAction)Accept:(id)sender
 {
+    // TODO: add in check for repeat semesters
+    
     if(([semesterNameField.text length] == 0) || ([semesterYearField.text length] == 0))
     {
         // TODO: Error message
@@ -153,7 +155,7 @@
                 }
                 if ([data updateSemester:results] == 0)
                 {
-                    [self performSegueWithIdentifier:@"segueAddSemesterToSemester" sender:self];
+                    [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
                 }
                 else 
                 {
