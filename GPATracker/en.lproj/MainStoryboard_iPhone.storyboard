@@ -1035,7 +1035,6 @@
                                     <outlet property="cellLabel2" destination="cHu-2m-PqY" id="qDP-ID-cr8"/>
                                     <outlet property="cellLabel3" destination="bE5-dC-8wI" id="ud5-dh-cQn"/>
                                     <outlet property="cellLabelGPA" destination="LLl-92-0Qc" id="tgJ-bs-Gl7"/>
-                                    <segue destination="USk-0t-HId" kind="push" identifier="segueSemesterList" id="ISb-Vl-hnV"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1070,6 +1069,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="doq-fP-RTd" kind="push" identifier="segueEditSchool" id="3xK-NI-FQs"/>
+                        <segue destination="USk-0t-HId" kind="push" identifier="segueSemesterList" id="phW-HU-sP7"/>
                     </connections>
                 </tableViewController>
             </objects>

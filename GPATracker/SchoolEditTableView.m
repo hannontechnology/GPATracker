@@ -150,7 +150,7 @@
                     }
                     else
                     {
-                        // do nothing
+                        NSLog(@"Save Failed!");
                     }
                 }
             }
@@ -185,12 +185,14 @@
             else
             {
                 //status.text = @"Create school failed.";
+                NSLog(@"Create school failed!");
             }
         }
     }
     else
     {
         //status.text = @"School Name already taken.";
+        NSLog(@"School Name already taken!");
     }    
 }
 

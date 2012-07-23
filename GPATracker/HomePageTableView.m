@@ -236,6 +236,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier: @"segueSemesterList" sender: self];
     
     // Navigation logic may go here. Create and push another view controller.
     /*
