@@ -323,6 +323,50 @@
     return 0;
 }
 
+- (int)updateSemester:(NSArray *)inputSemester
+{
+    for(SemesterDetails *item in inputSemester)
+    {
+        NSManagedObjectContext *moc = [self managedObjectContext];
+        
+        NSString *entityName = @"SemesterDetails";
+        NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
+        
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        
+        NSError *error = nil;
+        NSArray *results = [moc executeFetchRequest:request error:&error];
+        
+        if([results count] > 0)
+        {
+            results = inputSemester;
+        }
+        
+        if(![moc save:&error])
+        {
+            NSLog(@"Couldn't save: %@", [error localizedDescription]);
+            return -1;
+        }
+    }
+    return 0;
+}
+
+- (int)deleteSemester:(NSManagedObject *)inputSemester
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    [moc deleteObject:inputSemester];
+    
+    NSError *error = nil;
+    if(![moc save:&error])
+    {
+        NSLog(@"Delete semester failed: %@", [error localizedDescription]);
+        return -1;
+    }
+    NSLog(@"Delete semester successful!");
+    return 0;
+}
+
 - (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];

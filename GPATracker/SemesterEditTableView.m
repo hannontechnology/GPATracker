@@ -127,6 +127,7 @@
         else 
         {
             // Find semester and edit it
+            self.semesterName = semesterNameField.text;
             DataCollection *data = [[DataCollection alloc] init];
             
             NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
@@ -149,6 +150,14 @@
                     item.semesterYear = s_year;
                     NSNumber *s_code = [f numberFromString:semesterCodeField.text];
                     item.semesterCode = s_code;
+                }
+                if ([data updateSemester:results] == 0)
+                {
+                    [self performSegueWithIdentifier:@"segueAddSemesterToSemester" sender:self];
+                }
+                else 
+                {
+                    NSLog(@"Save Semester Failed! :(");
                 }
             }
             else {
