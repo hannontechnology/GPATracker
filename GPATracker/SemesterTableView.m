@@ -34,6 +34,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 2.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+    
     DataCollection *data = [[DataCollection alloc] init];
     self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
     
@@ -106,6 +111,8 @@
     }
     
     SemesterDetails *selectedObject = [self.semesterList objectAtIndex:indexPath.row];
+    
+    // TODO: create class semesterListCell2 and include custom labels for display to cell
     cell.textLabel.text = [selectedObject semesterName];
     
     return cell;
@@ -115,8 +122,11 @@
 {
     DataCollection *data = [[DataCollection alloc] init];
     self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+    
+    NSLog(@"prepareForSegue Event of SemesterTableView");
     if ([segue.identifier isEqualToString:@"segueAddSemester"])
     {
+        // Use this code if going to a navigation controller before accessing destination screen
         UINavigationController *navCon = [segue destinationViewController];
         SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         
@@ -131,30 +141,39 @@
         SemesterEditTableView.userName = self.userName;
         SemesterEditTableView.schoolName = self.schoolName;
         SemesterEditTableView.semesterName = [selectedObject semesterName];
+        SemesterEditTableView.setEditStatus = @"Edit";
     }
 }
-/*
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    DataCollection *data = [[DataCollection alloc] init];
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+        NSManagedObject *semesterToDelete = [self.semesterList objectAtIndex:indexPath.row];
+        [data deleteSchool:semesterToDelete];
+        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+        
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -163,14 +182,39 @@
 }
 */
 
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
+
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
+        return;
+
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    self.selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+    
+    alert = [[UIAlertView alloc] initWithTitle:@"Edit/Delete" message:@"Please edit or delete item" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Edit", @"Delete", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self performSegueWithIdentifier:@"segueEditSemester" sender:self];
+    }
+    else if (buttonIndex == 2)
+    {
+        DataCollection *data = [[DataCollection alloc] init];
+        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 
 #pragma mark - Table view delegate
 
