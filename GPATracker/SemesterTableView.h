@@ -9,10 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface SemesterTableView : UITableViewController
-
+{
+    IBOutlet UIAlertView *alert;
+}
 @property (strong, nonatomic) NSArray *semesterList;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *schoolName;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
+-(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 
 @end
