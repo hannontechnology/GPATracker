@@ -1,18 +1,18 @@
 //
-//  CourseListTableView.m
+//  CourseTableView.m
 //  GPATracker
 //
 //  Created by terryah on 12-07-22.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "CourseListTableView.h"
+#import "CourseTableView.h"
 
-@interface CourseListTableView ()
+@interface CourseTableView ()
 
 @end
 
-@implementation CourseListTableView
+@implementation CourseTableView
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
