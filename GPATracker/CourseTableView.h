@@ -1,5 +1,5 @@
 //
-//  CourseListTableView.h
+//  CourseTableView.h
 //  GPATracker
 //
 //  Created by terryah on 12-07-22.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CourseListTableView : UITableViewController
+@interface CourseTableView : UITableViewController
 
 @end
