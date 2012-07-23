@@ -1176,7 +1176,7 @@
                         <outlet property="semesterCodeField" destination="q6q-Oi-89S" id="Jf4-tD-vKR"/>
                         <outlet property="semesterNameField" destination="tn4-Jg-pyS" id="Y3o-pM-LB6"/>
                         <outlet property="semesterYearField" destination="swA-3z-dFr" id="dRF-RH-xZ5"/>
-                        <segue destination="USk-0t-HId" kind="modal" identifier="segueEditSemesterToSemester" id="9qa-yz-LcS"/>
+                        <segue destination="USk-0t-HId" kind="push" identifier="segueEditSemesterToSemester" id="9qa-yz-LcS"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1961,6 +1961,10 @@
         </class>
         <class className="SemesterTableView" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
