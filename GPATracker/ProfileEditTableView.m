@@ -91,6 +91,7 @@
                     autoLoginField.on = YES;
                 }
             }
+            userNameField.enabled = NO;
         }
     }
 }

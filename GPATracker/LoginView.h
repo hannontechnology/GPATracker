@@ -15,14 +15,13 @@
 
 - (IBAction)Login:(id)sender;
 - (IBAction)ForgotPassword:(id)sender;
-- (IBAction)CreateProfile:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
-- (IBAction)setAutoLogin:(id)sender;
 
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSString *getData;
 @property (strong, nonatomic) NSString *userName;
+@property (strong, nonatomic) NSArray *userInfo;
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;

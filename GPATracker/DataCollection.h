@@ -55,5 +55,10 @@
 - (int)deleteSemester:(NSManagedObject *)inputSemester;
 
 // Course Section
+- (NSArray *)retrieveCourses:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+- (NSArray *)retrieveCourses:(NSString *)inputSchoolName semesterName:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+- (int)addCourse:(NSString *)inputCourseCode semesterName:(NSString *)inputSemesterName semesterName:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
+- (int)updateCourse:(NSArray *)inputSchool;
+- (int)deleteCourse:(NSManagedObject *)inputCourse;
 
 @end

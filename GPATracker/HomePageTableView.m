@@ -22,6 +22,7 @@
 @synthesize userName = _userName;
 @synthesize schoolList = _schoolList;
 @synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize userInfo = _userInfo;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

@@ -15,6 +15,7 @@
 @property (strong, nonatomic) NSArray *schoolList;
 @property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (strong, nonatomic) NSArray *userInfo;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 

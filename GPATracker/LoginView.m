@@ -23,6 +23,7 @@
 @synthesize autoLoginSelector;
 @synthesize getData;
 @synthesize userName;
+@synthesize userInfo = _userInfo;
 
 
 - (IBAction)Login:(id)sender
@@ -62,6 +63,7 @@
         {
             if (autoLoginSelector.on)
             {
+                self.userInfo = results;
                 [data removeAutoLogin];
                 [data setAutoLogin:userNameField.text];
             }
@@ -93,16 +95,6 @@
     }
 }
 
-- (IBAction)CreateProfile:(id)sender
-{
-    
-}
-
-- (IBAction)setAutoLogin:(id)sender
-{
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -118,18 +110,18 @@
     DataCollection *data = [[DataCollection alloc] init];
     
     //NSError *error = nil;
-    NSArray *results = [data retrieveAutoLogin];
+    self.userInfo = [data retrieveAutoLogin];
     
-    if (results == nil)
+    if (self.userInfo == nil)
     {
         status.text = @"Database Error: Could not connect to Database";
     }
     else
     {
-        if ([results count] > 0)
+        if ([self.userInfo count] > 0)
         {
             NSLog(@"Goto Home Page");
-            for (User *item in results)
+            for (User *item in self.userInfo)
             {
                 userName = item.userName;
             }
@@ -172,6 +164,7 @@
         UINavigationController *navCon = [segue destinationViewController];
         HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         
+        HomePageTableView.userInfo = self.userInfo;
         HomePageTableView.userName = userName;
 	}
 }
