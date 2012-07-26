@@ -19,10 +19,10 @@
 @property (nonatomic, copy) NSArray *masterSchoolList;
 
 // User Section
-- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword; 
-- (NSArray *)retrieveUsers:(NSString *)inputUserName; 
+- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext; 
+- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext; 
 - (NSArray *)retrieveUsers;
-- (NSArray *)retrieveAutoLogin;
+- (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext;
 - (void)removeAutoLogin;
 - (void)setAutoLogin:(NSString *)inputUserName; 
 - (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin;

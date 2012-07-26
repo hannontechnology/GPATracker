@@ -21,15 +21,18 @@
 @end
 
 @implementation ProfileEditTableView
+@synthesize headerText;
 @synthesize firstNameField;
 @synthesize lastNameField;
 @synthesize emailField;
-@synthesize setEditStatus = _setEditStatus;
-@synthesize userName = _userName;
 @synthesize userNameField;
 @synthesize passwordField;
 @synthesize autoLoginField;
-@synthesize headerText;
+
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize setEditStatus = _setEditStatus;
+@synthesize userInfo = _userInfo;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -64,36 +67,26 @@
         self.navigationItem.hidesBackButton = YES;
         return;
     }
-    DataCollection *data = [[DataCollection alloc] init];
-    
-    //NSError *error = nil;
-    NSArray *results = [data retrieveUsers:self.userName];
-    
-    if (results == nil)
+
+    if (self.userInfo == nil)
     {
         //status.text = @"Database Error: Could not connect to Database";
     }
     else
     {
-        if ([results count] > 0)
+        NSLog(@"Load Profile Page");
+        headerText.title = @"Edit Profile";
+        userNameField.text  = self.userInfo.userName;
+        passwordField.text  = self.userInfo.userPassword;
+        firstNameField.text = self.userInfo.userFirstName;
+        lastNameField.text  = self.userInfo.userLastName;
+        emailField.text     = self.userInfo.userEmail;
+        if (self.userInfo.autoLogon == [NSNumber numberWithInt:1])
         {
-            NSLog(@"Load Profile Page");
-            headerText.title = @"Edit Profile";
-            for (User *item in results)
-            {
-                userNameField.text  = item.userName;
-                passwordField.text  = item.userPassword;
-                firstNameField.text = item.userFirstName;
-                lastNameField.text  = item.userLastName;
-                emailField.text     = item.userEmail;
-                if (item.autoLogon == [NSNumber numberWithInt:1])
-                {
-                    autoLoginField.on = YES;
-                }
-            }
-            userNameField.enabled = NO;
+            autoLoginField.on = YES;
         }
     }
+    userNameField.enabled = NO;
 }
 
 - (void)viewDidUnload
@@ -117,10 +110,8 @@
         //status.text = @"Username field is Required.";
         return;
     }
-    DataCollection *data = [DataCollection alloc];
-    
-    //NSError *error = nil;
-    NSArray *results = [data retrieveUsers:userNameField.text];
+    NSError *error = nil;
+    NSArray *results = [self.dataCollection retrieveUsers:userNameField.text inContext:self.managedObjectContext];
     NSNumber *autoLogin = 0;
     
     if (self.setEditStatus == @"Edit")
@@ -147,42 +138,33 @@
         }
         else
         {
-            self.userName = userNameField.text;
-            DataCollection *data = [[DataCollection alloc] init];
-            
-            //NSError *error = nil;
-            NSArray *results = [data retrieveUsers:self.userName];
-            
-            if (results == nil)
+            if (self.userInfo == nil)
             {
                 //status.text = @"Database Error: Could not connect to Database";
             }
             else
             {
-                if ([results count] > 0)
+                NSLog(@"Save Profile Page");
+                self.userInfo.userName      = userNameField.text;
+                self.userInfo.userPassword  = passwordField.text;
+                self.userInfo.userFirstName = firstNameField.text;
+                self.userInfo.userLastName  = lastNameField.text;
+                self.userInfo.userEmail     = emailField.text;
+                self.userInfo.autoLogon     = autoLogin;
+                //NSManagedObjectContext *moc = [self managedObjectContext];
+                if ([[self managedObjectContext] save:&error])
                 {
-                    NSLog(@"Save Profile Page");
-                    for (User *item in results)
+                    NSLog(@"Save was successful");
+                    if (autoLoginField.on)
                     {
-                        item.userName      = userNameField.text;
-                        item.userPassword  = passwordField.text;
-                        item.userFirstName = firstNameField.text;
-                        item.userLastName  = lastNameField.text;
-                        item.userEmail     = emailField.text;
-                        item.autoLogon     = autoLogin;
+                        [self.dataCollection removeAutoLogin];
+                        [self.dataCollection setAutoLogin:userNameField.text];
                     }
-                    if ([data updateUser:results] == 0)
-                    {
-                        if (autoLoginField.on)
-                        {
-                            [data removeAutoLogin];
-                            [data setAutoLogin:userNameField.text];
-                        }
-                        [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
-                    }
-                    else 
-                    {
-                    }
+                    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                }
+                else 
+                {
+                    NSLog(@"Save Error! - %@",error.userInfo);
                 }
             }
         }      
@@ -211,26 +193,34 @@
         }
         else
         {
-            int addResult = [data addUser:(NSString *)userNameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text autoLogin:(NSNumber *)autoLogin];
-            if (addResult == 0)
+            self.userInfo = [NSEntityDescription
+                             insertNewObjectForEntityForName:@"User"
+                             inManagedObjectContext:self.managedObjectContext];
+            self.userInfo.userName      = userNameField.text;
+            self.userInfo.userPassword  = passwordField.text;
+            self.userInfo.userFirstName = firstNameField.text;
+            self.userInfo.userLastName  = lastNameField.text;
+            self.userInfo.userEmail     = emailField.text;
+            self.userInfo.autoLogon     = autoLogin;
+            
+            if ([self.managedObjectContext save:&error])
             {
                 if (autoLoginField.on)
                 {
-                    [data removeAutoLogin];
-                    [data setAutoLogin:userNameField.text];
+                    //[self.dataCollection removeAutoLogin];
+                    //[self.dataCollection setAutoLogin:userNameField.text];
                 }
-                self.userName = userNameField.text;
                 [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
             }
             else 
             {
-                //status.text = @"Create user failed!";
+                NSLog(@"Create user failed!");
             }
         }
     }
     else
     {
-        //status.text = @"Username already taken.";
+        NSLog(@"Username already taken.");
     }    
 }
 
@@ -255,18 +245,19 @@
 {
 	if ([segue.identifier isEqualToString:@"segueProfile2HomePage"])
 	{
-//        UINavigationController *navCon = [segue destinationViewController];
-//        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         HomePageTableView *HomePageTableView = [segue destinationViewController];
         
-        HomePageTableView.userName = self.userName;
+        HomePageTableView.userInfo = self.userInfo;
+        HomePageTableView.dataCollection = self.dataCollection;
+        HomePageTableView.managedObjectContext = self.managedObjectContext;
 	}
 	else if ([segue.identifier isEqualToString:@"segueProfile2Login"])
 	{
         LoginView *LoginView = [segue destinationViewController];
         
-        LoginView.getData  = @"Logout";
-        LoginView.userName = self.userName;
+        LoginView.setLogoutStatus = @"Logout";
+        LoginView.dataCollection = self.dataCollection;
+        LoginView.managedObjectContext = self.managedObjectContext;
 	}
 }
 

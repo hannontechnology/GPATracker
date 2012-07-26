@@ -52,9 +52,9 @@
     return [self.masterUserList objectAtIndex:theIndex];    
 }
 
-- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword
+- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext
 {
-    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSManagedObjectContext *moc = inputContext;
     
     NSString *entityName = @"User"; // Put your entity name here
     NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
@@ -69,9 +69,9 @@
     return self.masterUserList;
 }
 
-- (NSArray *)retrieveUsers:(NSString *)inputUserName
+- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext
 {
-    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSManagedObjectContext *moc = inputContext;
     
     NSString *entityName = @"User"; // Put your entity name here
     NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
@@ -100,9 +100,9 @@
     return results;
 }
 
-- (NSArray *)retrieveAutoLogin
+- (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext
 {
-    NSManagedObjectContext *moc = [self managedObjectContext];
+    NSManagedObjectContext *moc = inputContext;
     
     NSString *entityName = @"User"; // Put your entity name here
     NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);

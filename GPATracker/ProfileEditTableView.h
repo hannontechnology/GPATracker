@@ -8,15 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
+@class DataCollection;
+
 @interface ProfileEditTableView : UITableViewController
+@property (strong, nonatomic) User *userInfo;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameField;
 @property (weak, nonatomic) IBOutlet UITextField *emailField;
-@property (strong, nonatomic) NSString *setEditStatus;
-@property (strong, nonatomic) NSString *userName;
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UISwitch *autoLoginField;
-@property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
+
+@property (strong, nonatomic) NSString *setEditStatus;
 
 @end

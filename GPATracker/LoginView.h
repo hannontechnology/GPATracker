@@ -13,15 +13,12 @@
 
 @interface LoginView : UIViewController
 
-- (IBAction)Login:(id)sender;
-- (IBAction)ForgotPassword:(id)sender;
-- (IBAction)textFieldReturn:(id)sender;
-
 @property (strong, nonatomic) User *user;
 @property (strong, nonatomic) DataCollection *dataCollection;
-@property (strong, nonatomic) NSString *getData;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSString *setLogoutStatus;
 @property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSArray *userInfo;
+@property (strong, nonatomic) User *userInfo;
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;

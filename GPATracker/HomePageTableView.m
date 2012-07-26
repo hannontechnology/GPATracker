@@ -23,6 +23,8 @@
 @synthesize schoolList = _schoolList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize userInfo = _userInfo;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -120,17 +122,17 @@
 	{
         LoginView *LoginView = [segue destinationViewController];
         
-        LoginView.getData  = @"Logout";
+        LoginView.setLogoutStatus = @"Logout";
         LoginView.userName = self.userName;
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
         ProfileEditTableView *ProfileEditTableView = [segue destinationViewController];
-//        UINavigationController *navCon = [segue destinationViewController];
-//        ProfileEditTableView *ProfileEditTableView = [navCon.viewControllers objectAtIndex:0];
         
         ProfileEditTableView.setEditStatus = @"Edit";
-        ProfileEditTableView.userName = self.userName;
+        ProfileEditTableView.userInfo = self.userInfo;
+        ProfileEditTableView.dataCollection = self.dataCollection;
+        ProfileEditTableView.managedObjectContext = self.managedObjectContext;
     }
     else if ([segue.identifier isEqualToString:@"segueEditSchool"])
     {

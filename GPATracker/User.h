@@ -23,7 +23,8 @@
 @end
 
 @interface User (CoreDataGeneratedAccessors)
-
+- (int)addUser:(User *)user context:(NSManagedObjectContext *)inContext;
+- (void)deleteUser:(User *)value;
 - (void)addSchoolsObject:(SchoolDetails *)value;
 - (void)removeSchoolsObject:(SchoolDetails *)value;
 - (void)addSchools:(NSSet *)values;
