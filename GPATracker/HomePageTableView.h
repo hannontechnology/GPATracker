@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
 @class User;
 @class DataCollection;
 
-@interface HomePageTableView : UITableViewController
+@interface HomePageTableView : CoreDataTableViewController
 {
     IBOutlet UIAlertView *alert;
 }

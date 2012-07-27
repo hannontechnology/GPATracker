@@ -2,7 +2,7 @@
 //  User.h
 //  GPATracker
 //
-//  Created by terryah on 12-07-09.
+//  Created by terryah on 12-07-27.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -23,8 +23,7 @@
 @end
 
 @interface User (CoreDataGeneratedAccessors)
-- (int)addUser:(User *)user context:(NSManagedObjectContext *)inContext;
-- (void)deleteUser:(User *)value;
+
 - (void)addSchoolsObject:(SchoolDetails *)value;
 - (void)removeSchoolsObject:(SchoolDetails *)value;
 - (void)addSchools:(NSSet *)values;

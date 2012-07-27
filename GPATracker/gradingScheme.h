@@ -2,13 +2,14 @@
 //  GradingScheme.h
 //  GPATracker
 //
-//  Created by David Stevens on 12-06-14.
-//  Copyright (c) 2012 Hannon Technology. All rights reserved.
+//  Created by terryah on 12-07-27.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class SchoolDetails;
 
 @interface GradingScheme : NSManagedObject
 
@@ -23,5 +24,6 @@
 @property (nonatomic, retain) NSDecimalNumber * gradeCPlus;
 @property (nonatomic, retain) NSDecimalNumber * gradeD;
 @property (nonatomic, retain) NSDecimalNumber * gradeF;
+@property (nonatomic, retain) SchoolDetails *school;
 
 @end
