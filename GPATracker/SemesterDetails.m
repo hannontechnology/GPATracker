@@ -2,7 +2,7 @@
 //  SemesterDetails.m
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-07-14.
+//  Created by terryah on 12-07-27.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,10 +11,10 @@
 
 @implementation SemesterDetails
 
+@dynamic schoolName;
 @dynamic semesterCode;
 @dynamic semesterName;
 @dynamic semesterYear;
-@dynamic schoolName;
 @dynamic userName;
 
 @end
