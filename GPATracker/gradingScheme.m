@@ -2,11 +2,12 @@
 //  GradingScheme.m
 //  GPATracker
 //
-//  Created by David Stevens on 12-06-14.
-//  Copyright (c) 2012 Hannon Technology. All rights reserved.
+//  Created by terryah on 12-07-27.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "GradingScheme.h"
+#import "SchoolDetails.h"
 
 
 @implementation GradingScheme
@@ -22,5 +23,6 @@
 @dynamic gradeCPlus;
 @dynamic gradeD;
 @dynamic gradeF;
+@dynamic school;
 
 @end
