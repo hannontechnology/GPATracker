@@ -1,0 +1,29 @@
+//
+//  GradingScheme.h
+//  GPATracker
+//
+//  Created by terryah on 12-07-27.
+//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
+
+@class SchoolDetails;
+
+@interface GradingScheme : NSManagedObject
+
+@property (nonatomic, retain) NSDecimalNumber * gradeA;
+@property (nonatomic, retain) NSDecimalNumber * gradeAMinus;
+@property (nonatomic, retain) NSDecimalNumber * gradeAPlus;
+@property (nonatomic, retain) NSDecimalNumber * gradeB;
+@property (nonatomic, retain) NSDecimalNumber * gradeBMinus;
+@property (nonatomic, retain) NSDecimalNumber * gradeBPlus;
+@property (nonatomic, retain) NSDecimalNumber * gradeC;
+@property (nonatomic, retain) NSDecimalNumber * gradeCMinus;
+@property (nonatomic, retain) NSDecimalNumber * gradeCPlus;
+@property (nonatomic, retain) NSDecimalNumber * gradeD;
+@property (nonatomic, retain) NSDecimalNumber * gradeF;
+@property (nonatomic, retain) SchoolDetails *school;
+
+@end
