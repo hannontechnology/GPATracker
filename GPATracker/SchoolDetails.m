@@ -8,6 +8,8 @@
 
 #import "SchoolDetails.h"
 #import "GradingScheme.h"
+#import "SemesterDetails.h"
+#import "User.h"
 
 
 @implementation SchoolDetails
@@ -19,5 +21,7 @@
 @dynamic schoolName;
 @dynamic schoolStartYear;
 @dynamic gradingScheme;
+@dynamic users;
+@dynamic semesterDetails;
 
 @end

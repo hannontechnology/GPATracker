@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class GradingScheme;
+@class GradingScheme, SemesterDetails, User;
 
 @interface SchoolDetails : NSManagedObject
 
@@ -20,5 +20,7 @@
 @property (nonatomic, retain) NSString * schoolName;
 @property (nonatomic, retain) NSString * schoolStartYear;
 @property (nonatomic, retain) GradingScheme *gradingScheme;
+@property (nonatomic, retain) User *users;
+@property (nonatomic, retain) SemesterDetails *semesterDetails;
 
 @end
