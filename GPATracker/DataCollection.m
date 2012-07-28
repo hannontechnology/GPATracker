@@ -71,7 +71,7 @@
     return results;
 }
 
-- (NSArray *)retrieveGradingScheme:(NSString *)inputSchoolName
+- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     

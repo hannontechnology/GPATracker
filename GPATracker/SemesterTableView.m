@@ -39,13 +39,10 @@
     NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
     NSSortDescriptor *sortDescriptorName = [[NSSortDescriptor alloc] initWithKey:@"semesterName" ascending:YES selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
-    
-    // For creating WHERE clause
-    request.predicate = [NSPredicate predicateWithFormat:@"schoolDetails = %@", self.schoolInfo];
-    NSLog(@"Filtering data based on schools = %@", self.schoolInfo);
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", self.schoolInfo];
+    NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated

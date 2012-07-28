@@ -59,9 +59,18 @@
 #pragma mark - delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSError *error = nil;
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo schoolName:(NSString *)self.schoolInfo.schoolName];
     // Navigation logic may go here. Create and push another view controller.
     if (indexPath.row == 0) {
-        if (self.schoolInfo.gradingScheme == nil)
+        
+       if ([results count]==0)
+       {
+           NSString *entityName = @"GradingScheme";
+           self.gradingInfo = [NSEntityDescription
+            insertNewObjectForEntityForName:entityName
+            inManagedObjectContext:self.managedObjectContext];
+       }
         //Populate Grading Scheme database
         self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
         self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
@@ -78,6 +87,13 @@
         
         
     } else if (indexPath.row == 1){
+        if ([results count]==0)
+        {
+            NSString *entityName = @"GradingScheme";
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+        }
         self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
         self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
         self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(3.70	)];
@@ -91,6 +107,13 @@
         self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         
     } else if (indexPath.row == 2){
+        if ([results count]==0)
+        {
+            NSString *entityName = @"GradingScheme";
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+        }
         self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
@@ -107,8 +130,17 @@
      // ...
      // Pass the selected object to the new view controller.
      //[self.navigationController pushViewController:detailViewController animated:YES];
-    GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
-    [self.navigationController pushViewController:gradingSchemeTableView animated:YES];
+    if ([self.managedObjectContext save:&error])
+    {
+        NSLog(@"Save Successful");
+        GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
+        [self.navigationController pushViewController:gradingSchemeTableView animated:YES];
+        
+    }
+    else
+    {
+        NSLog(@"Create school failed!");
+    }
     
 }
 

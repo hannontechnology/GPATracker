@@ -2,11 +2,12 @@
 //  Course.m
 //  GPATracker
 //
-//  Created by terryah on 12-07-27.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Terry Hannon on 12-07-28.
+//
 //
 
 #import "Course.h"
+#import "SemesterDetails.h"
 
 
 @implementation Course
@@ -24,5 +25,6 @@
 @dynamic semesterName;
 @dynamic units;
 @dynamic userName;
+@dynamic semesterDetails;
 
 @end
