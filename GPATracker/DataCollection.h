@@ -8,19 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@class User;
 @class SchoolDetails;
 
 @interface DataCollection : NSObject
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (nonatomic, copy) NSArray *masterUserList;
-@property (nonatomic, copy) NSArray *masterSchoolList;
 
 // User Section
-- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext; 
-- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext; 
+- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext;
+- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext;
 - (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext;
 
 // School Section

@@ -13,7 +13,6 @@
 
 @interface LoginView : UIViewController
 
-@property (strong, nonatomic) User *user;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) NSString *setLogoutStatus;

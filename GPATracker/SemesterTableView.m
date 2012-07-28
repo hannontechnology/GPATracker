@@ -11,25 +11,40 @@
 #import "SemesterDetails.h"
 #import "LoginView.h"
 #import "SemesterEditTableView.h"
+#import "HomePageTableView.h"
+#import "SemesterDetails+Create.h"
 
 @interface SemesterTableView ()
-
 @end
 
 @implementation SemesterTableView
-@synthesize userName = _userName;
 @synthesize schoolName = _schoolName;
 @synthesize semesterList = _semesterList;
 @synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (void)setupFetchedResultsController
 {
-    self = [super initWithStyle:style];
-    if (self) 
-    {
-        self.semesterList = [[NSArray alloc] init];
-    }
-    return self;
+    // Create fetch request for the entity
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate
+    NSEntityDescription *entityName = [NSEntityDescription entityForName:@"SemesterDetails" inManagedObjectContext:self.managedObjectContext];
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
+    [request setEntity:entityName];
+    [request setIncludesPendingChanges:YES];
+    
+    // Sort using the year / then name properties
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
+    NSSortDescriptor *sortDescriptorName = [[NSSortDescriptor alloc] initWithKey:@"semesterName" ascending:YES selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
+    
+    // For creating WHERE clause
+    request.predicate = [NSPredicate predicateWithFormat:@"schoolDetails = %@", self.schoolInfo];
+    NSLog(@"Filtering data based on schools = %@", self.schoolInfo);
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,25 +54,9 @@
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
     
-    DataCollection *data = [[DataCollection alloc] init];
-    self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
-    
-    if (self.semesterList == nil) 
-    {
-        return;
-    }
-    else 
-    {
-        if([self.semesterList count] > 0)
-        {
-            NSLog(@"Semester List:");
-            for(SemesterDetails *item in self.semesterList)
-            {
-                NSLog(@"Semester Found: %@, %@, %@, %@", item.userName, item.semesterName, item.semesterYear, item.semesterCode);
-            }
-        }
-    }
     [super viewWillAppear:(BOOL)animated];
+    
+    [self setupFetchedResultsController];
 }
 
 - (void)viewDidLoad
@@ -100,8 +99,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DataCollection *data = [[DataCollection alloc] init];
-    self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
-
+    
     static NSString *CellIdentifier = @"semesterListCell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -121,7 +119,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     DataCollection *data = [[DataCollection alloc] init];
-    self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
     
     NSLog(@"prepareForSegue Event of SemesterTableView");
     if ([segue.identifier isEqualToString:@"segueAddSemester"])
@@ -130,7 +127,6 @@
         UINavigationController *navCon = [segue destinationViewController];
         SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         
-        SemesterEditTableView.userName = self.userName;
         SemesterEditTableView.schoolName = self.schoolName;
     }
     else if ([segue.identifier isEqualToString:@"segueEditSemester"])
@@ -138,7 +134,6 @@
         SemesterDetails *selectedObject = [self.semesterList objectAtIndex:self.selectedIndexPath.row];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
-        SemesterEditTableView.userName = self.userName;
         SemesterEditTableView.schoolName = self.schoolName;
         SemesterEditTableView.semesterName = [selectedObject semesterName];
         SemesterEditTableView.setEditStatus = @"Edit";
@@ -162,10 +157,8 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
         NSManagedObject *semesterToDelete = [self.semesterList objectAtIndex:indexPath.row];
         [data deleteSchool:semesterToDelete];
-        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
         
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
@@ -211,7 +204,7 @@
     else if (buttonIndex == 2)
     {
         DataCollection *data = [[DataCollection alloc] init];
-        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
+//        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
         [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }

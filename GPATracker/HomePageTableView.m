@@ -33,8 +33,8 @@
     NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"schoolEndYear" ascending:NO]];
-    request.predicate = [NSPredicate predicateWithFormat: @"users.userName = %@", self.userInfo.userName];
-    NSLog(@"filtering data based on users.userName = %@", self.userInfo.userName);
+    request.predicate = [NSPredicate predicateWithFormat: @"users = %@", self.userInfo];
+    NSLog(@"filtering data based on users = %@", self.userInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
@@ -125,7 +125,6 @@
         SchoolDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SemesterTableView *SemesterTableView = [segue destinationViewController];
         
-        SemesterTableView.userName = self.userName;
         SemesterTableView.schoolName = [selectedObject schoolName];
     }
 }
