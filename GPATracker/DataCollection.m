@@ -99,6 +99,21 @@
     return results;
 }
 
+- (NSArray *)retrieveGradingScheme:(NSString *)inputSchoolName
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"GradingScheme";
+    NSLog(@"Setting up a Fetched Results Contraoller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"schoolName = %@",inputSchoolName];
+    NSLog(@"filtering data based on schoolName = %@",inputSchoolName);
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    return results;
+}
+
 - (NSArray *)retrieveSchoolList:(NSString *)inputUserName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -229,7 +244,6 @@
     newSchool.schoolDetails = inputSchoolDetail;
     newSchool.schoolStartYear = inputSchoolStartYear;
     newSchool.schoolEndYear = inputSchoolEndYear;
-    newSchool.userName = inputUserName;
     
     int temp1 = arc4random()%433;
     double temp2 = (double)temp1/100;
