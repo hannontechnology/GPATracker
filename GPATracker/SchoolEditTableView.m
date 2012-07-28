@@ -11,10 +11,7 @@
 #import "DataCollection.h"
 #import "HomePageTableView.h"
 #import "User+Create.h"
-
-@class DataCollection;
-@class SchoolDetails;
-@class GradingScheme;
+#import "GradingSchemeSelectTableView.h"
 
 @interface SchoolEditTableView ()
 - (IBAction)Cancel:(id)sender;
@@ -125,7 +122,6 @@
             self.schoolInfo.schoolDetails = schoolDetailsField.text;
             self.schoolInfo.schoolStartYear = schoolStartYearField.text;
             self.schoolInfo.schoolEndYear = schoolEndYearField.text;
-            self.schoolInfo.users = self.userInfo;
             if ([[self managedObjectContext] save:&error])
             {
                 NSLog(@"Save was successful");
@@ -148,7 +144,6 @@
         self.schoolInfo.schoolDetails   = schoolDetailsField.text;
         self.schoolInfo.schoolStartYear = schoolStartYearField.text;
         self.schoolInfo.schoolEndYear   = schoolEndYearField.text;
-        self.schoolInfo.users           = self.userInfo;
         
         int temp1 = arc4random()%433;
         double temp2 = (double)temp1/100;
@@ -188,7 +183,7 @@
 - (IBAction)gradingScheme:(UIButton *)sender{
     if (self.setEditStatus != @"Edit")
     {
-        
+       //Control visiability of button later
     }
 }
 
@@ -213,6 +208,14 @@
         HomePageTableView.userInfo = self.userInfo;
         HomePageTableView.dataCollection = self.dataCollection;
         HomePageTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueSchool2SchemeSelect"])
+    {
+        GradingSchemeSelectTableView *GradingSchemeSelectTableView = [segue destinationViewController];
+        
+        GradingSchemeSelectTableView.userInfo = self.userInfo;
+        GradingSchemeSelectTableView.dataCollection = self.dataCollection;
+        GradingSchemeSelectTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

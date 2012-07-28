@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
-        <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
         <!--Login View-->
@@ -1853,6 +1852,9 @@
         </scene>
     </scenes>
     <classes>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
         <class className="CourseEditTableView" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseEditTableView.h"/>
             <relationships>
@@ -1918,7 +1920,7 @@
                 <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
             </relationships>
         </class>
-        <class className="HomePageTableView" superclassName="UITableViewController">
+        <class className="HomePageTableView" superclassName="CoreDataTableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTableView.h"/>
             <relationships>
                 <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
@@ -1991,4 +1993,14 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="k7a-QP-sia"/>
+        <segue reference="XFF-ob-f75"/>
+        <segue reference="sqq-oh-NbO"/>
+        <segue reference="phW-HU-sP7"/>
+        <segue reference="VGG-Ty-jdk"/>
+        <segue reference="o2U-7x-MXr"/>
+        <segue reference="fGJ-Vg-Bh6"/>
+        <segue reference="6Sl-EM-wfU"/>
+    </inferredMetricsTieBreakers>
 </document>

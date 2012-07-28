@@ -8,16 +8,21 @@
 
 #import "GradingSchemeSelectTableView.h"
 #import "GradingSchemeTableView.h"
-#import "GradingScheme.h"
+#import "GradingScheme+Create.h"
+#import "SchoolDetails.h"
+#import "DataCollection.h"
 
 @interface GradingSchemeSelectTableView ()
 
 @end
 
 @implementation GradingSchemeSelectTableView
-//@synthesize gradingAPlus433;
-//@synthesize gradingAPlus400;
-//@synthesize gradingCustom;
+@synthesize gradingAPlus433;
+@synthesize gradingAPlus400;
+@synthesize gradingCustom;
+@synthesize userInfo = _userInfo;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

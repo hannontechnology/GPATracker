@@ -9,6 +9,7 @@
 #import "GradingSchemeTableView.h"
 #import "SchoolDetails.h"
 #import "DataCollection.h"
+#import "GradingScheme+Create.h"
 
 @interface GradingSchemeTableView ()
 
@@ -26,7 +27,9 @@
 @synthesize gradeCPlusField;
 @synthesize gradeCField;
 @synthesize gradeCMinusField;
-
+@synthesize userInfo = _userInfo;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
