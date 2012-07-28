@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Course" representedClassName="Course" syncable="YES">
         <attribute name="actualGrade" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="calculatedGrade" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -36,9 +36,7 @@
         <attribute name="schoolEndYear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolStartYear" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
-        <relationship name="users" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schools" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SemesterDetails" representedClassName="SemesterDetails" syncable="YES">
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,12 +52,12 @@
         <attribute name="userLastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="userPassword" attributeType="String" syncable="YES"/>
-        <relationship name="schools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="users" inverseEntity="SchoolDetails" syncable="YES"/>
+        <relationship name="schools" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <elements>
         <element name="Course" positionX="-8370" positionY="-11088" width="128" height="240"/>
         <element name="GradingScheme" positionX="160" positionY="192" width="128" height="210"/>
-        <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="165"/>
+        <element name="SchoolDetails" positionX="160" positionY="192" width="128" height="150"/>
         <element name="SemesterDetails" positionX="-8372" positionY="-11232" width="128" height="90"/>
         <element name="User" positionX="-8631" positionY="-11115" width="128" height="135"/>
     </elements>
