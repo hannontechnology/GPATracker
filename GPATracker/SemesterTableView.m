@@ -30,6 +30,7 @@
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate
     NSEntityDescription *entityName = [NSEntityDescription entityForName:@"SemesterDetails" inManagedObjectContext:self.managedObjectContext];
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     [request setEntity:entityName];
     [request setIncludesPendingChanges:YES];
     
@@ -39,20 +40,11 @@
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
     
     // For creating WHERE clause
-    //request.predicate = [NSPredicate predicateWithFormat:@"semester" arguments:<#(va_list)#>];
+    request.predicate = [NSPredicate predicateWithFormat:@"schoolDetails = %@", self.schoolInfo];
+    NSLog(@"Filtering data based on schools = %@", self.schoolInfo);
     
-    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
-
-}
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) 
-    {
-        self.semesterList = [[NSArray alloc] init];
-    }
-    return self;
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,23 +54,9 @@
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
     
-    DataCollection *data = [[DataCollection alloc] init];
-    
-    if (self.semesterList == nil) 
-    {
-        return;
-    }
-    else 
-    {
-        if([self.semesterList count] > 0)
-        {
-            NSLog(@"Semester List:");
-            for(SemesterDetails *item in self.semesterList)
-            {
-            }
-        }
-    }
     [super viewWillAppear:(BOOL)animated];
+    
+    [self setupFetchedResultsController];
 }
 
 - (void)viewDidLoad
