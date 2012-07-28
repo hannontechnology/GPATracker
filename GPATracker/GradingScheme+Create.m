@@ -29,7 +29,6 @@
     GradingScheme *newGradingScheme = [NSEntityDescription
                      insertNewObjectForEntityForName:entityName
                      inManagedObjectContext:inContext];
-    newGradingScheme.school = gradingScheme.school;
     newGradingScheme.gradeAPlus = gradingScheme.gradeAPlus;
     newGradingScheme.gradeA = gradingScheme.gradeA;
     newGradingScheme.gradeAMinus = gradingScheme.gradeAMinus;
