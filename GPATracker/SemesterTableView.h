@@ -8,14 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SemesterTableView : UITableViewController
+@class SchoolDetails;
+@class DataCollection;
+
+@interface SemesterTableView : CoreDataTableViewController
 {
     IBOutlet UIAlertView *alert;
 }
 @property (strong, nonatomic) NSArray *semesterList;
-@property (strong, nonatomic) NSString *userName;
 @property (strong, nonatomic) NSString *schoolName;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
+@property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 

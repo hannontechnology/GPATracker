@@ -2,12 +2,13 @@
 //  SchoolDetails.m
 //  GPATracker
 //
-//  Created by terryah on 12-07-27.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Aiste Guden on 12-07-28.
+//
 //
 
 #import "SchoolDetails.h"
 #import "GradingScheme.h"
+#import "SemesterDetails.h"
 #import "User.h"
 
 
@@ -19,8 +20,8 @@
 @dynamic schoolEndYear;
 @dynamic schoolName;
 @dynamic schoolStartYear;
-@dynamic userName;
 @dynamic gradingScheme;
 @dynamic users;
+@dynamic semesterDetails;
 
 @end

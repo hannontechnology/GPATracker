@@ -11,16 +11,39 @@
 #import "SemesterDetails.h"
 #import "LoginView.h"
 #import "SemesterEditTableView.h"
+#import "HomePageTableView.h"
+#import "SemesterDetails+Create.h"
 
 @interface SemesterTableView ()
-
 @end
 
 @implementation SemesterTableView
-@synthesize userName = _userName;
 @synthesize schoolName = _schoolName;
 @synthesize semesterList = _semesterList;
 @synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
+
+- (void)setupFetchedResultsController
+{
+    // Create fetch request for the entity
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate
+    NSEntityDescription *entityName = [NSEntityDescription entityForName:@"SemesterDetails" inManagedObjectContext:self.managedObjectContext];
+    [request setEntity:entityName];
+    [request setIncludesPendingChanges:YES];
+    
+    // Sort using the year / then name properties
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
+    NSSortDescriptor *sortDescriptorName = [[NSSortDescriptor alloc] initWithKey:@"semesterName" ascending:YES selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
+    
+    // For creating WHERE clause
+    //request.predicate = [NSPredicate predicateWithFormat:@"semester" arguments:<#(va_list)#>];
+    
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
+
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
