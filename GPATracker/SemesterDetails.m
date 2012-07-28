@@ -2,7 +2,7 @@
 //  SemesterDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-07-28.
+//  Created by Aiste Guden on 12-07-28.
 //
 //
 
@@ -13,12 +13,10 @@
 
 @implementation SemesterDetails
 
-@dynamic schoolName;
 @dynamic semesterCode;
 @dynamic semesterName;
 @dynamic semesterYear;
-@dynamic userName;
-@dynamic schoolDetails;
 @dynamic course;
+@dynamic schoolDetails;
 
 @end

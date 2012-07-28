@@ -18,7 +18,7 @@
 @end
 
 @implementation SemesterTableView
-@synthesize schoolName = _schoolName;
+@synthesize schoolInfo = _schoolInfo;
 @synthesize semesterList = _semesterList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
@@ -121,14 +121,14 @@
         UINavigationController *navCon = [segue destinationViewController];
         SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         
-        SemesterEditTableView.schoolName = self.schoolName;
+//        SemesterEditTableView.schoolName = self.schoolName;
     }
     else if ([segue.identifier isEqualToString:@"segueEditSemester"])
     {
         SemesterDetails *selectedObject = [self.semesterList objectAtIndex:self.selectedIndexPath.row];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
-        SemesterEditTableView.schoolName = self.schoolName;
+//        SemesterEditTableView.schoolName = self.schoolName;
         SemesterEditTableView.semesterName = [selectedObject semesterName];
         SemesterEditTableView.setEditStatus = @"Edit";
     }

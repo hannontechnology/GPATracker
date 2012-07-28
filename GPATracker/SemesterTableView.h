@@ -17,7 +17,6 @@
     IBOutlet UIAlertView *alert;
 }
 @property (strong, nonatomic) NSArray *semesterList;
-@property (strong, nonatomic) NSString *schoolName;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @property (strong, nonatomic) SchoolDetails *schoolInfo;

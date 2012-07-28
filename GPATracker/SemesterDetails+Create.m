@@ -24,11 +24,13 @@
         NSLog(@"OMGWTF, couldn't save: semester already exists");
         return nil;
     }
-    /*
-    SemesterDetails *newSemester = []
     
-    return newSemester;*/
-    return nil;
+    SemesterDetails *newSemester = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:inContext];
+    newSemester.semesterName = semester.semesterName;
+    newSemester.semesterYear = semester.semesterYear;
+    
+    
+    return newSemester;
 }
 
 
