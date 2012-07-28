@@ -20,7 +20,6 @@
 @end
 
 @implementation HomePageTableView
-@synthesize userName = _userName;
 @synthesize schoolList = _schoolList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize userInfo = _userInfo;
@@ -89,7 +88,6 @@
         LoginView *LoginView = [segue destinationViewController];
         
         LoginView.setLogoutStatus = @"Logout";
-        LoginView.userName = self.userName;
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {
