@@ -32,7 +32,7 @@
 - (NSUInteger)countOfSchoolList;
 
 // Grading Scheme Section
-- (NSArray *)retrieveGradingScheme:(NSString *)inputSchoolName;
+- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName;
 
 
 // Semester Section
