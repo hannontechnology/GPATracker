@@ -250,7 +250,7 @@
         //        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
         HomePageTableView *HomePageTableView = [segue destinationViewController];
         
-        HomePageTableView.userName = self.userName;
+        //HomePageTableView.userName = self.userName;
 	}
 	else if ([segue.identifier isEqualToString:@"segueProfile2Login"])
 	{

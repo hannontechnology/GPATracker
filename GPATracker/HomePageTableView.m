@@ -123,7 +123,9 @@
         SchoolDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SemesterTableView *SemesterTableView = [segue destinationViewController];
         
-        SemesterTableView.schoolName = [selectedObject schoolName];
+        SchoolEditTableView.schoolInfo = self.schoolInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 
