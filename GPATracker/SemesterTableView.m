@@ -29,7 +29,7 @@
     // Create fetch request for the entity
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate
-    NSEntityDescription *entityName = [NSEntityDescription entityForName:@"SemesterDetails" inManagedObjectContext:self.managedObjectContext];
+    NSString *entityName = @"SemesterDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     [request setEntity:entityName];
     [request setIncludesPendingChanges:YES];

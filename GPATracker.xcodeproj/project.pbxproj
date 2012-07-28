@@ -43,7 +43,6 @@
 		2DC1D7E315C48B7800EE9A78 /* GradingScheme+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1D7E215C48B7800EE9A78 /* GradingScheme+Create.m */; };
 		2DC1D7E915C4969700EE9A78 /* GradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1D7E815C4969700EE9A78 /* GradingScheme.m */; };
 		348338B4159689C4009B5D1E /* SemesterYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */; };
-		34C6E6FA15C498F700CA2D93 /* SchoolDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F1853315C476A500E0E1E9 /* SchoolDetails.m */; };
 		34EDF98415B21C9C00C5FFA0 /* SemesterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */; };
 /* End PBXBuildFile section */
 
@@ -395,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34C6E6FA15C498F700CA2D93 /* SchoolDetails.m in Sources */,
 				1F754A5F151559EA00BD72F0 /* main.m in Sources */,
 				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
 				1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */,
