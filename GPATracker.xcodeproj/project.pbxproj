@@ -124,6 +124,7 @@
 		348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterYearPickerViewController.m; sourceTree = "<group>"; };
 		34EDF98215B21C9C00C5FFA0 /* SemesterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterTableView.h; sourceTree = "<group>"; };
 		34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterTableView.m; sourceTree = "<group>"; };
+		34F1853315C476A500E0E1E9 /* SchoolDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SchoolDetails.m; path = GPATracker/SchoolDetails.m; sourceTree = "<group>"; };
 		34F1853815C47CB000E0E1E9 /* SemesterDetails+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SemesterDetails+Create.h"; path = "GPATracker/SemesterDetails+Create.h"; sourceTree = "<group>"; };
 		34F1853915C47CB000E0E1E9 /* SemesterDetails+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SemesterDetails+Create.m"; path = "GPATracker/SemesterDetails+Create.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
