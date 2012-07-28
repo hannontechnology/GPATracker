@@ -2,8 +2,8 @@
 //  User.m
 //  GPATracker
 //
-//  Created by terryah on 12-07-27.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Terry Hannon on 12-07-28.
+//
 //
 
 #import "User.h"
@@ -18,6 +18,6 @@
 @dynamic userLastName;
 @dynamic userName;
 @dynamic userPassword;
-@dynamic schools;
+@dynamic schoolDetails;
 
 @end

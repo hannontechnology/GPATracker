@@ -26,25 +26,17 @@
 
 - (void)setupFetchedResultsController
 {
-    // Create fetch request for the entity
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate
     NSString *entityName = @"SemesterDetails";
-    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
-    [request setEntity:entityName];
-    [request setIncludesPendingChanges:YES];
-    
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
     NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
     NSSortDescriptor *sortDescriptorName = [[NSSortDescriptor alloc] initWithKey:@"semesterName" ascending:YES selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
-    
-    // For creating WHERE clause
-    request.predicate = [NSPredicate predicateWithFormat:@"schoolDetails = %@", self.schoolInfo];
-    NSLog(@"Filtering data based on schools = %@", self.schoolInfo);
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", self.schoolInfo];
+    NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -2,7 +2,7 @@
 //  SchoolDetails.m
 //  GPATracker
 //
-//  Created by David Stevens on 12-07-28.
+//  Created by Terry Hannon on 12-07-28.
 //
 //
 
@@ -21,7 +21,7 @@
 @dynamic schoolName;
 @dynamic schoolStartYear;
 @dynamic gradingScheme;
-@dynamic users;
 @dynamic semesterDetails;
+@dynamic user;
 
 @end

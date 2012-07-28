@@ -2,13 +2,14 @@
 //  Course.h
 //  GPATracker
 //
-//  Created by terryah on 12-07-27.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Terry Hannon on 12-07-28.
+//
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class SemesterDetails;
 
 @interface Course : NSManagedObject
 
@@ -25,5 +26,6 @@
 @property (nonatomic, retain) NSString * semesterName;
 @property (nonatomic, retain) NSNumber * units;
 @property (nonatomic, retain) NSString * userName;
+@property (nonatomic, retain) SemesterDetails *semesterDetails;
 
 @end
