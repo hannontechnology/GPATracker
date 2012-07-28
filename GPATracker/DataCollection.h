@@ -18,11 +18,6 @@
 @property (nonatomic, copy) NSArray *masterUserList;
 @property (nonatomic, copy) NSArray *masterSchoolList;
 
-// User Section
-- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext; 
-- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext; 
-- (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext;
-
 // School Section
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName;

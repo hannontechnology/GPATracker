@@ -137,7 +137,7 @@
         return;
     }
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveUsers:userNameField.text inContext:self.managedObjectContext];
+    NSArray *results = [self.userInfo retrieveUsers:userNameField.text inContext:self.managedObjectContext];
 
     if (self.setEditStatus == @"Edit")
     {

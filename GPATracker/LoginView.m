@@ -21,7 +21,6 @@
 @implementation LoginView
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
-@synthesize user = _user;
 @synthesize userInfo = _userInfo;
 
 @synthesize userNameField;
@@ -42,7 +41,7 @@
 - (IBAction)Login:(id)sender
 {
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveUsers:userNameField.text inContext:self.managedObjectContext];
+    NSArray *results = [self.userInfo retrieveUsers:userNameField.text inContext:self.managedObjectContext];
 
     if (results == nil)
     {
@@ -57,7 +56,7 @@
         }
     }
 
-    results = [self.dataCollection retrieveUsers:userNameField.text userPassword:passwordField.text inContext:self.managedObjectContext];
+    results = [self.userInfo retrieveUsers:userNameField.text userPassword:passwordField.text inContext:self.managedObjectContext];
     
     if (results == nil)
     {
@@ -119,7 +118,7 @@
         return;
     }
     //NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveAutoLogin:self.managedObjectContext];
+    NSArray *results = [self.userInfo retrieveAutoLogin:self.managedObjectContext];
     
     if (results == nil)
     {
