@@ -19,6 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     DataCollection *data = [[DataCollection alloc] init];
+    if (!data)
+    {
+        NSLog(@"Failed to connect to Database!");
+    }
     // Override point for customization after application launch.
     return YES;
 }

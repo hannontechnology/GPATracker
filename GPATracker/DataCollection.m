@@ -7,7 +7,6 @@
 //
 
 #import "DataCollection.h"
-#import "User.h"
 #import "SchoolDetails.h"
 #import "gradingScheme.h"
 #import "SemesterDetails.h"
@@ -20,65 +19,38 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-@synthesize masterUserList = _masterUserList;
-@synthesize masterSchoolList = _masterSchoolList;
 
-- (id)init {
-    if (self = [super init]) {
-        return self;
-    }
-    return nil;
-}
-
-//Code for handling User information
+//Code for handling user information
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext
 {
-    NSManagedObjectContext *moc = inputContext;
-    
     NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
     request.predicate = [NSPredicate predicateWithFormat:@"userName = %@ and userPassword = %@", inputUserName, inputUserPassword];
-    NSLog(@"filtering data based on userName = %@ and userPassword = %@", inputUserName, inputUserPassword);
     
     NSError *error = nil;
-    self.masterUserList = [moc executeFetchRequest:request error:&error];
-    return self.masterUserList;
+    NSArray *results = [inputContext executeFetchRequest:request error:&error];
+    return results;
 }
 
 - (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext
 {
-    NSManagedObjectContext *moc = inputContext;
-    
     NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
     request.predicate = [NSPredicate predicateWithFormat:@"userName = %@", inputUserName];
-    NSLog(@"filtering data based on userName = %@", inputUserName);
     
     NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
+    NSArray *results = [inputContext executeFetchRequest:request error:&error];
     return results;
 }
 
 - (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext
 {
-    NSManagedObjectContext *moc = inputContext;
-    
     NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
     request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = 1"];
-    NSLog(@"filtering data based on autoLogon = 1");
     
     NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
+    NSArray *results = [inputContext executeFetchRequest:request error:&error];
     return results;
 }
 
@@ -292,6 +264,13 @@
     return 0;
 }
 
+//Core Data Required Functions
+- (id)init {
+    if (self = [super init]) {
+        return self;
+    }
+    return nil;
+}
 
 - (void)saveContext
 {
@@ -306,8 +285,6 @@
         } 
     }
 }
-
-#pragma mark - Core Data stack
 
 // Returns the managed object context for the application.
 // If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -357,8 +334,6 @@
     
     return __persistentStoreCoordinator;
 }
-
-#pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
