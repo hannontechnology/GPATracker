@@ -28,21 +28,20 @@
     SemesterDetails *newSemester = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:inContext];
     newSemester.semesterName = semester.semesterName;
     newSemester.semesterYear = semester.semesterYear;
+    newSemester.semesterCode = semester.semesterCode;
+    newSemester.schoolDetails = self.schoolDetails;
     
+    if(![inContext save:&error])
+    {
+        NSLog(@"Boo. Couldn't save: %@", [error localizedDescription]);
+        return nil;
+    }
+    else
+    {
+        NSLog(@"Save was successful");
+    }
     
     return newSemester;
 }
 
-
-//- (SemesterDetails *)addSemester:(SemesterDetails *)semester context:(NSManagedObjectContext *)inContext
-//{
-//    NSString *entityName = @"SemesterDetails";
-//    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-//    
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName: entityName];
-//    
-//    request.predicate = [];
-//    
-//    
-//}
 @end
