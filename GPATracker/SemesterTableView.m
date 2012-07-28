@@ -26,8 +26,10 @@
 
 - (void)setupFetchedResultsController
 {
+    // Create fetch request for the entity
+        // Edit the entity name as appropriate
     NSString *entityName = @"SemesterDetails";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
     NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
