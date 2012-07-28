@@ -8,16 +8,21 @@
 
 #import "GradingSchemeSelectTableView.h"
 #import "GradingSchemeTableView.h"
-#import "GradingScheme.h"
+#import "GradingScheme+Create.h"
+#import "SchoolDetails.h"
+#import "DataCollection.h"
+
 
 @interface GradingSchemeSelectTableView ()
 
 @end
 
 @implementation GradingSchemeSelectTableView
-//@synthesize gradingAPlus433;
-//@synthesize gradingAPlus400;
-//@synthesize gradingCustom;
+@synthesize userInfo = _userInfo;
+@synthesize schoolInfo = _schoolInfo;
+@synthesize gradingInfo = _gradingInfo;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,9 +46,6 @@
 
 - (void)viewDidUnload
 {
-//    [self setGradingAPlus433:nil];
-//    [self setGradingAPlus400:nil];
-//    [self setGradingCustom:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -59,12 +61,54 @@
 {
     // Navigation logic may go here. Create and push another view controller.
     if (indexPath.row == 0) {
-        GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
+        if (self.schoolInfo.gradingScheme == nil)
+        //Populate Grading Scheme database
+        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
+        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+        self.gradingInfo.gradeB = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
+        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc]initWithDouble:(2.33)];
+        self.gradingInfo.gradeC = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
+        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
+        self.gradingInfo.gradeD = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
+        self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        
+        
+        
+    } else if (indexPath.row == 1){
+        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+        self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(3.70	)];
+        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc]initWithDouble:(3.30)];
+        self.gradingInfo.gradeB = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc]initWithDouble:(2.70)];
+        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc]initWithDouble:(2.30)];
+        self.gradingInfo.gradeC = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
+        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc]initWithDouble:(1.70)];
+        self.gradingInfo.gradeD = [[NSDecimalNumber alloc]initWithDouble:(1.00)];
+        self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        
+    } else if (indexPath.row == 2){
+        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeB = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeC = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeD = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
     }
      //GradingSchemeTableView *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
      // Pass the selected object to the new view controller.
      //[self.navigationController pushViewController:detailViewController animated:YES];
+    GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
+    [self.navigationController pushViewController:gradingSchemeTableView animated:YES];
     
 }
 

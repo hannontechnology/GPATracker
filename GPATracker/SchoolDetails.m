@@ -2,7 +2,7 @@
 //  SchoolDetails.m
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-07-28.
+//  Created by David Stevens on 12-07-28.
 //
 //
 

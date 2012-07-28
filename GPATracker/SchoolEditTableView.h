@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-//@class SelectGradingSchemeView;
 @class DataCollection;
 @class User;
 @class SchoolDetails;
+@class GradingSchemeSelectTableView;
 
 @interface SchoolEditTableView : UITableViewController
 @property (strong, nonatomic) User *userInfo;

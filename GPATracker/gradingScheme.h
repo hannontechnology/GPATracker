@@ -2,8 +2,8 @@
 //  GradingScheme.h
 //  GPATracker
 //
-//  Created by terryah on 12-07-27.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by David Stevens on 12-07-28.
+//
 //
 
 #import <Foundation/Foundation.h>

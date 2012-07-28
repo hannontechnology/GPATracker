@@ -7,6 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
+
+@class User;
+@class SchoolDetails;
+@class DataCollection;
 
 @interface GradingSchemeTableView : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextField *gradeAPlusField;
@@ -21,5 +26,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *gradeCMinusField;
 @property (weak, nonatomic) IBOutlet UITextField *gradeDField;
 @property (weak, nonatomic) IBOutlet UITextField *gradeFField;
+
+@property (strong,nonatomic) User *userInfo;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
