@@ -97,37 +97,5 @@
         NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
     }
 }
-- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext
-{
-    NSString *entityName = @"User"; // Put your entity name here
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.predicate = [NSPredicate predicateWithFormat:@"userName = %@ and userPassword = %@", inputUserName, inputUserPassword];
-    
-    NSError *error = nil;
-    NSArray *results = [inputContext executeFetchRequest:request error:&error];
-    return results;
-}
-
-- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext
-{
-    NSString *entityName = @"User"; // Put your entity name here
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.predicate = [NSPredicate predicateWithFormat:@"userName = %@", inputUserName];
-    
-    NSError *error = nil;
-    NSArray *results = [inputContext executeFetchRequest:request error:&error];
-    return results;
-}
-
-- (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext
-{
-    NSString *entityName = @"User"; // Put your entity name here
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = 1"];
-    
-    NSError *error = nil;
-    NSArray *results = [inputContext executeFetchRequest:request error:&error];
-    return results;
-}
 
 @end

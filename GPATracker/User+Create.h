@@ -12,7 +12,4 @@
 - (User *)addUser:(User *)user context:(NSManagedObjectContext *)inContext;
 - (void)removeAutoLogin:(User *)user context:(NSManagedObjectContext *)inContext;
 - (void)setAutoLogin:(User *)user context:(NSManagedObjectContext *)inContext;
-- (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext;
-- (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext;
-- (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext;
 @end
