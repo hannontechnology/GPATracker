@@ -14,6 +14,7 @@
 #import "SchoolEditTableView.h"
 #import "HomePageTableCell1.h"
 #import "SemesterTableView.h"
+#import "User+Create.h"
 
 @interface HomePageTableView ()
 @end
@@ -26,6 +27,18 @@
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 
+- (void)setupFetchedResultsController
+{
+    NSString *entityName = @"SchoolDetails";
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"schoolEndYear" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat: @"users.userName = %@", self.userInfo.userName];
+    NSLog(@"filtering data based on users.userName = %@", self.userInfo.userName);
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] 
@@ -34,14 +47,9 @@
     lpgr.delegate = self;
     [self.tableView addGestureRecognizer:lpgr];
 
-    DataCollection *data = [[DataCollection alloc] init];
-    
-    //NSError *error = nil;
-    self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-    
     [super viewWillAppear:(BOOL)animated];
-//    
-//    [self.tableView reloadData];
+
+    [self setupFetchedResultsController];
 }
 
 - (void)viewDidLoad
@@ -57,9 +65,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DataCollection *data = [[DataCollection alloc] init];
-    self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-
     static NSString *CellIdentifier = @"homePageCell1";
     HomePageTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -67,7 +72,8 @@
         cell = [[HomePageTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
+    //SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
+    SchoolDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.cellLabel1.text = [selectedObject schoolName];
     cell.cellLabel2.text = [selectedObject schoolDetails];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject schoolStartYear], [selectedObject schoolEndYear]];
@@ -78,10 +84,6 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DataCollection *data = [[DataCollection alloc] init];
-    self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-
-    NSLog(@"prepareForSegue Event of HomePageTableView");
 	if ([segue.identifier isEqualToString:@"segueLogout"])
 	{
         LoginView *LoginView = [segue destinationViewController];
@@ -100,28 +102,28 @@
     }
     else if ([segue.identifier isEqualToString:@"segueEditSchool"])
     {
-        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
+        SchoolDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
         
-        SchoolEditTableView.setStatus  = @"Edit";
-        SchoolEditTableView.userName   = self.userName;
-        SchoolEditTableView.schoolName = [selectedObject schoolName];
+        SchoolEditTableView.setEditStatus = @"Edit";
+        SchoolEditTableView.userInfo = self.userInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
+        SchoolEditTableView.schoolInfo = selectedObject;
     }
     else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
     {
-        NSLog(@"prepareForSegue Event of HomePageTableView for segueCreateSchool");
         UINavigationController *navCon = [segue destinationViewController];
         SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
         
-        SchoolEditTableView.userName = self.userName;
-        NSLog(@"prepareForSegue Event of HomePageTableView for segueCreateSchool - Data sent");
+        SchoolEditTableView.userInfo = self.userInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
     }
     else if ([segue.identifier isEqualToString:@"segueSemesterList"])
     {
-        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
+        SchoolDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SemesterTableView *SemesterTableView = [segue destinationViewController];
-        //        UINavigationController *navCon = [segue destinationViewController];
-        //        ProfileEditTableView *ProfileEditTableView = [navCon.viewControllers objectAtIndex:0];
         
         SemesterTableView.userName = self.userName;
         SemesterTableView.schoolName = [selectedObject schoolName];
@@ -138,13 +140,11 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DataCollection *data = [[DataCollection alloc] init];
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-        NSManagedObject *schoolToDelete = [self.schoolList objectAtIndex:indexPath.row];
-        [data deleteSchool:schoolToDelete];
-        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSManagedObject *schoolToDelete = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        [self.managedObjectContext deleteObject:schoolToDelete];
+        [self.managedObjectContext save:nil];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -190,12 +190,10 @@
     }
     else if (buttonIndex == 2)
     {
-        DataCollection *data = [[DataCollection alloc] init];
-        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-        NSManagedObject *schoolToDelete = [self.schoolList objectAtIndex:self.selectedIndexPath.row];
-        [data deleteSchool:schoolToDelete];
-        self.schoolList = [data retrieveSchoolList:(NSString *)self.userName];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSManagedObject *schoolToDelete = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        [self.managedObjectContext deleteObject:schoolToDelete];
+        [self.managedObjectContext save:nil];
+        //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 #pragma mark - Table view delegate

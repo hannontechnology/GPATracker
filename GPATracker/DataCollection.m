@@ -23,35 +23,14 @@
 @synthesize masterUserList = _masterUserList;
 @synthesize masterSchoolList = _masterSchoolList;
 
-- (void)initializeDefaultDataList {
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    NSError *error = nil;
-    self.masterUserList = [moc executeFetchRequest:request error:&error];
-}
-
 - (id)init {
     if (self = [super init]) {
-        [self initializeDefaultDataList];
         return self;
     }
     return nil;
 }
 
 //Code for handling User information
-- (NSUInteger)countOfUserList {
-    return [self.masterUserList count];
-}
-
-- (User *)objectInListAtIndex:(NSUInteger)theIndex {
-    return [self.masterUserList objectAtIndex:theIndex];    
-}
-
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext
 {
     NSManagedObjectContext *moc = inputContext;
@@ -86,20 +65,6 @@
     return results;
 }
 
-- (NSArray *)retrieveUsers
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
-    return results;
-}
-
 - (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext
 {
     NSManagedObjectContext *moc = inputContext;
@@ -115,122 +80,6 @@
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     return results;
-}
-
-- (void)removeAutoLogin
-{
-    int count = 0;
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat:@"autoLogon = 1"];
-    NSLog(@"filtering data based on autoLogon = 1");
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
-    
-    for (User *item in results) {
-        if (item.autoLogon == [NSNumber numberWithInt:1])
-        {
-            item.autoLogon = [NSNumber numberWithInt:0];
-            count++;
-        }
-    }
-    if (count > 0)
-    {
-        if (![moc save:&error])
-        {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-    }
-}
-
-- (void)setAutoLogin:(NSString *)inputUserName
-{
-    int count = 0;
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat:@"userName = %@", inputUserName];
-    NSLog(@"filtering data based on userName = %@", inputUserName);
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:&error];
-    
-    for (User *item in results)
-    {
-        item.autoLogon = [NSNumber numberWithInt:1];
-        count++;
-    }
-    if (count > 0)
-    {
-        if (![moc save:&error])
-        {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        }
-    }
-    
-}
-
-- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"User"; // Put your entity name here
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-
-    User *newUser = [NSEntityDescription
-                     insertNewObjectForEntityForName:entityName
-                     inManagedObjectContext:moc];
-    newUser.userName = inputUserName;
-    newUser.userPassword = inputUserPassword;
-    newUser.userFirstName = inputUserFirstName;
-    newUser.userLastName = inputUserLastName;
-    newUser.userEmail = inputUserEmail;
-    newUser.autoLogon = inputAutoLogin;
-    NSError *error;
-    if (![moc save:&error])
-    {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-        return -1;
-    }
-    return 0;
-}
-
-- (int)updateUser:(NSArray *)inputUser
-{
-    for (User *item in inputUser)
-    {
-        NSManagedObjectContext *moc = [self managedObjectContext];
-        
-        NSString *entityName = @"User"; // Put your entity name here
-        NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-        
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-        
-        NSError *error = nil;
-        NSArray *results = [moc executeFetchRequest:request error:&error];
-        
-        if ([results count] > 0)
-        {
-            results = inputUser;
-        }
-
-        if (![moc save:&error])
-        {
-            NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-            return -1;
-        }
-    }
-    return 0;
 }
 
 //Code for handling school information

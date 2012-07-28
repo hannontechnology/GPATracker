@@ -9,5 +9,7 @@
 #import "User.h"
 
 @interface User (Create)
-+ (User *)addUser:(User *)user context:(NSManagedObjectContext *)inContext;
+- (User *)addUser:(User *)user context:(NSManagedObjectContext *)inContext;
+- (void)removeAutoLogin:(User *)user context:(NSManagedObjectContext *)inContext;
+- (void)setAutoLogin:(User *)user context:(NSManagedObjectContext *)inContext;
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "LoginView.h"
-#import "User.h"
+#import "User+Create.h"
 #import "DataCollection.h"
 #import "HomePageTableView.h"
 #import "ProfileEditTableView.h"
@@ -75,8 +75,8 @@
             if (autoLoginSelector.on)
             {
                 self.userInfo = [results objectAtIndex:0];
-                [self.dataCollection removeAutoLogin];
-                [self.dataCollection setAutoLogin:userNameField.text];
+                [self.userInfo removeAutoLogin:self.userInfo context:self.managedObjectContext];
+                [self.userInfo setAutoLogin:self.userInfo context:self.managedObjectContext];
             }
             userName = userNameField.text;
             [self performSegueWithIdentifier: @"segueHomePage" sender: self];

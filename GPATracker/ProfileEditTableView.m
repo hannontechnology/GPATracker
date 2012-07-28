@@ -7,7 +7,7 @@
 //
 
 #import "ProfileEditTableView.h"
-#import "User.h"
+#import "User+Create.h"
 #import "DataCollection.h"
 #import "HomePageTableView.h"
 #import "LoginView.h"
@@ -105,117 +105,93 @@
 
 - (IBAction)Accept:(id)sender
 {
+    NSNumber *autoLogin = 0;
+    if (autoLoginField.on)
+    {
+        autoLogin = [NSNumber numberWithInt:1];
+    }
+
     if ([userNameField.text length] == 0)
     {
-        //status.text = @"Username field is Required.";
+        NSLog(@"UserName field is Required.");
+        return;
+    }
+    else if ([passwordField.text length] == 0)
+    {
+        NSLog(@"Password field is Required.");
+        return;
+    }
+    else if ([firstNameField.text length] == 0)
+    {
+        NSLog(@"First Name field is Required.");
+        return;
+    }
+    else if ([lastNameField.text length] == 0)
+    {
+        NSLog(@"Last Name field is Required.");
+        return;
+    }
+    else if ([emailField.text length] == 0)
+    {
+        NSLog(@"Email field is Required.");
         return;
     }
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveUsers:userNameField.text inContext:self.managedObjectContext];
-    NSNumber *autoLogin = 0;
-    
+
     if (self.setEditStatus == @"Edit")
     {
-        if (autoLoginField.on)
+        if (self.userInfo == nil)
         {
-            autoLogin = [NSNumber numberWithInt:1];
-        }
-        if ([passwordField.text length] == 0)
-        {
-            //status.text = @"Password field is Required.";
-        }
-        else if ([firstNameField.text length] == 0)
-        {
-            //status.text = @"First Name field is Required.";
-        }
-        else if ([lastNameField.text length] == 0)
-        {
-            //status.text = @"Last Name field is Required.";
-        }
-        else if ([emailField.text length] == 0)
-        {
-            //status.text = @"Email field is Required.";
+            NSLog(@"Database Error: Could not connect to Database");
         }
         else
         {
-            if (self.userInfo == nil)
-            {
-                //status.text = @"Database Error: Could not connect to Database";
-            }
-            else
-            {
-                NSLog(@"Save Profile Page");
-                self.userInfo.userName      = userNameField.text;
-                self.userInfo.userPassword  = passwordField.text;
-                self.userInfo.userFirstName = firstNameField.text;
-                self.userInfo.userLastName  = lastNameField.text;
-                self.userInfo.userEmail     = emailField.text;
-                self.userInfo.autoLogon     = autoLogin;
-                //NSManagedObjectContext *moc = [self managedObjectContext];
-                if ([[self managedObjectContext] save:&error])
-                {
-                    NSLog(@"Save was successful");
-                    if (autoLoginField.on)
-                    {
-                        [self.dataCollection removeAutoLogin];
-                        [self.dataCollection setAutoLogin:userNameField.text];
-                    }
-                    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
-                }
-                else 
-                {
-                    NSLog(@"Save Error! - %@",error.userInfo);
-                }
-            }
-        }      
-    }
-    else if ([results count] == 0)
-    {
-        if (autoLoginField.on)
-        {
-            autoLogin = [NSNumber numberWithInt:1];
-        }
-        if ([passwordField.text length] == 0)
-        {
-            //status.text = @"Password field is Required.";
-        }
-        else if ([firstNameField.text length] == 0)
-        {
-            //status.text = @"First Name field is Required.";
-        }
-        else if ([lastNameField.text length] == 0)
-        {
-            //status.text = @"Last Name field is Required.";
-        }
-        else if ([emailField.text length] == 0)
-        {
-            //status.text = @"Email field is Required.";
-        }
-        else
-        {
-            self.userInfo = [NSEntityDescription
-                             insertNewObjectForEntityForName:@"User"
-                             inManagedObjectContext:self.managedObjectContext];
+            NSLog(@"Save Profile Page");
             self.userInfo.userName      = userNameField.text;
             self.userInfo.userPassword  = passwordField.text;
             self.userInfo.userFirstName = firstNameField.text;
             self.userInfo.userLastName  = lastNameField.text;
             self.userInfo.userEmail     = emailField.text;
             self.userInfo.autoLogon     = autoLogin;
-            
-            if ([self.managedObjectContext save:&error])
+            if ([[self managedObjectContext] save:&error])
             {
+                NSLog(@"Save was successful");
                 if (autoLoginField.on)
                 {
-                    //[self.dataCollection removeAutoLogin];
-                    //[self.dataCollection setAutoLogin:userNameField.text];
+                    [self.userInfo removeAutoLogin:self.userInfo context:self.managedObjectContext];
                 }
                 [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
             }
             else 
             {
-                NSLog(@"Create user failed!");
+                NSLog(@"Save Error! - %@",error.userInfo);
             }
+        }      
+    }
+    else if ([results count] == 0)
+    {
+        self.userInfo = [NSEntityDescription
+                         insertNewObjectForEntityForName:@"User"
+                         inManagedObjectContext:self.managedObjectContext];
+        self.userInfo.userName      = userNameField.text;
+        self.userInfo.userPassword  = passwordField.text;
+        self.userInfo.userFirstName = firstNameField.text;
+        self.userInfo.userLastName  = lastNameField.text;
+        self.userInfo.userEmail     = emailField.text;
+        self.userInfo.autoLogon     = autoLogin;
+            
+        if ([self.managedObjectContext save:&error])
+        {
+            if (autoLoginField.on)
+            {
+                [self.userInfo removeAutoLogin:self.userInfo context:self.managedObjectContext];
+            }
+            [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+        }
+        else 
+        {
+            NSLog(@"Create user failed!");
         }
     }
     else

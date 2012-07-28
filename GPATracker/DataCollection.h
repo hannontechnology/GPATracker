@@ -21,16 +21,7 @@
 // User Section
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext; 
 - (NSArray *)retrieveUsers:(NSString *)inputUserName inContext:(NSManagedObjectContext *) inputContext; 
-- (NSArray *)retrieveUsers;
 - (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext;
-- (void)removeAutoLogin;
-- (void)setAutoLogin:(NSString *)inputUserName; 
-- (int)addUser:(NSString *)inputUserName userPassword:(NSString *)inputUserPassword userFirstName:(NSString *)inputUserFirstName userLastName:(NSString *)inputUserLastName userEmail:(NSString *)inputUserEmail autoLogin:(NSNumber *)inputAutoLogin;
-- (int)updateUser:(NSArray *)inputUser;
-
-- (NSUInteger)countOfUserList;
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
 
 // School Section
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
@@ -60,5 +51,9 @@
 - (int)addCourse:(NSString *)inputCourseCode semesterName:(NSString *)inputSemesterName semesterName:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
 - (int)updateCourse:(NSArray *)inputSchool;
 - (int)deleteCourse:(NSManagedObject *)inputCourse;
+
+// Miscellaneous Functions
+- (void)saveContext;
+- (NSURL *)applicationDocumentsDirectory;
 
 @end

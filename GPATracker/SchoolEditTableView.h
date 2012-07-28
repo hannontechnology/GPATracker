@@ -8,18 +8,23 @@
 
 #import <UIKit/UIKit.h>
 //@class SelectGradingSchemeView;
+@class DataCollection;
+@class User;
+@class SchoolDetails;
 
 @interface SchoolEditTableView : UITableViewController
+@property (strong, nonatomic) User *userInfo;
+@property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (strong, nonatomic) IBOutlet UITextField *schoolNameField;
-@property (strong, nonatomic) NSString *setStatus;
-@property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSString *schoolName;
-
+@property (weak, nonatomic) IBOutlet UITextField *schoolNameField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolDetailsField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolEndYearField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
+
+@property (strong, nonatomic) NSString *setEditStatus;
 
 - (IBAction)gradingScheme:(UIButton *)sender;
 
