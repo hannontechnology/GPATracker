@@ -41,10 +41,8 @@
 		2D9C62B215B5370700B82973 /* GradingSchemeSelectTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B115B5370700B82973 /* GradingSchemeSelectTableView.m */; };
 		2D9C62B515B5385300B82973 /* GradingSchemeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */; };
 		348338B4159689C4009B5D1E /* SemesterYearPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 348338B3159689C4009B5D1E /* SemesterYearPickerViewController.m */; };
+		34C6E6FA15C498F700CA2D93 /* SchoolDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F1853315C476A500E0E1E9 /* SchoolDetails.m */; };
 		34EDF98415B21C9C00C5FFA0 /* SemesterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */; };
-		34F1853415C476A600E0E1E9 /* SchoolDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F1853315C476A500E0E1E9 /* SchoolDetails.m */; };
-		34F1853715C476A600E0E1E9 /* SemesterDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F1853615C476A600E0E1E9 /* SemesterDetails.m */; };
-		34F1853A15C47CB000E0E1E9 /* SemesterDetails+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 34F1853915C47CB000E0E1E9 /* SemesterDetails+Create.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -390,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34C6E6FA15C498F700CA2D93 /* SchoolDetails.m in Sources */,
 				1F754A5F151559EA00BD72F0 /* main.m in Sources */,
 				1F754A63151559EA00BD72F0 /* HTECHAppDelegate.m in Sources */,
 				1F754A6C151559EA00BD72F0 /* LoginView.m in Sources */,
@@ -412,9 +411,7 @@
 				1F41904B15C349F10031A4BC /* User.m in Sources */,
 				1F41904E15C349F10031A4BC /* Course.m in Sources */,
 				1F41905115C34A620031A4BC /* User+Create.m in Sources */,
-				34F1853415C476A600E0E1E9 /* SchoolDetails.m in Sources */,
-				34F1853715C476A600E0E1E9 /* SemesterDetails.m in Sources */,
-				34F1853A15C47CB000E0E1E9 /* SemesterDetails+Create.m in Sources */,
+				1F91E44415C4691B0088A2AF /* SchoolDetails+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

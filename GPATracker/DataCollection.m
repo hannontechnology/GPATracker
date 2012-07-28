@@ -132,8 +132,6 @@
     newSemester.semesterName = inputSemesterName;
     newSemester.semesterYear = inputSemesterYear;
     newSemester.semesterCode = inputSemesterCode;
-    newSemester.userName = inputUserName;
-    newSemester.schoolName = inputSchoolName;
     
     NSError *error;
     if(![moc save:&error])
@@ -154,7 +152,6 @@
         NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
         
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-        request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@ AND semesterName = %@", item.userName, item.schoolName, item.semesterName];
         
         NSError *error = nil;
         NSArray *results = [moc executeFetchRequest:request error:&error];
@@ -201,7 +198,6 @@
     newSchool.schoolDetails = inputSchoolDetail;
     newSchool.schoolStartYear = inputSchoolStartYear;
     newSchool.schoolEndYear = inputSchoolEndYear;
-    newSchool.userName = inputUserName;
     
     int temp1 = arc4random()%433;
     double temp2 = (double)temp1/100;

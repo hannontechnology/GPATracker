@@ -211,7 +211,6 @@
     if([segue.identifier isEqualToString:@"segueEditSemesterToSemester"])
     {
         SemesterTableView *SemesterTableView = [segue destinationViewController];
-        SemesterTableView.userName = self.userName;
         SemesterTableView.schoolName = self.schoolName;
     }
 }
