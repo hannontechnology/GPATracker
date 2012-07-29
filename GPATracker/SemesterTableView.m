@@ -19,7 +19,6 @@
 
 @implementation SemesterTableView
 @synthesize schoolInfo = _schoolInfo;
-@synthesize semesterList = _semesterList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
@@ -76,20 +75,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return [self.semesterList count];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DataCollection *data = [[DataCollection alloc] init];
@@ -102,7 +87,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    SemesterDetails *selectedObject = [self.semesterList objectAtIndex:indexPath.row];
+    SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class semesterListCell2 and include custom labels for display to cell
     cell.textLabel.text = [selectedObject semesterName];
@@ -112,28 +97,24 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    DataCollection *data = [[DataCollection alloc] init];
-    
-    NSLog(@"prepareForSegue Event of SemesterTableView");
     if ([segue.identifier isEqualToString:@"segueAddSemester"])
     {
         // Use this code if going to a navigation controller before accessing destination screen
         UINavigationController *navCon = [segue destinationViewController];
         SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         
-//        SemesterEditTableView.schoolName = self.schoolName;
+        SemesterEditTableView.schoolDetails = self.schoolInfo;
     }
     else if ([segue.identifier isEqualToString:@"segueEditSemester"])
     {
-        SemesterDetails *selectedObject = [self.semesterList objectAtIndex:self.selectedIndexPath.row];
+        SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
-//        SemesterEditTableView.schoolName = self.schoolName;
-        SemesterEditTableView.semesterName = [selectedObject semesterName];
+        SemesterEditTableView.semesterDetails = selectedObject;
+        SemesterEditTableView.schoolDetails = self.schoolInfo;
         SemesterEditTableView.setEditStatus = @"Edit";
     }
 }
-
 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,8 +123,6 @@
     return YES;
 }
 
-
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -151,16 +130,15 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        NSManagedObject *semesterToDelete = [self.semesterList objectAtIndex:indexPath.row];
-        [data deleteSchool:semesterToDelete];
-        
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        SemesterDetails *semesterToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:semesterToDelete];
+        [self.managedObjectContext save:nil];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
 
 /*
 // Override to support rearranging the table view.
@@ -197,16 +175,16 @@
     }
     else if (buttonIndex == 2)
     {
-        DataCollection *data = [[DataCollection alloc] init];
-//        self.semesterList = [data retrieveSemesterList:(NSString *)self.schoolName userName:(NSString *)self.userName];
-        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+        SemesterDetails *semesterToDelete = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        [self.managedObjectContext deleteObject:semesterToDelete];
+        [self.managedObjectContext save:nil];
+//        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
-#pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.selectedIndexPath = indexPath;
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

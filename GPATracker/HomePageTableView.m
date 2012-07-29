@@ -20,7 +20,6 @@
 @end
 
 @implementation HomePageTableView
-@synthesize schoolList = _schoolList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize userInfo = _userInfo;
 @synthesize dataCollection = _dataCollection;

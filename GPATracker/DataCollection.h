@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class SchoolDetails;
+@class User;
 
 @interface DataCollection : NSObject
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -34,13 +35,8 @@
 // Grading Scheme Section
 - (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName;
 
-
 // Semester Section
-- (NSArray *)retrieveSemesterList:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (int)addSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear semesterCode:(NSNumber *)inputSemesterCode userName:(NSString *)inputUserName schoolName:(NSString *)inputSchoolName;
-- (int)updateSemester:(NSArray *)inputSemester;
-- (int)deleteSemester:(NSManagedObject *)inputSemester;
+- (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails  context:(NSManagedObjectContext *) inContext;
 
 // Course Section
 - (NSArray *)retrieveCourses:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;

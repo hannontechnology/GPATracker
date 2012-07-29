@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class DataCollection;
+@class SchoolDetails;
 @class SemesterDetails;
 
 @interface SemesterEditTableView : UITableViewController
@@ -18,10 +19,12 @@
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 @property (strong, nonatomic) NSString *setEditStatus;
-@property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSString *schoolName;
-@property (strong, nonatomic) NSString *semesterName;
-@property (strong, nonatomic) SemesterDetails *semester;
+//@property (strong, nonatomic) NSString *userName;
+//@property (strong, nonatomic) NSString *schoolName;
+//@property (strong, nonatomic) NSString *semesterName;
+@property (strong, nonatomic) SemesterDetails *semesterDetails;
+@property (strong, nonatomic) SchoolDetails *schoolDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

@@ -23,11 +23,13 @@
 @synthesize semesterCodeField;
 @synthesize headerText;
 @synthesize setEditStatus;
-@synthesize userName = _userName;
-@synthesize schoolName = _schoolName;
-@synthesize semesterName = _semesterName;
-@synthesize semester;
-@synthesize dataCollection;
+//@synthesize userName = _userName;
+//@synthesize schoolName = _schoolName;
+//@synthesize semesterName = _semesterName;
+@synthesize schoolDetails = _schoolDetails;
+@synthesize semesterDetails = _semesterDetails;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -63,28 +65,17 @@
         return;
     }
     
-    DataCollection *data = [[DataCollection alloc] init];
-    
-    NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
-    
-    if(results == nil)
+    if(self.semesterDetails == nil)
     {
         // TODO: put in Error checking
     }
     else 
     {
-        if([results count] > 0)
-        {
-            NSLog(@"Loading Semester Edit Page");
-            headerText.title = @"Edit Semester";
-            
-            for(SemesterDetails *item in results)
-            {
-                semesterNameField.text = item.semesterName;
-                semesterYearField.text = [NSString stringWithFormat:@"%@", [item semesterYear].stringValue];
-                semesterCodeField.text = [NSString stringWithFormat:@"%@", [item semesterCode].stringValue];
-            }
-        }
+        NSLog(@"Loading Semester Edit Page");
+        headerText.title = @"Edit Semester";
+        semesterNameField.text = self.semesterDetails.semesterName;
+        semesterYearField.text = [NSString stringWithFormat:@"%@", [self.semesterDetails semesterYear].stringValue];
+        semesterCodeField.text = [NSString stringWithFormat:@"%@", [self.semesterDetails semesterCode].stringValue];
     }
 }
 
@@ -104,100 +95,77 @@
 {
     // TODO: add in check for repeat semesters
     
-    if(([semesterNameField.text length] == 0) || ([semesterYearField.text length] == 0))
+    if([semesterNameField.text length] == 0)
     {
         // TODO: Error message
-        return;
+    }
+    else if([semesterYearField.text length] == 0)
+    {
+        // TODO: Error message
     }
     
-    DataCollection *data = [DataCollection alloc];
-    
-    NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
+    NSArray *results = [self.dataCollection retrieveSemester:semesterNameField.text schoolDetails:self.schoolDetails context:self.managedObjectContext];
     
     // TODO: add in logic for creating automated semester code
     
     if(self.setEditStatus == @"Edit")
     {
-        if([semesterNameField.text length] == 0)
+        if(self.semesterDetails == nil)
         {
-            // TODO: Error message
+            //TODO: Error message
         }
-        else if([semesterYearField.text length] == 0)
+        else
         {
-            // TODO: Error message
-        }
-        else 
-        {
-            // Find semester and edit it
-            self.semesterName = semesterNameField.text;
-            DataCollection *data = [[DataCollection alloc] init];
-            
-            NSArray *results = [data retrieveSemester:self.semesterName schoolName:self.schoolName userName:self.userName];
-            
-            if(results == nil)
-            {
-                //TODO: Error message
-            }
-            else if ([results count] > 0)
-            {
-                NSLog(@"Save Semester Page");
-                for(SemesterDetails *item in results)
-                {
-                    item.semesterName = semesterNameField.text;
+            NSLog(@"Save Semester Page");
+            self.semesterDetails.semesterName = semesterNameField.text;
                     
-                    // Cast text to NSNumber:
-                    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-                    [f setNumberStyle:NSNumberFormatterNoStyle];
-                    NSNumber *s_year = [f numberFromString:semesterYearField.text];
-                    item.semesterYear = s_year;
-                    NSNumber *s_code = [f numberFromString:semesterCodeField.text];
-                    item.semesterCode = s_code;
-                }
-                if ([data updateSemester:results] == 0)
-                {
-                    [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
-                }
-                else 
-                {
-                    NSLog(@"Save Semester Failed! :(");
-                }
+            // Cast text to NSNumber:
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterNoStyle];
+            NSNumber *s_year = [f numberFromString:semesterYearField.text];
+            self.semesterDetails.semesterYear = s_year;
+            NSNumber *s_code = [f numberFromString:semesterCodeField.text];
+            self.semesterDetails.semesterCode = s_code;
+
+            if ([self.managedObjectContext save:nil])
+            {
+                [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
             }
-            else {
-                // TODO: default behaviour = do nothing
+            else
+            {
+                NSLog(@"Save Semester Failed! :(");
             }
         }
     }
     else if ([results count] == 0)
     {
-        if ([semesterNameField.text length] == 0)
+        NSString *entityName = @"SchoolDetails";
+        self.semesterDetails = [NSEntityDescription
+                                  insertNewObjectForEntityForName:entityName
+                                  inManagedObjectContext:self.managedObjectContext];
+        self.semesterDetails.semesterName = semesterNameField.text;
+        
+        // Cast text to NSNumber:
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterNoStyle];
+        NSNumber *s_year = [f numberFromString:semesterYearField.text];
+        self.semesterDetails.semesterYear = s_year;
+        NSNumber *s_code = [f numberFromString:semesterCodeField.text];
+        self.semesterDetails.semesterCode = s_code;
+        self.semesterDetails.schoolDetails = self.schoolDetails;
+        
+        if ([self.managedObjectContext save:nil])
         {
-            // TODO: error message
+            [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
         }
-        else if ([semesterYearField.text length] == 0)
+        else
         {
-            // TODO: error message
-        }
-        else 
-        {
-            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterNoStyle];
-            
-            int addResult = [data addSemester:(NSString *)semesterNameField.text semesterYear:(NSNumber *)[f numberFromString:semesterYearField.text] semesterCode:(NSNumber *)[f numberFromString:semesterCodeField.text] userName:(NSString *)self.userName schoolName:(NSString *)self.schoolName];
-            
-            if(addResult == 0)
-            {
-                self.semesterName = semesterNameField.text;
-                [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
-            }
-            else 
-            {
-                // TODO: Error message
-            }
+            NSLog(@"Save Semester Failed! :(");
         }
     }
-    else 
+    else
     {
-        // TODO: Error message - "Semester already exists"
+        NSLog(@"Save Semester Failed! :Semester Already Exist!");
     }
 }
 

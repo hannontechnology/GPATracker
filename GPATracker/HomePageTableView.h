@@ -16,7 +16,6 @@
 {
     IBOutlet UIAlertView *alert;
 }
-@property (strong, nonatomic) NSArray *schoolList;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @property (strong, nonatomic) User *userInfo;

@@ -102,103 +102,15 @@
     return results;
 }
 
-- (NSArray *)retrieveSemesterList:(NSString *)inputSchoolName userName:(NSString *)inputUserName
+- (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
 {
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
     NSString *entityName = @"SemesterDetails";
-    NSLog(@"Setting up Fetched Results Controller for Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@", inputUserName, inputSchoolName];
-    
-    NSLog(@"Filtering data based on userName = %@ AND schoolName = %@", inputUserName, inputSchoolName);
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@ AND semesterName = %@", inputSchoolDetails, inputSemesterName];
     
     NSError *error = nil;
-    NSArray*results = [moc executeFetchRequest:request error:& error];
+    NSArray*results = [inContext executeFetchRequest:request error:& error];
     return results;
-}
-
-- (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"SemesterDetails";
-    NSLog(@"Setting up Fetched Results Controller for Entity name %@", entityName);
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@ AND semesterName = %@", inputUserName, inputSchoolName, inputSemesterName];
-    
-    NSLog(@"Filtering data based on userName = %@ AND schoolName = %@ AND semesterName = %@", inputUserName, inputSchoolName, inputSemesterName);
-    
-    NSError *error = nil;
-    NSArray*results = [moc executeFetchRequest:request error:& error];
-    return results;
-}
-
-- (int)addSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear semesterCode:(NSNumber *)inputSemesterCode userName:(NSString *)inputUserName schoolName:(NSString *)inputSchoolName
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"SemesterDetails";
-    NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-    
-    SemesterDetails *newSemester = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
-    newSemester.semesterName = inputSemesterName;
-    newSemester.semesterYear = inputSemesterYear;
-    newSemester.semesterCode = inputSemesterCode;
-    
-    NSError *error;
-    if(![moc save:&error])
-    {
-        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
-        return -1;
-    }
-    return 0;
-}
-
-- (int)updateSemester:(NSArray *)inputSemester
-{
-    for(SemesterDetails *item in inputSemester)
-    {
-        NSManagedObjectContext *moc = [self managedObjectContext];
-        
-        NSString *entityName = @"SemesterDetails";
-        NSLog(@"Setting up a Fetched Results Controller for the Entity named %@", entityName);
-        
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-        
-        NSError *error = nil;
-        NSArray *results = [moc executeFetchRequest:request error:&error];
-        
-        if([results count] > 0)
-        {
-            results = inputSemester;
-        }
-        
-        if(![moc save:&error])
-        {
-            NSLog(@"Couldn't save: %@", [error localizedDescription]);
-            return -1;
-        }
-    }
-    return 0;
-}
-
-- (int)deleteSemester:(NSManagedObject *)inputSemester
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    [moc deleteObject:inputSemester];
-    
-    NSError *error = nil;
-    if(![moc save:&error])
-    {
-        NSLog(@"Delete semester failed: %@", [error localizedDescription]);
-        return -1;
-    }
-    NSLog(@"Delete semester successful!");
-    return 0;
 }
 
 - (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName
