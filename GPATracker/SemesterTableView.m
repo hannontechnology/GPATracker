@@ -104,6 +104,8 @@
         SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         
         SemesterEditTableView.schoolDetails = self.schoolInfo;
+        SemesterEditTableView.dataCollection = self.dataCollection;
+        SemesterEditTableView.managedObjectContext = self.managedObjectContext;
     }
     else if ([segue.identifier isEqualToString:@"segueEditSemester"])
     {
@@ -112,6 +114,8 @@
         
         SemesterEditTableView.semesterDetails = selectedObject;
         SemesterEditTableView.schoolDetails = self.schoolInfo;
+        SemesterEditTableView.dataCollection = self.dataCollection;
+        SemesterEditTableView.managedObjectContext = self.managedObjectContext;
         SemesterEditTableView.setEditStatus = @"Edit";
     }
 }
@@ -126,8 +130,6 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DataCollection *data = [[DataCollection alloc] init];
-    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         SemesterDetails *semesterToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -156,12 +158,16 @@
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
 {
-    if (gestureRecognizer.state != UIGestureRecognizerStateBegan)
-        return;
-
+    if ( gestureRecognizer.state != UIGestureRecognizerStateBegan )
+        return; // discard everything else
+    
     CGPoint p = [gestureRecognizer locationInView:self.tableView];
     
     self.selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (self.selectedIndexPath == nil)
+        NSLog(@"long press on table view but not on a row");
+    else
+        NSLog(@"long press on table view at row %d", self.selectedIndexPath.row);
     
     alert = [[UIAlertView alloc] initWithTitle:@"Edit/Delete" message:@"Please edit or delete item" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Edit", @"Delete", nil];
     [alert show];
@@ -185,6 +191,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier: @"segueCourseList" sender: self];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

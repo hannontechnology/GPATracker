@@ -1563,9 +1563,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <connections>
-                                    <segue destination="0oZ-Xb-naF" kind="push" identifier="segueCourseList" id="FAh-yc-o2A"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1587,6 +1584,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="YTG-zN-KQM" kind="push" identifier="segueEditSemester" id="sqq-oh-NbO"/>
+                        <segue destination="0oZ-Xb-naF" kind="push" identifier="segueCourseList" id="zyl-Bd-lJ4"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1679,6 +1677,7 @@
         <class className="GradingSchemeTableView" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeTableView.h"/>
             <relationships>
+                <relationship kind="action" name="Save:"/>
                 <relationship kind="outlet" name="gradeAField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="gradeAMinusField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="gradeAPlusField" candidateClass="UITextField"/>
@@ -1775,13 +1774,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="k7a-QP-sia"/>
-        <segue reference="XFF-ob-f75"/>
-        <segue reference="sqq-oh-NbO"/>
-        <segue reference="eUK-Fo-EN0"/>
-        <segue reference="o2U-7x-MXr"/>
+        <segue reference="phW-HU-sP7"/>
         <segue reference="VGG-Ty-jdk"/>
+        <segue reference="3xK-NI-FQs"/>
+        <segue reference="68m-8u-amb"/>
         <segue reference="fGJ-Vg-Bh6"/>
-        <segue reference="6Sl-EM-wfU"/>
+        <segue reference="sqq-oh-NbO"/>
+        <segue reference="zyl-Bd-lJ4"/>
+        <segue reference="XFF-ob-f75"/>
     </inferredMetricsTieBreakers>
 </document>

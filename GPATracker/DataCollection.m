@@ -55,22 +55,18 @@
 }
 
 //Code for handling school information
-- (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName  user:(User *)inputUser context:(NSManagedObjectContext *)inContext
 {
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
     NSString *entityName = @"SchoolDetails";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat: @"schoolName = %@ AND userName = %@", inputSchoolName, inputUserName];
-    NSLog(@"filtering data based on schoolName = %@", inputSchoolName);
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolName = %@ AND user = %@", inputSchoolName, inputUser];
     
     NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:& error];
+    NSArray *results = [inContext executeFetchRequest:request error:& error];
     return results;
 }
 
+//Code for handling grading scheme information
 - (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
@@ -86,22 +82,7 @@
     return results;
 }
 
-- (NSArray *)retrieveSchoolList:(NSString *)inputUserName
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"SchoolDetails";
-    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@", inputUserName];
-    NSLog(@"filtering data based on userName = %@", inputUserName);
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:& error];
-    return results;
-}
-
+//Code for handling semester information
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
 {
     NSString *entityName = @"SemesterDetails";
@@ -111,80 +92,6 @@
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
     return results;
-}
-
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"SchoolDetails";
-    NSLog(@"Setting upa Fetched Results Controller for the Entity named %@", entityName);
-    
-    SchoolDetails *newSchool = [NSEntityDescription insertNewObjectForEntityForName:entityName inManagedObjectContext:moc];
-    newSchool.schoolName = inputSchoolName;
-    newSchool.schoolDetails = inputSchoolDetail;
-    newSchool.schoolStartYear = inputSchoolStartYear;
-    newSchool.schoolEndYear = inputSchoolEndYear;
-    
-    int temp1 = arc4random()%433;
-    double temp2 = (double)temp1/100;
-    NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(temp2)];
-    NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-    
-    newSchool.schoolActualGPA = temp3;
-    newSchool.schoolCalculatedGPA = temp4;
-    
-    // Missing for grading scheme
-    NSError *error;
-    if (![moc save:&error])
-    {
-        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
-        return -1;
-    }
-    return 0;
-}
-
-- (int)deleteSchool:(NSString *)inputSchoolName userName:(NSString *)inputUserName
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    
-    NSString *entityName = @"SchoolDetails";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    
-    request.predicate = [NSPredicate predicateWithFormat: @"userName = %@ AND schoolName = %@", inputUserName, inputSchoolName];
-    NSLog(@"filtering data based on userName = %@ AND schoolName = %@", inputUserName, inputSchoolName);
-    
-    NSError *error = nil;
-    NSArray *results = [moc executeFetchRequest:request error:& error];
-
-    for (id item in results)
-    {
-        [moc deleteObject:item];
-    }
-
-    if (![moc save:&error])
-    {
-        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
-        return -1;
-    }
-    NSLog(@"Delete Successful!");
-    return 0;
-}
-
-- (int)deleteSchool:(NSManagedObject *)inputSchool
-{
-    NSManagedObjectContext *moc = [self managedObjectContext];
-    [moc deleteObject:inputSchool];
-    
-    NSError *error = nil;
-    if (![moc save:&error])
-    {
-        NSLog(@"Hot Damn, couldn't save: %@", [error localizedDescription]);
-        return -1;
-    }
-    NSLog(@"Delete Successful!");
-    return 0;
 }
 
 //Core Data Required Functions

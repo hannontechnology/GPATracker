@@ -7,7 +7,7 @@
 //
 
 #import "SemesterEditTableView.h"
-#import "SemesterDetails.h"
+#import "SemesterDetails+Create.h"
 #import "DataCollection.h"
 #import "SemesterTableView.h"
 
@@ -139,7 +139,7 @@
     }
     else if ([results count] == 0)
     {
-        NSString *entityName = @"SchoolDetails";
+        NSString *entityName = @"SemesterDetails";
         self.semesterDetails = [NSEntityDescription
                                   insertNewObjectForEntityForName:entityName
                                   inManagedObjectContext:self.managedObjectContext];
@@ -179,7 +179,9 @@
     if([segue.identifier isEqualToString:@"segueEditSemesterToSemester"])
     {
         SemesterTableView *SemesterTableView = [segue destinationViewController];
-//        SemesterTableView.schoolName = self.schoolName;
+        SemesterTableView.schoolInfo = self.schoolDetails;
+        SemesterTableView.managedObjectContext = self.managedObjectContext;
+        SemesterTableView.dataCollection = self.dataCollection;
     }
 }
 

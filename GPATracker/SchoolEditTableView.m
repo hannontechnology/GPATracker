@@ -107,7 +107,7 @@
         return;
     }
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveSchools:schoolNameField.text userName:(NSString *)self.userInfo.userName];
+    NSArray *results = [self.dataCollection retrieveSchools:schoolNameField.text user:(User *)self.userInfo context:(NSManagedObjectContext *)self.managedObjectContext];
 
     if (self.setEditStatus == @"Edit")
     {
@@ -140,7 +140,7 @@
         self.schoolInfo = [NSEntityDescription
                          insertNewObjectForEntityForName:entityName
                          inManagedObjectContext:self.managedObjectContext];
-        self.schoolInfo.user = self.userInfo;
+        self.schoolInfo.user            = self.userInfo;
         self.schoolInfo.schoolName      = schoolNameField.text;
         self.schoolInfo.schoolDetails   = schoolDetailsField.text;
         self.schoolInfo.schoolStartYear = schoolStartYearField.text;

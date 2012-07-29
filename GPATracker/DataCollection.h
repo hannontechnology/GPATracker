@@ -22,15 +22,7 @@
 - (NSArray *)retrieveAutoLogin:(NSManagedObjectContext *) inputContext;
 
 // School Section
-- (NSArray *)retrieveSchools:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (NSArray *)retrieveSchools:(NSString *)inputSchoolName;
-- (NSArray *)retrieveSchoolList:(NSString *)inputUserName;
-- (NSArray *)retrieveSchools;
-- (int)addSchool:(NSString *)inputSchoolName schoolDetail:(NSString *)inputSchoolDetail schoolStartYear:(NSString *)inputSchoolStartYear schoolEndYear:(NSString *)inputSchoolEndYear userName:(NSString *)inputUserName;
-- (int)updateSchool:(NSArray *)inputSchool;
-- (int)deleteSchool:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (int)deleteSchool:(NSManagedObject *)inputSchool;
-- (NSUInteger)countOfSchoolList;
+- (NSArray *)retrieveSchools:(NSString *)inputSchoolName user:(User *)inputUser context:(NSManagedObjectContext *)inContext;
 
 // Grading Scheme Section
 - (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName;
@@ -39,11 +31,6 @@
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails  context:(NSManagedObjectContext *) inContext;
 
 // Course Section
-- (NSArray *)retrieveCourses:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (NSArray *)retrieveCourses:(NSString *)inputSchoolName semesterName:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (int)addCourse:(NSString *)inputCourseCode semesterName:(NSString *)inputSemesterName semesterName:(NSString *)inputSemesterName schoolName:(NSString *)inputSchoolName userName:(NSString *)inputUserName;
-- (int)updateCourse:(NSArray *)inputSchool;
-- (int)deleteCourse:(NSManagedObject *)inputCourse;
 
 // Miscellaneous Functions
 - (void)saveContext;
