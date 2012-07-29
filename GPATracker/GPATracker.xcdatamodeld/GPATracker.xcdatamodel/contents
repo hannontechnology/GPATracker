@@ -42,11 +42,9 @@
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schoolDetails" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SemesterDetails" representedClassName="SemesterDetails" syncable="YES">
-        <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semesterCode" attributeType="Integer 16" minValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="semesterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semesterYear" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="course" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="semesterDetails" inverseEntity="Course" syncable="YES"/>
         <relationship name="schoolDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="semesterDetails" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
@@ -60,10 +58,10 @@
         <relationship name="schoolDetails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SchoolDetails" inverseName="user" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="0" positionY="0" width="128" height="255"/>
-        <element name="GradingScheme" positionX="0" positionY="0" width="128" height="225"/>
-        <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="User" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Course" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="GradingScheme" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SchoolDetails" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SemesterDetails" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

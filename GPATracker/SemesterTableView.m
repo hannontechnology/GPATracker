@@ -18,7 +18,7 @@
 @end
 
 @implementation SemesterTableView
-@synthesize schoolName = _schoolName;
+@synthesize schoolInfo = _schoolInfo;
 @synthesize semesterList = _semesterList;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
@@ -26,8 +26,10 @@
 
 - (void)setupFetchedResultsController
 {
+    // Create fetch request for the entity
+        // Edit the entity name as appropriate
     NSString *entityName = @"SemesterDetails";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
     NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
@@ -119,14 +121,14 @@
         UINavigationController *navCon = [segue destinationViewController];
         SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         
-        SemesterEditTableView.schoolName = self.schoolName;
+//        SemesterEditTableView.schoolName = self.schoolName;
     }
     else if ([segue.identifier isEqualToString:@"segueEditSemester"])
     {
         SemesterDetails *selectedObject = [self.semesterList objectAtIndex:self.selectedIndexPath.row];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
-        SemesterEditTableView.schoolName = self.schoolName;
+//        SemesterEditTableView.schoolName = self.schoolName;
         SemesterEditTableView.semesterName = [selectedObject semesterName];
         SemesterEditTableView.setEditStatus = @"Edit";
     }
