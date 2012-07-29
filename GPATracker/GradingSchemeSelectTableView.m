@@ -56,6 +56,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+   if ([segue.identifier isEqualToString:@"segue2GradingConfirm"])
+   {
+       GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
+       GradingSchemeTableView.userInfo = self.userInfo;
+       GradingSchemeTableView.DataCollection = self.dataCollection;
+       GradingSchemeTableView.schoolInfo = self.schoolInfo;
+       GradingSchemeTableView.gradingInfo = self.gradingInfo;
+       GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
+   }
+}
 #pragma mark - delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -70,6 +83,7 @@
            self.gradingInfo = [NSEntityDescription
             insertNewObjectForEntityForName:entityName
             inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
        }
         //Populate Grading Scheme database
         self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
@@ -93,6 +107,7 @@
             self.gradingInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:entityName
                                 inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
         }
         self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
         self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
@@ -113,6 +128,7 @@
             self.gradingInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:entityName
                                 inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
         }
         self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
