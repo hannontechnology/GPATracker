@@ -7,10 +7,11 @@
 //
 
 #import "CourseEditTableView.h"
-#import "Course.h"
+#import "CourseDetails.h"
 #import "DataCollection.h"
 #import "HomePageTableView.h"
 #import "LoginView.h"
+#import "CourseTableView.h"
 
 
 @interface CourseEditTableView ()
@@ -22,8 +23,6 @@
 @end
 
 @implementation CourseEditTableView
-@synthesize setEditStatus = _setEditStatus;
-@synthesize userName = _userName;
 @synthesize courseCodeField;
 @synthesize courseNameField;
 @synthesize courseUnitsField;
@@ -33,6 +32,12 @@
 @synthesize courseIncludeInGPAField;
 @synthesize courseDescriptionField;
 @synthesize headerText;
+
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize setEditStatus = _setEditStatus;
+@synthesize semesterDetails = _semesterDetails;
+@synthesize courseDetails = _courseDetails;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,7 +52,6 @@
     [super viewWillAppear:animated];
     
     //cancelButton.
-    
     if (self.setEditStatus != @"Edit")
     {
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
@@ -56,39 +60,29 @@
         self.navigationItem.hidesBackButton = YES;
         return;
     }
-    DataCollection *data = [[DataCollection alloc] init];
-    
-    //NSError *error = nil;
-    //NSArray *results = [data retrieveUsers:self.userName inContext:self.];
-    
-    //if (results == nil)
-    //{
-        //status.text = @"Database Error: Could not connect to Database";
-    //}
-    //else
-    //{
-    //    if ([results count] > 0)
-    //    {
-    //        NSLog(@"Load Profile Page");
-    //        headerText.title = @"Edit Profile";
-    //        for (Course *item in results)
-    //        {
-    //            courseCodeField.text  = item.courseCode;
-    //            courseNameField.text  = item.courseName;
-                //courseUnitsField.text  = item.units;
-                //courseDesiredGradeField.text = item.desiredGrade;
-                //courseActualGradeField.text  = item.actualGrade;
-    //            if (item.isPassFail == [NSNumber numberWithInt:1])
-    //            {
-    //                coursePassFailField.on = YES;
-    //            }
-    //            if (item.includeInGPA == [NSNumber numberWithInt:1])
-    //            {
-    //                courseIncludeInGPAField.on = YES;
-    //            }
-    //        }
-    //    }
-   // }
+
+    if (self.courseDetails == nil)
+    {
+        NSLog(@"Database Error: Could not connect to Database");
+    }
+    else
+    {
+        NSLog(@"Load Profile Page");
+        headerText.title = @"Edit Profile";
+        courseCodeField.text  = self.courseDetails.courseCode;
+        courseNameField.text  = self.courseDetails.courseName;
+        courseUnitsField.text  = self.courseDetails.units.stringValue;
+        courseDesiredGradeField.text = self.courseDetails.desiredGrade;
+        courseActualGradeField.text  = self.courseDetails.actualGrade;
+        if (self.courseDetails.isPassFail == [NSNumber numberWithInt:1])
+        {
+            coursePassFailField.on = YES;
+        }
+        if (self.courseDetails.includeInGPA == [NSNumber numberWithInt:1])
+        {
+            courseIncludeInGPAField.on = YES;
+        }
+    }
 }
 
 - (void)viewDidLoad
@@ -126,115 +120,104 @@
 
 - (IBAction)Accept:(id)sender
 {
-    if ([courseCodeField.text length] == 0)
+    NSNumber *includeInGPA = 0;
+    NSNumber *isPassFail = 0;
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterNoStyle];
+    NSNumber *s_units;
+    
+    if (coursePassFailField.on)
     {
-        //status.text = @"Username field is Required.";
+        isPassFail = [NSNumber numberWithInt:1];
+    }
+    if (courseIncludeInGPAField.on)
+    {
+        includeInGPA = [NSNumber numberWithInt:1];
+    }
+    if ([courseNameField.text length] == 0)
+    {
+        NSLog(@"Course Name field is Required.");
         return;
     }
-    DataCollection *data = [DataCollection alloc];
+    if ([courseCodeField.text length] == 0)
+    {
+        NSLog(@"Course Code field is Required.");
+        return;
+    }
+    if ([courseUnitsField.text length] == 0)
+    {
+        NSLog(@"Course Units field is Required.");
+        return;
+    }
+    else
+    {
+        s_units = [f numberFromString:courseUnitsField.text];
+    }
+    NSError *error = nil;
+    NSArray *results = [self.dataCollection retrieveCourse:courseCodeField.text semesterDetails:self.semesterDetails context:self.managedObjectContext];
     
-    //NSError *error = nil;
-    //NSArray *results = [data retrieveUsers:courseCodeField.text];
-    //NSNumber *includeInGPA = 0;
-    //NSNumber *isPassFail = 0;
-    
-    //if (self.setEditStatus == @"Edit")
-    //{
-    //    if (coursePassFailField.on)
-    //    {
-    //        isPassFail = [NSNumber numberWithInt:1];
-    //    }
-    //    if (courseIncludeInGPAField.on)
-    //    {
-    //        includeInGPA = [NSNumber numberWithInt:1];
-    //    }
-    //    if ([courseNameField.text length] == 0)
-    //    {
-    //        //status.text = @"Password field is Required.";
-    //    }
-    //    else
-    //    {
-    //        self.courseCode = courseCodeField.text;
-    //        DataCollection *data = [[DataCollection alloc] init];
-            
-            //NSError *error = nil;
-    //        NSArray *results = [data retrieveUsers:self.userName];
-            
-    //        if (results == nil)
-    //        {
-                //status.text = @"Database Error: Could not connect to Database";
-    //        }
-    //        else
-    //        {
-    //            if ([results count] > 0)
-    //        {
-    //                NSLog(@"Save Profile Page");
-    //                for (Course *item in results)
-    //                {
-    //                    item.courseCode   = courseCodeField.text;
-    //                    item.courseName   = courseNameField.text;
-                        //item.units        = courseUnitsField.text;
-                        //item.desiredGrade = courseDesiredGradeField.text;
-                        //item.actualGrade  = courseActualGradeField.text;
-    //                    item.isPassFail   = isPassFail;
-    //                    item.includeInGPA = includeInGPA;
-    //                    item.courseDesc   = courseDescriptionField.text;
-    //                }
-    //                if ([data updateUser:results] == 0)
-    //                {
-    //                    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
-    //                }
-    //                else 
-    //                {
-    //                }
-    //            }
-    //        }
-    //    }      
-    //}
-    //else if ([results count] == 0)
-    //{
-    //    if (coursePassFailField.on)
-    //    {
-    //        isPassFail = [NSNumber numberWithInt:1];
-    //    }
-    //    if (courseIncludeInGPAField.on)
-    //    {
-    //        includeInGPA = [NSNumber numberWithInt:1];
-    //    }
-    //    if ([courseNameField.text length] == 0)
-    //    {
-    //        //status.text = @"Password field is Required.";
-    //    }
-    //    else
-    //    {
-            //int addResult = [data addUser:(NSString *)userNameField.text userPassword:(NSString *)passwordField.text userFirstName:(NSString *)firstNameField.text userLastName:(NSString *)lastNameField.text userEmail:(NSString *)emailField.text autoLogin:(NSNumber *)autoLogin];
-            //if (addResult == 0)
-            //{
-            //    self.userName = userNameField.text;
-            //    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
-            //}
-            //else 
-            //{
-                //status.text = @"Create user failed!";
-            //}
-    //    }
-    //}
-    //else
-    //{
-        //status.text = @"Username already taken.";
-    //}    
+    if (self.setEditStatus == @"Edit")
+    {
+        if (results == nil)
+        {
+            NSLog(@"Database Error: Could not connect to Database");
+        }
+        else
+        {
+            if ([results count] > 0)
+            {
+                NSLog(@"Save Profile Page");
+                self.courseDetails.courseCode   = courseCodeField.text;
+                self.courseDetails.courseName   = courseNameField.text;
+                self.courseDetails.units        = s_units;
+                self.courseDetails.desiredGrade = courseDesiredGradeField.text;
+                self.courseDetails.actualGrade  = courseActualGradeField.text;
+                self.courseDetails.isPassFail   = isPassFail;
+                self.courseDetails.includeInGPA = includeInGPA;
+                self.courseDetails.courseDesc   = courseDescriptionField.text;
+                if ([self.managedObjectContext save:&error])
+                {
+                    [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+                }
+                else
+                {
+                }
+            }
+        }
+    }
+    else if ([results count] == 0)
+    {
+        NSString *entityName = @"CourseDetails";
+        self.courseDetails = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+        self.courseDetails.semesterDetails = self.semesterDetails;
+        self.courseDetails.courseCode   = courseCodeField.text;
+        self.courseDetails.courseName   = courseNameField.text;
+        self.courseDetails.units        = s_units;
+        self.courseDetails.desiredGrade = courseDesiredGradeField.text;
+        self.courseDetails.actualGrade  = courseActualGradeField.text;
+        self.courseDetails.isPassFail   = isPassFail;
+        self.courseDetails.includeInGPA = includeInGPA;
+        self.courseDetails.courseDesc   = courseDescriptionField.text;
+        if ([self.managedObjectContext save:&error])
+        {
+            [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+        }
+        else
+        {
+            NSLog(@"Add Course Failed! :%@", error.userInfo);
+        }
+    }
+    else
+    {
+        NSLog(@"Course Code already taken.");
+    }
 }
 
 - (IBAction)Cancel:(id)sender
 {
-    if (self.setEditStatus == @"Edit")
-    {
-        [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
-    }
-    else
-    {
-        [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
-    }
+    [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
 }
 
 - (IBAction)textFieldReturn:(id)sender
@@ -244,20 +227,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"segueProfile2HomePage"])
+	if ([segue.identifier isEqualToString:@"segueCourse2CourseList"])
 	{
-        //        UINavigationController *navCon = [segue destinationViewController];
-        //        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
-        HomePageTableView *HomePageTableView = [segue destinationViewController];
+        CourseTableView *CourseTableView = [segue destinationViewController];
         
-        //HomePageTableView.userName = self.userName;
-	}
-	else if ([segue.identifier isEqualToString:@"segueProfile2Login"])
-	{
-        LoginView *LoginView = [segue destinationViewController];
-        
-        LoginView.setLogoutStatus = @"Logout";
-        LoginView.userName = self.userName;
+        CourseTableView.semesterInfo = self.semesterDetails;
+        CourseTableView.dataCollection = self.dataCollection;
+        CourseTableView.managedObjectContext = self.managedObjectContext;
 	}
 }
 @end

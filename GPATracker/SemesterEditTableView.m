@@ -165,7 +165,7 @@
     }
     else
     {
-        NSLog(@"Save Semester Failed! :Semester Already Exist!");
+        NSLog(@"Save Semester Failed! Semester Already Exist!");
     }
 }
 

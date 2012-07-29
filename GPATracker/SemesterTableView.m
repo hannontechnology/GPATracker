@@ -8,11 +8,12 @@
 
 #import "SemesterTableView.h"
 #import "DataCollection.h"
-#import "SemesterDetails.h"
-#import "LoginView.h"
-#import "SemesterEditTableView.h"
+//#import "LoginView.h"
 #import "HomePageTableView.h"
+#import "CourseTableView.h"
+#import "SemesterEditTableView.h"
 #import "SemesterDetails+Create.h"
+#import "CourseDetails.h"
 
 @interface SemesterTableView ()
 @end
@@ -77,8 +78,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    DataCollection *data = [[DataCollection alloc] init];
-    
     static NSString *CellIdentifier = @"semesterListCell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -117,6 +116,15 @@
         SemesterEditTableView.dataCollection = self.dataCollection;
         SemesterEditTableView.managedObjectContext = self.managedObjectContext;
         SemesterEditTableView.setEditStatus = @"Edit";
+    }
+    else if ([segue.identifier isEqualToString:@"segueCourseList"])
+    {
+        SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        CourseTableView *CourseTableView = [segue destinationViewController];
+        
+        CourseTableView.semesterInfo = selectedObject;
+        CourseTableView.dataCollection = self.dataCollection;
+        CourseTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

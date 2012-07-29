@@ -7,20 +7,46 @@
 //
 
 #import "CourseTableView.h"
+#import "CourseDetails.h"
+#import "CourseEditTableView.h"
 
 @interface CourseTableView ()
 
 @end
 
 @implementation CourseTableView
+@synthesize semesterInfo = _semesterInfo;
+@synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (void)setupFetchedResultsController
 {
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    // Create fetch request for the entity
+    // Edit the entity name as appropriate
+    NSString *entityName = @"CourseDetails";
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    // Sort using the year / then name properties
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:YES];
+    NSSortDescriptor *sortDescriptorName = [[NSSortDescriptor alloc] initWithKey:@"courseName" ascending:YES selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
+    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails = %@", self.semesterInfo];
+    NSLog(@"filtering data based on semesterDetails = %@", self.semesterInfo);
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 2.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+    
+    [super viewWillAppear:(BOOL)animated];
+    
+    [self setupFetchedResultsController];
 }
 
 - (void)viewDidLoad
@@ -46,75 +72,122 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"courseListCell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    // TODO: create class courseListCell2 and include custom labels for display to cell
+    cell.textLabel.text = [selectedObject courseName];
     
     return cell;
 }
 
-/*
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueAddCourse"])
+    {
+        // Use this code if going to a navigation controller before accessing destination screen
+        UINavigationController *navCon = [segue destinationViewController];
+        CourseEditTableView *CourseEditTableView = [navCon.viewControllers objectAtIndex:0];
+        
+        CourseEditTableView.semesterDetails = self.semesterInfo;
+        CourseEditTableView.dataCollection = self.dataCollection;
+        CourseEditTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueEditCourse"])
+    {
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
+        
+        CourseEditTableView.courseDetails = selectedObject;
+        CourseEditTableView.semesterDetails = self.semesterInfo;
+        CourseEditTableView.dataCollection = self.dataCollection;
+        CourseEditTableView.managedObjectContext = self.managedObjectContext;
+        CourseEditTableView.setEditStatus = @"Edit";
+    }
+}
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        CourseDetails *courseToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:courseToDelete];
+        [self.managedObjectContext save:nil];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
 
-#pragma mark - Table view delegate
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if ( gestureRecognizer.state != UIGestureRecognizerStateBegan )
+        return; // discard everything else
+    
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    self.selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (self.selectedIndexPath == nil)
+        NSLog(@"long press on table view but not on a row");
+    else
+        NSLog(@"long press on table view at row %d", self.selectedIndexPath.row);
+    
+    alert = [[UIAlertView alloc] initWithTitle:@"Edit/Delete" message:@"Please edit or delete item" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Edit", @"Delete", nil];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self performSegueWithIdentifier:@"segueEditCourse" sender:self];
+    }
+    else if (buttonIndex == 2)
+    {
+        CourseDetails *courseToDelete = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        [self.managedObjectContext deleteObject:courseToDelete];
+        [self.managedObjectContext save:nil];
+        //        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier: @"segueCourseList" sender: self];
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

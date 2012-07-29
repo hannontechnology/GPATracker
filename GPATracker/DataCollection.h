@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@class SchoolDetails;
 @class User;
+@class SchoolDetails;
+@class SemesterDetails;
 
 @interface DataCollection : NSObject
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -31,6 +32,7 @@
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails  context:(NSManagedObjectContext *) inContext;
 
 // Course Section
+- (NSArray *)retrieveCourse:(NSString *)inputCourseCode semesterDetails:(SemesterDetails *)inputSemesterDetails  context:(NSManagedObjectContext *) inContext;
 
 // Miscellaneous Functions
 - (void)saveContext;

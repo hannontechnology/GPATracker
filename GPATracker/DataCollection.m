@@ -94,6 +94,18 @@
     return results;
 }
 
+//Code for handling course information
+- (NSArray *)retrieveCourse:(NSString *)inputCourseCode semesterDetails:(SemesterDetails *)inputSemesterDetails context:(NSManagedObjectContext *) inContext
+{
+    NSString *entityName = @"CourseDetails";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails = %@ AND courseCode = %@", inputSemesterDetails, inputCourseCode];
+    
+    NSError *error = nil;
+    NSArray*results = [inContext executeFetchRequest:request error:& error];
+    return results;
+}
+
 //Core Data Required Functions
 - (id)init {
     if (self = [super init]) {

@@ -1,16 +1,16 @@
 //
-//  Course.m
+//  CourseDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-07-28.
+//  Created by Terry Hannon on 12-07-29.
 //
 //
 
-#import "Course.h"
+#import "CourseDetails.h"
 #import "SemesterDetails.h"
 
 
-@implementation Course
+@implementation CourseDetails
 
 @dynamic actualGrade;
 @dynamic calculatedGrade;
@@ -21,10 +21,7 @@
 @dynamic desiredGrade;
 @dynamic includeInGPA;
 @dynamic isPassFail;
-@dynamic schoolName;
-@dynamic semesterName;
 @dynamic units;
-@dynamic userName;
 @dynamic semesterDetails;
 
 @end

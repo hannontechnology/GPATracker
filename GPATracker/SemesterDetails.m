@@ -2,12 +2,12 @@
 //  SemesterDetails.m
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-07-28.
+//  Created by Terry Hannon on 12-07-29.
 //
 //
 
 #import "SemesterDetails.h"
-#import "Course.h"
+#import "CourseDetails.h"
 #import "SchoolDetails.h"
 
 
@@ -16,7 +16,7 @@
 @dynamic semesterCode;
 @dynamic semesterName;
 @dynamic semesterYear;
-@dynamic course;
+@dynamic courseDetails;
 @dynamic schoolDetails;
 
 @end

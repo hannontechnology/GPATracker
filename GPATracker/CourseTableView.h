@@ -7,7 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface CourseTableView : UITableViewController
+@class SemesterDetails;
+@class DataCollection;
+
+@interface CourseTableView : CoreDataTableViewController
+{
+    IBOutlet UIAlertView *alert;
+}
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
+@property (strong, nonatomic) SemesterDetails *semesterInfo;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+-(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 
 @end
