@@ -140,6 +140,7 @@
         self.schoolInfo = [NSEntityDescription
                          insertNewObjectForEntityForName:entityName
                          inManagedObjectContext:self.managedObjectContext];
+        self.schoolInfo.user = self.userInfo;
         self.schoolInfo.schoolName      = schoolNameField.text;
         self.schoolInfo.schoolDetails   = schoolDetailsField.text;
         self.schoolInfo.schoolStartYear = schoolStartYearField.text;

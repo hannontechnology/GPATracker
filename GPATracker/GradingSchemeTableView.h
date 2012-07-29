@@ -12,6 +12,7 @@
 @class User;
 @class SchoolDetails;
 @class DataCollection;
+@class GradingScheme;
 
 @interface GradingSchemeTableView : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextField *gradeAPlusField;
@@ -28,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *gradeFField;
 
 @property (strong,nonatomic) User *userInfo;
+@property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) GradingScheme *gradingInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
