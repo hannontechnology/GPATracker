@@ -14,6 +14,8 @@
 #import "SemesterEditTableView.h"
 #import "SemesterDetails+Create.h"
 #import "CourseDetails.h"
+#import "HomePageTableCell1.h"
+#import "SchoolDetails+Create.h"
 
 @interface SemesterTableView ()
 @end
@@ -27,7 +29,7 @@
 - (void)setupFetchedResultsController
 {
     // Create fetch request for the entity
-        // Edit the entity name as appropriate
+    // Edit the entity name as appropriate
     NSString *entityName = @"SemesterDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
@@ -38,7 +40,7 @@
     request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", self.schoolInfo];
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"schoolDetails.schoolName" cacheName:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -80,17 +82,13 @@
 {
     static NSString *CellIdentifier = @"semesterListCell2";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
     if(cell == nil)
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
     SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
-    // TODO: create class semesterListCell2 and include custom labels for display to cell
     cell.textLabel.text = [selectedObject semesterName];
-    
+
     return cell;
 }
 
@@ -138,14 +136,16 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
+    if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.section == 1)
+    {
         // Delete the row from the data source
         SemesterDetails *semesterToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
         [self.managedObjectContext deleteObject:semesterToDelete];
         [self.managedObjectContext save:nil];
         //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
