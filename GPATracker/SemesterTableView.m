@@ -25,6 +25,10 @@
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize schoolNameText = _schoolNameText;
+@synthesize schoolDescText = _schoolDescText;
+@synthesize schoolYearsText = _schoolYearsText;
+@synthesize schoolCGPAText = _schoolCGPAText;
 
 - (void)setupFetchedResultsController
 {
@@ -40,7 +44,7 @@
     request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", self.schoolInfo];
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"schoolDetails.schoolName" cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -52,6 +56,11 @@
     
     [super viewWillAppear:(BOOL)animated];
     
+    self.schoolNameText.text = self.schoolInfo.schoolName;
+    self.schoolDescText.text = self.schoolInfo.schoolDetails;
+    self.schoolYearsText.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
+    self.schoolCGPAText.text = [NSString stringWithFormat:@"%@", [self.schoolInfo schoolActualGPA].stringValue];
+
     [self setupFetchedResultsController];
 }
 
@@ -68,6 +77,10 @@
 
 - (void)viewDidUnload
 {
+    [self setSchoolNameText:nil];
+    [self setSchoolDescText:nil];
+    [self setSchoolYearsText:nil];
+    [self setSchoolCGPAText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
