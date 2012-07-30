@@ -120,8 +120,8 @@
 
 - (IBAction)Accept:(id)sender
 {
-    NSNumber *includeInGPA = 0;
-    NSNumber *isPassFail = 0;
+    NSNumber *includeInGPA = [NSNumber numberWithInt:0];
+    NSNumber *isPassFail = [NSNumber numberWithInt:0];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterNoStyle];
     NSNumber *s_units;
