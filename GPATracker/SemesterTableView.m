@@ -47,6 +47,11 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
+-(IBAction)back
+{
+    [self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -67,7 +72,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    // Set the custom back button
+    UIImage *buttonImage = [UIImage imageNamed:@"BackButton-h32.png"];
+    //create the button and assign the image
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button setImage:buttonImage forState:UIControlStateNormal];
+    [button setTitle:@"School List" forState:UIControlStateNormal];
+    //set the frame of the button to the size of the image (see note below)
+    button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
+    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    //create a UIBarButtonItem with the button as a custom view
+    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.leftBarButtonItem = customBarItem;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -136,6 +153,14 @@
         CourseTableView.semesterInfo = selectedObject;
         CourseTableView.dataCollection = self.dataCollection;
         CourseTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueSemesterList2SchoolList"])
+    {
+        HomePageTableView *HomePageTableView = [segue destinationViewController];
+        
+        HomePageTableView.userInfo = self.schoolInfo.user;
+        HomePageTableView.dataCollection = self.dataCollection;
+        HomePageTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

@@ -229,8 +229,8 @@
 {
 	if ([segue.identifier isEqualToString:@"segueCourse2CourseList"])
 	{
+        [self.navigationController popViewControllerAnimated:YES];
         CourseTableView *CourseTableView = [segue destinationViewController];
-        
         CourseTableView.semesterInfo = self.semesterDetails;
         CourseTableView.dataCollection = self.dataCollection;
         CourseTableView.managedObjectContext = self.managedObjectContext;

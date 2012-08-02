@@ -178,6 +178,7 @@
 {
     if([segue.identifier isEqualToString:@"segueEditSemesterToSemester"])
     {
+        [self.navigationController popViewControllerAnimated:YES];
         SemesterTableView *SemesterTableView = [segue destinationViewController];
         SemesterTableView.schoolInfo = self.schoolDetails;
         SemesterTableView.managedObjectContext = self.managedObjectContext;

@@ -57,12 +57,12 @@
                                 <rect key="frame" x="0.0" y="416" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Forgot Password?" width="147" id="cdt-np-Cgn">
+                                    <barButtonItem title="Forgot Password?" width="149" id="cdt-np-Cgn">
                                         <connections>
                                             <action selector="ForgotPassword:" destination="2" id="UUj-OM-I0C"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Create Profile" width="151" id="ecZ-zx-MJO">
+                                    <barButtonItem title="Create Profile" width="149" id="ecZ-zx-MJO">
                                         <connections>
                                             <action selector="CreateProfile:" destination="2" id="s4A-io-mXY"/>
                                             <segue destination="tww-Fb-Zzg" kind="modal" identifier="segueCreateProfile" id="glo-5t-oa8"/>
@@ -853,12 +853,12 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem title="Profile" id="oKm-Zn-EdE">
+                        <barButtonItem title="Profile" width="149" id="oKm-Zn-EdE">
                             <connections>
                                 <segue destination="MG7-Ge-mPq" kind="push" identifier="segueEditProfile" id="fGJ-Vg-Bh6"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem title="Logout" id="1kc-j2-QKn">
+                        <barButtonItem title="Logout" width="149" id="1kc-j2-QKn">
                             <connections>
                                 <segue destination="2" kind="modal" identifier="segueLogout" id="68m-8u-amb"/>
                             </connections>
@@ -1636,6 +1636,7 @@
                         <outlet property="schoolYearsText" destination="DWF-i8-TAO" id="YGJ-io-UDs"/>
                         <segue destination="YTG-zN-KQM" kind="push" identifier="segueEditSemester" id="sqq-oh-NbO"/>
                         <segue destination="0oZ-Xb-naF" kind="push" identifier="segueCourseList" id="zyl-Bd-lJ4"/>
+                        <segue destination="01w-Dg-l3t" kind="push" identifier="segueSemesterList2SchoolList" id="KeZ-Q4-PJf"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1704,13 +1705,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Zx4-Yb-B7c"/>
-        <segue reference="zyl-Bd-lJ4"/>
-        <segue reference="phW-HU-sP7"/>
-        <segue reference="VGG-Ty-jdk"/>
-        <segue reference="3xK-NI-FQs"/>
-        <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="68m-8u-amb"/>
+        <segue reference="KeZ-Q4-PJf"/>
+        <segue reference="phW-HU-sP7"/>
         <segue reference="sqq-oh-NbO"/>
+        <segue reference="zyl-Bd-lJ4"/>
+        <segue reference="Zx4-Yb-B7c"/>
+        <segue reference="fGJ-Vg-Bh6"/>
+        <segue reference="3xK-NI-FQs"/>
     </inferredMetricsTieBreakers>
 </document>
