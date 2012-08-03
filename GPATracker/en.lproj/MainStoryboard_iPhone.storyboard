@@ -1540,6 +1540,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <segue destination="J3F-p1-3o6" kind="push" identifier="segueEditCourse" id="Zx4-Yb-B7c"/>
+                        <segue destination="USk-0t-HId" kind="push" identifier="segueCourseList2SemesterList" id="LMs-sZ-M1E"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1707,10 +1708,10 @@
     <inferredMetricsTieBreakers>
         <segue reference="68m-8u-amb"/>
         <segue reference="KeZ-Q4-PJf"/>
-        <segue reference="phW-HU-sP7"/>
-        <segue reference="sqq-oh-NbO"/>
+        <segue reference="LMs-sZ-M1E"/>
         <segue reference="zyl-Bd-lJ4"/>
         <segue reference="Zx4-Yb-B7c"/>
+        <segue reference="sqq-oh-NbO"/>
         <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="3xK-NI-FQs"/>
     </inferredMetricsTieBreakers>

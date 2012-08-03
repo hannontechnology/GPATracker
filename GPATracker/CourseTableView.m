@@ -9,6 +9,8 @@
 #import "CourseTableView.h"
 #import "CourseDetails.h"
 #import "CourseEditTableView.h"
+#import "SemesterTableView.h"
+#import "SemesterDetails.h"
 
 @interface CourseTableView ()
 
@@ -37,6 +39,11 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
+-(IBAction)back
+{
+    [self performSegueWithIdentifier: @"segueCourseList2SemesterList" sender: self];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -52,6 +59,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape!
+    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"Semester List" forState:UIControlStateNormal];
+    // create button item -- possible because UIButton subclasses UIView!
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    // add to toolbar, or to a navbar (you should only have one of these!)
+    self.navigationItem.leftBarButtonItem = backItem;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -113,6 +128,14 @@
         CourseEditTableView.dataCollection = self.dataCollection;
         CourseEditTableView.managedObjectContext = self.managedObjectContext;
         CourseEditTableView.setEditStatus = @"Edit";
+    }
+    else if ([segue.identifier isEqualToString:@"segueCourseList2SemesterList"])
+    {
+        SemesterTableView *SemesterTableView = [segue destinationViewController];
+        
+        SemesterTableView.schoolInfo = self.semesterInfo.schoolDetails;
+        SemesterTableView.dataCollection = self.dataCollection;
+        SemesterTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

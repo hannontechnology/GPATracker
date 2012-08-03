@@ -72,19 +72,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Set the custom back button
-    UIImage *buttonImage = [UIImage imageNamed:@"BackButton-h32.png"];
-    //create the button and assign the image
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setImage:buttonImage forState:UIControlStateNormal];
-    [button setTitle:@"School List" forState:UIControlStateNormal];
-    //set the frame of the button to the size of the image (see note below)
-    button.frame = CGRectMake(0, 0, buttonImage.size.width, buttonImage.size.height);
-    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    //create a UIBarButtonItem with the button as a custom view
-    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = customBarItem;
-    
+    UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape!
+    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    [backButton setTitle:@"School List" forState:UIControlStateNormal];
+    // create button item -- possible because UIButton subclasses UIView!
+    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
+    // add to toolbar, or to a navbar (you should only have one of these!)
+    self.navigationItem.leftBarButtonItem = backItem;
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

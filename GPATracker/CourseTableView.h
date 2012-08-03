@@ -23,5 +23,6 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
+-(IBAction)back;
 
 @end
