@@ -2,21 +2,29 @@
 //  SemesterDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-07-29.
+//  Created by Terry Hannon on 12-08-06.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Course, SchoolDetails;
+@class CourseDetails, SchoolDetails;
 
 @interface SemesterDetails : NSManagedObject
 
 @property (nonatomic, retain) NSNumber * semesterCode;
 @property (nonatomic, retain) NSString * semesterName;
 @property (nonatomic, retain) NSNumber * semesterYear;
-@property (nonatomic, retain) Course *courseDetails;
+@property (nonatomic, retain) NSSet *courseDetails;
 @property (nonatomic, retain) SchoolDetails *schoolDetails;
+@end
+
+@interface SemesterDetails (CoreDataGeneratedAccessors)
+
+- (void)addCourseDetailsObject:(CourseDetails *)value;
+- (void)removeCourseDetailsObject:(CourseDetails *)value;
+- (void)addCourseDetails:(NSSet *)values;
+- (void)removeCourseDetails:(NSSet *)values;
 
 @end

@@ -21,6 +21,10 @@
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize semesterNameText = _semesterNameText;
+@synthesize semesterCourseCount = _semesterCourseCount;
+@synthesize semesterCreditHours = _semesterCreditHours;
+@synthesize semesterGPA = _semesterGPA;
 
 - (void)setupFetchedResultsController
 {
@@ -52,6 +56,14 @@
     [self.tableView addGestureRecognizer:lpgr];
     
     [super viewWillAppear:(BOOL)animated];
+
+    self.semesterNameText.text = [NSString stringWithFormat:@"%@ - %@", [self.semesterInfo semesterName], [self.semesterInfo semesterYear]];
+    int courseCount = [self.semesterInfo.courseDetails count];
+    NSNumber *sumCredits = [self.semesterInfo valueForKeyPath:@"courseDetails.@sum.units"];
+
+    self.semesterCourseCount.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];
+    self.semesterCreditHours.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
+    self.semesterGPA.text = [NSString stringWithFormat:@"0.00"];
     
     [self setupFetchedResultsController];
 }
@@ -77,6 +89,10 @@
 
 - (void)viewDidUnload
 {
+    [self setSemesterNameText:nil];
+    [self setSemesterCourseCount:nil];
+    [self setSemesterCreditHours:nil];
+    [self setSemesterGPA:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

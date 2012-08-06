@@ -146,9 +146,7 @@
         self.schoolInfo.schoolStartYear = schoolStartYearField.text;
         self.schoolInfo.schoolEndYear   = schoolEndYearField.text;
         
-        int temp1 = arc4random()%433;
-        double temp2 = (double)temp1/100;
-        NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(temp2)];
+        NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         
         self.schoolInfo.schoolActualGPA = temp3;

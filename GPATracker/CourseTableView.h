@@ -21,6 +21,10 @@
 @property (strong, nonatomic) SemesterDetails *semesterInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (weak, nonatomic) IBOutlet UILabel *semesterNameText;
+@property (weak, nonatomic) IBOutlet UILabel *semesterCourseCount;
+@property (weak, nonatomic) IBOutlet UILabel *semesterCreditHours;
+@property (weak, nonatomic) IBOutlet UILabel *semesterGPA;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 -(IBAction)back;

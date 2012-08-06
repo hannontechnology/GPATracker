@@ -2,7 +2,7 @@
 //  User.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-07-29.
+//  Created by Terry Hannon on 12-08-06.
 //
 //
 

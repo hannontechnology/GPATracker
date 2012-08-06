@@ -35,14 +35,14 @@
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolStartYear" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
-        <relationship name="semesterDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="SemesterDetails" inverseName="schoolDetails" inverseEntity="SemesterDetails" syncable="YES"/>
+        <relationship name="semesterDetails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SemesterDetails" inverseName="schoolDetails" inverseEntity="SemesterDetails" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schoolDetails" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="SemesterDetails" representedClassName="SemesterDetails" syncable="YES">
         <attribute name="semesterCode" attributeType="Integer 16" minValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="semesterName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semesterYear" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <relationship name="courseDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="semesterDetails" inverseEntity="CourseDetails" syncable="YES"/>
+        <relationship name="courseDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="semesterDetails" inverseEntity="CourseDetails" syncable="YES"/>
         <relationship name="schoolDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="semesterDetails" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
