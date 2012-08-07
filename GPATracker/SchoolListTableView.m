@@ -6,20 +6,20 @@
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import "HomePageTableView.h"
+#import "SchoolListTableView.h"
 #import "DataCollection.h"
 #import "SchoolDetails.h"
 #import "LoginView.h"	
 #import "ProfileEditTableView.h"
 #import "SchoolEditTableView.h"
-#import "HomePageTableCell1.h"
+#import "SchoolListTableCell1.h"
 #import "SemesterTableView.h"
 #import "User+Create.h"
 
-@interface HomePageTableView ()
+@interface SchoolListTableView ()
 @end
 
-@implementation HomePageTableView
+@implementation SchoolListTableView
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize userInfo = _userInfo;
 @synthesize dataCollection = _dataCollection;
@@ -63,11 +63,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"homePageCell1";
-    HomePageTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"schoolListTableCell1";
+    SchoolListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil) {
-        cell = [[HomePageTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SchoolListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     //SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
@@ -110,8 +110,9 @@
     }
     else if ([segue.identifier isEqualToString:@"segueCreateSchool"])
     {
-        UINavigationController *navCon = [segue destinationViewController];
-        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+//        UINavigationController *navCon = [segue destinationViewController];
+//        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
         
         SchoolEditTableView.userInfo = self.userInfo;
         SchoolEditTableView.dataCollection = self.dataCollection;

@@ -9,7 +9,7 @@
 #import "CourseEditTableView.h"
 #import "CourseDetails.h"
 #import "DataCollection.h"
-#import "HomePageTableView.h"
+#import "SchoolListTableView.h"
 #import "LoginView.h"
 #import "CourseTableView.h"
 

@@ -10,7 +10,7 @@
 #import "SchoolDetails.h"
 #import "DataCollection.h"
 #import "GradingScheme+Create.h"
-#import "HomePageTableView.h"
+#import "SchoolListTableView.h"
 #import "SemesterEditTableView.h"
 
 @interface GradingSchemeTableView ()
@@ -223,10 +223,10 @@
 {
     if ([segue.identifier isEqualToString:@"segueGrading2Home"])
     {
-        HomePageTableView *HomePageTableView = [segue destinationViewController];
-        HomePageTableView.userInfo = self.userInfo;
-        HomePageTableView.dataCollection = self.dataCollection;
-        HomePageTableView.managedObjectContext = self.managedObjectContext;
+        SchoolListTableView *SchoolListTableView = [segue destinationViewController];
+        SchoolListTableView.userInfo = self.userInfo;
+        SchoolListTableView.dataCollection = self.dataCollection;
+        SchoolListTableView.managedObjectContext = self.managedObjectContext;
     }
     else if ([segue.identifier isEqualToString:@"segueGrading2Semester"])
     {

@@ -9,12 +9,12 @@
 #import "SemesterTableView.h"
 #import "DataCollection.h"
 //#import "LoginView.h"
-#import "HomePageTableView.h"
+#import "SchoolListTableView.h"
 #import "CourseTableView.h"
 #import "SemesterEditTableView.h"
 #import "SemesterDetails+Create.h"
 #import "CourseDetails.h"
-#import "HomePageTableCell1.h"
+#import "SemesterListTableCell1.h"
 #import "SchoolDetails+Create.h"
 
 @interface SemesterTableView ()
@@ -72,6 +72,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    /*
+    //Custom Back Button
     UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape!
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"School List" forState:UIControlStateNormal];
@@ -79,7 +82,8 @@
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     // add to toolbar, or to a navbar (you should only have one of these!)
     self.navigationItem.leftBarButtonItem = backItem;
-
+    */
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -105,15 +109,22 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"semesterListCell2";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"semesterListTableCell1";
+    SemesterListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SemesterListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [selectedObject semesterName];
 
+    int courseCount = [selectedObject.courseDetails count];
+    NSNumber *sumCredits = [selectedObject valueForKeyPath:@"courseDetails.@sum.units"];
+
+    cell.cellLabel1.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject semesterName], [selectedObject semesterYear]];
+    cell.cellLabel2.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];
+    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
+    cell.cellLabelGPA.text = [NSString stringWithFormat:@"0.00"];
+    
     return cell;
 }
 
@@ -122,8 +133,9 @@
     if ([segue.identifier isEqualToString:@"segueAddSemester"])
     {
         // Use this code if going to a navigation controller before accessing destination screen
-        UINavigationController *navCon = [segue destinationViewController];
-        SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
+//        UINavigationController *navCon = [segue destinationViewController];
+//        SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
+        SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
         SemesterEditTableView.schoolDetails = self.schoolInfo;
         SemesterEditTableView.dataCollection = self.dataCollection;
@@ -151,11 +163,11 @@
     }
     else if ([segue.identifier isEqualToString:@"segueSemesterList2SchoolList"])
     {
-        HomePageTableView *HomePageTableView = [segue destinationViewController];
+        SchoolListTableView *SchoolListTableView = [segue destinationViewController];
         
-        HomePageTableView.userInfo = self.schoolInfo.user;
-        HomePageTableView.dataCollection = self.dataCollection;
-        HomePageTableView.managedObjectContext = self.managedObjectContext;
+        SchoolListTableView.userInfo = self.schoolInfo.user;
+        SchoolListTableView.dataCollection = self.dataCollection;
+        SchoolListTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

@@ -12,7 +12,7 @@
 @class User;
 @class DataCollection;
 
-@interface HomePageTableView : CoreDataTableViewController
+@interface SchoolListTableView : CoreDataTableViewController
 {
     IBOutlet UIAlertView *alert;
 }

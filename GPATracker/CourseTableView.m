@@ -11,6 +11,7 @@
 #import "CourseEditTableView.h"
 #import "SemesterTableView.h"
 #import "SemesterDetails.h"
+#import "CourseListTableCell1.h"
 
 @interface CourseTableView ()
 
@@ -72,6 +73,8 @@
 {
     [super viewDidLoad];
 
+    /*
+    //Custom Back Button
     UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape!
     [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [backButton setTitle:@"Semester List" forState:UIControlStateNormal];
@@ -79,6 +82,7 @@
     UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
     // add to toolbar, or to a navbar (you should only have one of these!)
     self.navigationItem.leftBarButtonItem = backItem;
+    */
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -105,18 +109,21 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"courseListCell2";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"courseListTableCell1";
+    CourseListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CourseListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class courseListCell2 and include custom labels for display to cell
-    cell.textLabel.text = [selectedObject courseName];
+    cell.cellLabel1.text = [selectedObject courseCode];
+    cell.cellLabel2.text = [selectedObject courseName];
+    //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
+    cell.cellLabelGPA.text = [selectedObject actualGrade];
     
     return cell;
 }
@@ -127,8 +134,9 @@
     if ([segue.identifier isEqualToString:@"segueAddCourse"])
     {
         // Use this code if going to a navigation controller before accessing destination screen
-        UINavigationController *navCon = [segue destinationViewController];
-        CourseEditTableView *CourseEditTableView = [navCon.viewControllers objectAtIndex:0];
+        //UINavigationController *navCon = [segue destinationViewController];
+        //CourseEditTableView *CourseEditTableView = [navCon.viewControllers objectAtIndex:0];
+        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
         
         CourseEditTableView.semesterDetails = self.semesterInfo;
         CourseEditTableView.dataCollection = self.dataCollection;

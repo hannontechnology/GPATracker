@@ -9,7 +9,7 @@
 #import "LoginView.h"
 #import "User+Create.h"
 #import "DataCollection.h"
-#import "HomePageTableView.h"
+#import "SchoolListTableView.h"
 #import "ProfileEditTableView.h"
 
 @interface LoginView ()
@@ -165,11 +165,11 @@
 	if ([segue.identifier isEqualToString:@"segueHomePage"])
 	{
         UINavigationController *navCon = [segue destinationViewController];
-        HomePageTableView *HomePageTableView = [navCon.viewControllers objectAtIndex:0];
+        SchoolListTableView *SchoolListTableView = [navCon.viewControllers objectAtIndex:0];
         
-        HomePageTableView.userInfo = self.userInfo;
-        HomePageTableView.dataCollection = self.dataCollection;
-        HomePageTableView.managedObjectContext = self.managedObjectContext;
+        SchoolListTableView.userInfo = self.userInfo;
+        SchoolListTableView.dataCollection = self.dataCollection;
+        SchoolListTableView.managedObjectContext = self.managedObjectContext;
 	}
 	else if ([segue.identifier isEqualToString:@"segueCreateProfile"])
 	{

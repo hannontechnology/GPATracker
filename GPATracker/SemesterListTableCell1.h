@@ -1,14 +1,14 @@
 //
-//  HomePageTableCell1.h
+//  SemesterListTableCell1.h
 //  GPATracker
 //
-//  Created by terryah on 12-07-14.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Terry Hannon on 12-08-06.
+//
 //
 
 #import <UIKit/UIKit.h>
 
-@interface HomePageTableCell1 : UITableViewCell
+@interface SemesterListTableCell1 : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel3;

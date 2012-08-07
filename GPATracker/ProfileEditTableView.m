@@ -9,7 +9,7 @@
 #import "ProfileEditTableView.h"
 #import "User+Create.h"
 #import "DataCollection.h"
-#import "HomePageTableView.h"
+#import "SchoolListTableView.h"
 #import "LoginView.h"
 
 @interface ProfileEditTableView ()
@@ -221,11 +221,11 @@
 {
 	if ([segue.identifier isEqualToString:@"segueProfile2HomePage"])
 	{
-        HomePageTableView *HomePageTableView = [segue destinationViewController];
+        SchoolListTableView *SchoolListTableView = [segue destinationViewController];
         
-        HomePageTableView.userInfo = self.userInfo;
-        HomePageTableView.dataCollection = self.dataCollection;
-        HomePageTableView.managedObjectContext = self.managedObjectContext;
+        SchoolListTableView.userInfo = self.userInfo;
+        SchoolListTableView.dataCollection = self.dataCollection;
+        SchoolListTableView.managedObjectContext = self.managedObjectContext;
 	}
 	else if ([segue.identifier isEqualToString:@"segueProfile2Login"])
 	{
