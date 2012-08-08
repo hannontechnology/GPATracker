@@ -24,6 +24,7 @@
 @synthesize userInfo = _userInfo;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize showEdit = _showEdit;
 
 - (void)setupFetchedResultsController
 {
@@ -58,7 +59,10 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    if (self.showEdit == @"Y")
+    {
+        self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -87,6 +91,8 @@
         LoginView *LoginView = [segue destinationViewController];
         
         LoginView.setLogoutStatus = @"Logout";
+        LoginView.userInfo = self.userInfo;
+        LoginView.dataCollection = self.dataCollection;
 	}
     else if ([segue.identifier isEqualToString:@"segueEditProfile"])
     {

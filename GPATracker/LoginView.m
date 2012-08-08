@@ -11,6 +11,7 @@
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "ProfileEditTableView.h"
+#import "HomePageViewController.h"
 
 @interface LoginView ()
 - (IBAction)Login:(id)sender;
@@ -70,9 +71,9 @@
         }
         else
         {
+            self.userInfo = [results objectAtIndex:0];
             if (autoLoginSelector.on)
             {
-                self.userInfo = [results objectAtIndex:0];
                 [self.userInfo removeAutoLogin:self.userInfo context:self.managedObjectContext];
                 [self.userInfo setAutoLogin:self.userInfo context:self.managedObjectContext];
             }
@@ -162,7 +163,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"segueHomePage"])
+	if ([segue.identifier isEqualToString:@"segueSchoolList"])
 	{
         UINavigationController *navCon = [segue destinationViewController];
         SchoolListTableView *SchoolListTableView = [navCon.viewControllers objectAtIndex:0];
@@ -170,6 +171,7 @@
         SchoolListTableView.userInfo = self.userInfo;
         SchoolListTableView.dataCollection = self.dataCollection;
         SchoolListTableView.managedObjectContext = self.managedObjectContext;
+        SchoolListTableView.showEdit = @"Y";
 	}
 	else if ([segue.identifier isEqualToString:@"segueCreateProfile"])
 	{
@@ -178,6 +180,15 @@
         
         ProfileEditTableView.dataCollection = self.dataCollection;
         ProfileEditTableView.managedObjectContext = self.managedObjectContext;
+	}
+	else if ([segue.identifier isEqualToString:@"segueHomePage"])
+	{
+        UINavigationController *navCon = [segue destinationViewController];
+        HomePageViewController *HomePageViewController = [navCon.viewControllers objectAtIndex:0];
+        
+        HomePageViewController.userInfo = self.userInfo;
+        HomePageViewController.dataCollection = self.dataCollection;
+        HomePageViewController.managedObjectContext = self.managedObjectContext;
 	}
 }
 @end
