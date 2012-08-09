@@ -23,10 +23,16 @@
 @property (weak, nonatomic) IBOutlet UITextField *courseDescriptionField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
+@property (strong, nonatomic) NSString *setGradeType;
 @property (strong, nonatomic) NSString *setEditStatus;
 @property (strong, nonatomic) SemesterDetails *semesterDetails;
 @property (strong, nonatomic) CourseDetails *courseDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+-(IBAction)desiredGradeChange:(id)sender;
+-(IBAction)actualGradeChange:(id)sender;
+-(IBAction)showDesiredGradePicker:(id)sender;
+-(IBAction)showActualGradePicker:(id)sender;
 
 @end
