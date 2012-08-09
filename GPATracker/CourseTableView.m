@@ -122,7 +122,7 @@
     // TODO: create class courseListCell2 and include custom labels for display to cell
     cell.cellLabel1.text = [selectedObject courseCode];
     cell.cellLabel2.text = [selectedObject courseName];
-    //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
+    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
     cell.cellLabelGPA.text = [selectedObject actualGrade];
     
     return cell;
