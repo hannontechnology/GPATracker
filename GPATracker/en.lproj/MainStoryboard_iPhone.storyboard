@@ -291,6 +291,7 @@
                         <outlet property="schoolStartYearField" destination="iOZ-Zs-DiK" id="kW0-e3-0b6"/>
                         <segue destination="01w-Dg-l3t" kind="push" identifier="segueSchool2HomePage" id="VGG-Ty-jdk"/>
                         <segue destination="ujy-oW-DyU" kind="push" identifier="segueSchool2SchemeSelect" id="eqH-Hf-I1o"/>
+                        <segue destination="1tm-RG-Rrr" kind="push" identifier="segue2GradingConfirmEdit" id="DG6-i7-zNC"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -1880,13 +1881,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="k7a-QP-sia"/>
-        <segue reference="XFF-ob-f75"/>
         <segue reference="ClN-XK-hEF"/>
         <segue reference="GvG-z4-c4O"/>
-        <segue reference="uk4-7H-Q41"/>
-        <segue reference="r2n-vz-Ixr"/>
         <segue reference="SIM-f8-UeJ"/>
-        <segue reference="9qa-yz-LcS"/>
+        <segue reference="eUK-Fo-EN0"/>
+        <segue reference="DG6-i7-zNC"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="VGG-Ty-jdk"/>
+        <segue reference="XFF-ob-f75"/>
+        <segue reference="k7a-QP-sia"/>
     </inferredMetricsTieBreakers>
 </document>

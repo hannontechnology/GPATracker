@@ -11,10 +11,13 @@
 @class User;
 @class SchoolDetails;
 @class GradingSchemeSelectTableView;
+@class GradingSchemeTableView;
+@class GradingScheme;
 
 @interface SchoolEditTableView : UITableViewController
 @property (strong, nonatomic) User *userInfo;
 @property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) GradingScheme *gradingInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

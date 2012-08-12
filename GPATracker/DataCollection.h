@@ -26,7 +26,9 @@
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName user:(User *)inputUser context:(NSManagedObjectContext *)inContext;
 
 // Grading Scheme Section
-- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName;
+- (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool;
+//- (NSArray *)retrieveGrades:(NSString *)inputGradingScheme;
+- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme school:(SchoolDetails *)inputSchool;
 
 // Semester Section
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;

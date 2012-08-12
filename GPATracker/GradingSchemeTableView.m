@@ -41,8 +41,8 @@
     NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"letterGrade" ascending:NO]];
-    request.predicate = [NSPredicate predicateWithFormat: @"user = %@", self.userInfo];
-    NSLog(@"filtering data based on user = %@", self.userInfo);
+    request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.gradingInfo.school];
+    NSLog(@"filtering data based on school = %@", self.gradingInfo.school);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
@@ -84,7 +84,6 @@
         NSLog(@"Load Grading Scheme Page");
         gPAField.text = self.gradingInfo.gPA.stringValue;
         letterGradeField.text = self.gradingInfo.letterGrade;
-        
     }
     
 }
@@ -111,8 +110,8 @@
     
     
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo schoolName:(NSString *)self.schoolInfo.schoolName];
-    
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo.school];
+    //NSArray *results = [self.dataCollection retrieveGrades:(NSString *)self.gradingInfo];
     if (self.gradingInfo == nil)
     {
         NSLog(@"Error: Could not connect to database.");
