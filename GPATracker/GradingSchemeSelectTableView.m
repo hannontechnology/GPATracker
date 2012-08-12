@@ -86,6 +86,16 @@
            self.gradingInfo.school = self.schoolInfo;
        }
         //Populate Grading Scheme database
+        self.gradingInfo.letterGrade = @"A+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
         
         
