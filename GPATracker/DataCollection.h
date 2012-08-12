@@ -35,7 +35,7 @@
 - (NSArray *)retrieveCourse:(NSString *)inputCourseCode semesterDetails:(SemesterDetails *)inputSemesterDetails  context:(NSManagedObjectContext *) inContext;
 
 // Miscellaneous Functions
-- (void)buildYearTable;
+- (void)buildYearTable:(NSManagedObjectContext *) inputContext;
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 

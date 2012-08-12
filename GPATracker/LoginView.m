@@ -125,6 +125,7 @@
     }
     else
     {
+        [self.dataCollection buildYearTable:self.managedObjectContext];
         if ([results count] > 0)
         {
             NSLog(@"Goto Home Page");

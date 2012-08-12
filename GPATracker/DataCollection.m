@@ -10,6 +10,7 @@
 #import "SchoolDetails.h"
 #import "gradingScheme.h"
 #import "SemesterDetails.h"
+#import "YearPicker.h"
 
 @interface DataCollection ()
 - (void)initializeDefaultDataList;
@@ -109,24 +110,30 @@ static const int yearMax = 2020;
     return results;
 }
 
-- (void)buildYearTable
+- (void)buildYearTable:(NSManagedObjectContext *) inputContext
 {
     for (int i = yearMin; i <= yearMax; i++)
     {
         NSError *error = nil;
         NSString *entityName = @"YearPicker";
-        YearPicker = *newYear = [NSEntityDescription
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        request.predicate = [NSPredicate predicateWithFormat: @"year = %d", i];
+        NSArray*results = [inputContext executeFetchRequest:request error:& error];
+        if ([results count] == 0)
+        {
+            YearPicker *newYear = [NSEntityDescription
                               insertNewObjectForEntityForName:entityName
-                              inManagedObjectContext:self.managedObjectContext];
-        newYear.year = i;
-        if ([self.managedObjectContext save:&error])
-        {
-            NSLog(@"Add Course Failed! :%@", error.userInfo);
+                              inManagedObjectContext:inputContext];
+            newYear.year = [NSNumber numberWithInt:i];
+            if ([inputContext save:&error])
+            {
+                NSLog(@"Add Year Successful!");
+            }
+            else
+            {
+                NSLog(@"Add Year Failed! :%@", error.userInfo);
+            }
         }
-        else
-        {
-            NSLog(@"Add Course Failed! :%@", error.userInfo);
-        }        
     }
 }
 
