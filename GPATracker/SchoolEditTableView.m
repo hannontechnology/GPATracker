@@ -182,8 +182,85 @@
 - (IBAction)gradingScheme:(UIButton *)sender{
     if (self.setEditStatus != @"Edit")
     {
-       //Control visiability of button later
+        if ([schoolNameField.text length] == 0)
+        {
+            NSLog(@"School name field is Required.");
+            return;
+        }
+        else if ([schoolStartYearField.text length] == 0)
+        {
+            NSLog(@"School start year field is Required.");
+            return;
+        }
+        NSError *error = nil;
+        NSArray *results = [self.dataCollection retrieveSchools:schoolNameField.text user:(User *)self.userInfo context:(NSManagedObjectContext *)self.managedObjectContext];
+        
+        if (self.setEditStatus == @"Edit")
+        {
+            if (self.schoolInfo == nil)
+            {
+                NSLog(@"Database Error: Could not connect to Database.");
+            }
+            else
+            {
+                NSLog(@"Save School Page");
+                self.schoolInfo.schoolName = schoolNameField.text;
+                self.schoolInfo.schoolDetails = schoolDetailsField.text;
+                self.schoolInfo.schoolStartYear = schoolStartYearField.text;
+                self.schoolInfo.schoolEndYear = schoolEndYearField.text;
+                if ([[self managedObjectContext] save:&error])
+                {
+                    NSLog(@"Save was successful");
+                    [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+                }
+                else
+                {
+                    NSLog(@"Save Failed!");
+                }
+            }
+            
+        }
+        else if ([results count] == 0)
+        {
+            NSString *entityName = @"SchoolDetails";
+            self.schoolInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+            self.schoolInfo.user            = self.userInfo;
+            self.schoolInfo.schoolName      = schoolNameField.text;
+            self.schoolInfo.schoolDetails   = schoolDetailsField.text;
+            self.schoolInfo.schoolStartYear = schoolStartYearField.text;
+            self.schoolInfo.schoolEndYear   = schoolEndYearField.text;
+            
+            NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            
+            self.schoolInfo.schoolActualGPA = temp3;
+            self.schoolInfo.schoolCalculatedGPA = temp4;
+            
+            if ([self.managedObjectContext save:&error])
+            {
+                if (self.setEditStatus == @"Edit")
+                {
+                    [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+                }
+                else
+                {
+                    [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+                }
+            }
+            else 
+            {
+                NSLog(@"Create school failed!");
+            }
+        }
+        else
+        {
+            NSLog(@"School Name already taken!");
+        } 
     }
+
+       //Control visiability of button later
 }
 
 - (IBAction)Cancel:(id)sender
