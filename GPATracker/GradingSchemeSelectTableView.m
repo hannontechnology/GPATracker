@@ -73,7 +73,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo schoolName:(NSString *)self.schoolInfo.schoolName];
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo school:(SchoolDetails *)self.schoolInfo];
     // Navigation logic may go here. Create and push another view controller.
     if (indexPath.row == 0) {
         
@@ -88,18 +88,26 @@
         //Populate Grading Scheme database
         self.gradingInfo.letterGrade = @"A+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.letterGrade = @"A";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        
-        
-        
+        self.gradingInfo.letterGrade = @"A-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
+        self.gradingInfo.letterGrade = @"B+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+        self.gradingInfo.letterGrade = @"B";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+        self.gradingInfo.letterGrade = @"B-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
+        self.gradingInfo.letterGrade = @"C+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+        self.gradingInfo.letterGrade = @"C";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+        self.gradingInfo.letterGrade = @"C-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
+        self.gradingInfo.letterGrade = @"D";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
+        self.gradingInfo.letterGrade = @"F";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         
     } else if (indexPath.row == 1){
         if ([results count]==0)
@@ -110,7 +118,28 @@
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;
         }
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.letterGrade = @"A+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+        self.gradingInfo.letterGrade = @"A";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+        self.gradingInfo.letterGrade = @"A-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
+        self.gradingInfo.letterGrade = @"B+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+        self.gradingInfo.letterGrade = @"B";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+        self.gradingInfo.letterGrade = @"B-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
+        self.gradingInfo.letterGrade = @"C+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+        self.gradingInfo.letterGrade = @"C";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+        self.gradingInfo.letterGrade = @"C-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
+        self.gradingInfo.letterGrade = @"D";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
+        self.gradingInfo.letterGrade = @"F";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         
     } else if (indexPath.row == 2){
         if ([results count]==0)
@@ -121,7 +150,28 @@
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;
         }
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        self.gradingInfo.letterGrade = @"A+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"A";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"A-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"B+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"B";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"B-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"C+";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"C";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"C-";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"D";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.letterGrade = @"F";
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
     }
      //GradingSchemeTableView *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
@@ -130,8 +180,9 @@
     if ([self.managedObjectContext save:&error])
     {
         NSLog(@"Save Successful");
-        GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
-        [self.navigationController pushViewController:gradingSchemeTableView animated:YES];
+        //GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
+        //[self.navigationController pushViewController:gradingSchemeTableView animated:YES];
+        [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
         
     }
     else

@@ -41,8 +41,8 @@
     NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"letterGrade" ascending:NO]];
-    request.predicate = [NSPredicate predicateWithFormat: @"user = %@", self.userInfo];
-    NSLog(@"filtering data based on user = %@", self.userInfo);
+    request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.schoolInfo];
+    NSLog(@"filtering data based on school = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }

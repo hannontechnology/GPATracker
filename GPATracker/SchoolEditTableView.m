@@ -331,6 +331,7 @@
         GradingSchemeSelectTableView *GradingSchemeSelectTableView = [segue destinationViewController];
         
         GradingSchemeSelectTableView.userInfo = self.userInfo;
+        GradingSchemeSelectTableView.schoolInfo = self.schoolInfo;
         GradingSchemeSelectTableView.dataCollection = self.dataCollection;
         GradingSchemeSelectTableView.managedObjectContext = self.managedObjectContext;
     }

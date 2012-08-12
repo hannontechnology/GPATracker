@@ -71,7 +71,7 @@ static const int yearMax = 2020;
 }
 
 //Code for handling grading scheme information
-- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme schoolName:(NSString *)inputSchoolName
+- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme school:(SchoolDetails *)inputSchool
 {
     NSManagedObjectContext *moc = [self managedObjectContext];
     
@@ -79,8 +79,8 @@ static const int yearMax = 2020;
     NSLog(@"Setting up a Fetched Results Contraoller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"schoolName = %@",inputSchoolName];
-    NSLog(@"filtering data based on schoolName = %@",inputSchoolName);
+    request.predicate = [NSPredicate predicateWithFormat:@"schoolDetails = %@",inputSchool];
+    NSLog(@"filtering data based on schoolDetails = %@",inputSchool);
     NSError *error = nil;
     NSArray *results = [moc executeFetchRequest:request error:&error];
     return results;
