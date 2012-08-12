@@ -11,11 +11,11 @@
 #import "DataCollection.h"
 #import "SemesterTableView.h"
 
-@interface PickerDismissView : UIView
+@interface PickerDismissView2 : UIView
 @property (nonatomic, strong) id parentViewController;
 @end
 
-@implementation PickerDismissView
+@implementation PickerDismissView2
 @synthesize parentViewController = _parentViewController;
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -25,7 +25,7 @@
 @end
 
 @interface SemesterEditTableView ()
-@property (strong, nonatomic) PickerDismissView *pickerDismissView;
+@property (strong, nonatomic) PickerDismissView2 *pickerDismissView;
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property CGRect pickerDismissViewShownFrame;
 @property CGRect pickerDismissViewHiddenFrame;
@@ -229,7 +229,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
         
         // Set up the initial state of the picker dismiss view
-        self.pickerDismissView = [[PickerDismissView alloc] init];
+        self.pickerDismissView = [[PickerDismissView2 alloc] init];
         self. pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
         self.pickerDismissView.parentViewController = self;
         self.pickerDismissView.backgroundColor = [UIColor blackColor];
