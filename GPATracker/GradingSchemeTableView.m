@@ -18,17 +18,8 @@
 @end
 
 @implementation GradingSchemeTableView
-@synthesize gradeDField;
-@synthesize gradeFField;
-@synthesize gradeAPlusField;
-@synthesize gradeAField;
-@synthesize gradeAMinusField;
-@synthesize gradeBPlusField;
-@synthesize gradeBField;
-@synthesize gradeBMinusField;
-@synthesize gradeCPlusField;
-@synthesize gradeCField;
-@synthesize gradeCMinusField;
+@synthesize gPAField;
+@synthesize letterGradeField;
 @synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
 @synthesize gradingInfo = _gradingInfo;
@@ -44,6 +35,19 @@
     return self;
 }
 
+- (void)setupFetchedResultsController
+{
+    NSString *entityName = @"GradingScheme";
+    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"letterGrade" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat: @"user = %@", self.userInfo];
+    NSLog(@"filtering data based on user = %@", self.userInfo);
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,17 +61,8 @@
 
 - (void)viewDidUnload
 {
-    [self setGradeAPlusField:nil];
-    [self setGradeAField:nil];
-    [self setGradeAMinusField:nil];
-    [self setGradeBPlusField:nil];
-    [self setGradeBField:nil];
-    [self setGradeBMinusField:nil];
-    [self setGradeCPlusField:nil];
-    [self setGradeCField:nil];
-    [self setGradeCField:nil];
-    [self setGradeDField:nil];
-    [self setGradeFField:nil];
+    [self setGPAField:nil];
+    [self setLetterGradeField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -87,17 +82,8 @@
     else
     {
         NSLog(@"Load Grading Scheme Page");
-        gradeAField.text = self.gradingInfo.gradeA.stringValue;
-        gradeAMinusField.text = self.gradingInfo.gradeAMinus.stringValue;
-        gradeAPlusField.text = self.gradingInfo.gradeAPlus.stringValue;
-        gradeBField.text = self.gradingInfo.gradeB.stringValue;
-        gradeBMinusField.text = self.gradingInfo.gradeBMinus.stringValue;
-        gradeBPlusField.text = self.gradingInfo.gradeBPlus.stringValue;
-        gradeCField.text = self.gradingInfo.gradeC.stringValue;
-        gradeCMinusField.text = self.gradingInfo.gradeCMinus.stringValue;
-        gradeCPlusField.text = self.gradingInfo.gradeCMinus.stringValue;
-        gradeDField.text = self.gradingInfo.gradeD.stringValue;
-        gradeFField.text = self.gradingInfo.gradeF.stringValue;
+        gPAField.text = self.gradingInfo.gPA.stringValue;
+        letterGradeField.text = self.gradingInfo.letterGrade;
         
     }
     
@@ -110,72 +96,19 @@
 
 - (IBAction)Save:(id)sender
 {
-    if ([gradeAField.text length] == 0)
+    if ([gPAField.text length] == 0)
     {
         
-        NSLog(@"A grade field is Required.");
+        NSLog(@"GPA field is Required.");
         return;
     }
-    else if ([gradeAMinusField.text length] == 0)
+    else if ([letterGradeField.text length] == 0)
     {
         
-        NSLog(@"A- grade field is Required.");
+        NSLog(@"Letter Grade field is Required.");
         return;
     }
-    else if ([gradeAPlusField.text length] == 0)
-    {
-        
-        NSLog(@"A+ grade field is Required.");
-        return;
-    }
-    else if ([gradeBField.text length] == 0)
-    {
-        
-        NSLog(@"B grade field is Required.");
-        return;
-    }
-    else if ([gradeBMinusField.text length] == 0)
-    {
-        
-        NSLog(@"B- grade field is Required.");
-        return;
-    }
-    else if ([gradeBPlusField.text length] == 0)
-    {
-        
-        NSLog(@"B+ grade field is Required.");
-        return;
-    }
-    else if ([gradeCField.text length] == 0)
-    {
-        
-        NSLog(@"C grade field is Required.");
-        return;
-    }
-    else if ([gradeCMinusField.text length] == 0)
-    {
-        
-        NSLog(@"C- grade field is Required.");
-        return;
-    }
-    else if ([gradeCPlusField.text length] == 0)
-    {
-        
-        NSLog(@"C+ grade field is Required.");
-        return;
-    }
-    else if ([gradeDField.text length] == 0)
-    {
-        
-        NSLog(@"D grade field is Required.");
-        return;
-    }
-    else if ([gradeFField.text length] == 0)
-    {
-        
-        NSLog(@"F grade field is Required.");
-        return;
-    }
+    
     
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo schoolName:(NSString *)self.schoolInfo.schoolName];
@@ -193,17 +126,8 @@
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;        }
         NSLog(@"Save Grading Scheme");
-        self.gradingInfo.gradeA = [[NSDecimalNumber alloc] initWithString:(gradeAField.text)];
-        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc] initWithString:(gradeAMinusField.text)];
-        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc] initWithString:(gradeAPlusField.text)];
-        self.gradingInfo.gradeB = [[NSDecimalNumber alloc] initWithString:(gradeBField.text)];
-        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc] initWithString:(gradeBMinusField.text)];
-        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc] initWithString:(gradeBPlusField.text)];
-        self.gradingInfo.gradeC = [[NSDecimalNumber alloc] initWithString:(gradeCField.text)];
-        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc] initWithString:(gradeCMinusField.text)];
-        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc] initWithString:(gradeCPlusField.text)];
-        self.gradingInfo.gradeD = [[NSDecimalNumber alloc] initWithString:(gradeDField.text)];
-        self.gradingInfo.gradeF = [[NSDecimalNumber alloc] initWithString:(gradeFField.text)];
+        self.gradingInfo.letterGrade = letterGradeField.text;
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc] initWithString:(gPAField.text)];
     }
     
     if ([self.managedObjectContext save:&error])
@@ -227,11 +151,6 @@
         SchoolListTableView.userInfo = self.userInfo;
         SchoolListTableView.dataCollection = self.dataCollection;
         SchoolListTableView.managedObjectContext = self.managedObjectContext;
-    }
-    else if ([segue.identifier isEqualToString:@"segueGrading2Semester"])
-    {
-        //SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
-        
     }
 }
 
