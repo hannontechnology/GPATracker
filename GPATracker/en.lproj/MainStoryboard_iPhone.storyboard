@@ -1924,13 +1924,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="68m-8u-amb"/>
-        <segue reference="VGG-Ty-jdk"/>
-        <segue reference="r2n-vz-Ixr"/>
-        <segue reference="eUK-Fo-EN0"/>
-        <segue reference="SIM-f8-UeJ"/>
-        <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="XFF-ob-f75"/>
+        <segue reference="ClN-XK-hEF"/>
+        <segue reference="GvG-z4-c4O"/>
+        <segue reference="uk4-7H-Q41"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="SIM-f8-UeJ"/>
+        <segue reference="9qa-yz-LcS"/>
     </inferredMetricsTieBreakers>
 </document>

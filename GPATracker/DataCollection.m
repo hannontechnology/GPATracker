@@ -87,11 +87,11 @@ static const int yearMax = 2020;
 }
 
 //Code for handling semester information
-- (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
+- (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
 {
     NSString *entityName = @"SemesterDetails";
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@ AND semesterName = %@", inputSchoolDetails, inputSemesterName];
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@ AND semesterName = %@ AND semesterYear = %@", inputSchoolDetails, inputSemesterName, inputSemesterYear];
     
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
