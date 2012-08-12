@@ -20,6 +20,9 @@
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
+static const int yearMin = 1990;
+static const int yearMax = 2020;
+
 //Code for handling user information
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext
 {
@@ -104,6 +107,27 @@
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
     return results;
+}
+
+- (void)buildYearTable
+{
+    for (int i = yearMin; i <= yearMax; i++)
+    {
+        NSError *error = nil;
+        NSString *entityName = @"YearPicker";
+        YearPicker = *newYear = [NSEntityDescription
+                              insertNewObjectForEntityForName:entityName
+                              inManagedObjectContext:self.managedObjectContext];
+        newYear.year = i;
+        if ([self.managedObjectContext save:&error])
+        {
+            NSLog(@"Add Course Failed! :%@", error.userInfo);
+        }
+        else
+        {
+            NSLog(@"Add Course Failed! :%@", error.userInfo);
+        }        
+    }
 }
 
 //Core Data Required Functions

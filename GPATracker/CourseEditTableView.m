@@ -97,21 +97,21 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         if (courseDesiredGradeField.text.length > 0)
         {
             gradeValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(0, 1)];
+            selComp0 = [self.gradeList indexOfObject:gradeValue];
         }
         else
         {
-            gradeValue = 0;
+            selComp0 = 0;
         }
         if (courseDesiredGradeField.text.length > 1)
         {
             modValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(1, 1)];
+            selComp1 = [self.modList indexOfObject:modValue];
         }
         else
         {
-            modValue = 0;
+            selComp1 = 0;
         }
-        selComp0 = [self.gradeList indexOfObject:gradeValue];
-        selComp1 = [self.modList indexOfObject:modValue];
     }
     else if (self.setGradeType == @"Actual")
     {
@@ -120,21 +120,21 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         if (courseActualGradeField.text.length > 0)
         {
             gradeValue = [courseActualGradeField.text substringWithRange:NSMakeRange(0, 1)];
+            selComp0 = [self.gradeList indexOfObject:gradeValue];
         }
         else
         {
-            gradeValue = 0;
+            selComp0 = 0;
         }
         if (courseActualGradeField.text.length > 1)
         {
             modValue = [courseActualGradeField.text substringWithRange:NSMakeRange(1, 1)];
+            selComp1 = [self.modList indexOfObject:modValue];
         }
         else
         {
-            modValue = 0;
+            selComp1 = 0;
         }
-        selComp0 = [self.gradeList indexOfObject:gradeValue];
-        selComp1 = [self.modList indexOfObject:modValue];
     }
     [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
     [self.pickerView selectRow:selComp1 inComponent:1 animated:YES];
@@ -250,7 +250,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
     // Set pickerView's shown and hidden position frames.
     self.pickerViewShownFrame = CGRectMake(0.f, self.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
-    self.pickerViewHiddenFrame = CGRectMake(0.f, self.view.frame.size.height, kPickerDefaultWidth, kPickerDefaultHeight);
+    self.pickerViewHiddenFrame = CGRectMake(0.f, self.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
     
     // Set up the initial state of the picker.
     self.pickerView = [[UIPickerView alloc] init];
