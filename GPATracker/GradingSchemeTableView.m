@@ -111,7 +111,7 @@
     
     
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo schoolName:(NSString *)self.schoolInfo.schoolName];
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo school:(SchoolDetails *)self.schoolInfo];
     
     if (self.gradingInfo == nil)
     {

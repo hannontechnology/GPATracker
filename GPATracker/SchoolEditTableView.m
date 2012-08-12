@@ -13,6 +13,7 @@
 #import "User+Create.h"
 #import "SchoolDetails+Create.h"
 #import "GradingSchemeSelectTableView.h"
+#import "GradingSchemeTableView.h"
 
 @interface SchoolEditTableView ()
 - (IBAction)Cancel:(id)sender;
@@ -31,7 +32,7 @@
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
-@synthesize gradingScheme;
+@synthesize gradingInfo = _gradingInfo;
 @synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
 
@@ -92,13 +93,8 @@
         headerText.title = @"Edit School";
         schoolNameField.text  = self.schoolInfo.schoolName;
         schoolDetailsField.text = self.schoolInfo.schoolDetails;
-        // Cast text to NSNumber:
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterNoStyle];
-        NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
-        NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
-        self.schoolInfo.schoolStartYear = s_year;
-        self.schoolInfo.schoolEndYear   = e_year;
+        schoolStartYearField.text = self.schoolInfo.schoolStartYear.stringValue;
+        schoolEndYearField.text = self.schoolInfo.schoolEndYear.stringValue;
     }
 
 }
@@ -246,7 +242,16 @@
                 if ([[self managedObjectContext] save:&error])
                 {
                     NSLog(@"Save was successful");
-                    [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+                    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo];
+                    if ([results count] == 0)
+                    {
+                        [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+                    }
+                    else
+                    {
+                        [self performSegueWithIdentifier:@"segue2GradingConfirmEdit" sender:self];
+                    }
+                    
                 }
                 else
                 {
@@ -282,7 +287,7 @@
             {
                 if (self.setEditStatus == @"Edit")
                 {
-                    [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+                    [self performSegueWithIdentifier:@"segue2GradingConfirmEdit" sender:self];
                 }
                 else
                 {
@@ -334,6 +339,15 @@
         GradingSchemeSelectTableView.schoolInfo = self.schoolInfo;
         GradingSchemeSelectTableView.dataCollection = self.dataCollection;
         GradingSchemeSelectTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segue2GradingConfirmEdit"])
+    {
+        GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
+        GradingSchemeTableView.userInfo = self.userInfo;
+        GradingSchemeTableView.schoolInfo = self.schoolInfo;
+        GradingSchemeTableView.dataCollection = self.dataCollection;
+        GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
+        
     }
 }
 
