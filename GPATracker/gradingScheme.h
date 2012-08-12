@@ -13,17 +13,8 @@
 
 @interface GradingScheme : NSManagedObject
 
-@property (nonatomic, retain) NSDecimalNumber * gradeA;
-@property (nonatomic, retain) NSDecimalNumber * gradeAMinus;
-@property (nonatomic, retain) NSDecimalNumber * gradeAPlus;
-@property (nonatomic, retain) NSDecimalNumber * gradeB;
-@property (nonatomic, retain) NSDecimalNumber * gradeBMinus;
-@property (nonatomic, retain) NSDecimalNumber * gradeBPlus;
-@property (nonatomic, retain) NSDecimalNumber * gradeC;
-@property (nonatomic, retain) NSDecimalNumber * gradeCMinus;
-@property (nonatomic, retain) NSDecimalNumber * gradeCPlus;
-@property (nonatomic, retain) NSDecimalNumber * gradeD;
-@property (nonatomic, retain) NSDecimalNumber * gradeF;
+@property (nonatomic, retain) NSDecimalNumber * gPA;
+@property (nonatomic, retain) NSString * letterGrade;
 @property (nonatomic, retain) SchoolDetails *school;
 
 @end
