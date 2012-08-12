@@ -11,6 +11,7 @@
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "User+Create.h"
+#import "SchoolDetails+Create.h"
 #import "GradingSchemeSelectTableView.h"
 
 @interface SchoolEditTableView ()
@@ -30,6 +31,7 @@
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
+@synthesize gradingScheme;
 @synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
 
@@ -59,6 +61,7 @@
     [self setSchoolDetailsField:nil];
     [self setSchoolStartYearField:nil];
     [self setSchoolEndYearField:nil];
+    [self setGradingScheme:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -143,8 +146,13 @@
         self.schoolInfo.user            = self.userInfo;
         self.schoolInfo.schoolName      = schoolNameField.text;
         self.schoolInfo.schoolDetails   = schoolDetailsField.text;
-        self.schoolInfo.schoolStartYear = schoolStartYearField.text;
-        self.schoolInfo.schoolEndYear   = schoolEndYearField.text;
+        // Cast text to NSNumber:
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterNoStyle];
+        NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
+        NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+        self.schoolInfo.schoolStartYear = s_year;
+        self.schoolInfo.schoolEndYear   = e_year;
         
         NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
@@ -179,7 +187,19 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)gradingScheme:(UIButton *)sender{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1) {
+        
+    
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+
     if (self.setEditStatus != @"Edit")
     {
         if ([schoolNameField.text length] == 0)
@@ -261,6 +281,7 @@
     }
 
        //Control visiability of button later
+    }
 }
 
 - (IBAction)Cancel:(id)sender

@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) NSString *setEditStatus;
 
-- (IBAction)gradingScheme:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITableViewCell *gradingScheme;
+
 
 @end
