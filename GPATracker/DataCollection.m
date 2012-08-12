@@ -86,6 +86,21 @@ static const int yearMax = 2020;
     return results;
 }
 
+/*- (NSArray *)retrieveGrades:(NSString *)inputGradingScheme
+{
+    NSManagedObjectContext *moc = [self managedObjectContext];
+    
+    NSString *entityName = @"GradingScheme";
+    NSLog(@"Setting up a Fetched Results Contraoller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"gradingScheme = %@",inputGradingScheme];
+    NSLog(@"filtering data based on gradingScheme = %@",inputGradingScheme);
+    NSError *error = nil;
+    NSArray *results = [moc executeFetchRequest:request error:&error];
+    return results;
+}
+*/
 - (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme school:(SchoolDetails *)inputSchool
 {
     NSManagedObjectContext *moc = [self managedObjectContext];

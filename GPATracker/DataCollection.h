@@ -27,6 +27,7 @@
 
 // Grading Scheme Section
 - (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool;
+//- (NSArray *)retrieveGrades:(NSString *)inputGradingScheme;
 - (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme school:(SchoolDetails *)inputSchool;
 
 // Semester Section

@@ -64,7 +64,7 @@
        GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
        GradingSchemeTableView.userInfo = self.userInfo;
        GradingSchemeTableView.DataCollection = self.dataCollection;
-       GradingSchemeTableView.schoolInfo = self.schoolInfo;
+       //GradingSchemeTableView.schoolInfo = self.schoolInfo;
        GradingSchemeTableView.gradingInfo = self.gradingInfo;
        GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
    }
@@ -73,7 +73,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo school:(SchoolDetails *)self.schoolInfo];
+    //NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo school:(SchoolDetails *)self.schoolInfo];
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo];
     // Navigation logic may go here. Create and push another view controller.
     if (indexPath.row == 0) {
         
