@@ -34,6 +34,9 @@
 // Course Section
 - (NSArray *)retrieveCourse:(NSString *)inputCourseCode semesterDetails:(SemesterDetails *)inputSemesterDetails  context:(NSManagedObjectContext *) inContext;
 
+// Retrieve Year List for picker
+- (NSArray *)retrieveYearPicker:(NSManagedObjectContext *) inContext;
+
 // Miscellaneous Functions
 - (void)buildYearTable:(NSManagedObjectContext *) inputContext;
 - (void)saveContext;

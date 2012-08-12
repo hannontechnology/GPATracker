@@ -110,6 +110,17 @@ static const int yearMax = 2020;
     return results;
 }
 
+// Code for retrieving Year List
+- (NSArray *)retrieveYearPicker:(NSManagedObjectContext *)inContext
+{
+    NSString *entityName = @"YearPicker";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    NSError *error = nil;
+    NSArray *results = [inContext executeFetchRequest:request error:&error];
+    
+    return results;
+}
+
 - (void)buildYearTable:(NSManagedObjectContext *) inputContext
 {
     for (int i = yearMin; i <= yearMax; i++)

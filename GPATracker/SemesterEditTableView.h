@@ -15,10 +15,10 @@
 @interface SemesterEditTableView : UITableViewController
 @property (weak, nonatomic) IBOutlet UITextField *semesterNameField;
 @property (weak, nonatomic) IBOutlet UITextField *semesterYearField;
-@property (weak, nonatomic) IBOutlet UITextField *semesterCodeField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 @property (strong, nonatomic) NSString *setEditStatus;
+@property (strong, nonatomic) NSString *setInputType;
 //@property (strong, nonatomic) NSString *userName;
 //@property (strong, nonatomic) NSString *schoolName;
 //@property (strong, nonatomic) NSString *semesterName;
@@ -26,5 +26,8 @@
 @property (strong, nonatomic) SchoolDetails *schoolDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+- (IBAction)showSemesterNamePicker:(id)sender;
+- (IBAction)showSemesterYearPicker:(id)sender;
 
 @end
