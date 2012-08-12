@@ -2,7 +2,7 @@
 //  GradingScheme.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-08-06.
+//  Created by David Stevens on 12-08-12.
 //
 //
 
@@ -12,8 +12,8 @@
 
 @implementation GradingScheme
 
-@dynamic gPA;
 @dynamic letterGrade;
+@dynamic gPA;
 @dynamic school;
 
 @end

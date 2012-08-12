@@ -254,7 +254,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Grading Scheme" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Aed-OH-0pu">
-                                                    <rect key="frame" x="84" y="11" width="128" height="21"/>
+                                                    <rect key="frame" x="86" y="11" width="128" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -290,10 +290,11 @@
                         <outlet property="schoolNameField" destination="H78-Gi-B5L" id="IrL-u7-k9c"/>
                         <outlet property="schoolStartYearField" destination="iOZ-Zs-DiK" id="kW0-e3-0b6"/>
                         <segue destination="01w-Dg-l3t" kind="push" identifier="segueSchool2HomePage" id="VGG-Ty-jdk"/>
+                        <segue destination="ujy-oW-DyU" kind="push" identifier="segueSchool2SchemeSelect" id="eqH-Hf-I1o"/>
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="157" y="-404"/>
+            <point key="canvasLocation" x="192" y="-416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="isu-b5-E5q">
@@ -397,9 +398,6 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="gradingAPlus400" destination="Qb5-EV-Qjl" id="WPC-Kt-igN"/>
-                        <outlet property="gradingAPlus433" destination="hQI-IG-rnC" id="u04-VW-AAv"/>
-                        <outlet property="gradingCustom" destination="fOD-IV-OZA" id="tNq-Ar-OUm"/>
                         <segue destination="1tm-RG-Rrr" kind="push" identifier="segue2GradingConfirm" id="Vzz-SA-ORC"/>
                     </connections>
                 </tableViewController>
