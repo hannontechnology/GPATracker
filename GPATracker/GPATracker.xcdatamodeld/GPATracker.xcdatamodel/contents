@@ -14,26 +14,17 @@
         <relationship name="semesterDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SemesterDetails" inverseName="courseDetails" inverseEntity="SemesterDetails" syncable="YES"/>
     </entity>
     <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">
-        <attribute name="gradeA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeAMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeAPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeB" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeBMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeBPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeC" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeCMinus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeCPlus" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeD" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="gradeF" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="gPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="letterGrade" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="school" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="gradingScheme" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <entity name="SchoolDetails" representedClassName="SchoolDetails" syncable="YES">
         <attribute name="schoolActualGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="schoolCalculatedGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="schoolDetails" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="schoolEndYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolEndYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="schoolStartYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="schoolStartYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="semesterDetails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SemesterDetails" inverseName="schoolDetails" inverseEntity="SemesterDetails" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schoolDetails" inverseEntity="User" syncable="YES"/>
@@ -54,11 +45,15 @@
         <attribute name="userPassword" attributeType="String" syncable="YES"/>
         <relationship name="schoolDetails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SchoolDetails" inverseName="user" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
+    <entity name="YearPicker" representedClassName="YearPicker" syncable="YES">
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <elements>
         <element name="CourseDetails" positionX="0" positionY="0" width="0" height="0"/>
         <element name="GradingScheme" positionX="0" positionY="0" width="0" height="0"/>
         <element name="SchoolDetails" positionX="0" positionY="0" width="0" height="0"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="0" height="0"/>
         <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="YearPicker" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

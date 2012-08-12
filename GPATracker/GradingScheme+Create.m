@@ -29,17 +29,8 @@
     GradingScheme *newGradingScheme = [NSEntityDescription
                      insertNewObjectForEntityForName:entityName
                      inManagedObjectContext:inContext];
-    newGradingScheme.gradeAPlus = gradingScheme.gradeAPlus;
-    newGradingScheme.gradeA = gradingScheme.gradeA;
-    newGradingScheme.gradeAMinus = gradingScheme.gradeAMinus;
-    newGradingScheme.gradeB = gradingScheme.gradeB;
-    newGradingScheme.gradeBMinus = gradingScheme.gradeBMinus;
-    newGradingScheme.gradeBPlus = gradingScheme.gradeBPlus;
-    newGradingScheme.gradeC = gradingScheme.gradeC;
-    newGradingScheme.gradeCMinus = gradingScheme.gradeCMinus;
-    newGradingScheme.gradeCPlus = gradingScheme.gradeCPlus;
-    newGradingScheme.gradeD = gradingScheme.gradeD;
-    newGradingScheme.gradeF = gradingScheme.gradeF;
+    newGradingScheme.letterGrade = gradingScheme.letterGrade;
+    newGradingScheme.gPA = gradingScheme.gPA;
     
     if (![inContext save:&error])
     {

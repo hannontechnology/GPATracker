@@ -12,17 +12,8 @@
 
 @implementation GradingScheme
 
-@dynamic gradeA;
-@dynamic gradeAMinus;
-@dynamic gradeAPlus;
-@dynamic gradeB;
-@dynamic gradeBMinus;
-@dynamic gradeBPlus;
-@dynamic gradeC;
-@dynamic gradeCMinus;
-@dynamic gradeCPlus;
-@dynamic gradeD;
-@dynamic gradeF;
+@dynamic gPA;
+@dynamic letterGrade;
 @dynamic school;
 
 @end
