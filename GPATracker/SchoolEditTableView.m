@@ -92,8 +92,13 @@
         headerText.title = @"Edit School";
         schoolNameField.text  = self.schoolInfo.schoolName;
         schoolDetailsField.text = self.schoolInfo.schoolDetails;
-        schoolStartYearField.text = self.schoolInfo.schoolStartYear;
-        schoolEndYearField.text = self.schoolInfo.schoolEndYear;
+        // Cast text to NSNumber:
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterNoStyle];
+        NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
+        NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+        self.schoolInfo.schoolStartYear = s_year;
+        self.schoolInfo.schoolEndYear   = e_year;
     }
 
 }
@@ -123,8 +128,13 @@
             NSLog(@"Save School Page");
             self.schoolInfo.schoolName = schoolNameField.text;
             self.schoolInfo.schoolDetails = schoolDetailsField.text;
-            self.schoolInfo.schoolStartYear = schoolStartYearField.text;
-            self.schoolInfo.schoolEndYear = schoolEndYearField.text;
+            // Cast text to NSNumber:
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterNoStyle];
+            NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
+            NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+            self.schoolInfo.schoolStartYear = s_year;
+            self.schoolInfo.schoolEndYear   = e_year;
             if ([[self managedObjectContext] save:&error])
             {
                 NSLog(@"Save was successful");
@@ -226,8 +236,13 @@
                 NSLog(@"Save School Page");
                 self.schoolInfo.schoolName = schoolNameField.text;
                 self.schoolInfo.schoolDetails = schoolDetailsField.text;
-                self.schoolInfo.schoolStartYear = schoolStartYearField.text;
-                self.schoolInfo.schoolEndYear = schoolEndYearField.text;
+                // Cast text to NSNumber:
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                [f setNumberStyle:NSNumberFormatterNoStyle];
+                NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
+                NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+                self.schoolInfo.schoolStartYear = s_year;
+                self.schoolInfo.schoolEndYear   = e_year;
                 if ([[self managedObjectContext] save:&error])
                 {
                     NSLog(@"Save was successful");
@@ -249,8 +264,13 @@
             self.schoolInfo.user            = self.userInfo;
             self.schoolInfo.schoolName      = schoolNameField.text;
             self.schoolInfo.schoolDetails   = schoolDetailsField.text;
-            self.schoolInfo.schoolStartYear = schoolStartYearField.text;
-            self.schoolInfo.schoolEndYear   = schoolEndYearField.text;
+            // Cast text to NSNumber:
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            [f setNumberStyle:NSNumberFormatterNoStyle];
+            NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
+            NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+            self.schoolInfo.schoolStartYear = s_year;
+            self.schoolInfo.schoolEndYear   = e_year;
             
             NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
             NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];

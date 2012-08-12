@@ -2,7 +2,7 @@
 //  GradingScheme.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-08-06.
+//  Created by David Stevens on 12-08-12.
 //
 //
 
@@ -13,8 +13,8 @@
 
 @interface GradingScheme : NSManagedObject
 
-@property (nonatomic, retain) NSDecimalNumber * gPA;
 @property (nonatomic, retain) NSString * letterGrade;
+@property (nonatomic, retain) NSDecimalNumber * gPA;
 @property (nonatomic, retain) SchoolDetails *school;
 
 @end
