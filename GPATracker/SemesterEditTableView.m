@@ -75,7 +75,9 @@
         headerText.title = @"Edit Semester";
         semesterNameField.text = self.semesterDetails.semesterName;
         semesterYearField.text = [NSString stringWithFormat:@"%@", [self.semesterDetails semesterYear].stringValue];
-        semesterCodeField.text = [NSString stringWithFormat:@"%@", [self.semesterDetails semesterCode].stringValue];
+  //      semesterCodeField.text = [NSString stringWithFormat:@"%@", [self.semesterDetails semesterCode].stringValue];
+        
+        NSLog(@"Semester Name: %@ Year: %@ Code: %@", self.semesterDetails.semesterName, self.semesterDetails.semesterYear, self.semesterDetails.semesterCode);
     }
 }
 
@@ -84,7 +86,7 @@
     [self setSemesterNameField:nil];
     [self setSemesterNameField:nil];
     [self setSemesterYearField:nil];
-    [self setSemesterCodeField:nil];
+//    [self setSemesterCodeField:nil];
     [self setHeaderText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -104,7 +106,7 @@
         // TODO: Error message
     }
     
-    NSArray *results = [self.dataCollection retrieveSemester:semesterNameField.text schoolDetails:self.schoolDetails context:self.managedObjectContext];
+    NSArray *results = [self.dataCollection retrieveSemester:semesterNameField.text semesterYear:semesterYearField.text schoolDetails:self.schoolDetails context:self.managedObjectContext];
     
     // TODO: add in logic for creating automated semester code
     
@@ -117,6 +119,7 @@
         else
         {
             NSLog(@"Save Semester Page");
+            
             self.semesterDetails.semesterName = semesterNameField.text;
                     
             // Cast text to NSNumber:
@@ -124,16 +127,19 @@
             [f setNumberStyle:NSNumberFormatterNoStyle];
             NSNumber *s_year = [f numberFromString:semesterYearField.text];
             self.semesterDetails.semesterYear = s_year;
-            NSNumber *s_code = [f numberFromString:semesterCodeField.text];
+            
+            NSNumber *s_code = [semesterNameField.text isEqualToString:@"Spring"] ? [NSNumber numberWithInt:0] : [semesterNameField.text isEqualToString:@"Summer"] ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:2];
             self.semesterDetails.semesterCode = s_code;
-
-            if ([self.managedObjectContext save:nil])
+            
+            NSError *err = nil;
+            
+            if ([self.managedObjectContext save:&err])
             {
                 [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
             }
             else
             {
-                NSLog(@"Save Semester Failed! :(");
+                NSLog(@"Save Semester Failed! :( %@", [err userInfo]);
             }
         }
     }
@@ -150,22 +156,24 @@
         [f setNumberStyle:NSNumberFormatterNoStyle];
         NSNumber *s_year = [f numberFromString:semesterYearField.text];
         self.semesterDetails.semesterYear = s_year;
-        NSNumber *s_code = [f numberFromString:semesterCodeField.text];
+        NSNumber *s_code = [semesterNameField.text isEqualToString:@"Spring"] ? [NSNumber numberWithInt:0] : [semesterNameField.text isEqualToString:@"Summer"] ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:2];
         self.semesterDetails.semesterCode = s_code;
         self.semesterDetails.schoolDetails = self.schoolDetails;
         
-        if ([self.managedObjectContext save:nil])
+        NSError *err = nil;
+        
+        if ([self.managedObjectContext save:&err])
         {
             [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
         }
         else
         {
-            NSLog(@"Save Semester Failed! :(");
+            NSLog(@"Save Semester Failed! :( %@", [err userInfo]);
         }
     }
     else
     {
-        NSLog(@"Save Semester Failed! Semester Already Exist!");
+        NSLog(@"Save Semester Failed! Semester Already Exists!");
     }
 }
 

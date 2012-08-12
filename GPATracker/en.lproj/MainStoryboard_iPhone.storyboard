@@ -2200,13 +2200,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ClN-XK-hEF"/>
-        <segue reference="uk4-7H-Q41"/>
-        <segue reference="GvG-z4-c4O"/>
-        <segue reference="r2n-vz-Ixr"/>
-        <segue reference="phW-HU-sP7"/>
-        <segue reference="SIM-f8-UeJ"/>
-        <segue reference="XFF-ob-f75"/>
         <segue reference="k7a-QP-sia"/>
+        <segue reference="XFF-ob-f75"/>
+        <segue reference="ClN-XK-hEF"/>
+        <segue reference="GvG-z4-c4O"/>
+        <segue reference="uk4-7H-Q41"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="SIM-f8-UeJ"/>
+        <segue reference="9qa-yz-LcS"/>
     </inferredMetricsTieBreakers>
 </document>
