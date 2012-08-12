@@ -464,59 +464,6 @@
             </objects>
             <point key="canvasLocation" x="1121" y="-404"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Oav-7O-nVZ">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ggE-8J-57j" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="9kM-3K-edT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="x71-vS-tKX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" id="qOy-G5-fxL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Add Semester" id="o6b-ME-PfX"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Semester Name" lineBreakMode="tailTruncation" minimumFontSize="10" id="QMp-qF-eOA">
-                                <rect key="frame" x="36" y="79" width="134" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="ihE-TA-OoU">
-                                <rect key="frame" x="36" y="111" width="158" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Year" lineBreakMode="tailTruncation" minimumFontSize="10" id="mDe-mf-h8s">
-                                <rect key="frame" x="36" y="182" width="56" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" id="GGh-vR-lxS" customClass="semesterYearPicker">
-                                <rect key="frame" x="0.0" y="209" width="320" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.49999999999999961"/>
-                    </view>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="3153" y="169"/>
-        </scene>
         <!--School List Table View - School List-->
         <scene sceneID="Lwr-K1-gYp">
             <objects>
@@ -676,30 +623,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Semester Code (testing)" id="3fj-Jk-OOz">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellSemesterList2" id="Ipr-Qb-cZD">
-                                        <rect key="frame" x="0.0" y="230" width="320" height="46"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="q6q-Oi-89S">
-                                                    <rect key="frame" x="20" y="6" width="260" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <connections>
-                                                        <action selector="textFieldReturn:" destination="YTG-zN-KQM" eventType="editingDidEndOnExit" id="tvN-P2-PSy"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Semester" id="SKv-FE-rvS">
@@ -716,7 +639,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="headerText" destination="SKv-FE-rvS" id="QPH-E1-5PL"/>
-                        <outlet property="semesterCodeField" destination="q6q-Oi-89S" id="Jf4-tD-vKR"/>
                         <outlet property="semesterNameField" destination="tn4-Jg-pyS" id="Y3o-pM-LB6"/>
                         <outlet property="semesterYearField" destination="swA-3z-dFr" id="dRF-RH-xZ5"/>
                         <segue destination="USk-0t-HId" kind="push" identifier="segueEditSemesterToSemester" id="9qa-yz-LcS"/>
