@@ -9,5 +9,6 @@
 #import "SchoolDetails.h"
 
 @interface SchoolDetails (Create)
+- (SchoolDetails *)addSchool:(SchoolDetails *)school context:(NSManagedObjectContext *)inContext;
 
 @end
