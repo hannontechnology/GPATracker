@@ -10,6 +10,7 @@
 #import "SchoolDetails.h"
 #import "gradingScheme.h"
 #import "SemesterDetails.h"
+#import "YearPicker.h"
 
 @interface DataCollection ()
 - (void)initializeDefaultDataList;
@@ -19,6 +20,9 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
+
+static const int yearMin = 1990;
+static const int yearMax = 2020;
 
 //Code for handling user information
 - (NSArray *)retrieveUsers:(NSString *)inputUserName userPassword:(NSString *) inputUserPassword inContext:(NSManagedObjectContext *) inputContext
@@ -83,11 +87,11 @@
 }
 
 //Code for handling semester information
-- (NSArray *)retrieveSemester:(NSString *)inputSemesterName schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
+- (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
 {
     NSString *entityName = @"SemesterDetails";
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@ AND semesterName = %@", inputSchoolDetails, inputSemesterName];
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@ AND semesterName = %@ AND semesterYear = %@", inputSchoolDetails, inputSemesterName, inputSemesterYear];
     
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
@@ -104,6 +108,33 @@
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
     return results;
+}
+
+- (void)buildYearTable:(NSManagedObjectContext *) inputContext
+{
+    for (int i = yearMin; i <= yearMax; i++)
+    {
+        NSError *error = nil;
+        NSString *entityName = @"YearPicker";
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+        request.predicate = [NSPredicate predicateWithFormat: @"year = %d", i];
+        NSArray*results = [inputContext executeFetchRequest:request error:& error];
+        if ([results count] == 0)
+        {
+            YearPicker *newYear = [NSEntityDescription
+                              insertNewObjectForEntityForName:entityName
+                              inManagedObjectContext:inputContext];
+            newYear.year = [NSNumber numberWithInt:i];
+            if ([inputContext save:&error])
+            {
+                NSLog(@"Add Year Successful!");
+            }
+            else
+            {
+                NSLog(@"Add Year Failed! :%@", error.userInfo);
+            }
+        }
+    }
 }
 
 //Core Data Required Functions

@@ -38,9 +38,9 @@
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:YES];
-    NSSortDescriptor *sortDescriptorName = [[NSSortDescriptor alloc] initWithKey:@"semesterName" ascending:YES selector:@selector(localizedStandardCompare:)];
-    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorName, nil]];
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:NO];
+    NSSortDescriptor *sortDescriptorCode = [[NSSortDescriptor alloc] initWithKey:@"semesterCode" ascending:NO]; //selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorCode, nil]];
     request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", self.schoolInfo];
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
