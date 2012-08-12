@@ -14,19 +14,10 @@
 @class DataCollection;
 @class GradingScheme;
 
-@interface GradingSchemeTableView : UITableViewController
-@property (weak, nonatomic) IBOutlet UITextField *gradeAPlusField;
+@interface GradingSchemeTableView : CoreDataTableViewController
+@property (weak, nonatomic) IBOutlet UITextField *gPAField;
+@property (weak, nonatomic) IBOutlet UILabel *letterGradeField;
 
-@property (weak, nonatomic) IBOutlet UITextField *gradeAField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeAMinusField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeBPlusField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeBField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeBMinusField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeCPlusField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeCField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeCMinusField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeDField;
-@property (weak, nonatomic) IBOutlet UITextField *gradeFField;
 
 @property (strong,nonatomic) User *userInfo;
 @property (strong, nonatomic) SchoolDetails *schoolInfo;

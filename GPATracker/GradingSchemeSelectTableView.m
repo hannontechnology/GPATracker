@@ -86,17 +86,8 @@
            self.gradingInfo.school = self.schoolInfo;
        }
         //Populate Grading Scheme database
-        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
-        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.gradeB = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
-        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc]initWithDouble:(2.33)];
-        self.gradingInfo.gradeC = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
-        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
-        self.gradingInfo.gradeD = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
-        self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+        
         
         
         
@@ -109,17 +100,7 @@
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;
         }
-        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(3.70	)];
-        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc]initWithDouble:(3.30)];
-        self.gradingInfo.gradeB = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc]initWithDouble:(2.70)];
-        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc]initWithDouble:(2.30)];
-        self.gradingInfo.gradeC = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
-        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc]initWithDouble:(1.70)];
-        self.gradingInfo.gradeD = [[NSDecimalNumber alloc]initWithDouble:(1.00)];
-        self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
         
     } else if (indexPath.row == 2){
         if ([results count]==0)
@@ -130,17 +111,7 @@
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;
         }
-        self.gradingInfo.gradeAPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeAMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeBPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeB = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeBMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeCPlus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeC = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeCMinus = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeD = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.gradeF = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
     }
      //GradingSchemeTableView *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
