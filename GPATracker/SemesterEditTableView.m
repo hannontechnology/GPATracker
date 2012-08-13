@@ -209,33 +209,32 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     [self.semesterNameList addObject:@"Spring"];
     [self.semesterNameList addObject:@"Summer"];
     
-    // Set pickerView's shown and hidden position frames
-    self.pickerViewShownFrame = CGRectMake(0.f, self.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
-    self.pickerViewHiddenFrame = CGRectMake(0.f, self.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    // Set pickerView's shown and hidden position frames.
+    self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    // Set picker dismiss view's shown and hidden position frames.
+    self.pickerDismissViewShownFrame = CGRectMake(0.f, 0.f, kPickerDefaultWidth, self.navigationController.view.frame.size.height - kPickerDefaultHeight);
+    self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
     
-    // Set up the initial state of the picker
+    // Set up the initial state of the picker.
     self.pickerView = [[UIPickerView alloc] init];
     self.pickerView.frame = self.pickerViewHiddenFrame;
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.showsSelectionIndicator = YES;
     
-    // Add it as a subview of current view
-    [self.view addSubview:self.pickerView];
-    if (!self.pickerDismissView)
-    {
-        // Set picker dismiss view's shown and hidden position frames
-        self.pickerDismissViewShownFrame = CGRectMake(0.f, 0.f, kPickerDefaultWidth, self.navigationController.view.frame.size.height - kPickerDefaultHeight);
-        self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
-        
-        // Set up the initial state of the picker dismiss view
+    // Add it as a subview of our view.
+    [self.navigationController.view insertSubview:self.pickerView aboveSubview:self.navigationController.navigationBar];
+    
+    if (!self.pickerDismissView) {
+        // Set up the initial state of the picker dismiss view.
         self.pickerDismissView = [[PickerDismissView2 alloc] init];
-        self. pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
+        self.pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
         self.pickerDismissView.parentViewController = self;
         self.pickerDismissView.backgroundColor = [UIColor blackColor];
         self.pickerDismissView.alpha = kPickerDismissViewHiddenOpacity;
         
-        // Inserting dismiss view as a subvew of the navigation controller's view. We do this so that we can make it appear OVER the navigation bar
+        // We are inserting it as a subview of the navigation controller's view. We do this so that we can make it appear OVER the navigation bar.
         [self.navigationController.view insertSubview:self.pickerDismissView aboveSubview:self.navigationController.navigationBar];
     }
     

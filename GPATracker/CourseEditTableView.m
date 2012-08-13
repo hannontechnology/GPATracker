@@ -249,8 +249,11 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     [self.modList addObject:@"-"];
 
     // Set pickerView's shown and hidden position frames.
-    self.pickerViewShownFrame = CGRectMake(0.f, self.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
-    self.pickerViewHiddenFrame = CGRectMake(0.f, self.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    // Set picker dismiss view's shown and hidden position frames.
+    self.pickerDismissViewShownFrame = CGRectMake(0.f, 0.f, kPickerDefaultWidth, self.navigationController.view.frame.size.height - kPickerDefaultHeight);
+    self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
     
     // Set up the initial state of the picker.
     self.pickerView = [[UIPickerView alloc] init];
@@ -260,12 +263,9 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     self.pickerView.showsSelectionIndicator = YES;
     
     // Add it as a subview of our view.
-    [self.view addSubview:self.pickerView];
+    [self.navigationController.view insertSubview:self.pickerView aboveSubview:self.navigationController.navigationBar];
+
     if (!self.pickerDismissView) {
-        // Set picker dismiss view's shown and hidden position frames.
-        self.pickerDismissViewShownFrame = CGRectMake(0.f, 0.f, kPickerDefaultWidth, self.navigationController.view.frame.size.height - kPickerDefaultHeight);
-        self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
-        
         // Set up the initial state of the picker dismiss view.
         self.pickerDismissView = [[PickerDismissView alloc] init];
         self.pickerDismissView.frame = self.pickerDismissViewHiddenFrame;

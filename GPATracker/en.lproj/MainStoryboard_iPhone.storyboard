@@ -957,7 +957,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="2717" y="806"/>
+            <point key="canvasLocation" x="2560" y="880"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I1j-aw-DTS">
@@ -1842,13 +1842,10 @@
             <relationships>
                 <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="semesterNameChange:"/>
-                <relationship kind="action" name="semesterYearChange:"/>
                 <relationship kind="action" name="showSemesterNamePicker:"/>
                 <relationship kind="action" name="showSemesterYearPicker:"/>
                 <relationship kind="action" name="textFieldReturn:"/>
                 <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="semesterCodeField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="semesterNameField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="semesterYearField" candidateClass="UITextField"/>
             </relationships>
