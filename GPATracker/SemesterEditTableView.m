@@ -10,6 +10,7 @@
 #import "SemesterDetails+Create.h"
 #import "DataCollection.h"
 #import "SemesterTableView.h"
+#import "YearPicker.h"
 
 @interface PickerDismissView2 : UIView
 @property (nonatomic, strong) id parentViewController;
@@ -32,7 +33,7 @@
 @property CGRect pickerViewShownFrame;
 @property CGRect pickerViewHiddenFrame;
 @property (strong, nonatomic) NSMutableArray *semesterNameList;
-@property (strong, nonatomic) NSArray *semesterYearList;
+@property (strong, nonatomic) NSMutableArray *semesterYearList;
 
 - (IBAction)Accept:(UIBarButtonItem *)sender;
 - (IBAction)Cancel:(id)sender;
@@ -71,6 +72,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (void)showPickerView
 {
+    [self.pickerView reloadAllComponents];
     // To show the picker, we animate the frame and alpha values for the pickerview and the picker dismiss view
     [UIView animateWithDuration:kPickerAnimationTime animations:^{
         self.pickerDismissView.frame = self.pickerDismissViewShownFrame;
@@ -86,12 +88,23 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         NSString *yearValue;
         if (semesterYearField.text.length > 0)
         {
-            yearValue = [semesterYearField.text substringWithRange:NSMakeRange(0, 1)];
+            yearValue = semesterYearField.text;
             selComp = [self.semesterYearList indexOfObject:yearValue];
         }
         else
         {
-            selComp = 0;
+            NSDate *now = [NSDate date];
+            NSString *strDate = [[NSString alloc] initWithFormat:@"%@",now];
+            NSArray *arr = [strDate componentsSeparatedByString:@" "];
+            NSString *str;
+            str = [arr objectAtIndex:0];
+            NSArray *arr_my = [str componentsSeparatedByString:@"-"];
+            NSInteger date = [[arr_my objectAtIndex:2] intValue];
+            NSInteger month = [[arr_my objectAtIndex:1] intValue];
+            NSInteger year = [[arr_my objectAtIndex:0] intValue];
+            yearValue = [NSString stringWithFormat:@"%d",year];
+            semesterYearField.text = yearValue;
+            selComp = [self.semesterYearList indexOfObject:yearValue];
         }
     }
     else if (self.setInputType == @"Name")
@@ -99,7 +112,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         NSString *nameValue;
         if (semesterNameField.text.length > 0)
         {
-            nameValue = [semesterNameField.text substringWithRange:NSMakeRange(0, 1)];
+            nameValue = semesterNameField.text;
             selComp = [self.semesterNameList indexOfObject:nameValue];
         }
         else
@@ -135,7 +148,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         {
             return [self.semesterYearList count];
         }
-    return nil;
+    return 0;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
@@ -161,7 +174,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     }
     else if (self.setInputType == @"Year")
     {
-            NSNumber *selectedYear = [NSString stringWithFormat:@"%@", [self.semesterYearList objectAtIndex:[pickerView selectedRowInComponent:0]]];
+        NSString *selectedYear = [NSString stringWithFormat:@"%@", [self.semesterYearList objectAtIndex:[pickerView selectedRowInComponent:0]]];
         semesterYearField.text = selectedYear;
     }
 }
@@ -201,7 +214,12 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.semesterYearList = [self.dataCollection retrieveYearPicker:self.managedObjectContext];
+    NSArray *yearList = [self.dataCollection retrieveYearPicker:self.managedObjectContext];
+    self.semesterYearList = [[NSMutableArray alloc] init];
+    for (YearPicker *item in yearList)
+    {
+        [self.semesterYearList addObject:item.year.stringValue];
+    }
     
     self.semesterNameList = [[NSMutableArray alloc] init];
     [self.semesterNameList addObject:@""];
