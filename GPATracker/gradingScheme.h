@@ -2,19 +2,21 @@
 //  GradingScheme.h
 //  GPATracker
 //
-//  Created by David Stevens on 12-08-12.
+//  Created by Terry Hannon on 12-08-22.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SchoolDetails;
+@class CourseDetails, SchoolDetails;
 
 @interface GradingScheme : NSManagedObject
 
-@property (nonatomic, retain) NSString * letterGrade;
 @property (nonatomic, retain) NSDecimalNumber * gPA;
+@property (nonatomic, retain) NSString * letterGrade;
 @property (nonatomic, retain) SchoolDetails *school;
+@property (nonatomic, retain) CourseDetails *actualGPAGrade;
+@property (nonatomic, retain) CourseDetails *desiredGPAGrade;
 
 @end
