@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CourseDetails" representedClassName="CourseDetails" syncable="YES">
-        <attribute name="actualGrade" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="calculatedGrade" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseCode" attributeType="String" syncable="YES"/>
         <attribute name="courseDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="courseName" attributeType="String" syncable="YES"/>
-        <attribute name="desiredGrade" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="includeInGPA" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="isPassFail" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="units" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="actualGradeGPA" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="actualGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
+        <relationship name="desiredGradeGPA" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="desiredGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="semesterDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SemesterDetails" inverseName="courseDetails" inverseEntity="SemesterDetails" syncable="YES"/>
     </entity>
     <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">
         <attribute name="gPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="letterGrade" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="actualGPAGrade" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="actualGradeGPA" inverseEntity="CourseDetails" syncable="YES"/>
+        <relationship name="desiredGPAGrade" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="desiredGradeGPA" inverseEntity="CourseDetails" syncable="YES"/>
         <relationship name="school" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="gradingScheme" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <entity name="SchoolDetails" representedClassName="SchoolDetails" syncable="YES">
-        <attribute name="schoolActualGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="schoolCalculatedGPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="schoolDetails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolEndYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolStartYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="gradingScheme" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
+        <relationship name="gradingScheme" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="GradingScheme" inverseName="school" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="semesterDetails" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SemesterDetails" inverseName="schoolDetails" inverseEntity="SemesterDetails" syncable="YES"/>
         <relationship name="user" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="schoolDetails" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -49,11 +48,11 @@
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CourseDetails" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="GradingScheme" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SchoolDetails" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="SemesterDetails" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="YearPicker" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="CourseDetails" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="GradingScheme" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="User" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="YearPicker" positionX="0" positionY="0" width="128" height="60"/>
     </elements>
 </model>

@@ -8,6 +8,8 @@
 
 #import "CourseEditTableView.h"
 #import "CourseDetails.h"
+#import "GradingScheme+Create.h"
+#import "SemesterDetails+Create.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "LoginView.h"
@@ -166,7 +168,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         return [self.modList count];
     }
     
-    return nil;
+    return 0;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
@@ -298,8 +300,8 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         courseCodeField.text  = self.courseDetails.courseCode;
         courseNameField.text  = self.courseDetails.courseName;
         courseUnitsField.text  = self.courseDetails.units.stringValue;
-        courseDesiredGradeField.text = self.courseDetails.desiredGrade;
-        courseActualGradeField.text  = self.courseDetails.actualGrade;
+        courseDesiredGradeField.text = self.courseDetails.desiredGradeGPA.letterGrade;
+        courseActualGradeField.text  = self.courseDetails.actualGradeGPA.letterGrade;
         if (self.courseDetails.isPassFail == [NSNumber numberWithInt:1])
         {
             coursePassFailField.on = YES;
@@ -398,8 +400,10 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
                 self.courseDetails.courseCode   = courseCodeField.text;
                 self.courseDetails.courseName   = courseNameField.text;
                 self.courseDetails.units        = s_units;
-                self.courseDetails.desiredGrade = courseDesiredGradeField.text;
-                self.courseDetails.actualGrade  = courseActualGradeField.text;
+                //self.courseDetails.desiredGrade = courseDesiredGradeField.text;
+                //self.courseDetails.actualGrade  = courseActualGradeField.text;
+                self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
+                self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
                 self.courseDetails.isPassFail   = isPassFail;
                 self.courseDetails.includeInGPA = includeInGPA;
                 self.courseDetails.courseDesc   = courseDescriptionField.text;
@@ -423,8 +427,10 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         self.courseDetails.courseCode   = courseCodeField.text;
         self.courseDetails.courseName   = courseNameField.text;
         self.courseDetails.units        = s_units;
-        self.courseDetails.desiredGrade = courseDesiredGradeField.text;
-        self.courseDetails.actualGrade  = courseActualGradeField.text;
+        //self.courseDetails.desiredGrade = courseDesiredGradeField.text;
+        //self.courseDetails.actualGrade  = courseActualGradeField.text;
+        self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
+        self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
         self.courseDetails.isPassFail   = isPassFail;
         self.courseDetails.includeInGPA = includeInGPA;
         self.courseDetails.courseDesc   = courseDescriptionField.text;

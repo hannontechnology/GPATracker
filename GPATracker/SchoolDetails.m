@@ -2,7 +2,7 @@
 //  SchoolDetails.m
 //  GPATracker
 //
-//  Created by David Stevens on 12-08-12.
+//  Created by Terry Hannon on 12-08-22.
 //
 //
 
@@ -14,8 +14,6 @@
 
 @implementation SchoolDetails
 
-@dynamic schoolActualGPA;
-@dynamic schoolCalculatedGPA;
 @dynamic schoolDetails;
 @dynamic schoolEndYear;
 @dynamic schoolName;

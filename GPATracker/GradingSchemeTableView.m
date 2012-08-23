@@ -47,6 +47,23 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"gradeSchemeTableCell1";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    //SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
+    GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    //cell.cellLabel1.text = [selectedObject schoolName];
+    //cell.cellLabel2.text = [selectedObject schoolDetails];
+    cell.textLabel.text = [selectedObject letterGrade];
+    
+    return cell;
+}
 
 - (void)viewDidLoad
 {
@@ -71,7 +88,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    //cancelButton.
+    /*//cancelButton.
     
     NSLog(@"viewWillAppear Event of GradingSchemeTableView");
     
@@ -85,7 +102,8 @@
         gPAField.text = self.gradingInfo.gPA.stringValue;
         letterGradeField.text = self.gradingInfo.letterGrade;
     }
-    
+    */
+    [self setupFetchedResultsController];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -110,7 +128,7 @@
     
     
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo.school];
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo.school context:self.managedObjectContext];
     //NSArray *results = [self.dataCollection retrieveGrades:(NSString *)self.gradingInfo];
     if (self.gradingInfo == nil)
     {
@@ -140,7 +158,6 @@
         NSLog(@"Saving Grading Scheme failed!");
     }
 }
-
     
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

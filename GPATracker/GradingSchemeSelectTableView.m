@@ -64,7 +64,7 @@
        GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
        GradingSchemeTableView.userInfo = self.userInfo;
        GradingSchemeTableView.DataCollection = self.dataCollection;
-       //GradingSchemeTableView.schoolInfo = self.schoolInfo;
+       GradingSchemeTableView.schoolInfo = self.schoolInfo;
        GradingSchemeTableView.gradingInfo = self.gradingInfo;
        GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
    }
@@ -73,106 +73,263 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSError *error = nil;
-    //NSArray *results = [self.dataCollection retrieveGradingScheme:(NSString *)self.gradingInfo school:(SchoolDetails *)self.schoolInfo];
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo];
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo context:self.managedObjectContext];
     // Navigation logic may go here. Create and push another view controller.
-    if (indexPath.row == 0) {
-        
+    if (indexPath.row == 0)
+    {
        if ([results count]==0)
        {
+           //Populate Grading Scheme database
            NSString *entityName = @"GradingScheme";
            self.gradingInfo = [NSEntityDescription
-            insertNewObjectForEntityForName:entityName
-            inManagedObjectContext:self.managedObjectContext];
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
            self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"A+";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"A";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"A-";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"B+";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"B";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"B-";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"C+";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"C";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"C-";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"D";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
+           [self.managedObjectContext save:nil];
+           self.gradingInfo = [NSEntityDescription
+                               insertNewObjectForEntityForName:entityName
+                               inManagedObjectContext:self.managedObjectContext];
+           self.gradingInfo.school = self.schoolInfo;
+           self.gradingInfo.letterGrade = @"F";
+           self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+           [self.managedObjectContext save:nil];
        }
-        //Populate Grading Scheme database
-        self.gradingInfo.letterGrade = @"A+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
-        self.gradingInfo.letterGrade = @"A";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.letterGrade = @"A-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
-        self.gradingInfo.letterGrade = @"B+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.letterGrade = @"B";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.letterGrade = @"B-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
-        self.gradingInfo.letterGrade = @"C+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.letterGrade = @"C";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.letterGrade = @"C-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
-        self.gradingInfo.letterGrade = @"D";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
-        self.gradingInfo.letterGrade = @"F";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
         
-    } else if (indexPath.row == 1){
+    }
+    else if (indexPath.row == 1)
+    {
         if ([results count]==0)
         {
+            //Populate Grading Scheme database
             NSString *entityName = @"GradingScheme";
             self.gradingInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:entityName
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"A+";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"A";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"A-";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"B+";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"B";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"B-";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"C+";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.33)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"C";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"C-";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"D";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"F";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
         }
-        self.gradingInfo.letterGrade = @"A+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.letterGrade = @"A";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.letterGrade = @"A-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
-        self.gradingInfo.letterGrade = @"B+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.letterGrade = @"B";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.letterGrade = @"B-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
-        self.gradingInfo.letterGrade = @"C+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.letterGrade = @"C";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.letterGrade = @"C-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
-        self.gradingInfo.letterGrade = @"D";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
-        self.gradingInfo.letterGrade = @"F";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        
-    } else if (indexPath.row == 2){
+    }
+    else if (indexPath.row == 2)
+    {
         if ([results count]==0)
         {
+            //Populate Grading Scheme database
             NSString *entityName = @"GradingScheme";
             self.gradingInfo = [NSEntityDescription
                                 insertNewObjectForEntityForName:entityName
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"A+";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"A";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"A-";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"B+";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"B";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"B-";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"C+";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"C";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"C-";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"D";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
+            self.gradingInfo = [NSEntityDescription
+                                insertNewObjectForEntityForName:entityName
+                                inManagedObjectContext:self.managedObjectContext];
+            self.gradingInfo.school = self.schoolInfo;
+            self.gradingInfo.letterGrade = @"F";
+            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
+            [self.managedObjectContext save:nil];
         }
-        self.gradingInfo.letterGrade = @"A+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"A";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"A-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"B+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"B";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"B-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"C+";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"C";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"C-";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"D";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.letterGrade = @"F";
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
     }
      //GradingSchemeTableView *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...
@@ -183,7 +340,7 @@
         NSLog(@"Save Successful");
         //GradingSchemeTableView *gradingSchemeTableView = [[GradingSchemeTableView alloc] initWithNibName:@"gradingSchemeTableView" bundle:nil];
         //[self.navigationController pushViewController:gradingSchemeTableView animated:YES];
-        [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
+        [self performSegueWithIdentifier:@"segue2GradingConfirm" sender:self];
         
     }
     else

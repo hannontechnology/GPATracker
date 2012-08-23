@@ -11,6 +11,7 @@
 @class User;
 @class SchoolDetails;
 @class SemesterDetails;
+@class GradingScheme;
 
 @interface DataCollection : NSObject
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -26,9 +27,8 @@
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName user:(User *)inputUser context:(NSManagedObjectContext *)inContext;
 
 // Grading Scheme Section
-- (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool;
-//- (NSArray *)retrieveGrades:(NSString *)inputGradingScheme;
-- (NSArray *)retrieveGradingScheme:(NSString *)inputGradingScheme school:(SchoolDetails *)inputSchool;
+- (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool context:(NSManagedObjectContext *)inContext;
+- (GradingScheme *)retrieveGradingScheme:(SchoolDetails *)inputSchool letterGrade:(NSString *)inLetterGrade context:(NSManagedObjectContext *)inContext;
 
 // Semester Section
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;

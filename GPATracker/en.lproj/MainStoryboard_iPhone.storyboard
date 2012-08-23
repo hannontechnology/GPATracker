@@ -1878,14 +1878,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ClN-XK-hEF"/>
-        <segue reference="GvG-z4-c4O"/>
-        <segue reference="SIM-f8-UeJ"/>
-        <segue reference="eUK-Fo-EN0"/>
-        <segue reference="DG6-i7-zNC"/>
-        <segue reference="r2n-vz-Ixr"/>
-        <segue reference="VGG-Ty-jdk"/>
         <segue reference="XFF-ob-f75"/>
         <segue reference="k7a-QP-sia"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="xbz-yB-F14"/>
+        <segue reference="Vzz-SA-ORC"/>
+        <segue reference="eUK-Fo-EN0"/>
+        <segue reference="SIM-f8-UeJ"/>
+        <segue reference="68m-8u-amb"/>
+        <segue reference="fGJ-Vg-Bh6"/>
     </inferredMetricsTieBreakers>
 </document>

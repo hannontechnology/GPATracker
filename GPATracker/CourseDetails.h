@@ -2,27 +2,26 @@
 //  CourseDetails.h
 //  GPATracker
 //
-//  Created by David Stevens on 12-08-12.
+//  Created by Terry Hannon on 12-08-22.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class SemesterDetails;
+@class GradingScheme, SemesterDetails;
 
 @interface CourseDetails : NSManagedObject
 
-@property (nonatomic, retain) NSString * actualGrade;
-@property (nonatomic, retain) NSString * calculatedGrade;
 @property (nonatomic, retain) NSString * courseCode;
 @property (nonatomic, retain) NSString * courseDesc;
 @property (nonatomic, retain) NSNumber * courseID;
 @property (nonatomic, retain) NSString * courseName;
-@property (nonatomic, retain) NSString * desiredGrade;
 @property (nonatomic, retain) NSNumber * includeInGPA;
 @property (nonatomic, retain) NSNumber * isPassFail;
 @property (nonatomic, retain) NSNumber * units;
 @property (nonatomic, retain) SemesterDetails *semesterDetails;
+@property (nonatomic, retain) GradingScheme *actualGradeGPA;
+@property (nonatomic, retain) GradingScheme *desiredGradeGPA;
 
 @end

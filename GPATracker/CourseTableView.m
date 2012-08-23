@@ -8,6 +8,7 @@
 
 #import "CourseTableView.h"
 #import "CourseDetails.h"
+#import "GradingScheme+Create.h"
 #import "CourseEditTableView.h"
 #import "SemesterTableView.h"
 #import "SemesterDetails.h"
@@ -60,11 +61,27 @@
 
     self.semesterNameText.text = [NSString stringWithFormat:@"%@ - %@", [self.semesterInfo semesterName], [self.semesterInfo semesterYear]];
     int courseCount = [self.semesterInfo.courseDetails count];
-    NSNumber *sumCredits = [self.semesterInfo valueForKeyPath:@"courseDetails.@sum.units"];
+    NSDecimalNumber *sumCredits = [self.semesterInfo valueForKeyPath:@"courseDetails.@sum.units"];
+    NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    for (CourseDetails *item in self.semesterInfo.courseDetails)
+    {
+        sumUnits = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+        sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:sumUnits]];
+    }
+    NSDecimalNumber *gPA;
+    if ([sumCredits longValue] == 0)
+    {
+        gPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    }
+    else
+    {
+        gPA = [sumGrades decimalNumberByDividingBy:sumCredits];
+    }
 
     self.semesterCourseCount.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];
     self.semesterCreditHours.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
-    self.semesterGPA.text = [NSString stringWithFormat:@"0.00"];
+    self.semesterGPA.text = [NSString stringWithFormat:@"%@",gPA.stringValue];
     
     [self setupFetchedResultsController];
 }
@@ -123,7 +140,7 @@
     cell.cellLabel1.text = [selectedObject courseCode];
     cell.cellLabel2.text = [selectedObject courseName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
-    cell.cellLabelGPA.text = [selectedObject actualGrade];
+    cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
     
     return cell;
 }

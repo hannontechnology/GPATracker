@@ -79,7 +79,8 @@
     cell.cellLabel1.text = [selectedObject schoolName];
     cell.cellLabel2.text = [selectedObject schoolDetails];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject schoolStartYear], [selectedObject schoolEndYear]];
-    cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@", [selectedObject schoolActualGPA].stringValue];
+    cell.cellLabelGPA.text = [NSString stringWithFormat:@"0.00"];
+    //cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@", [selectedObject schoolActualGPA].stringValue];
 
     return cell;
 }

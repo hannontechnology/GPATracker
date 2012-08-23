@@ -2,7 +2,7 @@
 //  SchoolDetails.h
 //  GPATracker
 //
-//  Created by David Stevens on 12-08-12.
+//  Created by Terry Hannon on 12-08-22.
 //
 //
 
@@ -13,18 +13,21 @@
 
 @interface SchoolDetails : NSManagedObject
 
-@property (nonatomic, retain) NSDecimalNumber * schoolActualGPA;
-@property (nonatomic, retain) NSDecimalNumber * schoolCalculatedGPA;
 @property (nonatomic, retain) NSString * schoolDetails;
 @property (nonatomic, retain) NSNumber * schoolEndYear;
 @property (nonatomic, retain) NSString * schoolName;
 @property (nonatomic, retain) NSNumber * schoolStartYear;
-@property (nonatomic, retain) GradingScheme *gradingScheme;
+@property (nonatomic, retain) NSSet *gradingScheme;
 @property (nonatomic, retain) NSSet *semesterDetails;
 @property (nonatomic, retain) User *user;
 @end
 
 @interface SchoolDetails (CoreDataGeneratedAccessors)
+
+- (void)addGradingSchemeObject:(GradingScheme *)value;
+- (void)removeGradingSchemeObject:(GradingScheme *)value;
+- (void)addGradingScheme:(NSSet *)values;
+- (void)removeGradingScheme:(NSSet *)values;
 
 - (void)addSemesterDetailsObject:(SemesterDetails *)value;
 - (void)removeSemesterDetailsObject:(SemesterDetails *)value;

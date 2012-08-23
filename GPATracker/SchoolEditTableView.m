@@ -160,17 +160,12 @@
         self.schoolInfo.schoolStartYear = s_year;
         self.schoolInfo.schoolEndYear   = e_year;
         
-        NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        
-        self.schoolInfo.schoolActualGPA = temp3;
-        self.schoolInfo.schoolCalculatedGPA = temp4;
-        
         if ([self.managedObjectContext save:&error])
         {
-            if (self.setEditStatus == @"Edit")
+            NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo context:self.managedObjectContext];
+            if ([results count] == 0)
             {
-                [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
             }
             else
             {
@@ -195,9 +190,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1) {
-        
-    
+    if (indexPath.section == 1)
+    {
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
@@ -206,8 +200,6 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 
-    if (self.setEditStatus != @"Edit")
-    {
         if ([schoolNameField.text length] == 0)
         {
             NSLog(@"School name field is Required.");
@@ -242,7 +234,7 @@
                 if ([[self managedObjectContext] save:&error])
                 {
                     NSLog(@"Save was successful");
-                    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo];
+                    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo context:self.managedObjectContext];
                     if ([results count] == 0)
                     {
                         [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
@@ -251,7 +243,6 @@
                     {
                         [self performSegueWithIdentifier:@"segue2GradingConfirmEdit" sender:self];
                     }
-                    
                 }
                 else
                 {
@@ -277,24 +268,19 @@
             self.schoolInfo.schoolStartYear = s_year;
             self.schoolInfo.schoolEndYear   = e_year;
             
-            NSDecimalNumber *temp3 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-            NSDecimalNumber *temp4 = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-            
-            self.schoolInfo.schoolActualGPA = temp3;
-            self.schoolInfo.schoolCalculatedGPA = temp4;
-            
             if ([self.managedObjectContext save:&error])
             {
-                if (self.setEditStatus == @"Edit")
-                {
-                    [self performSegueWithIdentifier:@"segue2GradingConfirmEdit" sender:self];
-                }
-                else
+                NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo context:self.managedObjectContext];
+                if ([results count] == 0)
                 {
                     [self performSegueWithIdentifier:@"segueSchool2SchemeSelect" sender:self];
                 }
+                else
+                {
+                    [self performSegueWithIdentifier:@"segue2GradingConfirmEdit" sender:self];
+                }
             }
-            else 
+            else
             {
                 NSLog(@"Create school failed!");
             }
@@ -303,7 +289,6 @@
         {
             NSLog(@"School Name already taken!");
         } 
-    }
 
        //Control visiability of button later
     }

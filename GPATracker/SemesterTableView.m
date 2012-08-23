@@ -16,6 +16,7 @@
 #import "CourseDetails.h"
 #import "SemesterListTableCell1.h"
 #import "SchoolDetails+Create.h"
+#import "GradingScheme+Create.h"
 
 @interface SemesterTableView ()
 @end
@@ -64,7 +65,8 @@
     self.schoolNameText.text = self.schoolInfo.schoolName;
     self.schoolDescText.text = self.schoolInfo.schoolDetails;
     self.schoolYearsText.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
-    self.schoolCGPAText.text = [NSString stringWithFormat:@"%@", [self.schoolInfo schoolActualGPA].stringValue];
+    self.schoolCGPAText.text = [NSString stringWithFormat:@"0.00"];
+    //self.schoolCGPAText.text = [NSString stringWithFormat:@"%@", [self.schoolInfo schoolActualGPA].stringValue];
 
     [self setupFetchedResultsController];
 }
@@ -118,12 +120,28 @@
     SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
     int courseCount = [selectedObject.courseDetails count];
-    NSNumber *sumCredits = [selectedObject valueForKeyPath:@"courseDetails.@sum.units"];
+    NSDecimalNumber *sumCredits = [selectedObject valueForKeyPath:@"courseDetails.@sum.units"];
+    NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    for (CourseDetails *item in selectedObject.courseDetails)
+    {
+        sumUnits = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+        sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:sumUnits]];
+    }
+    NSDecimalNumber *gPA;
+    if ([sumCredits longValue] == 0)
+    {
+        gPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    }
+    else
+    {
+        gPA = [sumGrades decimalNumberByDividingBy:sumCredits];
+    }
 
     cell.cellLabel1.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject semesterName], [selectedObject semesterYear]];
     cell.cellLabel2.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];
     cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
-    cell.cellLabelGPA.text = [NSString stringWithFormat:@"0.00"];
+    cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@",gPA.stringValue];
     
     return cell;
 }
