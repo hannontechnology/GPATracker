@@ -14,8 +14,8 @@
 @interface HomePageTabViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIView *pageView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
-@property (weak, nonatomic) IBOutlet UITabBar *tabBar;
-@property (weak, nonatomic) IBOutlet UISegmentedControl *infoControl;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (strong, nonatomic) User *userInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
