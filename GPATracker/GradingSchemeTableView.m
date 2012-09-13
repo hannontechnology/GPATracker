@@ -12,14 +12,13 @@
 #import "GradingScheme+Create.h"
 #import "SchoolListTableView.h"
 #import "SemesterEditTableView.h"
+#import "GradingSchemeCell1.h"
 
 @interface GradingSchemeTableView ()
 - (IBAction)Save:(id)sender;
 @end
 
 @implementation GradingSchemeTableView
-@synthesize gPAField;
-@synthesize letterGradeField;
 @synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
 @synthesize gradingInfo = _gradingInfo;
@@ -50,17 +49,18 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"gradeSchemeTableCell1";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    GradingSchemeCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[GradingSchemeCell1 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
     //SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
     GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    //cell.cellLabel1.text = [selectedObject schoolName];
-    //cell.cellLabel2.text = [selectedObject schoolDetails];
-    cell.textLabel.text = [selectedObject letterGrade];
+    cell.cellLabel1.text = [selectedObject letterGrade];
+    NSDecimalNumber *gPA = [NSDecimalNumber decimalNumberWithMantissa:[[selectedObject gPA] longValue] exponent:0 isNegative:NO];
+    cell.cellField1.text = gPA.stringValue;
+    
     
     return cell;
 }
@@ -78,8 +78,6 @@
 
 - (void)viewDidUnload
 {
-    [self setGPAField:nil];
-    [self setLetterGradeField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -112,7 +110,7 @@
 }
 
 - (IBAction)Save:(id)sender
-{
+{/*
     if ([gPAField.text length] == 0)
     {
         
@@ -125,7 +123,7 @@
         NSLog(@"Letter Grade field is Required.");
         return;
     }
-    
+   */ 
     
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo.school context:self.managedObjectContext];
@@ -143,8 +141,8 @@
                                 inManagedObjectContext:self.managedObjectContext];
             self.gradingInfo.school = self.schoolInfo;        }
         NSLog(@"Save Grading Scheme");
-        self.gradingInfo.letterGrade = letterGradeField.text;
-        self.gradingInfo.gPA = [[NSDecimalNumber alloc] initWithString:(gPAField.text)];
+        //self.gradingInfo.letterGrade = letterGradeField.text;
+        //self.gradingInfo.gPA = [[NSDecimalNumber alloc] initWithString:(gPAField.text)];
     }
     
     if ([self.managedObjectContext save:&error])

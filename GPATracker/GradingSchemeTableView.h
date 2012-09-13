@@ -15,9 +15,8 @@
 @class GradingScheme;
 
 @interface GradingSchemeTableView : CoreDataTableViewController
-@property (weak, nonatomic) IBOutlet UITextField *gPAField;
-@property (weak, nonatomic) IBOutlet UILabel *letterGradeField;
 
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @property (strong,nonatomic) User *userInfo;
 @property (strong, nonatomic) SchoolDetails *schoolInfo;
