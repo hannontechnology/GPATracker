@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F0C5C1015A754D2001A6BEA /* SchoolListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C5C0F15A754D2001A6BEA /* SchoolListTableView.m */; };
+		1F1E1D8216015D070042018B /* SchoolSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E1D8116015D070042018B /* SchoolSummaryView.m */; };
+		1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */; };
 		1F41905115C34A620031A4BC /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41905015C34A610031A4BC /* User+Create.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
 		1F57C43D15D1D926009BFFC1 /* Logo_xcode.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F57C43C15D1D926009BFFC1 /* Logo_xcode.png */; };
@@ -66,6 +68,9 @@
 /* Begin PBXFileReference section */
 		1F0C5C0E15A754D2001A6BEA /* SchoolListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListTableView.h; sourceTree = "<group>"; };
 		1F0C5C0F15A754D2001A6BEA /* SchoolListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListTableView.m; sourceTree = "<group>"; };
+		1F1E1D8016015D070042018B /* SchoolSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSummaryView.h; sourceTree = "<group>"; };
+		1F1E1D8116015D070042018B /* SchoolSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSummaryView.m; sourceTree = "<group>"; };
+		1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolSummaryView.xib; sourceTree = "<group>"; };
 		1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPATracker.entitlements; sourceTree = "<group>"; };
 		1F41904F15C34A610031A4BC /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Create.h"; path = "GPATracker/User+Create.h"; sourceTree = "<group>"; };
 		1F41905015C34A610031A4BC /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Create.m"; path = "GPATracker/User+Create.m"; sourceTree = "<group>"; };
@@ -393,6 +398,7 @@
 				1F754A66151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */,
 				1F57C43D15D1D926009BFFC1 /* Logo_xcode.png in Resources */,
+				1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
