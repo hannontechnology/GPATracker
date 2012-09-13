@@ -18,6 +18,10 @@
 @synthesize tabBar;
 @synthesize infoControl;
 
+@synthesize userInfo = _userInfo;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
