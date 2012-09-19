@@ -1783,6 +1783,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JLR-AI-Ysh"/>
                     <connections>
                         <outlet property="infoControl" destination="W5E-gn-YvP" id="y5X-ZU-eFp"/>
                         <outlet property="pageControl" destination="uz0-Rp-rav" id="vgR-ux-oIf"/>
@@ -1908,10 +1909,8 @@
         <class className="HomePageTabViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTabViewController.h"/>
             <relationships>
-                <relationship kind="outlet" name="infoControl" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
                 <relationship kind="outlet" name="pageView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tabBar" candidateClass="UITabBar"/>
             </relationships>
         </class>
         <class className="HomePageViewController" superclassName="UIViewController">

@@ -15,8 +15,6 @@
 @implementation HomePageTabViewController
 @synthesize pageView;
 @synthesize pageControl;
-@synthesize tabBar;
-@synthesize infoControl;
 
 @synthesize userInfo = _userInfo;
 @synthesize dataCollection = _dataCollection;
@@ -41,8 +39,6 @@
 {
     [self setPageView:nil];
     [self setPageControl:nil];
-    [self setTabBar:nil];
-    [self setInfoControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
