@@ -42,7 +42,7 @@
 
 - (void)viewDidUnload
 {
-    [self setGradeAPlus:nil];
+    /*[self setGradeAPlus:nil];
     [self setGradeA:nil];
     [self setGradeAMinus:nil];
     [self setGradeBPlus:nil];
@@ -53,7 +53,7 @@
     [self setGradeCMinus:nil];
     [self setGradeD:nil];
     [self setGradeF:nil];
-    [super viewDidUnload];
+    [super viewDidUnload];*/
     // Release any retained subviews of the main view.
 }
 
