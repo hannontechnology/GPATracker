@@ -55,7 +55,6 @@
         cell = [[GradingSchemeCell1 alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    //SchoolDetails *selectedObject = [self.schoolList objectAtIndex:indexPath.row];
     GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.cellLabel1.text = [selectedObject letterGrade];
     NSDecimalNumber *gPA = [NSDecimalNumber decimalNumberWithMantissa:[[selectedObject gPA] longValue] exponent:0 isNegative:NO];
@@ -110,51 +109,25 @@
 }
 
 - (IBAction)Save:(id)sender
-{/*
-    if ([gPAField.text length] == 0)
-    {
-        
-        NSLog(@"GPA field is Required.");
-        return;
-    }
-    else if ([letterGradeField.text length] == 0)
-    {
-        
-        NSLog(@"Letter Grade field is Required.");
-        return;
-    }
-   */ 
+{
     
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo.school context:self.managedObjectContext];
-    //NSArray *results = [self.dataCollection retrieveGrades:(NSString *)self.gradingInfo];
     if (self.gradingInfo == nil)
     {
         NSLog(@"Error: Could not connect to database.");
     }
-    else
-    {
-        if ([results count] == 0) {
-            NSString *entityName = @"GradingScheme";
-            self.gradingInfo = [NSEntityDescription
-                                insertNewObjectForEntityForName:entityName
-                                inManagedObjectContext:self.managedObjectContext];
-            self.gradingInfo.school = self.schoolInfo;        }
-        NSLog(@"Save Grading Scheme");
-        //self.gradingInfo.letterGrade = letterGradeField.text;
-        //self.gradingInfo.gPA = [[NSDecimalNumber alloc] initWithString:(gPAField.text)];
-    }
     
-    if ([self.managedObjectContext save:&error])
+    [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
+/*    if ([self.managedObjectContext save:&error])
     {
-        {
-            [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
-        }
+        [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
     }
+
     else
     {
         NSLog(@"Saving Grading Scheme failed!");
-    }
+    }*/
 }
     
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
