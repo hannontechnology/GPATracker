@@ -61,6 +61,7 @@
     NSDecimalNumber *gPA = [NSDecimalNumber decimalNumberWithMantissa:[[selectedObject gPA] longValue] exponent:0 isNegative:NO];
     cell.cellField1.text = gPA.stringValue;
     
+    NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], gPA.stringValue);
     
     return cell;
 }
