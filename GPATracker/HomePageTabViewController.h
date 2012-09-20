@@ -12,11 +12,19 @@
 @class DataCollection;
 
 @interface HomePageTabViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIView *pageView;
+<UIScrollViewDelegate>
+{
+	IBOutlet UIScrollView* scrollView;
+	IBOutlet UIPageControl* pageControl;
+	
+    BOOL pageControlIsChangingPage;
+}
+
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-
 @property (strong, nonatomic) User *userInfo;
 
 @end

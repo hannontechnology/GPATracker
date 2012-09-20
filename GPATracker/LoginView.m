@@ -12,6 +12,7 @@
 #import "SchoolListTableView.h"
 #import "ProfileEditTableView.h"
 #import "HomePageViewController.h"
+#import "HomePageTabViewController.h"
 
 @interface LoginView ()
 - (IBAction)Login:(id)sender;
@@ -190,6 +191,14 @@
         HomePageViewController.userInfo = self.userInfo;
         HomePageViewController.dataCollection = self.dataCollection;
         HomePageViewController.managedObjectContext = self.managedObjectContext;
+	}
+	else if ([segue.identifier isEqualToString:@"segueHomePageTest"])
+	{
+        HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
+        
+        HomePageTabViewController.userInfo = self.userInfo;
+        HomePageTabViewController.dataCollection = self.dataCollection;
+        HomePageTabViewController.managedObjectContext = self.managedObjectContext;
 	}
 }
 @end
