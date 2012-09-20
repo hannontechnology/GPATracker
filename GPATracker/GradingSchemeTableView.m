@@ -112,10 +112,16 @@
 {
     
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo.school context:self.managedObjectContext];
+    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
+
     if (self.gradingInfo == nil)
     {
         NSLog(@"Error: Could not connect to database.");
+    }
+    
+    if ([results count] != 0)
+    {
+        [self.managedObjectContext save:&error];
     }
     
     [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
