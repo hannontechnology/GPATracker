@@ -7,6 +7,7 @@
 //
 
 #import "HomePageTabViewController.h"
+#import "SchoolSummaryView.h"
 #import "User+Create.h"
 
 @interface HomePageTabViewController ()
@@ -31,8 +32,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
     [self setupPage];
+    [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
 
@@ -48,6 +49,7 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 - (void)setupPage
 {
 	self.scrollView.delegate = self;
@@ -59,13 +61,37 @@
 	self.scrollView.clipsToBounds = YES;
 	self.scrollView.scrollEnabled = YES;
 	self.scrollView.pagingEnabled = YES;
-	
+
+	NSUInteger niPages = 0;
+	CGFloat cx = 0;
+    for (SchoolDetails *item in self.userInfo.schoolDetails)
+    {
+        SchoolSummaryView *schoolView = [[[NSBundle mainBundle] loadNibNamed:@"SchoolSummaryView" owner:self options:nil] objectAtIndex:0];
+		if (schoolView == nil) {
+			break;
+		}
+        
+        schoolView.schoolInfo = item;
+        [schoolView DisplaySchool:item];
+
+ 		CGRect rect = schoolView.frame;
+		rect.size.height = 380;
+		rect.size.width = 320;
+		rect.origin.x = ((scrollView.frame.size.width)) + cx;
+		rect.origin.y = ((scrollView.frame.size.height));
+        
+		schoolView.frame = rect;
+       
+		[self.scrollView addSubview:schoolView];
+        
+		cx += self.scrollView.frame.size.width;
+        niPages++;
+    }
+
 	self.pageControl.numberOfPages = [self.userInfo.schoolDetails count];
-//	[self.scrollView setContentSize:CGSizeMake(cx, [self.scrollView bounds].size.height)];
+	[self.scrollView setContentSize:CGSizeMake(cx, [self.scrollView bounds].size.height)];
 }
 
-#pragma mark -
-#pragma mark UIScrollViewDelegate stuff
 - (void)scrollViewDidScroll:(UIScrollView *)_scrollView
 {
     if (pageControlIsChangingPage) {
@@ -75,8 +101,8 @@
 	/*
 	 *	We switch page at 50% across
 	 */
-    CGFloat pageWidth = _scrollView.frame.size.width;
-    int page = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    CGFloat pageWidth = self.scrollView.frame.size.width;
+    int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.pageControl.currentPage = page;
 }
 
@@ -85,8 +111,6 @@
     pageControlIsChangingPage = NO;
 }
 
-#pragma mark -
-#pragma mark PageControl stuff
 - (IBAction)changePage:(id)sender
 {
 	/*

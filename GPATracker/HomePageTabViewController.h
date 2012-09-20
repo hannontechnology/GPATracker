@@ -27,4 +27,10 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) User *userInfo;
 
+/* for pageControl */
+- (IBAction)changePage:(id)sender;
+
+/* internal */
+- (void)setupPage;
+
 @end
