@@ -194,7 +194,7 @@
         HomePageViewController.dataCollection = self.dataCollection;
         HomePageViewController.managedObjectContext = self.managedObjectContext;
 	}
-	else if ([segue.identifier isEqualToString:@"segueHomePageTest"])
+	else if ([segue.identifier isEqualToString:@"segueHomePage"])
 	{
         HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
         
