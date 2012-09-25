@@ -18,6 +18,7 @@
 @synthesize userInfo = _userInfo;
 @synthesize pageControl = _pageControl;
 @synthesize scrollView = _scrollView;
+@synthesize segmentedControl = _segmentedControl;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -41,6 +42,7 @@
 {
     [self setPageControl:nil];
     [self setScrollView:nil];
+    [self setSegmentedControl:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -75,7 +77,7 @@
         [schoolView DisplaySchool:item];
 
  		CGRect rect = schoolView.frame;
-		rect.size.height = 370;
+		rect.size.height = 380;
 		rect.size.width = 320;
 		rect.origin.x = ((scrollView.frame.size.width)) + cx;
 		rect.origin.y = ((scrollView.frame.size.height));
