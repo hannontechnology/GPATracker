@@ -75,7 +75,7 @@
         [schoolView DisplaySchool:item];
 
  		CGRect rect = schoolView.frame;
-		rect.size.height = 380;
+		rect.size.height = 370;
 		rect.size.width = 320;
 		rect.origin.x = ((scrollView.frame.size.width)) + cx;
 		rect.origin.y = ((scrollView.frame.size.height));
