@@ -23,5 +23,6 @@
 @property (strong, nonatomic) GradingScheme *gradingInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

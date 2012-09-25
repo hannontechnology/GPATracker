@@ -452,7 +452,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ORw-px-iY5">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="JHC-b6-aWC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="save" id="JHC-b6-aWC">
+                            <connections>
+                                <action selector="Save:" destination="1tm-RG-Rrr" id="SmQ-EH-Ka7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -460,6 +464,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="y8P-BP-6Ss" id="RMA-s0-zgO"/>
                         <segue destination="01w-Dg-l3t" kind="push" identifier="segueGrading2Home" id="xbz-yB-F14"/>
                         <segue destination="USk-0t-HId" kind="push" identifier="segueGrading2Semester" id="eUK-Fo-EN0"/>
                     </connections>
@@ -1816,6 +1821,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeTableView.h"/>
             <relationships>
                 <relationship kind="action" name="Save:"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
             </relationships>
         </class>
         <class className="HomePageTabViewController" superclassName="UIViewController">
@@ -1899,6 +1905,7 @@
                 <relationship kind="outlet" name="cGPA" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="courseCount" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="creditCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolCode" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="schoolName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="schoolYears" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="semesterCount" candidateClass="UILabel"/>
