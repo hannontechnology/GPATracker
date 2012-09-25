@@ -12,6 +12,7 @@
 @class SchoolDetails;
 
 @interface SchoolSummaryView : UIView
+@property (weak, nonatomic) IBOutlet UILabel *schoolCode;
 @property (weak, nonatomic) IBOutlet UILabel *schoolName;
 @property (weak, nonatomic) IBOutlet UILabel *schoolYears;
 @property (weak, nonatomic) IBOutlet UILabel *cGPA;

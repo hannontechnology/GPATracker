@@ -24,6 +24,7 @@
 @synthesize gradingInfo = _gradingInfo;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize tableView = _tableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -78,6 +79,7 @@
 
 - (void)viewDidUnload
 {
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -113,6 +115,16 @@
 {
     
     NSError *error = nil;
+    
+    for (int i=0;i<[self.tableView numberOfRowsInSection:0];i++)
+    {
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
+        GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+        GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
+        
+        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
+    }
+    
     NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
 
     if (self.gradingInfo == nil)

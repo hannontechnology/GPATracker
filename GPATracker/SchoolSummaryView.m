@@ -9,6 +9,7 @@
 #import "SchoolSummaryView.h"
 
 @implementation SchoolSummaryView
+@synthesize schoolCode;
 @synthesize schoolName;
 @synthesize schoolYears;
 @synthesize cGPA;
@@ -30,7 +31,8 @@
 {
     self.schoolInfo = inSchool;
     
-    schoolName.text = self.schoolInfo.schoolName;
+    schoolCode.text = self.schoolInfo.schoolName;
+    schoolName.text = self.schoolInfo.schoolDetails;
     schoolYears.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
     cGPA.text = [NSString stringWithFormat:@"0.00"];
     semesterCount.text = [NSString stringWithFormat:@"0"];
