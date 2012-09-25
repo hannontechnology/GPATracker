@@ -11,5 +11,6 @@
 @interface GradingSchemeCell1 : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel1;
 @property (weak, nonatomic) IBOutlet UITextField *cellField1;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 
 @end
