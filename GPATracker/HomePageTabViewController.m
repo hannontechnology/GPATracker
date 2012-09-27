@@ -8,6 +8,7 @@
 
 #import "HomePageTabViewController.h"
 #import "SchoolSummaryView.h"
+#import "DataCollection.h"
 #import "User+Create.h"
 
 @interface HomePageTabViewController ()
@@ -33,7 +34,7 @@
 
 - (void)viewDidLoad
 {
-    [self setupPage];
+    [self setupSchoolSummaryPage];
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
@@ -52,7 +53,23 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)setupPage
+- (IBAction)ChangeDisplay:(id)sender
+{
+    if (self.segmentedControl.selectedSegmentIndex == 0)
+    {
+        [self setupSchoolSummaryPage];
+    }
+    else if (self.segmentedControl.selectedSegmentIndex == 1)
+    {
+        [self setupSemesterListPage];
+    }
+    else if (self.segmentedControl.selectedSegmentIndex == 2)
+    {
+        [self setupCourseListPage];
+    }
+}
+
+- (void)setupSchoolSummaryPage
 {
 	self.scrollView.delegate = self;
     
@@ -66,7 +83,8 @@
 
 	NSUInteger niPages = 0;
 	CGFloat cx = 0;
-    for (SchoolDetails *item in self.userInfo.schoolDetails)
+    NSArray *schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    for (SchoolDetails *item in schoolList)
     {
         SchoolSummaryView *schoolView = [[[NSBundle mainBundle] loadNibNamed:@"SchoolSummaryView" owner:self options:nil] objectAtIndex:0];
 		if (schoolView == nil) {
@@ -90,6 +108,92 @@
         niPages++;
     }
 
+	self.pageControl.numberOfPages = [self.userInfo.schoolDetails count];
+	[self.scrollView setContentSize:CGSizeMake(cx, [self.scrollView bounds].size.height)];
+}
+
+- (void)setupSemesterListPage
+{
+	self.scrollView.delegate = self;
+    
+	[self.scrollView setBackgroundColor:[UIColor blackColor]];
+	[self.scrollView setCanCancelContentTouches:NO];
+	
+	self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+	self.scrollView.clipsToBounds = YES;
+	self.scrollView.scrollEnabled = YES;
+	self.scrollView.pagingEnabled = YES;
+    
+	NSUInteger niPages = 0;
+	CGFloat cx = 0;
+    NSArray *schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    for (SchoolDetails *item in schoolList)
+    {
+        SchoolSummaryView *schoolView = [[[NSBundle mainBundle] loadNibNamed:@"SchoolSummaryView" owner:self options:nil] objectAtIndex:0];
+		if (schoolView == nil) {
+			break;
+		}
+        
+        schoolView.schoolInfo = item;
+        [schoolView DisplaySchool:item];
+        
+ 		CGRect rect = schoolView.frame;
+		rect.size.height = 380;
+		rect.size.width = 320;
+		rect.origin.x = ((scrollView.frame.size.width)) + cx;
+		rect.origin.y = ((scrollView.frame.size.height));
+        
+		schoolView.frame = rect;
+        
+		[self.scrollView addSubview:schoolView];
+        
+		cx += self.scrollView.frame.size.width;
+        niPages++;
+    }
+    
+	self.pageControl.numberOfPages = [self.userInfo.schoolDetails count];
+	[self.scrollView setContentSize:CGSizeMake(cx, [self.scrollView bounds].size.height)];
+}
+
+- (void)setupCourseListPage
+{
+	self.scrollView.delegate = self;
+    
+	[self.scrollView setBackgroundColor:[UIColor blackColor]];
+	[self.scrollView setCanCancelContentTouches:NO];
+	
+	self.scrollView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
+	self.scrollView.clipsToBounds = YES;
+	self.scrollView.scrollEnabled = YES;
+	self.scrollView.pagingEnabled = YES;
+    
+	NSUInteger niPages = 0;
+	CGFloat cx = 0;
+    NSArray *schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    for (SchoolDetails *item in schoolList)
+    {
+        SchoolSummaryView *schoolView = [[[NSBundle mainBundle] loadNibNamed:@"SchoolSummaryView" owner:self options:nil] objectAtIndex:0];
+		if (schoolView == nil) {
+			break;
+		}
+        
+        schoolView.schoolInfo = item;
+        [schoolView DisplaySchool:item];
+        
+ 		CGRect rect = schoolView.frame;
+		rect.size.height = 380;
+		rect.size.width = 320;
+		rect.origin.x = ((scrollView.frame.size.width)) + cx;
+		rect.origin.y = ((scrollView.frame.size.height));
+        
+		schoolView.frame = rect;
+        
+		[self.scrollView addSubview:schoolView];
+        
+		cx += self.scrollView.frame.size.width;
+        niPages++;
+    }
+    
 	self.pageControl.numberOfPages = [self.userInfo.schoolDetails count];
 	[self.scrollView setContentSize:CGSizeMake(cx, [self.scrollView bounds].size.height)];
 }

@@ -70,6 +70,18 @@ static const int yearMax = 2020;
     return results;
 }
 
+- (NSArray *)retrieveSchoolList:(User *)inputUser context:(NSManagedObjectContext *)inContext
+{
+    NSString *entityName = @"SchoolDetails";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"schoolEndYear" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat: @"user = %@", inputUser];
+    
+    NSError *error = nil;
+    NSArray *results = [inContext executeFetchRequest:request error:& error];
+    return results;
+}
+
 //Code for handling grading scheme information
 - (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool context:(NSManagedObjectContext *)inContext
 {
@@ -114,6 +126,17 @@ static const int yearMax = 2020;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
     return results;
 }
+- (NSArray *)retrieveSemesterList:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
+{
+    NSString *entityName = @"SemesterDetails";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"semesterCode" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", inputSchoolDetails];
+    
+    NSError *error = nil;
+    NSArray*results = [inContext executeFetchRequest:request error:& error];
+    return results;
+}
 
 //Code for handling course information
 - (NSArray *)retrieveCourse:(NSString *)inputCourseCode semesterDetails:(SemesterDetails *)inputSemesterDetails context:(NSManagedObjectContext *) inContext
@@ -121,6 +144,16 @@ static const int yearMax = 2020;
     NSString *entityName = @"CourseDetails";
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails = %@ AND courseCode = %@", inputSemesterDetails, inputCourseCode];
+    
+    NSError *error = nil;
+    NSArray*results = [inContext executeFetchRequest:request error:& error];
+    return results;
+}
+- (NSArray *)retrieveCourseList:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext
+{
+    NSString *entityName = @"CourseDetails";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails.schoolDetails = %@", inputSchoolDetails];
     
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];

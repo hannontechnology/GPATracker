@@ -45,6 +45,8 @@
 		1FB771C515AE1E86006BC18A /* ProfileEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */; };
 		1FB7A54715C316F800237DDD /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */; };
 		1FC4B4FA15BC94040079767C /* SemesterEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B4F915BC94040079767C /* SemesterEditTableView.m */; };
+		1FEEBCE41613D67400988B6B /* SemesterListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEEBCE31613D67400988B6B /* SemesterListView.xib */; };
+		1FEEBCE81613D79F00988B6B /* SemesterListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEBCE71613D79F00988B6B /* SemesterListView.m */; };
 		2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */; };
 		2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */; };
 		2D9C62AE15B51FE400B82973 /* SchoolEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */; };
@@ -133,6 +135,9 @@
 		1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = GPATracker/CoreDataTableViewController.m; sourceTree = "<group>"; };
 		1FC4B4F815BC94040079767C /* SemesterEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterEditTableView.h; sourceTree = "<group>"; };
 		1FC4B4F915BC94040079767C /* SemesterEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterEditTableView.m; sourceTree = "<group>"; };
+		1FEEBCE31613D67400988B6B /* SemesterListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SemesterListView.xib; sourceTree = "<group>"; };
+		1FEEBCE61613D79F00988B6B /* SemesterListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterListView.h; sourceTree = "<group>"; };
+		1FEEBCE71613D79F00988B6B /* SemesterListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterListView.m; sourceTree = "<group>"; };
 		2D07636D16016CDA008BAF95 /* GradingSchemeCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeCell1.h; sourceTree = "<group>"; };
 		2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeCell1.m; sourceTree = "<group>"; };
 		2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeView.h; sourceTree = "<group>"; };
@@ -256,6 +261,9 @@
 				1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */,
 				1F9B1AD415FEBD520059E26D /* HomePageTabViewController.h */,
 				1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */,
+				1FEEBCE31613D67400988B6B /* SemesterListView.xib */,
+				1FEEBCE61613D79F00988B6B /* SemesterListView.h */,
+				1FEEBCE71613D79F00988B6B /* SemesterListView.m */,
 				1F57C43F15D1DA68009BFFC1 /* HomePageViewController.h */,
 				1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */,
 				1FB105DB15D05CE200A5B6AC /* SemesterListTableCell1.h */,
@@ -402,6 +410,7 @@
 				1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */,
 				1F57C43D15D1D926009BFFC1 /* Logo_xcode.png in Resources */,
 				1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */,
+				1FEEBCE41613D67400988B6B /* SemesterListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +477,7 @@
 				1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */,
 				1F1E1D8216015D070042018B /* SchoolSummaryView.m in Sources */,
 				2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */,
+				1FEEBCE81613D79F00988B6B /* SemesterListView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

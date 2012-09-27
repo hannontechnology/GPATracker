@@ -25,6 +25,7 @@
 
 // School Section
 - (NSArray *)retrieveSchools:(NSString *)inputSchoolName user:(User *)inputUser context:(NSManagedObjectContext *)inContext;
+- (NSArray *)retrieveSchoolList:(User *)inputUser context:(NSManagedObjectContext *)inContext;
 
 // Grading Scheme Section
 - (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool context:(NSManagedObjectContext *)inContext;
@@ -32,9 +33,11 @@
 
 // Semester Section
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;
+- (NSArray *)retrieveSemesterList:schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;
 
 // Course Section
 - (NSArray *)retrieveCourse:(NSString *)inputCourseCode semesterDetails:(SemesterDetails *)inputSemesterDetails  context:(NSManagedObjectContext *) inContext;
+- (NSArray *)retrieveCourseList:schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;
 
 // Retrieve Year List for picker
 - (NSArray *)retrieveYearPicker:(NSManagedObjectContext *) inContext;
