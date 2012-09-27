@@ -66,7 +66,7 @@
        GradingSchemeTableView.userInfo = self.userInfo;
        GradingSchemeTableView.DataCollection = self.dataCollection;
        GradingSchemeTableView.schoolInfo = self.schoolInfo;
-       GradingSchemeTableView.gradingInfo = self.gradingInfo;
+       GradingSchemeTableView.gradingInfo = [self.schoolInfo.gradingScheme.allObjects objectAtIndex:0];
        GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
    }
 }
@@ -78,9 +78,7 @@
     // Navigation logic may go here. Create and push another view controller.
     if (indexPath.row == 0)
     {
-       if ([results count]==0)
-       {
-           //Populate Grading Scheme database
+        //Populate Grading Scheme database
            NSString *entityName = @"GradingScheme";
            self.gradingInfo = [NSEntityDescription
                                insertNewObjectForEntityForName:entityName
@@ -159,13 +157,11 @@
            self.gradingInfo.letterGrade = @"F";
            self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
            [self.managedObjectContext save:nil];
-       }
+       
         
     }
     else if (indexPath.row == 1)
     {
-        if ([results count]==0)
-        {
             //Populate Grading Scheme database
             NSString *entityName = @"GradingScheme";
             self.gradingInfo = [NSEntityDescription
@@ -245,12 +241,9 @@
             self.gradingInfo.letterGrade = @"F";
             self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
             [self.managedObjectContext save:nil];
-        }
     }
     else if (indexPath.row == 2)
     {
-        if ([results count]==0)
-        {
             //Populate Grading Scheme database
             NSString *entityName = @"GradingScheme";
             self.gradingInfo = [NSEntityDescription
@@ -330,7 +323,6 @@
             self.gradingInfo.letterGrade = @"F";
             self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
             [self.managedObjectContext save:nil];
-        }
     }
      //GradingSchemeTableView *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
      // ...

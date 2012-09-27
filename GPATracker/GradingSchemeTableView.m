@@ -40,6 +40,7 @@
     NSString *entityName = @"GradingScheme";
     NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    //request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"gPA" ascending:NO]];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"letterGrade" ascending:YES]];
     request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.gradingInfo.school];
     NSLog(@"filtering data based on school = %@", self.gradingInfo.school);
