@@ -8,6 +8,7 @@
 
 #import "HomePageTabViewController.h"
 #import "SchoolSummaryView.h"
+#import "SemesterListView.h"
 #import "DataCollection.h"
 #import "User+Create.h"
 
@@ -71,6 +72,13 @@
 
 - (void)setupSchoolSummaryPage
 {
+    if(self.scrollView!=nil)
+    {
+        while ([self.scrollView.subviews count] > 0) {
+            //NSLog(@"subviews Count=%d",[[myScrollView subviews]count]);
+            [[[self.scrollView subviews] objectAtIndex:0] removeFromSuperview];
+        }
+    }
 	self.scrollView.delegate = self;
     
 	[self.scrollView setBackgroundColor:[UIColor blackColor]];
@@ -114,6 +122,13 @@
 
 - (void)setupSemesterListPage
 {
+    if(self.scrollView!=nil)
+    {
+        while ([self.scrollView.subviews count] > 0) {
+            //NSLog(@"subviews Count=%d",[[myScrollView subviews]count]);
+            [[[self.scrollView subviews] objectAtIndex:0] removeFromSuperview];
+        }
+    }
 	self.scrollView.delegate = self;
     
 	[self.scrollView setBackgroundColor:[UIColor blackColor]];
@@ -129,23 +144,23 @@
     NSArray *schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
     for (SchoolDetails *item in schoolList)
     {
-        SchoolSummaryView *schoolView = [[[NSBundle mainBundle] loadNibNamed:@"SchoolSummaryView" owner:self options:nil] objectAtIndex:0];
-		if (schoolView == nil) {
+        SemesterListView *semesterListView = [[[NSBundle mainBundle] loadNibNamed:@"SemesterListView" owner:self options:nil] objectAtIndex:0];
+		if (semesterListView == nil) {
 			break;
 		}
         
-        schoolView.schoolInfo = item;
-        [schoolView DisplaySchool:item];
+        semesterListView.schoolInfo = item;
+        [semesterListView DisplaySemesters:item];
         
- 		CGRect rect = schoolView.frame;
+ 		CGRect rect = semesterListView.frame;
 		rect.size.height = 380;
 		rect.size.width = 320;
 		rect.origin.x = ((scrollView.frame.size.width)) + cx;
 		rect.origin.y = ((scrollView.frame.size.height));
         
-		schoolView.frame = rect;
+		semesterListView.frame = rect;
         
-		[self.scrollView addSubview:schoolView];
+		[self.scrollView addSubview:semesterListView];
         
 		cx += self.scrollView.frame.size.width;
         niPages++;
@@ -157,6 +172,13 @@
 
 - (void)setupCourseListPage
 {
+    if(self.scrollView!=nil)
+    {
+        while ([self.scrollView.subviews count] > 0) {
+            //NSLog(@"subviews Count=%d",[[myScrollView subviews]count]);
+            [[[self.scrollView subviews] objectAtIndex:0] removeFromSuperview];
+        }
+    }
 	self.scrollView.delegate = self;
     
 	[self.scrollView setBackgroundColor:[UIColor blackColor]];

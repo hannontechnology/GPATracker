@@ -10,6 +10,7 @@
 
 @implementation SemesterListView
 @synthesize tableView;
+@synthesize schoolInfo = _schoolInfo;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -18,6 +19,11 @@
         // Initialization code
     }
     return self;
+}
+
+-(void)DisplaySemesters:(SchoolDetails *)inSchool
+{
+    
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
