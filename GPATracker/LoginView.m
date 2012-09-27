@@ -79,8 +79,8 @@
                 [self.userInfo setAutoLogin:self.userInfo context:self.managedObjectContext];
             }
             userName = userNameField.text;
-//            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
-            [self performSegueWithIdentifier: @"segueHomePageTest" sender: self];
+            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
+//            [self performSegueWithIdentifier: @"segueHomePageTest" sender: self];
         }
     }
 }
@@ -132,8 +132,8 @@
         {
             NSLog(@"Goto Home Page");
             self.userInfo = [results objectAtIndex:0];
-//            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
-            [self performSegueWithIdentifier: @"segueHomePageTest" sender: self];
+            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
+//            [self performSegueWithIdentifier: @"segueHomePageTest" sender: self];
         }
     }
 }

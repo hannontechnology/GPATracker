@@ -29,7 +29,8 @@
 
 @property (strong, nonatomic) NSString *setEditStatus;
 
-@property (weak, nonatomic) IBOutlet UITableViewCell *gradingScheme;
+@property (weak, nonatomic) IBOutlet UILabel *gradingScheme;
+
 
 
 @end

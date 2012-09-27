@@ -32,6 +32,7 @@
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
+@synthesize gradingScheme = _gradingScheme;
 @synthesize gradingInfo = _gradingInfo;
 @synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
@@ -48,6 +49,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if (self.setEditStatus != @"Edit")
+    {
+        self.gradingScheme.enabled = NO;
+        self.gradingScheme.userInteractionEnabled = NO;
+    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -62,6 +68,7 @@
     [self setSchoolDetailsField:nil];
     [self setSchoolStartYearField:nil];
     [self setSchoolEndYearField:nil];
+    [self setGradingScheme:nil];
     [self setGradingScheme:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -190,7 +197,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1)
+    if (indexPath.section == 1 && self.setEditStatus == @"Edit")
     {
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -292,7 +299,11 @@
 
        //Control visiability of button later
     }
+
+
 }
+
+//- (void)tableV
 
 - (IBAction)Cancel:(id)sender
 {
@@ -322,6 +333,7 @@
         
         GradingSchemeSelectTableView.userInfo = self.userInfo;
         GradingSchemeSelectTableView.schoolInfo = self.schoolInfo;
+        GradingSchemeSelectTableView.gradingInfo = self.gradingInfo;
         GradingSchemeSelectTableView.dataCollection = self.dataCollection;
         GradingSchemeSelectTableView.managedObjectContext = self.managedObjectContext;
     }
@@ -330,6 +342,7 @@
         GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
         GradingSchemeTableView.userInfo = self.userInfo;
         GradingSchemeTableView.schoolInfo = self.schoolInfo;
+        GradingSchemeTableView.gradingInfo =  [self.schoolInfo.gradingScheme.allObjects objectAtIndex:0];
         GradingSchemeTableView.dataCollection = self.dataCollection;
         GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
         
