@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PagerViewController.h"
 
 @class User;
 @class DataCollection;
 
-@interface HomePageTabViewController : UIViewController
+@interface HomePageTabViewController : PagerViewController
+/*@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) User *userInfo;
+
 <UIScrollViewDelegate>
 {
 	IBOutlet UIScrollView* scrollView;
@@ -33,5 +38,5 @@
 - (void)setupSchoolSummaryPage;
 - (void)setupSemesterListPage;
 - (void)setupCourseListPage;
-
+*/
 @end

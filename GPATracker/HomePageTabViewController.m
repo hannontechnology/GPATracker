@@ -7,16 +7,41 @@
 //
 
 #import "HomePageTabViewController.h"
-#import "SchoolSummaryView.h"
+#import "SchoolSummaryViewController.h"
 #import "SemesterListView.h"
 #import "DataCollection.h"
 #import "User+Create.h"
 
 @interface HomePageTabViewController ()
-
 @end
 
 @implementation HomePageTabViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+
+    self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+
+    for (SchoolDetails *item in self.schoolList)
+    {
+        SchoolSummaryViewController *View = [self.storyboard instantiateViewControllerWithIdentifier:@"SchoolSummaryView"];
+        
+        [View DisplaySchool:item];
+ 
+        [self addChildViewController:View];
+    }   
+}
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+	SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+	[newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+}
+
+@end
+
+/*
 @synthesize userInfo = _userInfo;
 @synthesize pageControl = _pageControl;
 @synthesize scrollView = _scrollView;
@@ -226,9 +251,6 @@
         return;
     }
     
-	/*
-	 *	We switch page at 50% across
-	 */
     CGFloat pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.pageControl.currentPage = page;
@@ -241,19 +263,14 @@
 
 - (IBAction)changePage:(id)sender
 {
-	/*
-	 *	Change the scroll view
-	 */
     CGRect frame = self.scrollView.frame;
     frame.origin.x = frame.size.width * self.pageControl.currentPage;
     frame.origin.y = 0;
 	
     [self.scrollView scrollRectToVisible:frame animated:YES];
     
-	/*
-	 *	When the animated scrolling finishings, scrollViewDidEndDecelerating will turn this off
-	 */
     pageControlIsChangingPage = YES;
 }
 
 @end
+*/
