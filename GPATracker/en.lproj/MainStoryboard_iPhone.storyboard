@@ -117,7 +117,7 @@
                         <outlet property="view" destination="3" id="GBA-3r-2Jt"/>
                         <segue destination="0Nu-ll-EVV" kind="modal" identifier="segueSchoolList" id="M8A-5E-H1d"/>
                         <segue destination="duS-as-cgh" kind="modal" identifier="segueHomePage" id="AM5-mh-wYj"/>
-                        <segue destination="I4e-vy-Asq" kind="modal" identifier="segueHomePageTest" id="MQc-sb-fjK"/>
+                        <segue destination="FwV-p7-ghH" kind="modal" identifier="segueHomePageTest" id="MQc-sb-fjK"/>
                     </connections>
                 </viewController>
             </objects>
@@ -1676,41 +1676,53 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwL-GE-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="I4e-vy-Asq" customClass="HomePageTabViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7W0-uv-EMm" customClass="SchoolSummaryView">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                    <view key="view" contentMode="scaleToFill" id="7W0-uv-EMm">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" id="MWZ-Zz-Xnu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
+                                <rect key="frame" x="0.0" y="-44" width="320" height="380"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
-                            <tabBar contentMode="scaleToFill" id="Df8-dh-Yx9">
-                                <rect key="frame" x="0.0" y="411" width="320" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem title="Profile" id="K7C-Ek-8pV"/>
-                                    <tabBarItem title="Logout" id="1iC-s8-h6Z"/>
-                                </items>
-                            </tabBar>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="ez2-WF-yZF">
-                                <rect key="frame" x="141" y="377" width="38" height="36"/>
+                                <rect key="frame" x="141" y="337" width="38" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="changePage:" destination="I4e-vy-Asq" eventType="touchUpInside" id="wWM-yg-JQy"/>
                                 </connections>
                             </pageControl>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="g71-Ta-uOg">
+                                <rect key="frame" x="0.0" y="369" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Profile" id="vZp-Uc-tGS">
+                                        <connections>
+                                            <action selector="EditProfile:" destination="I4e-vy-Asq" id="vcQ-f3-zSO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Logout" id="y6C-oj-6Wx">
+                                        <connections>
+                                            <action selector="Logout:" destination="I4e-vy-Asq" id="Day-Le-RYC"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Semesters" id="4Hp-GV-hw5"/>
+                                    <barButtonItem title="Courses" id="NtB-Zi-JF2"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="JLR-AI-Ysh"/>
                     <connections>
+                        <outlet property="buttonLogout" destination="y6C-oj-6Wx" id="4sy-F1-4iS"/>
                         <outlet property="pageControl" destination="ez2-WF-yZF" id="Lyh-k9-MMo"/>
                         <outlet property="scrollView" destination="MWZ-Zz-Xnu" id="WIx-bW-Nll"/>
+                        <segue destination="2" kind="modal" identifier="segueHomePageLogout" id="VVr-Ld-9wW"/>
+                        <segue destination="MG7-Ge-mPq" kind="push" identifier="segueHomePageEditProfile" id="1dU-6g-oZa"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="157" y="1518"/>
+            <point key="canvasLocation" x="638" y="1518"/>
         </scene>
         <!--School Summary View Controller-->
         <scene sceneID="i3a-yO-1iC">
@@ -1806,7 +1818,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.81176477670669556" green="0.78431379795074463" blue="0.67058825492858887" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <connections>
                         <outlet property="cGPA" destination="Tup-Fe-aC4" id="b4q-8x-1tS"/>
@@ -1819,7 +1831,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="632" y="1511"/>
+            <point key="canvasLocation" x="1121" y="1518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fl1-ki-c2M">
@@ -1867,6 +1879,24 @@
             </objects>
             <point key="canvasLocation" x="-322" y="880"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KGN-MP-lzb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-5t-mOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="FwV-p7-ghH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="azR-Vs-cym">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="I4e-vy-Asq" kind="relationship" relationship="rootViewController" id="RFh-nA-BNa"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="157" y="1518"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo_xcode.png" width="87" height="87"/>
@@ -1877,12 +1907,12 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="DG6-i7-zNC"/>
+        <segue reference="phW-HU-sP7"/>
+        <segue reference="uk4-7H-Q41"/>
+        <segue reference="VVr-Ld-9wW"/>
+        <segue reference="1dU-6g-oZa"/>
         <segue reference="r2n-vz-Ixr"/>
-        <segue reference="VGG-Ty-jdk"/>
-        <segue reference="fGJ-Vg-Bh6"/>
-        <segue reference="68m-8u-amb"/>
-        <segue reference="eUK-Fo-EN0"/>
+        <segue reference="DG6-i7-zNC"/>
         <segue reference="zyl-Bd-lJ4"/>
         <segue reference="SIM-f8-UeJ"/>
         <segue reference="XFF-ob-f75"/>

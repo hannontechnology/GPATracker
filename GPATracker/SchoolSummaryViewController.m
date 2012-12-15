@@ -8,6 +8,7 @@
 
 #import "SchoolSummaryViewController.h"
 #import "SchoolDetails+Create.h"
+#import "LoginView.h"
 
 @interface SchoolSummaryViewController ()
 

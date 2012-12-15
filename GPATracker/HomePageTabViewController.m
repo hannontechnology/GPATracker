@@ -11,16 +11,25 @@
 #import "SemesterListView.h"
 #import "DataCollection.h"
 #import "User+Create.h"
+#import "LoginView.h"
+#import "ProfileEditTableView.h"
 
 @interface HomePageTabViewController ()
 @end
 
 @implementation HomePageTabViewController
+@synthesize buttonLogout;
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
 
     for (SchoolDetails *item in self.schoolList)
@@ -37,6 +46,44 @@
 {
 	SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
 	[newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+	if ([segue.identifier isEqualToString:@"segueHomePageLogout"])
+	{
+        LoginView *LoginView = [segue destinationViewController];
+        
+        LoginView.setLogoutStatus = @"Logout";
+        LoginView.userInfo = self.userInfo;
+        LoginView.dataCollection = self.dataCollection;
+        LoginView.managedObjectContext = self.managedObjectContext;
+	}
+    else if ([segue.identifier isEqualToString:@"segueHomePageEditProfile"])
+    {
+        ProfileEditTableView *ProfileEditTableView = [segue destinationViewController];
+        
+        ProfileEditTableView.setEditStatus = @"Edit";
+        ProfileEditTableView.userInfo = self.userInfo;
+        ProfileEditTableView.dataCollection = self.dataCollection;
+        ProfileEditTableView.managedObjectContext = self.managedObjectContext;
+    }
+}
+
+-(IBAction)Logout:(id)sender
+{
+    [self performSegueWithIdentifier: @"segueHomePageLogout" sender: self];
+}
+
+-(IBAction)EditProfile:(id)sender
+{
+    [self performSegueWithIdentifier: @"segueHomePageEditProfile" sender: self];
+}
+
+- (void)viewDidUnload {
+    [self setButtonLogout:nil];
+    [super viewDidUnload];
 }
 
 @end
@@ -65,19 +112,6 @@
 	// Do any additional setup after loading the view.
 }
 
-- (void)viewDidUnload
-{
-    [self setPageControl:nil];
-    [self setScrollView:nil];
-    [self setSegmentedControl:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
 
 - (IBAction)ChangeDisplay:(id)sender
 {

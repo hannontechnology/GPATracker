@@ -13,6 +13,13 @@
 @class DataCollection;
 
 @interface HomePageTabViewController : PagerViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonLogout;
+
+@property (strong, nonatomic) NSString *showEdit;
+
+-(IBAction)Logout:(id)sender;
+-(IBAction)EditProfile:(id)sender;
+
 /*@property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) User *userInfo;

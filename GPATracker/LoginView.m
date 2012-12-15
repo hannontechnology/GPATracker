@@ -196,7 +196,9 @@
 	}
 	else if ([segue.identifier isEqualToString:@"segueHomePageTest"])
 	{
-        HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
+        //HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
+        UINavigationController *navCon = [segue destinationViewController];
+        HomePageTabViewController *HomePageTabViewController = [navCon.viewControllers objectAtIndex:0];
         
         HomePageTabViewController.userInfo = self.userInfo;
         HomePageTabViewController.dataCollection = self.dataCollection;
