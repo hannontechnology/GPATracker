@@ -13,14 +13,18 @@
 
 @property (nonatomic, strong) IBOutlet UIScrollView *scrollView;
 @property (nonatomic, strong) IBOutlet UIPageControl *pageControl;
+
 @property (nonatomic, strong) NSArray *schoolList;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) User *userInfo;
 
+@property (strong, nonatomic) NSString *displayType;
+
 - (IBAction)changePage:(id)sender;
 
 - (void)previousPage;
 - (void)nextPage;
+- (void)selectPage:(int)inPage;
 
 @end

@@ -151,19 +151,47 @@
     }
 }
 
+- (void)selectPage:(int)inPage
+{
+	if (inPage >= 0 || inPage <= self.pageControl.numberOfPages) {
+        
+		// update the scroll view to the appropriate page
+		CGRect frame = self.scrollView.frame;
+		frame.origin.x = frame.size.width * (inPage);
+		frame.origin.y = 0;
+		
+		UIViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
+		UIViewController *newViewController = [self.childViewControllers objectAtIndex:inPage];
+		[oldViewController viewWillDisappear:YES];
+		[newViewController viewWillAppear:YES];
+		
+		[self.scrollView scrollRectToVisible:frame animated:YES];
+		
+		self.pageControl.currentPage = inPage;
+		// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
+		_pageControlUsed = YES;
+	}
+}
+
 - (void)previousPage {
-	if (_page - 1 > 0) {
+    self.page = self.pageControl.currentPage;
+	if (self.page > 0) {
 	
 		// update the scroll view to the appropriate page
 		CGRect frame = self.scrollView.frame;
 		frame.origin.x = frame.size.width * (_page - 1);
 		frame.origin.y = 0;
 		
-		SchoolSummaryViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
-		SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:_page - 1];
-        [newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+		UIViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
+		UIViewController *newViewController = [self.childViewControllers objectAtIndex:_page - 1];
 		[oldViewController viewWillDisappear:YES];
 		[newViewController viewWillAppear:YES];
+        //if(self.displayType == @"Schools")
+        //{
+        //    SchoolSummaryViewController *displayView;
+        //    displayView = newViewController;
+        //    [displayView DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+        //}
 		
 		[self.scrollView scrollRectToVisible:frame animated:YES];
 		
@@ -174,20 +202,26 @@
 }
 
 - (void)nextPage {
-	if (_page + 1 > self.pageControl.numberOfPages) {
+    self.page = self.pageControl.currentPage;
+	if (self.page + 1 < self.pageControl.numberOfPages) {
 		
 		// update the scroll view to the appropriate page
 		CGRect frame = self.scrollView.frame;
 		frame.origin.x = frame.size.width * (_page + 1);
 		frame.origin.y = 0;
 		
-		SchoolSummaryViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
-		SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:_page + 1];
-        [newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+		UIViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
+		UIViewController *newViewController = [self.childViewControllers objectAtIndex:_page + 1];
 		[oldViewController viewWillDisappear:YES];
 		[newViewController viewWillAppear:YES];
 		
 		[self.scrollView scrollRectToVisible:frame animated:YES];
+        //if(self.displayType == @"Schools")
+        //{
+        //    SchoolSummaryViewController *displayView;
+        //    displayView = newViewController;
+        //    [displayView DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+        //}
 		
 		self.pageControl.currentPage = _page + 1;
 		// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
@@ -203,11 +237,16 @@
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0;
     
-	SchoolSummaryViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
-	SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
-    [newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+	UIViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
+	UIViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
 	[oldViewController viewWillDisappear:YES];
 	[newViewController viewWillAppear:YES];
+    //if(self.displayType == @"Schools")
+    //{
+    //    SchoolSummaryViewController *displayView;
+    //    displayView = newViewController;
+    //    [displayView DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+    //}
 	
 	[self.scrollView scrollRectToVisible:frame animated:YES];
 	
@@ -216,11 +255,16 @@
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-	SchoolSummaryViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
-	SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
-    [newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+	UIViewController *oldViewController = [self.childViewControllers objectAtIndex:_page];
+	UIViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
 	[oldViewController viewDidDisappear:YES];
 	[newViewController viewDidAppear:YES];
+    //if(self.displayType == @"Schools")
+    //{
+    //    SchoolSummaryViewController *displayView;
+    //    displayView = newViewController;
+    //    [displayView DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+    //}
 	
 	_page = self.pageControl.currentPage;
 }

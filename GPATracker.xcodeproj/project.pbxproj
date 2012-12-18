@@ -37,6 +37,7 @@
 		1F95470D15B29D4B002D2D61 /* SchoolListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* SchoolListTableCell1.m */; };
 		1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
+		1F9E65A4168116770079219F /* BlueHomeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9E65A3168116770079219F /* BlueHomeButton.png */; };
 		1FAF582115BCCF4500304676 /* CourseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF581F15BCCF4500304676 /* CourseTableView.m */; };
 		1FAF582415BCCF7100304676 /* CourseEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF582315BCCF7100304676 /* CourseEditTableView.m */; };
 		1FB105DD15D05CE200A5B6AC /* SemesterListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB105DC15D05CE200A5B6AC /* SemesterListTableCell1.m */; };
@@ -47,8 +48,6 @@
 		1FC4B4FA15BC94040079767C /* SemesterEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B4F915BC94040079767C /* SemesterEditTableView.m */; };
 		1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */; };
 		1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */; };
-		1FEEBCE41613D67400988B6B /* SemesterListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEEBCE31613D67400988B6B /* SemesterListView.xib */; };
-		1FEEBCE81613D79F00988B6B /* SemesterListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEEBCE71613D79F00988B6B /* SemesterListView.m */; };
 		2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */; };
 		2D1EC18D158AFAF900EFB538 /* GradingSchemeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1EC18C158AFAF900EFB538 /* GradingSchemeView.m */; };
 		2D9C62AE15B51FE400B82973 /* SchoolEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */; };
@@ -122,6 +121,7 @@
 		1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTabViewController.m; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollection.h; path = GPATracker/DataCollection.h; sourceTree = "<group>"; };
 		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCollection.m; path = GPATracker/DataCollection.m; sourceTree = "<group>"; };
+		1F9E65A3168116770079219F /* BlueHomeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueHomeButton.png; sourceTree = "<group>"; };
 		1FAF581F15BCCF4500304676 /* CourseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableView.m; sourceTree = "<group>"; };
 		1FAF582015BCCF4500304676 /* CourseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableView.h; sourceTree = "<group>"; };
 		1FAF582215BCCF7100304676 /* CourseEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEditTableView.h; sourceTree = "<group>"; };
@@ -141,9 +141,6 @@
 		1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewController.m; sourceTree = "<group>"; };
 		1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSummaryViewController.h; sourceTree = "<group>"; };
 		1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSummaryViewController.m; sourceTree = "<group>"; };
-		1FEEBCE31613D67400988B6B /* SemesterListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SemesterListView.xib; sourceTree = "<group>"; };
-		1FEEBCE61613D79F00988B6B /* SemesterListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterListView.h; sourceTree = "<group>"; };
-		1FEEBCE71613D79F00988B6B /* SemesterListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterListView.m; sourceTree = "<group>"; };
 		2D07636D16016CDA008BAF95 /* GradingSchemeCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeCell1.h; sourceTree = "<group>"; };
 		2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeCell1.m; sourceTree = "<group>"; };
 		2D1EC18B158AFAF900EFB538 /* GradingSchemeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeView.h; sourceTree = "<group>"; };
@@ -264,6 +261,7 @@
 				1F41902C15C319350031A4BC /* Core Data */,
 				1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */,
 				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
+				1F9E65A3168116770079219F /* BlueHomeButton.png */,
 				1F1E1D8016015D070042018B /* SchoolSummaryView.h */,
 				1F1E1D8116015D070042018B /* SchoolSummaryView.m */,
 				1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */,
@@ -271,9 +269,6 @@
 				1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */,
 				1F9B1AD415FEBD520059E26D /* HomePageTabViewController.h */,
 				1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */,
-				1FEEBCE31613D67400988B6B /* SemesterListView.xib */,
-				1FEEBCE61613D79F00988B6B /* SemesterListView.h */,
-				1FEEBCE71613D79F00988B6B /* SemesterListView.m */,
 				1F57C43F15D1DA68009BFFC1 /* HomePageViewController.h */,
 				1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */,
 				1FB105DB15D05CE200A5B6AC /* SemesterListTableCell1.h */,
@@ -420,7 +415,7 @@
 				1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */,
 				1F57C43D15D1D926009BFFC1 /* Logo_xcode.png in Resources */,
 				1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */,
-				1FEEBCE41613D67400988B6B /* SemesterListView.xib in Resources */,
+				1F9E65A4168116770079219F /* BlueHomeButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +482,6 @@
 				1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */,
 				1F1E1D8216015D070042018B /* SchoolSummaryView.m in Sources */,
 				2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */,
-				1FEEBCE81613D79F00988B6B /* SemesterListView.m in Sources */,
 				1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */,
 				1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */,
 			);

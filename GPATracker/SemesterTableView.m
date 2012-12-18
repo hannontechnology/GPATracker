@@ -61,13 +61,17 @@
     [self.tableView addGestureRecognizer:lpgr];
     
     [super viewWillAppear:(BOOL)animated];
-    
+    [self DisplayInfo];
+}
+
+- (void)DisplayInfo
+{
     self.schoolNameText.text = self.schoolInfo.schoolName;
     self.schoolDescText.text = self.schoolInfo.schoolDetails;
     self.schoolYearsText.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
     self.schoolCGPAText.text = [NSString stringWithFormat:@"0.00"];
     //self.schoolCGPAText.text = [NSString stringWithFormat:@"%@", [self.schoolInfo schoolActualGPA].stringValue];
-
+    
     [self setupFetchedResultsController];
 }
 
@@ -187,6 +191,7 @@
         SchoolListTableView.dataCollection = self.dataCollection;
         SchoolListTableView.managedObjectContext = self.managedObjectContext;
     }
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 // Override to support conditional editing of the table view.

@@ -8,17 +8,26 @@
 
 #import "HomePageTabViewController.h"
 #import "SchoolSummaryViewController.h"
-#import "SemesterListView.h"
 #import "DataCollection.h"
 #import "User+Create.h"
 #import "LoginView.h"
 #import "ProfileEditTableView.h"
+#import "SchoolEditTableView.h"
+#import "SemesterTableView.h"
+#import "SemesterEditTableView.h"
 
 @interface HomePageTabViewController ()
 @end
 
 @implementation HomePageTabViewController
 @synthesize buttonLogout;
+@synthesize buttonEditProfile;
+@synthesize buttonSemesterList;
+@synthesize buttonSchoolList;
+@synthesize buttonNext;
+@synthesize buttonPrevious;
+@synthesize buttonAddSchool;
+@synthesize buttonEditSchool;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -30,27 +39,113 @@
 {
     [super viewDidLoad];
     
-    self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    if (self.displayType == nil)
+    {
+        self.displayType = @"Schools";
+    }
+    
+    if (self.displayType == @"Schools")
+    {
+        [self viewSchools];
+    }
+    else if (self.displayType == @"Semesters")
+    {
+        [self viewSemesters];
+    }
+    [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
 
+    UIImage *faceImage = [UIImage imageNamed:@"BlueHomeButton.png"];
+    UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
+    face.bounds = CGRectMake( 0, 0, faceImage.size.width, faceImage.size.height );
+    [face setImage:faceImage forState:UIControlStateNormal];
+    UIBarButtonItem *faceBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
+    buttonSchoolList = faceBtn;
+}
+
+-(IBAction)DisplaySchools:(id)sender
+{
+    self.displayType = @"Schools";
+    [self viewSchools];
+}
+
+-(IBAction)DisplaySemesters:(id)sender
+{
+    self.displayType = @"Semesters";
+    [self viewSemesters];
+}
+
+- (void)viewSchools
+{
+    int tmpPage = self.pageControl.currentPage;
+    for (SchoolSummaryViewController *item in self.childViewControllers)
+    {
+        [item.view removeFromSuperview];
+        [item removeFromParentViewController];
+    }
+    
+    self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    
     for (SchoolDetails *item in self.schoolList)
     {
         SchoolSummaryViewController *View = [self.storyboard instantiateViewControllerWithIdentifier:@"SchoolSummaryView"];
         
-        [View DisplaySchool:item];
- 
+        View.dataCollection = self.dataCollection;
+        View.managedObjectContext = self.managedObjectContext;
+        View.schoolInfo = item;
+        [View DisplayInfo];
+        
         [self addChildViewController:View];
-    }   
+    }
+    
+    self.pageControl.numberOfPages = self.schoolList.count;
+    [self viewWillAppear:true];
+    [self selectPage:tmpPage];
+}
+
+- (void)viewSemesters
+{
+    int tmpPage = self.pageControl.currentPage;
+    for (SchoolSummaryViewController *item in self.childViewControllers)
+    {
+        [item.view removeFromSuperview];
+        [item removeFromParentViewController];
+    }
+    
+    self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    
+    for (SchoolDetails *item in self.schoolList)
+    {
+        SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"SemesterListView"];
+        
+        View.dataCollection = self.dataCollection;
+        View.managedObjectContext = self.managedObjectContext;
+        View.schoolInfo = item;
+        [View DisplayInfo];
+        
+        [self addChildViewController:View];
+    }
+    
+    self.pageControl.numberOfPages = self.schoolList.count;
+    [self viewWillAppear:true];
+    [self selectPage:tmpPage];
 }
 
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-	SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
-	[newViewController DisplaySchool:[self.schoolList objectAtIndex:self.pageControl.currentPage]];
+    if (self.displayType == @"Schools")
+    {
+        SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        [newViewController DisplayInfo];
+    }
+    else if (self.displayType == @"Semesters")
+    {
+        SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        [newViewController DisplayInfo];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
 	if ([segue.identifier isEqualToString:@"segueHomePageLogout"])
 	{
         LoginView *LoginView = [segue destinationViewController];
@@ -69,6 +164,36 @@
         ProfileEditTableView.dataCollection = self.dataCollection;
         ProfileEditTableView.managedObjectContext = self.managedObjectContext;
     }
+    else if ([segue.identifier isEqualToString:@"segueHomePageEditSchool"])
+    {
+        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.pageControl.currentPage];
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        
+        SchoolEditTableView.setEditStatus = @"Edit";
+        SchoolEditTableView.userInfo = self.userInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
+        SchoolEditTableView.schoolInfo = selectedObject;
+    }
+    else if ([segue.identifier isEqualToString:@"segueHomePageCreateSchool"])
+    {
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        
+        SchoolEditTableView.setEditStatus = @"Create";
+        SchoolEditTableView.userInfo = self.userInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueHomePageCreateSemester"])
+    {
+        SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
+        
+        SemesterEditTableView.setEditStatus = @"Create";
+        SemesterEditTableView.schoolDetails = [self.schoolList objectAtIndex:self.pageControl.currentPage];
+        SemesterEditTableView.dataCollection = self.dataCollection;
+        SemesterEditTableView.managedObjectContext = self.managedObjectContext;
+    }
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 -(IBAction)Logout:(id)sender
@@ -81,8 +206,60 @@
     [self performSegueWithIdentifier: @"segueHomePageEditProfile" sender: self];
 }
 
+-(IBAction)BtnNextPage:(id)sender
+{
+    [self nextPage];
+}
+
+-(IBAction)BtnPreviousPage:(id)sender
+{
+    [self previousPage];
+}
+
+-(IBAction)BtnAddSchool:(id)sender
+{
+    if (self.displayType == @"Schools")
+    {
+        [self performSegueWithIdentifier: @"segueHomePageCreateSchool" sender: self];
+    }
+    else if (self.displayType == @"Semesters")
+    {
+        [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
+    }
+}
+
+-(IBAction)BtnEditSchool:(id)sender
+{
+    if (buttonEditSchool.currentTitle == @"Edit")
+    {
+        if (self.displayType == @"Schools")
+        {
+            [self performSegueWithIdentifier: @"segueHomePageEditSchool" sender: self];
+        }
+        else if (self.displayType == @"Semesters")
+        {
+            SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+            [sender setTitle:@"Done" forState:UIControlStateNormal];
+            [newViewController setEditing:YES animated:YES];
+        }
+    }
+    else
+    {
+        SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        [sender setTitle:@"Edit" forState:UIControlStateNormal];
+        [newViewController setEditing:NO animated:YES];
+    }
+}
+
 - (void)viewDidUnload {
     [self setButtonLogout:nil];
+    [self setButtonEditProfile:nil];
+    [self setButtonNext:nil];
+    [self setButtonPrevious:nil];
+    [self setButtonAddSchool:nil];
+    [self setButtonEditSchool:nil];
+    [self setButtonSemesterList:nil];
+    [self setButtonSchoolList:nil];
     [super viewDidUnload];
 }
 

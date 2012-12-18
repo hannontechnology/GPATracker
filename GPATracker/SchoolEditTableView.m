@@ -49,11 +49,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    if (self.setEditStatus != @"Edit")
-    {
-        self.gradingScheme.enabled = NO;
-        self.gradingScheme.userInteractionEnabled = NO;
-    }
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -78,17 +73,22 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    //cancelButton.
-    
-    NSLog(@"viewWillAppear Event of SchoolEditTableView");
-    
+    NSLog(@"viewWillAppear Event of SchoolEditTableView - EditStatus=%@",self.setEditStatus);
     if (self.setEditStatus != @"Edit")
     {
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.backBarButtonItem = nil;
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
         //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
         self.navigationItem.leftBarButtonItem = cancelButton;
         self.navigationItem.hidesBackButton = YES;
+        self.gradingScheme.enabled = NO;
+        self.gradingScheme.userInteractionEnabled = NO;
         return;
+    }
+    else
+    {
+        self.navigationItem.hidesBackButton = NO;
     }
     if (self.schoolInfo == nil)
     {

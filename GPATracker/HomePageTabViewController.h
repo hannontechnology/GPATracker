@@ -14,11 +14,25 @@
 
 @interface HomePageTabViewController : PagerViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonLogout;
-
-@property (strong, nonatomic) NSString *showEdit;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonEditProfile;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSemesterList;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSchoolList;
+@property (weak, nonatomic) IBOutlet UIButton *buttonNext;
+@property (weak, nonatomic) IBOutlet UIButton *buttonPrevious;
+@property (weak, nonatomic) IBOutlet UIButton *buttonAddSchool;
+@property (weak, nonatomic) IBOutlet UIButton *buttonEditSchool;
 
 -(IBAction)Logout:(id)sender;
 -(IBAction)EditProfile:(id)sender;
+-(IBAction)DisplaySchools:(id)sender;
+-(IBAction)DisplaySemesters:(id)sender;
+-(IBAction)BtnNextPage:(id)sender;
+-(IBAction)BtnPreviousPage:(id)sender;
+-(IBAction)BtnAddSchool:(id)sender;
+-(IBAction)BtnEditSchool:(id)sender;
+
+- (void)viewSchools;
+- (void)viewSemesters;
 
 /*@property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

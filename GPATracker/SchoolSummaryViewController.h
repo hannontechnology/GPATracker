@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SchoolDetails+Create.h"
 
+@class DataCollection;
+
 @interface SchoolSummaryViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UILabel *schoolCode;
 @property (weak, nonatomic) IBOutlet UILabel *schoolName;
@@ -19,7 +21,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *creditHours;
 
 @property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) DataCollection *dataCollection;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
--(void)DisplaySchool:(SchoolDetails *)inSchool;
+-(void)DisplayInfo;
 
 @end

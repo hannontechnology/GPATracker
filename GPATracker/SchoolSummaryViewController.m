@@ -23,6 +23,8 @@
 @synthesize courseCount;
 @synthesize creditHours;
 @synthesize schoolInfo = _schoolInfo;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +39,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    [self DisplaySchool:self.schoolInfo];
+    [self DisplayInfo];
 }
 
 - (void)viewDidUnload
@@ -58,11 +60,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
--(void)DisplaySchool:(SchoolDetails *)inSchool
+-(void)DisplayInfo
 {
-    self.schoolInfo = inSchool;
-    
-    NSLog(@"School Name: %@", inSchool.schoolName);
+    NSLog(@"School Name: %@", self.schoolInfo.schoolName);
     
     schoolCode.text = self.schoolInfo.schoolName;
     schoolName.text = self.schoolInfo.schoolDetails;

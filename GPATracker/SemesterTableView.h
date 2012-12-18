@@ -29,4 +29,6 @@
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 -(IBAction)back;
 
+-(void)DisplayInfo;
+
 @end
