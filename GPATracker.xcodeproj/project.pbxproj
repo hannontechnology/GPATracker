@@ -12,8 +12,14 @@
 		1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */; };
 		1F41905115C34A620031A4BC /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41905015C34A610031A4BC /* User+Create.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
-		1F57C43D15D1D926009BFFC1 /* Logo_xcode.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F57C43C15D1D926009BFFC1 /* Logo_xcode.png */; };
 		1F57C44115D1DA68009BFFC1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */; };
+		1F5DB972168237680048564D /* BlueHomeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB96E168237680048564D /* BlueHomeButton.png */; };
+		1F5DB973168237680048564D /* CalendarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB96F168237680048564D /* CalendarIcon.png */; };
+		1F5DB974168237680048564D /* LogoffButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB970168237680048564D /* LogoffButton.png */; };
+		1F5DB975168237680048564D /* ProfileButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB971168237680048564D /* ProfileButton.png */; };
+		1F5DB9771682381C0048564D /* Profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9761682381C0048564D /* Profileicon.png */; };
+		1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9781682399B0048564D /* CoursesIcon.png */; };
+		1F5DB97B168246A40048564D /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB97A168246A40048564D /* circleIcon.png */; };
 		1F6076FA15E5AD3200C4070F /* SchoolDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6076F915E5AD3200C4070F /* SchoolDetails.m */; };
 		1F6076FD15E5AD3300C4070F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6076FC15E5AD3200C4070F /* User.m */; };
 		1F60770015E5AD3300C4070F /* YearPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6076FF15E5AD3300C4070F /* YearPicker.m */; };
@@ -37,7 +43,6 @@
 		1F95470D15B29D4B002D2D61 /* SchoolListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* SchoolListTableCell1.m */; };
 		1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
-		1F9E65A4168116770079219F /* BlueHomeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9E65A3168116770079219F /* BlueHomeButton.png */; };
 		1FAF582115BCCF4500304676 /* CourseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF581F15BCCF4500304676 /* CourseTableView.m */; };
 		1FAF582415BCCF7100304676 /* CourseEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF582315BCCF7100304676 /* CourseEditTableView.m */; };
 		1FB105DD15D05CE200A5B6AC /* SemesterListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB105DC15D05CE200A5B6AC /* SemesterListTableCell1.m */; };
@@ -78,9 +83,15 @@
 		1F41904F15C34A610031A4BC /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Create.h"; path = "GPATracker/User+Create.h"; sourceTree = "<group>"; };
 		1F41905015C34A610031A4BC /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Create.m"; path = "GPATracker/User+Create.m"; sourceTree = "<group>"; };
 		1F447033156AD48F0045242C /* GPATracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPATracker.xcdatamodel; sourceTree = "<group>"; };
-		1F57C43C15D1D926009BFFC1 /* Logo_xcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Logo_xcode.png; path = GPATracker/Logo_xcode.png; sourceTree = "<group>"; };
 		1F57C43F15D1DA68009BFFC1 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
 		1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
+		1F5DB96E168237680048564D /* BlueHomeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueHomeButton.png; path = Images/BlueHomeButton.png; sourceTree = "<group>"; };
+		1F5DB96F168237680048564D /* CalendarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarIcon.png; path = Images/CalendarIcon.png; sourceTree = "<group>"; };
+		1F5DB970168237680048564D /* LogoffButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LogoffButton.png; path = Images/LogoffButton.png; sourceTree = "<group>"; };
+		1F5DB971168237680048564D /* ProfileButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ProfileButton.png; path = Images/ProfileButton.png; sourceTree = "<group>"; };
+		1F5DB9761682381C0048564D /* Profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profileicon.png; path = Images/Profileicon.png; sourceTree = "<group>"; };
+		1F5DB9781682399B0048564D /* CoursesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CoursesIcon.png; path = Images/CoursesIcon.png; sourceTree = "<group>"; };
+		1F5DB97A168246A40048564D /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circleIcon.png; path = Images/circleIcon.png; sourceTree = "<group>"; };
 		1F6076F815E5AD3200C4070F /* SchoolDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SchoolDetails.h; path = GPATracker/SchoolDetails.h; sourceTree = "<group>"; };
 		1F6076F915E5AD3200C4070F /* SchoolDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SchoolDetails.m; path = GPATracker/SchoolDetails.m; sourceTree = "<group>"; };
 		1F6076FB15E5AD3200C4070F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = GPATracker/User.h; sourceTree = "<group>"; };
@@ -121,7 +132,6 @@
 		1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTabViewController.m; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollection.h; path = GPATracker/DataCollection.h; sourceTree = "<group>"; };
 		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCollection.m; path = GPATracker/DataCollection.m; sourceTree = "<group>"; };
-		1F9E65A3168116770079219F /* BlueHomeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlueHomeButton.png; sourceTree = "<group>"; };
 		1FAF581F15BCCF4500304676 /* CourseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableView.m; sourceTree = "<group>"; };
 		1FAF582015BCCF4500304676 /* CourseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableView.h; sourceTree = "<group>"; };
 		1FAF582215BCCF7100304676 /* CourseEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEditTableView.h; sourceTree = "<group>"; };
@@ -219,10 +229,23 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		1F5DB97C168248880048564D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1F5DB97A168246A40048564D /* circleIcon.png */,
+				1F5DB9781682399B0048564D /* CoursesIcon.png */,
+				1F5DB9761682381C0048564D /* Profileicon.png */,
+				1F5DB96E168237680048564D /* BlueHomeButton.png */,
+				1F5DB96F168237680048564D /* CalendarIcon.png */,
+				1F5DB970168237680048564D /* LogoffButton.png */,
+				1F5DB971168237680048564D /* ProfileButton.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		1F754A43151559EA00BD72F0 = {
 			isa = PBXGroup;
 			children = (
-				1F57C43C15D1D926009BFFC1 /* Logo_xcode.png */,
 				1F754A58151559EA00BD72F0 /* GPATracker */,
 				1F754A79151559EA00BD72F0 /* GPATrackerTests */,
 				1F754A51151559EA00BD72F0 /* Frameworks */,
@@ -254,14 +277,14 @@
 		1F754A58151559EA00BD72F0 /* GPATracker */ = {
 			isa = PBXGroup;
 			children = (
+				1F41902C15C319350031A4BC /* Core Data */,
+				1F5DB97C168248880048564D /* Images */,
 				1FE4D0AE1659ABCD00B408A1 /* PagerViewController.h */,
 				1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */,
 				2D07636D16016CDA008BAF95 /* GradingSchemeCell1.h */,
 				2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */,
-				1F41902C15C319350031A4BC /* Core Data */,
 				1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */,
 				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
-				1F9E65A3168116770079219F /* BlueHomeButton.png */,
 				1F1E1D8016015D070042018B /* SchoolSummaryView.h */,
 				1F1E1D8116015D070042018B /* SchoolSummaryView.m */,
 				1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */,
@@ -413,9 +436,14 @@
 				1F754A5D151559EA00BD72F0 /* InfoPlist.strings in Resources */,
 				1F754A66151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */,
-				1F57C43D15D1D926009BFFC1 /* Logo_xcode.png in Resources */,
 				1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */,
-				1F9E65A4168116770079219F /* BlueHomeButton.png in Resources */,
+				1F5DB972168237680048564D /* BlueHomeButton.png in Resources */,
+				1F5DB973168237680048564D /* CalendarIcon.png in Resources */,
+				1F5DB974168237680048564D /* LogoffButton.png in Resources */,
+				1F5DB975168237680048564D /* ProfileButton.png in Resources */,
+				1F5DB9771682381C0048564D /* Profileicon.png in Resources */,
+				1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */,
+				1F5DB97B168246A40048564D /* circleIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
