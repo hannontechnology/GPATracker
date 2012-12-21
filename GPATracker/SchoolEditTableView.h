@@ -15,6 +15,9 @@
 @class GradingScheme;
 
 @interface SchoolEditTableView : UITableViewController
+{
+    IBOutlet UIToolbar *keyboardToolbar;
+}
 @property (strong, nonatomic) User *userInfo;
 @property (strong, nonatomic) SchoolDetails *schoolInfo;
 @property (strong, nonatomic) GradingScheme *gradingInfo;
@@ -26,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolEndYearField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 @property (strong, nonatomic) NSString *setEditStatus;
 

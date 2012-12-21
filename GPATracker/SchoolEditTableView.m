@@ -29,6 +29,8 @@
 @synthesize schoolEndYearField;
 @synthesize headerText;
 
+//@synthesize keyboardToolbar;
+
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
@@ -49,12 +51,108 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
 
+    schoolNameField.inputAccessoryView = keyboardToolbar;
+    schoolDetailsField.inputAccessoryView = keyboardToolbar;
+    schoolStartYearField.inputAccessoryView = keyboardToolbar;
+    schoolEndYearField.inputAccessoryView = keyboardToolbar;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) doneKey:(id)sender
+{
+    if ([schoolNameField isFirstResponder])
+        [schoolNameField resignFirstResponder];
+    else if ([schoolDetailsField isFirstResponder])
+        [schoolDetailsField resignFirstResponder];
+    else if ([schoolStartYearField isFirstResponder])
+        [schoolStartYearField resignFirstResponder];
+    else if ([schoolEndYearField isFirstResponder])
+        [schoolEndYearField resignFirstResponder];
+}
+
+- (void) prevField:(id)sender
+{
+    NSLog(@"Previous Field");
+    if ([schoolNameField isFirstResponder])
+    {
+        [schoolNameField resignFirstResponder];
+        [schoolEndYearField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolEndYearField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([schoolDetailsField isFirstResponder])
+    {
+        [schoolDetailsField resignFirstResponder];
+        [schoolNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([schoolStartYearField isFirstResponder])
+    {
+        [schoolStartYearField resignFirstResponder];
+        [schoolDetailsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolDetailsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([schoolEndYearField isFirstResponder])
+    {
+        [schoolEndYearField resignFirstResponder];
+        [schoolStartYearField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolStartYearField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
+- (void) nextField:(id)sender
+{
+    NSLog(@"Next Field");
+    if ([schoolNameField isFirstResponder])
+    {
+        [schoolNameField resignFirstResponder];
+        [schoolDetailsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolDetailsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([schoolDetailsField isFirstResponder])
+    {
+        [schoolDetailsField resignFirstResponder];
+        [schoolStartYearField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolStartYearField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([schoolStartYearField isFirstResponder])
+    {
+        [schoolStartYearField resignFirstResponder];
+        [schoolEndYearField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolEndYearField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([schoolEndYearField isFirstResponder])
+    {
+        [schoolEndYearField resignFirstResponder];
+        [schoolNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[schoolNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 - (void)viewDidUnload
@@ -65,6 +163,7 @@
     [self setSchoolEndYearField:nil];
     [self setGradingScheme:nil];
     [self setGradingScheme:nil];
+    [self setKeyboardToolbar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -303,7 +402,11 @@
 
 }
 
-//- (void)tableV
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    UITableViewCell *cell = (UITableViewCell*) [[textView superview] superview];
+    [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+}
 
 - (IBAction)Cancel:(id)sender
 {
