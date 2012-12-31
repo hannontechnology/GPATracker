@@ -11,7 +11,6 @@
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "ProfileEditTableView.h"
-#import "HomePageViewController.h"
 #import "HomePageTabViewController.h"
 
 @interface LoginView ()
@@ -184,15 +183,6 @@
         
         ProfileEditTableView.dataCollection = self.dataCollection;
         ProfileEditTableView.managedObjectContext = self.managedObjectContext;
-	}
-	else if ([segue.identifier isEqualToString:@"segueHomePage"])
-	{
-        UINavigationController *navCon = [segue destinationViewController];
-        HomePageViewController *HomePageViewController = [navCon.viewControllers objectAtIndex:0];
-        
-        HomePageViewController.userInfo = self.userInfo;
-        HomePageViewController.dataCollection = self.dataCollection;
-        HomePageViewController.managedObjectContext = self.managedObjectContext;
 	}
 	else if ([segue.identifier isEqualToString:@"segueHomePageTest"])
 	{

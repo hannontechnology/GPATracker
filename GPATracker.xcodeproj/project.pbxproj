@@ -12,7 +12,6 @@
 		1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */; };
 		1F41905115C34A620031A4BC /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41905015C34A610031A4BC /* User+Create.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
-		1F57C44115D1DA68009BFFC1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */; };
 		1F5DB972168237680048564D /* BlueHomeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB96E168237680048564D /* BlueHomeButton.png */; };
 		1F5DB973168237680048564D /* CalendarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB96F168237680048564D /* CalendarIcon.png */; };
 		1F5DB974168237680048564D /* LogoffButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB970168237680048564D /* LogoffButton.png */; };
@@ -83,8 +82,6 @@
 		1F41904F15C34A610031A4BC /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Create.h"; path = "GPATracker/User+Create.h"; sourceTree = "<group>"; };
 		1F41905015C34A610031A4BC /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Create.m"; path = "GPATracker/User+Create.m"; sourceTree = "<group>"; };
 		1F447033156AD48F0045242C /* GPATracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPATracker.xcdatamodel; sourceTree = "<group>"; };
-		1F57C43F15D1DA68009BFFC1 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageViewController.h; sourceTree = "<group>"; };
-		1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageViewController.m; sourceTree = "<group>"; };
 		1F5DB96E168237680048564D /* BlueHomeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueHomeButton.png; path = Images/BlueHomeButton.png; sourceTree = "<group>"; };
 		1F5DB96F168237680048564D /* CalendarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalendarIcon.png; path = Images/CalendarIcon.png; sourceTree = "<group>"; };
 		1F5DB970168237680048564D /* LogoffButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LogoffButton.png; path = Images/LogoffButton.png; sourceTree = "<group>"; };
@@ -292,8 +289,6 @@
 				1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */,
 				1F9B1AD415FEBD520059E26D /* HomePageTabViewController.h */,
 				1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */,
-				1F57C43F15D1DA68009BFFC1 /* HomePageViewController.h */,
-				1F57C44015D1DA68009BFFC1 /* HomePageViewController.m */,
 				1FB105DB15D05CE200A5B6AC /* SemesterListTableCell1.h */,
 				1FB105DC15D05CE200A5B6AC /* SemesterListTableCell1.m */,
 				1FB105DE15D05CFA00A5B6AC /* CourseListTableCell1.h */,
@@ -500,7 +495,6 @@
 				2DC1D7E315C48B7800EE9A78 /* GradingScheme+Create.m in Sources */,
 				1FB105DD15D05CE200A5B6AC /* SemesterListTableCell1.m in Sources */,
 				1FB105E015D05CFA00A5B6AC /* CourseListTableCell1.m in Sources */,
-				1F57C44115D1DA68009BFFC1 /* HomePageViewController.m in Sources */,
 				1F6076FA15E5AD3200C4070F /* SchoolDetails.m in Sources */,
 				1F6076FD15E5AD3300C4070F /* User.m in Sources */,
 				1F60770015E5AD3300C4070F /* YearPicker.m in Sources */,
