@@ -9,7 +9,7 @@
 #import "SemesterEditTableView.h"
 #import "SemesterDetails+Create.h"
 #import "DataCollection.h"
-#import "SemesterTableView.h"
+#import "HomePageTabViewController.h"
 #import "YearPicker.h"
 
 @interface PickerDismissView2 : UIView
@@ -52,6 +52,7 @@
 @synthesize semesterDetails = _semesterDetails;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize userInfo = _userInfo;
 
 @synthesize pickerDismissView = _pickerDismissView;
 @synthesize pickerView = _pickerView;
@@ -339,7 +340,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             
             if ([self.managedObjectContext save:&err])
             {
-                [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
+                [self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
             }
             else
             {
@@ -368,7 +369,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         
         if ([self.managedObjectContext save:&err])
         {
-            [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
+            [self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
         }
         else
         {
@@ -383,18 +384,21 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Cancel:(id)sender
 {
-        [self performSegueWithIdentifier:@"segueEditSemesterToSemester" sender:self];
+        [self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if([segue.identifier isEqualToString:@"segueEditSemesterToSemester"])
+    if([segue.identifier isEqualToString:@"segueEditSemesterToHomePage"])
     {
-        [self.navigationController popViewControllerAnimated:YES];
-        SemesterTableView *SemesterTableView = [segue destinationViewController];
-        SemesterTableView.schoolInfo = self.schoolDetails;
-        SemesterTableView.managedObjectContext = self.managedObjectContext;
-        SemesterTableView.dataCollection = self.dataCollection;
+        //[self.navigationController popViewControllerAnimated:YES];
+        HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
+
+        HomePageTabViewController.displayType = @"Semesters";
+        HomePageTabViewController.userInfo = self.userInfo;
+        HomePageTabViewController.managedObjectContext = self.managedObjectContext;
+        HomePageTabViewController.dataCollection = self.dataCollection;
+        [HomePageTabViewController viewDidLoad];
     }
 }
 

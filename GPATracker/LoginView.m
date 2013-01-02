@@ -12,6 +12,7 @@
 #import "SchoolListTableView.h"
 #import "ProfileEditTableView.h"
 #import "HomePageTabViewController.h"
+#import "SchoolEditTableView.h"
 
 @interface LoginView ()
 - (IBAction)Login:(id)sender;
@@ -78,8 +79,16 @@
                 [self.userInfo setAutoLogin:self.userInfo context:self.managedObjectContext];
             }
             userName = userNameField.text;
-//            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
-            [self performSegueWithIdentifier: @"segueHomePageTest" sender: self];
+
+            NSArray *schooList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+            if ([schooList count] == 0)
+            {
+                [self performSegueWithIdentifier: @"segueLoginCreateSchool" sender: self];
+            }
+            else
+            {
+                [self performSegueWithIdentifier: @"segueHomePage" sender: self];
+            }
         }
     }
 }
@@ -131,8 +140,16 @@
         {
             NSLog(@"Goto Home Page");
             self.userInfo = [results objectAtIndex:0];
-//            [self performSegueWithIdentifier: @"segueHomePage" sender: self];
-            [self performSegueWithIdentifier: @"segueHomePageTest" sender: self];
+            
+            NSArray *schooList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+            if ([schooList count] == 0)
+            {
+                [self performSegueWithIdentifier: @"segueLoginCreateSchool" sender: self];
+            }
+            else
+            {
+                [self performSegueWithIdentifier: @"segueHomePage" sender: self];
+            }
         }
     }
 }
@@ -184,7 +201,7 @@
         ProfileEditTableView.dataCollection = self.dataCollection;
         ProfileEditTableView.managedObjectContext = self.managedObjectContext;
 	}
-	else if ([segue.identifier isEqualToString:@"segueHomePageTest"])
+	else if ([segue.identifier isEqualToString:@"segueHomePage"])
 	{
         //HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
         UINavigationController *navCon = [segue destinationViewController];
@@ -194,5 +211,15 @@
         HomePageTabViewController.dataCollection = self.dataCollection;
         HomePageTabViewController.managedObjectContext = self.managedObjectContext;
 	}
+    else if ([segue.identifier isEqualToString:@"segueLoginCreateSchool"])
+    {
+        //        UINavigationController *navCon = [segue destinationViewController];
+        //        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        
+        SchoolEditTableView.userInfo = self.userInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
+    }
 }
 @end

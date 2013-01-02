@@ -22,6 +22,7 @@
 @end
 
 @implementation SemesterTableView
+@synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
@@ -155,8 +156,8 @@
     if ([segue.identifier isEqualToString:@"segueAddSemester"])
     {
         // Use this code if going to a navigation controller before accessing destination screen
-//        UINavigationController *navCon = [segue destinationViewController];
-//        SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
+        //UINavigationController *navCon = [segue destinationViewController];
+        //SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
         SemesterEditTableView.schoolDetails = self.schoolInfo;
@@ -168,6 +169,7 @@
         SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
+        SemesterEditTableView.userInfo = self.userInfo;
         SemesterEditTableView.semesterDetails = selectedObject;
         SemesterEditTableView.schoolDetails = self.schoolInfo;
         SemesterEditTableView.dataCollection = self.dataCollection;

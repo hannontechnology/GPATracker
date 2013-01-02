@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class User;
 @class DataCollection;
 @class SchoolDetails;
 @class SemesterDetails;
@@ -19,13 +20,11 @@
 
 @property (strong, nonatomic) NSString *setEditStatus;
 @property (strong, nonatomic) NSString *setInputType;
-//@property (strong, nonatomic) NSString *userName;
-//@property (strong, nonatomic) NSString *schoolName;
-//@property (strong, nonatomic) NSString *semesterName;
 @property (strong, nonatomic) SemesterDetails *semesterDetails;
 @property (strong, nonatomic) SchoolDetails *schoolDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) User *userInfo;
 
 - (IBAction)showSemesterNamePicker:(id)sender;
 - (IBAction)showSemesterYearPicker:(id)sender;

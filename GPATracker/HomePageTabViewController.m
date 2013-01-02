@@ -31,12 +31,40 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if (self.userInfo == nil)
+        return;
+
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+    
+    if (self.displayType == nil)
+    {
+        self.displayType = @"Schools";
+    }
+    
+    if (self.displayType == @"Schools")
+    {
+        [self viewSchools];
+    }
+    else if (self.displayType == @"Semesters")
+    {
+        [self viewSemesters];
+    }
+    [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
+    
+    UIImage *faceImage = [UIImage imageNamed:@"BlueHomeButton.png"];
+    UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
+    face.bounds = CGRectMake( 0, 0, faceImage.size.width, faceImage.size.height );
+    [face setImage:faceImage forState:UIControlStateNormal];
+    UIBarButtonItem *faceBtn = [[UIBarButtonItem alloc] initWithCustomView:face];
+    buttonSchoolList = faceBtn;
 }
 
 - (void)viewDidLoad
 {
+    if (self.userInfo == nil)
+        return;
+    
     [super viewDidLoad];
     
     if (self.displayType == nil)
@@ -53,7 +81,7 @@
         [self viewSemesters];
     }
     [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
-
+    
     UIImage *faceImage = [UIImage imageNamed:@"BlueHomeButton.png"];
     UIButton *face = [UIButton buttonWithType:UIButtonTypeCustom];
     face.bounds = CGRectMake( 0, 0, faceImage.size.width, faceImage.size.height );
@@ -98,7 +126,8 @@
     }
     
     self.pageControl.numberOfPages = self.schoolList.count;
-    [self viewWillAppear:true];
+//    [self viewWillAppear:true];
+    [super viewWillAppear:true];
     [self selectPage:tmpPage];
 }
 
@@ -120,13 +149,15 @@
         View.dataCollection = self.dataCollection;
         View.managedObjectContext = self.managedObjectContext;
         View.schoolInfo = item;
+        View.userInfo = self.userInfo;
         [View DisplayInfo];
         
         [self addChildViewController:View];
     }
     
     self.pageControl.numberOfPages = self.schoolList.count;
-    [self viewWillAppear:true];
+    //    [self viewWillAppear:true];
+    [super viewWillAppear:true];
     [self selectPage:tmpPage];
 }
 
@@ -189,6 +220,7 @@
         SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
         
         SemesterEditTableView.setEditStatus = @"Create";
+        SemesterEditTableView.userInfo = self.userInfo;
         SemesterEditTableView.schoolDetails = [self.schoolList objectAtIndex:self.pageControl.currentPage];
         SemesterEditTableView.dataCollection = self.dataCollection;
         SemesterEditTableView.managedObjectContext = self.managedObjectContext;

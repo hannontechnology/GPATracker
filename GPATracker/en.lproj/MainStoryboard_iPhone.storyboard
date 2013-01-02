@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
     </dependencies>
     <scenes>
         <!--Login View-->
         <scene sceneID="5">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="LoginView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -17,22 +16,22 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f6g-Wo-Mj8">
                                 <rect key="frame" x="20" y="90" width="84" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.32941177487373352" green="0.32941177487373352" blue="0.32941177487373352" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Password:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="5zO-sU-KGK">
                                 <rect key="frame" x="20" y="143" width="81" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.32941177487373352" green="0.32941177487373352" blue="0.32941177487373352" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Auto-Logon:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="y7O-NE-2P7">
                                 <rect key="frame" x="20" y="196" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.32941177487373352" green="0.32941177487373352" blue="0.32941177487373352" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1z4-Py-3HT" userLabel="Username">
@@ -80,7 +79,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LTE-fq-Kpy">
                                 <rect key="frame" x="41" y="248" width="239" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -104,7 +103,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000001788139343" green="1" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.81176477670669556" green="0.78431379795074463" blue="0.67058825492858887" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="wNN-zL-R0k"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -116,17 +115,17 @@
                         <outlet property="userNameField" destination="1z4-Py-3HT" id="GiT-RF-ZqH"/>
                         <outlet property="view" destination="3" id="GBA-3r-2Jt"/>
                         <segue destination="0Nu-ll-EVV" kind="modal" identifier="segueSchoolList" id="M8A-5E-H1d"/>
-                        <segue destination="duS-as-cgh" kind="modal" identifier="segueHomePage" id="AM5-mh-wYj"/>
-                        <segue destination="FwV-p7-ghH" kind="modal" identifier="segueHomePageTest" id="MQc-sb-fjK"/>
+                        <segue destination="FwV-p7-ghH" kind="modal" identifier="segueHomePage" id="MQc-sb-fjK"/>
+                        <segue destination="gjN-gY-YcA" kind="modal" identifier="segueLoginCreateSchool" id="jQw-x3-9Vl"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-322" y="241"/>
         </scene>
         <!--School Edit Table View-->
         <scene sceneID="woZ-Kz-P8a">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="26i-sz-waC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="doq-fP-RTd" customClass="SchoolEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="7e5-b0-eJf">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -296,14 +295,15 @@
                         <segue destination="I4e-vy-Asq" kind="push" identifier="segueSchool2HomePage" id="yNE-KK-7NP"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="26i-sz-waC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157" y="-404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="isu-b5-E5q">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qp1-f9-6VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="gjN-gY-YcA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="G7g-Ge-pK6"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -321,13 +321,13 @@
                         <segue destination="doq-fP-RTd" kind="relationship" relationship="rootViewController" id="o2U-7x-MXr"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qp1-f9-6VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-322" y="-404"/>
         </scene>
         <!--Grading Scheme Select Table View-->
         <scene sceneID="XFq-c5-wP6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H6E-XD-vcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="ujy-oW-DyU" customClass="GradingSchemeSelectTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z0P-TY-c4O">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -404,13 +404,13 @@
                         <segue destination="1tm-RG-Rrr" kind="push" identifier="segue2GradingConfirm" id="Vzz-SA-ORC"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H6E-XD-vcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="638" y="-404"/>
         </scene>
         <!--Grading Scheme Table View-->
         <scene sceneID="cSj-ex-k0t">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zGb-eW-Kcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="1tm-RG-Rrr" customClass="GradingSchemeTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="y8P-BP-6Ss">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -466,17 +466,16 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="y8P-BP-6Ss" id="RMA-s0-zgO"/>
-                        <segue destination="01w-Dg-l3t" kind="push" identifier="segueGrading2Home" id="xbz-yB-F14"/>
-                        <segue destination="USk-0t-HId" kind="push" identifier="segueGrading2Semester" id="eUK-Fo-EN0"/>
+                        <segue destination="I4e-vy-Asq" kind="push" identifier="segueGrading2Home" id="mwc-fS-4uK"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zGb-eW-Kcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121" y="-404"/>
         </scene>
         <!--School List Table View - School List-->
         <scene sceneID="Lwr-K1-gYp">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hVE-hO-6vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="01w-Dg-l3t" customClass="SchoolListTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="80" sectionHeaderHeight="10" sectionFooterHeight="10" id="daI-Jd-Nch">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -571,13 +570,13 @@
                         <segue destination="USk-0t-HId" kind="push" identifier="segueSemesterList" id="phW-HU-sP7"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVE-hO-6vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="638" y="241"/>
         </scene>
         <!--Semester Edit Table View - Add Semester-->
         <scene sceneID="I7w-Fp-qPP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="YTG-zN-KQM" customClass="SemesterEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZeJ-JM-scU">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -680,16 +679,16 @@
                         <outlet property="headerText" destination="SKv-FE-rvS" id="QPH-E1-5PL"/>
                         <outlet property="semesterNameField" destination="tn4-Jg-pyS" id="Y3o-pM-LB6"/>
                         <outlet property="semesterYearField" destination="swA-3z-dFr" id="dRF-RH-xZ5"/>
-                        <segue destination="USk-0t-HId" kind="push" identifier="segueEditSemesterToSemester" id="9qa-yz-LcS"/>
+                        <segue destination="I4e-vy-Asq" kind="push" identifier="segueEditSemesterToHomePage" id="lHh-OI-VXa"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079" y="241"/>
         </scene>
         <!--Course Edit Table View - Create Course-->
         <scene sceneID="PV2-N8-lIg">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vZD-G9-8Fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="J3F-p1-3o6" customClass="CourseEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="LbP-Ng-UYF">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -964,13 +963,13 @@
                         <segue destination="0oZ-Xb-naF" kind="push" identifier="segueCourse2CourseList" id="k7a-QP-sia"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vZD-G9-8Fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2560" y="880"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I1j-aw-DTS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ei6-Fz-Vjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="RkF-Q4-jeA" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -989,13 +988,13 @@
                         <segue destination="J3F-p1-3o6" kind="relationship" relationship="rootViewController" id="XFF-ob-f75"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ei6-Fz-Vjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2079" y="880"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pq6-VH-shm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JS9-dR-AM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" toolbarHidden="NO" id="faI-Ep-duc" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Op1-Mq-iBw"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -1015,13 +1014,13 @@
                         <segue destination="YTG-zN-KQM" kind="relationship" relationship="rootViewController" id="miI-a3-jJY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JS9-dR-AM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1600" y="241"/>
         </scene>
         <!--Profile Edit Table View - Create Profile-->
         <scene sceneID="doR-w5-7aq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="znG-BI-5DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="MG7-Ge-mPq" customClass="ProfileEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="HiJ-Ql-9yH">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -1219,17 +1218,17 @@
                         <outlet property="lastNameField" destination="tnN-AL-2QT" id="hI3-Zy-gwl"/>
                         <outlet property="passwordField" destination="lbR-gh-oSJ" id="Gb6-IV-dvg"/>
                         <outlet property="userNameField" destination="6li-ZK-YLo" id="91s-Ke-7bX"/>
-                        <segue destination="01w-Dg-l3t" kind="push" identifier="segueProfile2HomePage" id="cN5-90-LSV"/>
                         <segue destination="2" kind="modal" identifier="segueProfile2Login" id="6Sl-EM-wfU"/>
+                        <segue destination="I4e-vy-Asq" kind="push" identifier="segueProfile2HomePage" id="EPI-uN-kbf"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="znG-BI-5DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121" y="880"/>
         </scene>
         <!--Course Table View - Course List-->
         <scene sceneID="g3S-5a-XO4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xWv-2o-iEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="0oZ-Xb-naF" customClass="CourseTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="82" sectionHeaderHeight="10" sectionFooterHeight="10" id="qsn-Nz-Ldf">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -1362,13 +1361,13 @@
                         <segue destination="USk-0t-HId" kind="push" identifier="segueCourseList2SemesterList" id="LMs-sZ-M1E"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xWv-2o-iEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1595" y="880"/>
         </scene>
         <!--Semester Table View - Semester List-->
         <scene sceneID="rD3-1f-wf6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-VG-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController storyboardIdentifier="SemesterListView" id="USk-0t-HId" customClass="SemesterTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="78" sectionHeaderHeight="10" sectionFooterHeight="10" id="qh7-y3-oMJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
@@ -1503,13 +1502,13 @@
                         <segue destination="01w-Dg-l3t" kind="push" identifier="segueSemesterList2SchoolList" id="KeZ-Q4-PJf"/>
                     </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-VG-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121" y="241"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vle-3D-yDl">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1rD-EY-j2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController toolbarHidden="NO" id="0Nu-ll-EVV" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="NuJ-qh-b86"/>
@@ -1531,20 +1530,20 @@
                         <segue destination="01w-Dg-l3t" kind="relationship" relationship="rootViewController" id="fzg-Bq-Y4C"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1rD-EY-j2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157" y="241"/>
         </scene>
         <!--Home Page Tab View Controller-->
         <scene sceneID="aoa-9z-enc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bwL-GE-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="I4e-vy-Asq" customClass="HomePageTabViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7W0-uv-EMm">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" id="MWZ-Zz-Xnu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="380"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="336"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="ez2-WF-yZF">
@@ -1554,34 +1553,6 @@
                                     <action selector="changePage:" destination="I4e-vy-Asq" eventType="touchUpInside" id="wWM-yg-JQy"/>
                                 </connections>
                             </pageControl>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="g71-Ta-uOg">
-                                <rect key="frame" x="0.0" y="414" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <items>
-                                    <barButtonItem image="BlueHomeButton.png" id="NtB-Zi-JF2">
-                                        <connections>
-                                            <action selector="DisplaySchools:" destination="I4e-vy-Asq" id="6tf-i7-eCR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="circleIcon.png" id="4Hp-GV-hw5">
-                                        <connections>
-                                            <action selector="DisplaySemesters:" destination="I4e-vy-Asq" id="HNF-FE-AtK"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="CoursesIcon.png" id="RDz-RD-SIE"/>
-                                    <barButtonItem image="CalendarIcon.png" id="qMO-SL-Vrm"/>
-                                    <barButtonItem image="ProfileButton.png" id="vZp-Uc-tGS">
-                                        <connections>
-                                            <action selector="EditProfile:" destination="I4e-vy-Asq" id="vcQ-f3-zSO"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem image="LogoffButton.png" id="y6C-oj-6Wx">
-                                        <connections>
-                                            <action selector="Logout:" destination="I4e-vy-Asq" id="Day-Le-RYC"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cR6-RG-nhO">
                                 <rect key="frame" x="52" y="344" width="45" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1645,10 +1616,34 @@
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem image="BlueHomeButton.png" id="NtB-Zi-JF2">
+                            <connections>
+                                <action selector="DisplaySchools:" destination="I4e-vy-Asq" id="6tf-i7-eCR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="circleIcon.png" id="4Hp-GV-hw5">
+                            <connections>
+                                <action selector="DisplaySemesters:" destination="I4e-vy-Asq" id="HNF-FE-AtK"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="CoursesIcon.png" id="RDz-RD-SIE"/>
+                        <barButtonItem image="CalendarIcon.png" id="qMO-SL-Vrm"/>
+                        <barButtonItem image="ProfileButton.png" id="vZp-Uc-tGS">
+                            <connections>
+                                <action selector="EditProfile:" destination="I4e-vy-Asq" id="vcQ-f3-zSO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="LogoffButton.png" id="y6C-oj-6Wx">
+                            <connections>
+                                <action selector="Logout:" destination="I4e-vy-Asq" id="Day-Le-RYC"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" id="JLR-AI-Ysh"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -1670,13 +1665,13 @@
                         <segue destination="YTG-zN-KQM" kind="push" identifier="segueHomePageCreateSemester" id="khB-Ho-E86"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bwL-GE-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="638" y="1518"/>
         </scene>
         <!--School Summary View Controller-->
         <scene sceneID="i3a-yO-1iC">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="u47-n5-m2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SchoolSummaryView" id="DGl-FC-tkO" customClass="SchoolSummaryViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mxx-gJ-DqA">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
@@ -1779,13 +1774,13 @@
                         <outlet property="semesterCount" destination="bna-CR-GFm" id="aaq-jO-J86"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u47-n5-m2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1121" y="1518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fl1-ki-c2M">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wDb-8X-C0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController toolbarHidden="NO" id="tww-Fb-Zzg" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="j2y-zw-abB"/>
@@ -1807,39 +1802,34 @@
                         <segue destination="MG7-Ge-mPq" kind="relationship" relationship="rootViewController" id="TK2-3c-oR0"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wDb-8X-C0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="638" y="880"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="1P8-As-Afx">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6pF-G6-rdS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="duS-as-cgh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QR4-XY-OaV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-322" y="880"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="KGN-MP-lzb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-5t-mOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController id="FwV-p7-ghH" sceneMemberID="viewController">
+                <navigationController toolbarHidden="NO" id="FwV-p7-ghH" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="azR-Vs-cym">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="xRD-8c-zGA">
+                        <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="I4e-vy-Asq" kind="relationship" relationship="rootViewController" id="RFh-nA-BNa"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-5t-mOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="157" y="1518"/>
         </scene>
@@ -1852,218 +1842,21 @@
         <image name="ProfileButton.png" width="20" height="20"/>
         <image name="circleIcon.png" width="20" height="20"/>
     </resources>
-    <classes>
-        <class className="CoreDataTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
-        </class>
-        <class className="CourseEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="actualGradeChange:"/>
-                <relationship kind="action" name="desiredGradeChange:"/>
-                <relationship kind="action" name="showActualGradePicker:"/>
-                <relationship kind="action" name="showDesiredGradePicker:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="courseActualGradeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseCodeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseDescriptionField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseDesiredGradeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="courseIncludeInGPAField" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="courseNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="coursePassFailField" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="courseUnitsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-            </relationships>
-        </class>
-        <class className="CourseListTableCell1" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseListTableCell1.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CourseTableView" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="back"/>
-                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
-                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
-                <relationship kind="outlet" name="semesterCourseCount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="semesterCreditHours" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="semesterGPA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="semesterNameText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GradingSchemeCell1" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeCell1.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellField1" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GradingSchemeSelectTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeSelectTableView.h"/>
-        </class>
-        <class className="GradingSchemeTableView" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Save:"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="HomePageTabViewController" superclassName="PagerViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTabViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="BtnAddSchool:"/>
-                <relationship kind="action" name="BtnEditSchool:"/>
-                <relationship kind="action" name="BtnNextPage:"/>
-                <relationship kind="action" name="BtnPreviousPage:"/>
-                <relationship kind="action" name="DisplaySchools:"/>
-                <relationship kind="action" name="DisplaySemesters:"/>
-                <relationship kind="action" name="EditProfile:"/>
-                <relationship kind="action" name="Logout:"/>
-                <relationship kind="outlet" name="buttonAddSchool" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonEditProfile" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="buttonEditSchool" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonLogout" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="buttonNext" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonPrevious" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="buttonSchoolList" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="buttonSemesterList" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="LoginView" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
-            <relationships>
-                <relationship kind="action" name="ForgotPassword:"/>
-                <relationship kind="action" name="Login:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="PagerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PagerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="changePage:"/>
-                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="ProfileEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
-                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SchoolEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="Save:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="gradingScheme" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
-                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SchoolListTableCell1" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolListTableCell1.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SchoolListTableView" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolListTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
-                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
-            </relationships>
-        </class>
-        <class className="SchoolSummaryViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolSummaryViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cGPA" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="courseCount" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="creditHours" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="schoolCode" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="schoolName" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="schoolYears" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="semesterCount" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SemesterEditTableView" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterEditTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="Cancel:"/>
-                <relationship kind="action" name="showSemesterNamePicker:"/>
-                <relationship kind="action" name="showSemesterYearPicker:"/>
-                <relationship kind="action" name="textFieldReturn:"/>
-                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
-                <relationship kind="outlet" name="semesterNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="semesterYearField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="SemesterListTableCell1" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterListTableCell1.h"/>
-            <relationships>
-                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SemesterTableView" superclassName="CoreDataTableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterTableView.h"/>
-            <relationships>
-                <relationship kind="action" name="back"/>
-                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
-                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
-                <relationship kind="outlet" name="schoolCGPAText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="schoolDescText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="schoolNameText" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="schoolYearsText" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zyl-Bd-lJ4"/>
-        <segue reference="phW-HU-sP7"/>
+        <segue reference="lHh-OI-VXa"/>
+        <segue reference="sH2-t5-pXi"/>
+        <segue reference="68m-8u-amb"/>
         <segue reference="fzg-Bq-Y4C"/>
-        <segue reference="VVr-Ld-9wW"/>
-        <segue reference="yNE-KK-7NP"/>
-        <segue reference="KvF-9q-C6b"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="phW-HU-sP7"/>
+        <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="DG6-i7-zNC"/>
-        <segue reference="khB-Ho-E86"/>
-        <segue reference="1dU-6g-oZa"/>
+        <segue reference="zyl-Bd-lJ4"/>
         <segue reference="XFF-ob-f75"/>
     </inferredMetricsTieBreakers>
 </document>
