@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1F0C5C1015A754D2001A6BEA /* SchoolListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C5C0F15A754D2001A6BEA /* SchoolListTableView.m */; };
-		1F1E1D8216015D070042018B /* SchoolSummaryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1E1D8116015D070042018B /* SchoolSummaryView.m */; };
-		1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */; };
 		1F41905115C34A620031A4BC /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41905015C34A610031A4BC /* User+Create.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
 		1F5DB972168237680048564D /* BlueHomeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB96E168237680048564D /* BlueHomeButton.png */; };
@@ -75,9 +73,6 @@
 /* Begin PBXFileReference section */
 		1F0C5C0E15A754D2001A6BEA /* SchoolListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListTableView.h; sourceTree = "<group>"; };
 		1F0C5C0F15A754D2001A6BEA /* SchoolListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListTableView.m; sourceTree = "<group>"; };
-		1F1E1D8016015D070042018B /* SchoolSummaryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSummaryView.h; sourceTree = "<group>"; };
-		1F1E1D8116015D070042018B /* SchoolSummaryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSummaryView.m; sourceTree = "<group>"; };
-		1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolSummaryView.xib; sourceTree = "<group>"; };
 		1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPATracker.entitlements; sourceTree = "<group>"; };
 		1F41904F15C34A610031A4BC /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Create.h"; path = "GPATracker/User+Create.h"; sourceTree = "<group>"; };
 		1F41905015C34A610031A4BC /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Create.m"; path = "GPATracker/User+Create.m"; sourceTree = "<group>"; };
@@ -282,11 +277,8 @@
 				2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */,
 				1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */,
 				1F754A64151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard */,
-				1F1E1D8016015D070042018B /* SchoolSummaryView.h */,
-				1F1E1D8116015D070042018B /* SchoolSummaryView.m */,
 				1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */,
 				1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */,
-				1F1E1D8416015EDC0042018B /* SchoolSummaryView.xib */,
 				1F9B1AD415FEBD520059E26D /* HomePageTabViewController.h */,
 				1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */,
 				1FB105DB15D05CE200A5B6AC /* SemesterListTableCell1.h */,
@@ -431,7 +423,6 @@
 				1F754A5D151559EA00BD72F0 /* InfoPlist.strings in Resources */,
 				1F754A66151559EA00BD72F0 /* MainStoryboard_iPhone.storyboard in Resources */,
 				1F754A69151559EA00BD72F0 /* MainStoryboard_iPad.storyboard in Resources */,
-				1F1E1D8516015EDC0042018B /* SchoolSummaryView.xib in Resources */,
 				1F5DB972168237680048564D /* BlueHomeButton.png in Resources */,
 				1F5DB973168237680048564D /* CalendarIcon.png in Resources */,
 				1F5DB974168237680048564D /* LogoffButton.png in Resources */,
@@ -502,7 +493,6 @@
 				1F60770615E5AD3300C4070F /* CourseDetails.m in Sources */,
 				1F60770915E5AD3300C4070F /* SemesterDetails.m in Sources */,
 				1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */,
-				1F1E1D8216015D070042018B /* SchoolSummaryView.m in Sources */,
 				2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */,
 				1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */,
 				1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */,
