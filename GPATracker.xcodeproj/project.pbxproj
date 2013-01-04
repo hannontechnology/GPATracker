@@ -48,6 +48,7 @@
 		1FB771C515AE1E86006BC18A /* ProfileEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */; };
 		1FB7A54715C316F800237DDD /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */; };
 		1FC4B4FA15BC94040079767C /* SemesterEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B4F915BC94040079767C /* SemesterEditTableView.m */; };
+		1FD3E08F169797F900E4AB15 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */; };
 		1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */; };
 		1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */; };
 		2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */; };
@@ -139,6 +140,7 @@
 		1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = GPATracker/CoreDataTableViewController.m; sourceTree = "<group>"; };
 		1FC4B4F815BC94040079767C /* SemesterEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterEditTableView.h; sourceTree = "<group>"; };
 		1FC4B4F915BC94040079767C /* SemesterEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterEditTableView.m; sourceTree = "<group>"; };
+		1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		1FE4D0AE1659ABCD00B408A1 /* PagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerViewController.h; sourceTree = "<group>"; };
 		1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewController.m; sourceTree = "<group>"; };
 		1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSummaryViewController.h; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 		1F5DB97C168248880048564D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */,
 				1F5DB97A168246A40048564D /* circleIcon.png */,
 				1F5DB9781682399B0048564D /* CoursesIcon.png */,
 				1F5DB9761682381C0048564D /* Profileicon.png */,
@@ -430,6 +433,7 @@
 				1F5DB9771682381C0048564D /* Profileicon.png in Resources */,
 				1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */,
 				1F5DB97B168246A40048564D /* circleIcon.png in Resources */,
+				1FD3E08F169797F900E4AB15 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,7 +610,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
 				INFOPLIST_FILE = "GPATracker/GPATracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -617,7 +623,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GPATracker/GPATracker-Prefix.pch";
 				INFOPLIST_FILE = "GPATracker/GPATracker-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
