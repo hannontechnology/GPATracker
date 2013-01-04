@@ -1369,7 +1369,7 @@
         <scene sceneID="rD3-1f-wf6">
             <objects>
                 <tableViewController storyboardIdentifier="SemesterListView" id="USk-0t-HId" customClass="SemesterTableView" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="78" sectionHeaderHeight="10" sectionFooterHeight="10" id="qh7-y3-oMJ">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelectionDuringEditing="YES" rowHeight="78" sectionHeaderHeight="10" sectionFooterHeight="10" id="qh7-y3-oMJ">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1848,15 +1848,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="lHh-OI-VXa"/>
-        <segue reference="sH2-t5-pXi"/>
         <segue reference="68m-8u-amb"/>
-        <segue reference="fzg-Bq-Y4C"/>
-        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="KeZ-Q4-PJf"/>
         <segue reference="phW-HU-sP7"/>
-        <segue reference="fGJ-Vg-Bh6"/>
-        <segue reference="DG6-i7-zNC"/>
         <segue reference="zyl-Bd-lJ4"/>
+        <segue reference="sqq-oh-NbO"/>
+        <segue reference="lHh-OI-VXa"/>
+        <segue reference="fGJ-Vg-Bh6"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="DG6-i7-zNC"/>
         <segue reference="XFF-ob-f75"/>
     </inferredMetricsTieBreakers>
 </document>

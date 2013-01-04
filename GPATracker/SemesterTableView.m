@@ -8,7 +8,6 @@
 
 #import "SemesterTableView.h"
 #import "DataCollection.h"
-//#import "LoginView.h"
 #import "SchoolListTableView.h"
 #import "CourseTableView.h"
 #import "SemesterEditTableView.h"
@@ -206,7 +205,7 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete && indexPath.section == 1)
+    if (editingStyle == UITableViewCellEditingStyleDelete) // && indexPath.section == 1)
     {
         // Delete the row from the data source
         SemesterDetails *semesterToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -231,7 +230,7 @@
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    return NO; //YES;
 }
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
@@ -269,7 +268,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
-    [self performSegueWithIdentifier: @"segueCourseList" sender: self];
+
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isEditing] == YES)
+    {
+        [self performSegueWithIdentifier: @"segueEditSemester" sender: self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier: @"segueCourseList" sender: self];
+    }
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
