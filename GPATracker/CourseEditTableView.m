@@ -483,10 +483,22 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
                 self.courseDetails.courseCode   = courseCodeField.text;
                 self.courseDetails.courseName   = courseNameField.text;
                 self.courseDetails.units        = s_units;
-                //self.courseDetails.desiredGrade = courseDesiredGradeField.text;
-                //self.courseDetails.actualGrade  = courseActualGradeField.text;
-                self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
-                self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
+                if (courseDesiredGradeField.text == nil || courseDesiredGradeField.text == nil)
+                {
+                    self.courseDetails.desiredGradeGPA = nil;
+                }
+                else
+                {
+                    self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
+                }
+                if (courseActualGradeField.text == nil || courseActualGradeField.text == nil)
+                {
+                    self.courseDetails.actualGradeGPA = nil;
+                }
+                else
+                {
+                    self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
+                }
                 self.courseDetails.isPassFail   = isPassFail;
                 self.courseDetails.includeInGPA = includeInGPA;
                 self.courseDetails.courseDesc   = courseDescriptionField.text;
@@ -511,10 +523,22 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         self.courseDetails.courseCode   = courseCodeField.text;
         self.courseDetails.courseName   = courseNameField.text;
         self.courseDetails.units        = s_units;
-        //self.courseDetails.desiredGrade = courseDesiredGradeField.text;
-        //self.courseDetails.actualGrade  = courseActualGradeField.text;
-        self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
-        self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
+        if (courseDesiredGradeField.text == nil || courseDesiredGradeField.text == nil)
+        {
+            self.courseDetails.desiredGradeGPA = nil;
+        }
+        else
+        {
+            self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
+        }
+        if (courseActualGradeField.text == nil || courseActualGradeField.text == nil)
+        {
+            self.courseDetails.actualGradeGPA = nil;
+        }
+        else
+        {
+            self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
+        }
         self.courseDetails.isPassFail   = isPassFail;
         self.courseDetails.includeInGPA = includeInGPA;
         self.courseDetails.courseDesc   = courseDescriptionField.text;

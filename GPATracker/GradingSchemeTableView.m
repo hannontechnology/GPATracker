@@ -45,7 +45,7 @@
     request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.schoolInfo];
     NSLog(@"filtering data based on school = %@", self.schoolInfo);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"gradeCache"];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,17 +121,17 @@
         NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
         GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
         GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
-        
+        NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
+
         selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
     }
-    
+
     NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
 
     if (self.gradingInfo == nil)
     {
         NSLog(@"Error: Could not connect to database.");
     }
-    
     if ([results count] != 0)
     {
         [self.managedObjectContext save:&error];

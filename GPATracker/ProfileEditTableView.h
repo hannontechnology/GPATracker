@@ -30,5 +30,6 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 @property (strong, nonatomic) NSString *setEditStatus;
+@property (strong, nonatomic) NSString *setCancel;
 
 @end
