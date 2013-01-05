@@ -213,9 +213,9 @@
 	}
     else if ([segue.identifier isEqualToString:@"segueLoginCreateSchool"])
     {
-        //        UINavigationController *navCon = [segue destinationViewController];
-        //        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
-        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        UINavigationController *navCon = [segue destinationViewController];
+        SchoolEditTableView *SchoolEditTableView = [navCon.viewControllers objectAtIndex:0];
+        //SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
         
         SchoolEditTableView.userInfo = self.userInfo;
         SchoolEditTableView.dataCollection = self.dataCollection;

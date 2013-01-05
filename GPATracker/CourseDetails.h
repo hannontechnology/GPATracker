@@ -2,7 +2,7 @@
 //  CourseDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-08-22.
+//  Created by Terry Hannon on 13-01-04.
 //
 //
 
@@ -20,8 +20,8 @@
 @property (nonatomic, retain) NSNumber * includeInGPA;
 @property (nonatomic, retain) NSNumber * isPassFail;
 @property (nonatomic, retain) NSNumber * units;
-@property (nonatomic, retain) SemesterDetails *semesterDetails;
 @property (nonatomic, retain) GradingScheme *actualGradeGPA;
 @property (nonatomic, retain) GradingScheme *desiredGradeGPA;
+@property (nonatomic, retain) SemesterDetails *semesterDetails;
 
 @end

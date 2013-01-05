@@ -2,7 +2,7 @@
 //  SemesterDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 12-08-22.
+//  Created by Terry Hannon on 13-01-04.
 //
 //
 

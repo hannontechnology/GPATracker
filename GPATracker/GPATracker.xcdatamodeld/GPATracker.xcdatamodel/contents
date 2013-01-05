@@ -8,8 +8,8 @@
         <attribute name="includeInGPA" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="isPassFail" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="units" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="actualGradeGPA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="actualGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
-        <relationship name="desiredGradeGPA" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="desiredGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
+        <relationship name="actualGradeGPA" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="actualGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
+        <relationship name="desiredGradeGPA" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="desiredGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="semesterDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SemesterDetails" inverseName="courseDetails" inverseEntity="SemesterDetails" syncable="YES"/>
     </entity>
     <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">

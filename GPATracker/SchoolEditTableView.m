@@ -445,7 +445,7 @@
         GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
         GradingSchemeTableView.userInfo = self.userInfo;
         GradingSchemeTableView.schoolInfo = self.schoolInfo;
-        GradingSchemeTableView.gradingInfo =  [self.schoolInfo.gradingScheme.allObjects objectAtIndex:0];
+        GradingSchemeTableView.gradingInfo =  self.schoolInfo.gradingScheme;
         GradingSchemeTableView.dataCollection = self.dataCollection;
         GradingSchemeTableView.managedObjectContext = self.managedObjectContext;
         
