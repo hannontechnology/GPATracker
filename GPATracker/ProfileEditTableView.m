@@ -11,6 +11,7 @@
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "LoginView.h"
+#import "SchoolEditTableView.h"
 
 @interface ProfileEditTableView ()
 
@@ -29,10 +30,11 @@
 @synthesize passwordField;
 @synthesize autoLoginField;
 
+@synthesize userInfo = _userInfo;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
-@synthesize userInfo = _userInfo;
+@synthesize setCancel = _setCancel;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -46,6 +48,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.setCancel = @"N";
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -161,7 +164,17 @@
                 {
                     [self.userInfo removeAutoLogin:self.userInfo context:self.managedObjectContext];
                 }
-                [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                
+                NSArray *schooList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+                if ([schooList count] == 0)
+                {
+                    //[self performSegueWithIdentifier: @"segueProfileCreateSchool" sender: self];
+                    [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
+                }
+                else
+                {
+                    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                }
             }
             else 
             {
@@ -187,7 +200,17 @@
             {
                 [self.userInfo removeAutoLogin:self.userInfo context:self.managedObjectContext];
             }
-            [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+            
+            NSArray *schooList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+            if ([schooList count] == 0)
+            {
+                //[self performSegueWithIdentifier: @"segueProfileCreateSchool" sender: self];
+                [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
+            }
+            else
+            {
+                [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+            }
         }
         else 
         {
@@ -208,6 +231,7 @@
     }
     else
     {
+        self.setCancel = @"Y";
         [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
     }
 }
@@ -231,10 +255,19 @@
 	{
         LoginView *LoginView = [segue destinationViewController];
         
-        LoginView.setLogoutStatus = @"Logout";
+        if (self.setCancel == @"Y")
+            LoginView.setLogoutStatus = @"Logout";
         LoginView.dataCollection = self.dataCollection;
         LoginView.managedObjectContext = self.managedObjectContext;
 	}
+    else if ([segue.identifier isEqualToString:@"segueLoginCreateSchool"])
+    {
+        SchoolEditTableView *SchoolEditTableView = [segue destinationViewController];
+        
+        SchoolEditTableView.userInfo = self.userInfo;
+        SchoolEditTableView.dataCollection = self.dataCollection;
+        SchoolEditTableView.managedObjectContext = self.managedObjectContext;
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

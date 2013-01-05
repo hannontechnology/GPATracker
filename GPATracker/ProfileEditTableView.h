@@ -25,5 +25,6 @@
 @property (weak, nonatomic) IBOutlet UISwitch *autoLoginField;
 
 @property (strong, nonatomic) NSString *setEditStatus;
+@property (strong, nonatomic) NSString *setCancel;
 
 @end

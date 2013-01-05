@@ -87,6 +87,7 @@
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
+    [nf setZeroSymbol:@"0.00"];
     NSString *ns  = [nf stringFromNumber:gPA];
 
     self.semesterCourseCount.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];

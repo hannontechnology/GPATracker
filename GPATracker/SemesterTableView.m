@@ -149,6 +149,7 @@
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
+    [nf setZeroSymbol:@"0.00"];
     NSString *ns  = [nf stringFromNumber:gPA];
     
     cell.cellLabel1.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject semesterName], [selectedObject semesterYear]];
