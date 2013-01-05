@@ -322,6 +322,89 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    courseCodeField.inputAccessoryView = keyboardToolbar;
+    courseNameField.inputAccessoryView = keyboardToolbar;
+    courseUnitsField.inputAccessoryView = keyboardToolbar;
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) doneKey:(id)sender
+{
+    if ([courseCodeField isFirstResponder])
+        [courseCodeField resignFirstResponder];
+    else if ([courseNameField isFirstResponder])
+        [courseNameField resignFirstResponder];
+    else if ([courseUnitsField isFirstResponder])
+        [courseUnitsField resignFirstResponder];
+}
+
+- (void) prevField:(id)sender
+{
+    NSLog(@"Previous Field");
+    if ([courseCodeField isFirstResponder])
+    {
+        [courseCodeField resignFirstResponder];
+        [courseUnitsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseUnitsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseNameField isFirstResponder])
+    {
+        [courseNameField resignFirstResponder];
+        [courseCodeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseCodeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseUnitsField isFirstResponder])
+    {
+        [courseUnitsField resignFirstResponder];
+        [courseNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
+- (void) nextField:(id)sender
+{
+    NSLog(@"Next Field");
+    if ([courseCodeField isFirstResponder])
+    {
+        [courseCodeField resignFirstResponder];
+        [courseNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseNameField isFirstResponder])
+    {
+        [courseNameField resignFirstResponder];
+        [courseUnitsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseUnitsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseUnitsField isFirstResponder])
+    {
+        [courseUnitsField resignFirstResponder];
+        [courseCodeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseCodeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 - (void)viewDidUnload

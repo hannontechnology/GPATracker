@@ -14,6 +14,9 @@
 @class SemesterDetails;
 
 @interface SemesterEditTableView : UITableViewController
+{
+    IBOutlet UIToolbar *keyboardToolbar;
+}
 @property (weak, nonatomic) IBOutlet UITextField *semesterNameField;
 @property (weak, nonatomic) IBOutlet UITextField *semesterYearField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
@@ -25,6 +28,8 @@
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) User *userInfo;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 - (IBAction)showSemesterNamePicker:(id)sender;
 - (IBAction)showSemesterYearPicker:(id)sender;

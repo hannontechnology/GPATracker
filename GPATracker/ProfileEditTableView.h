@@ -12,6 +12,9 @@
 @class DataCollection;
 
 @interface ProfileEditTableView : UITableViewController
+{
+    IBOutlet UIToolbar *keyboardToolbar;
+}
 @property (strong, nonatomic) User *userInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -23,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *userNameField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
 @property (weak, nonatomic) IBOutlet UISwitch *autoLoginField;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 @property (strong, nonatomic) NSString *setEditStatus;
 

@@ -52,6 +52,138 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    
+    firstNameField.inputAccessoryView = keyboardToolbar;
+    lastNameField.inputAccessoryView = keyboardToolbar;
+    emailField.inputAccessoryView = keyboardToolbar;
+    userNameField.inputAccessoryView = keyboardToolbar;
+    passwordField.inputAccessoryView = keyboardToolbar;
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) doneKey:(id)sender
+{
+    if ([firstNameField isFirstResponder])
+        [firstNameField resignFirstResponder];
+    else if ([lastNameField isFirstResponder])
+        [lastNameField resignFirstResponder];
+    else if ([emailField isFirstResponder])
+        [emailField resignFirstResponder];
+    else if ([userNameField isFirstResponder])
+        [userNameField resignFirstResponder];
+    else if ([passwordField isFirstResponder])
+        [passwordField resignFirstResponder];
+}
+
+- (void) prevField:(id)sender
+{
+    NSLog(@"Previous Field");
+    if ([userNameField isFirstResponder] && self.setEditStatus != @"Edit")
+    {
+        [userNameField resignFirstResponder];
+        [emailField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[emailField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([passwordField isFirstResponder] && self.setEditStatus != @"Edit")
+    {
+        [passwordField resignFirstResponder];
+        [userNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[userNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([passwordField isFirstResponder] && self.setEditStatus == @"Edit")
+    {
+        [passwordField resignFirstResponder];
+        [emailField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[emailField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([firstNameField isFirstResponder])
+    {
+        [firstNameField resignFirstResponder];
+        [passwordField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[passwordField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([lastNameField isFirstResponder])
+    {
+        [lastNameField resignFirstResponder];
+        [firstNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[firstNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([emailField isFirstResponder])
+    {
+        [emailField resignFirstResponder];
+        [lastNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[lastNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
+- (void) nextField:(id)sender
+{
+    NSLog(@"Next Field");
+    if ([firstNameField isFirstResponder])
+    {
+        [firstNameField resignFirstResponder];
+        [lastNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[lastNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([lastNameField isFirstResponder])
+    {
+        [lastNameField resignFirstResponder];
+        [emailField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[emailField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([emailField isFirstResponder] && self.setEditStatus != @"Edit")
+    {
+        [emailField resignFirstResponder];
+        [userNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[userNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([emailField isFirstResponder] && self.setEditStatus == @"Edit")
+    {
+        [emailField resignFirstResponder];
+        [passwordField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[passwordField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([userNameField isFirstResponder] && self.setEditStatus != @"Edit")
+    {
+        [userNameField resignFirstResponder];
+        [passwordField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[passwordField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([passwordField isFirstResponder])
+    {
+        [passwordField resignFirstResponder];
+        [firstNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[firstNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{

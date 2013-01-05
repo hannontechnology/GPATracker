@@ -13,6 +13,9 @@
 @class DataCollection;
 
 @interface CourseEditTableView : UITableViewController
+{
+    IBOutlet UIToolbar *keyboardToolbar;
+}
 @property (weak, nonatomic) IBOutlet UITextField *courseCodeField;
 @property (weak, nonatomic) IBOutlet UITextField *courseNameField;
 @property (weak, nonatomic) IBOutlet UITextField *courseUnitsField;
@@ -29,6 +32,8 @@
 @property (strong, nonatomic) CourseDetails *courseDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 -(IBAction)desiredGradeChange:(id)sender;
 -(IBAction)actualGradeChange:(id)sender;
