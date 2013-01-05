@@ -9,7 +9,7 @@
 #import "SchoolEditTableView.h"
 #import "SchoolDetails.h"
 #import "DataCollection.h"
-#import "SchoolListTableView.h"
+#import "HomePageTabViewController.h"
 #import "User+Create.h"
 #import "SchoolDetails+Create.h"
 #import "GradingSchemeSelectTableView.h"
@@ -240,7 +240,16 @@
             if ([[self managedObjectContext] save:&error])
             {
                 NSLog(@"Save was successful");
-                [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                if (self.setEditStatus == @"Edit")
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                }
+                else
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                }
             }
             else
             {
@@ -275,7 +284,16 @@
             }
             else
             {
-                [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                if (self.setEditStatus == @"Edit")
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                }
+                else
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+                }
             }
         }
         else 
@@ -412,11 +430,13 @@
 {
     if (self.setEditStatus == @"Edit")
     {
-        [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
     }
     else
     {
-        [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
     }
 }
 
@@ -424,11 +444,13 @@
 {
 	if ([segue.identifier isEqualToString:@"segueSchool2HomePage"])
     {
-        SchoolListTableView *SchoolListTableView = [segue destinationViewController];
+        HomePageTabViewController *HomePageTabViewController = [segue destinationViewController];
         
-        SchoolListTableView.userInfo = self.userInfo;
-        SchoolListTableView.dataCollection = self.dataCollection;
-        SchoolListTableView.managedObjectContext = self.managedObjectContext;
+        HomePageTabViewController.displayType = @"Schools";
+        HomePageTabViewController.userInfo = self.userInfo;
+        HomePageTabViewController.dataCollection = self.dataCollection;
+        HomePageTabViewController.managedObjectContext = self.managedObjectContext;
+        [HomePageTabViewController viewDidLoad];
     }
     else if ([segue.identifier isEqualToString:@"segueSchool2SchemeSelect"])
     {
@@ -443,6 +465,7 @@
     else if ([segue.identifier isEqualToString:@"segue2GradingConfirmEdit"])
     {
         GradingSchemeTableView *GradingSchemeTableView = [segue destinationViewController];
+
         GradingSchemeTableView.userInfo = self.userInfo;
         GradingSchemeTableView.schoolInfo = self.schoolInfo;
         GradingSchemeTableView.gradingInfo =  self.schoolInfo.gradingScheme;

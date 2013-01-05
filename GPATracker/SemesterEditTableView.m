@@ -340,7 +340,16 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             
             if ([self.managedObjectContext save:&err])
             {
-                [self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+                if (self.setEditStatus == @"Edit")
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+                }
+                else
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+                }
             }
             else
             {
@@ -369,7 +378,16 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         
         if ([self.managedObjectContext save:&err])
         {
-            [self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+            if (self.setEditStatus == @"Edit")
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+                //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+            }
+            else
+            {
+                [self.navigationController popViewControllerAnimated:YES];
+                //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+            }
         }
         else
         {
@@ -384,7 +402,16 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Cancel:(id)sender
 {
-        [self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+    if (self.setEditStatus == @"Edit")
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+    }
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

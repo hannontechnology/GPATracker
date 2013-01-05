@@ -38,12 +38,12 @@
 - (void)setupFetchedResultsController
 {
     NSString *entityName = @"GradingScheme";
-    NSLog(@"Seeting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     //request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"gPA" ascending:NO]];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"letterGrade" ascending:YES]];
-    request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.gradingInfo.school];
-    NSLog(@"filtering data based on school = %@", self.gradingInfo.school);
+    request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.schoolInfo];
+    NSLog(@"filtering data based on school = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
@@ -114,7 +114,6 @@
 
 - (IBAction)Save:(id)sender
 {
-    
     NSError *error = nil;
     
     for (int i=0;i<[self.tableView numberOfRowsInSection:0];i++)

@@ -295,8 +295,8 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     }
     else
     {
-        NSLog(@"Load Profile Page");
-        headerText.title = @"Edit Profile";
+        NSLog(@"Load Course Information");
+        headerText.title = @"Edit Course";
         courseCodeField.text  = self.courseDetails.courseCode;
         courseNameField.text  = self.courseDetails.courseName;
         courseUnitsField.text  = self.courseDetails.units.stringValue;
@@ -396,7 +396,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         {
             if ([results count] > 0)
             {
-                NSLog(@"Save Profile Page");
+                NSLog(@"Save Course Information");
                 self.courseDetails.courseCode   = courseCodeField.text;
                 self.courseDetails.courseName   = courseNameField.text;
                 self.courseDetails.units        = s_units;
@@ -409,7 +409,8 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
                 self.courseDetails.courseDesc   = courseDescriptionField.text;
                 if ([self.managedObjectContext save:&error])
                 {
-                    [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
                 }
                 else
                 {
@@ -437,7 +438,8 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         NSLog(@"About to save data = %@", self.courseDetails);
         if ([self.managedObjectContext save:&error])
         {
-            [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+            [self.navigationController popViewControllerAnimated:YES];
+            //[self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
         }
         else
         {
@@ -452,7 +454,16 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Cancel:(id)sender
 {
-    [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+    if (self.setEditStatus == @"Edit")
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self performSegueWithIdentifier:@"segueCourse2CourseList" sender:self];
+    }
+    else
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self performSegueWithIdentifier:@"segueCourse2CourseList" sender:self];
+    }
 }
 
 - (IBAction)textFieldReturn:(id)sender

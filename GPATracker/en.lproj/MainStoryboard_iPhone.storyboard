@@ -413,7 +413,7 @@
             <objects>
                 <tableViewController id="1tm-RG-Rrr" customClass="GradingSchemeTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="y8P-BP-6Ss">
-                        <rect key="frame" x="0.0" y="64" width="320" height="372"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
@@ -1847,13 +1847,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="68m-8u-amb"/>
-        <segue reference="phW-HU-sP7"/>
         <segue reference="fGJ-Vg-Bh6"/>
+        <segue reference="68m-8u-amb"/>
         <segue reference="r2n-vz-Ixr"/>
-        <segue reference="sqq-oh-NbO"/>
-        <segue reference="lHh-OI-VXa"/>
+        <segue reference="phW-HU-sP7"/>
         <segue reference="DG6-i7-zNC"/>
+        <segue reference="mwc-fS-4uK"/>
+        <segue reference="sqq-oh-NbO"/>
         <segue reference="XFF-ob-f75"/>
         <segue reference="k7a-QP-sia"/>
     </inferredMetricsTieBreakers>
