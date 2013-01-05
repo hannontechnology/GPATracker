@@ -1499,7 +1499,6 @@
                         <outlet property="schoolYearsText" destination="DWF-i8-TAO" id="YGJ-io-UDs"/>
                         <segue destination="YTG-zN-KQM" kind="push" identifier="segueEditSemester" id="sqq-oh-NbO"/>
                         <segue destination="0oZ-Xb-naF" kind="push" identifier="segueCourseList" id="zyl-Bd-lJ4"/>
-                        <segue destination="01w-Dg-l3t" kind="push" identifier="segueSemesterList2SchoolList" id="KeZ-Q4-PJf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-VG-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1849,14 +1848,13 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="68m-8u-amb"/>
-        <segue reference="KeZ-Q4-PJf"/>
         <segue reference="phW-HU-sP7"/>
-        <segue reference="zyl-Bd-lJ4"/>
-        <segue reference="sqq-oh-NbO"/>
-        <segue reference="lHh-OI-VXa"/>
         <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="r2n-vz-Ixr"/>
+        <segue reference="sqq-oh-NbO"/>
+        <segue reference="lHh-OI-VXa"/>
         <segue reference="DG6-i7-zNC"/>
         <segue reference="XFF-ob-f75"/>
+        <segue reference="k7a-QP-sia"/>
     </inferredMetricsTieBreakers>
 </document>

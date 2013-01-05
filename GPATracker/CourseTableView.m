@@ -13,6 +13,7 @@
 #import "SemesterTableView.h"
 #import "SemesterDetails.h"
 #import "CourseListTableCell1.h"
+#import "SchoolDetails+Create.h"
 
 @interface CourseTableView ()
 
@@ -175,6 +176,7 @@
         SemesterTableView *SemesterTableView = [segue destinationViewController];
         
         SemesterTableView.schoolInfo = self.semesterInfo.schoolDetails;
+        SemesterTableView.userInfo = self.semesterInfo.schoolDetails.user;
         SemesterTableView.dataCollection = self.dataCollection;
         SemesterTableView.managedObjectContext = self.managedObjectContext;
     }

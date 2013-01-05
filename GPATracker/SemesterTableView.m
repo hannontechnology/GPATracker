@@ -184,14 +184,6 @@
         CourseTableView.dataCollection = self.dataCollection;
         CourseTableView.managedObjectContext = self.managedObjectContext;
     }
-    else if ([segue.identifier isEqualToString:@"segueSemesterList2SchoolList"])
-    {
-        SchoolListTableView *SchoolListTableView = [segue destinationViewController];
-        
-        SchoolListTableView.userInfo = self.schoolInfo.user;
-        SchoolListTableView.dataCollection = self.dataCollection;
-        SchoolListTableView.managedObjectContext = self.managedObjectContext;
-    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 

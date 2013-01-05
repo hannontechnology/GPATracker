@@ -434,6 +434,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         self.courseDetails.isPassFail   = isPassFail;
         self.courseDetails.includeInGPA = includeInGPA;
         self.courseDetails.courseDesc   = courseDescriptionField.text;
+        NSLog(@"About to save data = %@", self.courseDetails);
         if ([self.managedObjectContext save:&error])
         {
             [self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
@@ -463,7 +464,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 {
 	if ([segue.identifier isEqualToString:@"segueCourse2CourseList"])
 	{
-        [self.navigationController popViewControllerAnimated:YES];
+        //[self.navigationController popViewControllerAnimated:YES];
         CourseTableView *CourseTableView = [segue destinationViewController];
         CourseTableView.semesterInfo = self.semesterDetails;
         CourseTableView.dataCollection = self.dataCollection;
