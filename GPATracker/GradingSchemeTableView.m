@@ -120,33 +120,38 @@
     {
         NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
         GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+        if (cell == nil)
+        {
+            NSLog(@"Index Row: %d",[ip row]);
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0]-1 inSection:0];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            cell = [[self tableView] cellForRowAtIndexPath:ip];
+            if (cell == nil)
+            {
+                NSLog(@"Index Row: %d",[ip row]);
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+                cell = [[self tableView] cellForRowAtIndexPath:ip];                
+            }
+        }
         GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
         NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
 
         selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
     }
 
-    NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
+    //NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
 
     if (self.gradingInfo == nil)
     {
         NSLog(@"Error: Could not connect to database.");
     }
-    if ([results count] != 0)
-    {
+    //if ([results count] != 0)
+    //{
         [self.managedObjectContext save:&error];
-    }
-    
-    [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
-/*    if ([self.managedObjectContext save:&error])
-    {
-        [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
-    }
+    //}
 
-    else
-    {
-        NSLog(@"Saving Grading Scheme failed!");
-    }*/
+    [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
 }
     
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
