@@ -417,7 +417,10 @@
        //Control visiability of button later
     }
 
-
+    if (indexPath.section == 2 && self.setEditStatus == @"Edit")
+    {
+        NSLog(@"Delete School");
+    }
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
