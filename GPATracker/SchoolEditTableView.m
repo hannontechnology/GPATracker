@@ -183,6 +183,9 @@
         self.navigationItem.hidesBackButton = YES;
         self.gradingScheme.enabled = NO;
         self.gradingScheme.userInteractionEnabled = NO;
+
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:2];
+        [self.tableView cellForRowAtIndexPath:indexPath].hidden = YES;
         return;
     }
     else
@@ -420,6 +423,24 @@
     if (indexPath.section == 2 && self.setEditStatus == @"Edit")
     {
         NSLog(@"Delete School");
+        UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Delete School" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+        
+        [popUp showInView:self.view];
+    }
+}
+
+- (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex)
+    {
+        case 0:
+            NSLog(@"User Clicked the Yes button");
+            [self.managedObjectContext deleteObject:self.schoolInfo];
+            [self.managedObjectContext save:nil];
+            [self.navigationController popViewControllerAnimated:YES];
+            break;
+        default:
+            break;
     }
 }
 

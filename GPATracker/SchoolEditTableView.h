@@ -14,7 +14,7 @@
 @class GradingSchemeTableView;
 @class GradingScheme;
 
-@interface SchoolEditTableView : UITableViewController
+@interface SchoolEditTableView : UITableViewController <UIActionSheetDelegate>
 {
     IBOutlet UIToolbar *keyboardToolbar;
 }
