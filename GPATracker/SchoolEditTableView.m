@@ -175,8 +175,8 @@
     NSLog(@"viewWillAppear Event of SchoolEditTableView - EditStatus=%@",self.setEditStatus);
     if (self.setEditStatus != @"Edit")
     {
-        self.navigationItem.leftBarButtonItem = nil;
-        self.navigationItem.backBarButtonItem = nil;
+        //self.navigationItem.leftBarButtonItem = nil;
+        //self.navigationItem.backBarButtonItem = nil;
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
         //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
         self.navigationItem.leftBarButtonItem = cancelButton;
@@ -188,10 +188,10 @@
         [self.tableView cellForRowAtIndexPath:indexPath].hidden = YES;
         return;
     }
-    else
-    {
-        self.navigationItem.hidesBackButton = NO;
-    }
+    //else
+    //{
+    //    self.navigationItem.hidesBackButton = NO;
+    //}
     if (self.schoolInfo == nil)
     {
         NSLog(@"Database Error: Could not connect to Database");

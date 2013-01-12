@@ -275,8 +275,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     
 }
 
-
-
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
@@ -323,7 +321,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     }
     
     // Cancel Button
-    
     if(self.setEditStatus != @"Edit")
     {
         UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
