@@ -13,7 +13,7 @@
 @class SchoolDetails;
 @class SemesterDetails;
 
-@interface SemesterEditTableView : UITableViewController
+@interface SemesterEditTableView : UITableViewController <UIPickerViewDelegate,UITextFieldDelegate>
 {
     IBOutlet UIToolbar *keyboardToolbar;
 }

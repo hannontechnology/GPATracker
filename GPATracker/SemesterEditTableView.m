@@ -12,21 +12,7 @@
 #import "HomePageTabViewController.h"
 #import "YearPicker.h"
 
-@interface PickerDismissView2 : UIView
-@property (nonatomic, strong) id parentViewController;
-@end
-
-@implementation PickerDismissView2
-@synthesize parentViewController = _parentViewController;
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // Got a touch? Tell parentViewController to dismiss the picker.
-    [self.parentViewController performSelector:@selector(dismissPickerView)];
-}
-@end
-
 @interface SemesterEditTableView ()
-@property (strong, nonatomic) PickerDismissView2 *pickerDismissView;
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property CGRect pickerDismissViewShownFrame;
 @property CGRect pickerDismissViewHiddenFrame;
@@ -45,16 +31,13 @@
 @synthesize semesterYearField;
 @synthesize headerText;
 @synthesize setEditStatus;
-//@synthesize userName = _userName;
-//@synthesize schoolName = _schoolName;
-//@synthesize semesterName = _semesterName;
 @synthesize schoolDetails = _schoolDetails;
 @synthesize semesterDetails = _semesterDetails;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize userInfo = _userInfo;
 
-@synthesize pickerDismissView = _pickerDismissView;
+//@synthesize pickerDismissView = _pickerDismissView;
 @synthesize pickerView = _pickerView;
 @synthesize pickerDismissViewShownFrame = _pickerDismissViewShownFrame;
 @synthesize pickerDismissViewHiddenFrame = _pickerDismissViewHiddenFrame;
@@ -71,17 +54,20 @@ static const CGFloat kPickerDismissViewShownOpacity = 0.333;
 static const CGFloat kPickerDismissViewHiddenOpacity = 0.f;
 static const NSTimeInterval kPickerAnimationTime = 0.333;
 
-- (void)showPickerView
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    [self.pickerView reloadAllComponents];
-    // To show the picker, we animate the frame and alpha values for the pickerview and the picker dismiss view
-    [UIView animateWithDuration:kPickerAnimationTime animations:^{
-        self.pickerDismissView.frame = self.pickerDismissViewShownFrame;
-        self.pickerDismissView.alpha = kPickerDismissViewShownOpacity;
-        self.pickerView.frame = self.pickerViewShownFrame;
-    }];
-    // Choose default selection
     int selComp;
+
+    if (textField == self.semesterNameField)
+    {
+        self.setInputType = @"Name";
+    }
+    else if (textField == self.semesterYearField)
+    {
+        self.setInputType = @"Year";
+    }
+    
+    [self.pickerView reloadAllComponents];
     
     if (self.setInputType == @"Year")
     {
@@ -121,33 +107,8 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         }
     }
     [self.pickerView selectRow:selComp inComponent:0 animated:YES];
-    
-    if (keyboardToolbar == nil)
-    {
-        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
-        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
-        keyboardToolbar.alpha = 0.2;
-        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
-        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
-        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
-        
-        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
-    }
-    
-    //firstResponder.inputAccessoryView = keyboardToolbar;
-    semesterNameField.inputAccessoryView = keyboardToolbar;
-    semesterYearField.inputAccessoryView = keyboardToolbar;
-}
 
-- (void)dismissPickerView
-{
-    // Need animations to dismiss:
-    [UIView animateWithDuration:kPickerAnimationTime animations:^{
-        self.pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
-        self.pickerDismissView.alpha = kPickerDismissViewHiddenOpacity;
-        self.pickerView.frame = self.pickerViewHiddenFrame;
-    }];
+    return true;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -196,18 +157,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     }
 }
 
-- (IBAction)showSemesterNamePicker:(id)sender
-{
-    self.setInputType = @"Name";
-    [self showPickerView];
-}
-
-- (IBAction)showSemesterYearPicker:(id)sender
-{
-    self.setInputType = @"Year";
-    [self showPickerView];
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -221,6 +170,26 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 {
     [super viewDidLoad];
 
+    self.semesterNameField.delegate = self;
+    self.semesterYearField.delegate = self;    
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    
+    semesterNameField.inputView = self.pickerView;
+    semesterNameField.inputAccessoryView = keyboardToolbar;
+    semesterYearField.inputView = self.pickerView;
+    semesterYearField.inputAccessoryView = keyboardToolbar;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -300,25 +269,10 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     
     // Set up the initial state of the picker.
     self.pickerView = [[UIPickerView alloc] init];
-    self.pickerView.frame = self.pickerViewHiddenFrame;
+    self.pickerView.frame = self.pickerViewShownFrame;
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.showsSelectionIndicator = YES;
-    
-    // Add it as a subview of our view.
-    [self.navigationController.view insertSubview:self.pickerView aboveSubview:self.navigationController.navigationBar];
-    
-    if (!self.pickerDismissView) {
-        // Set up the initial state of the picker dismiss view.
-        self.pickerDismissView = [[PickerDismissView2 alloc] init];
-        self.pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
-        self.pickerDismissView.parentViewController = self;
-        self.pickerDismissView.backgroundColor = [UIColor blackColor];
-        self.pickerDismissView.alpha = kPickerDismissViewHiddenOpacity;
-        
-        // We are inserting it as a subview of the navigation controller's view. We do this so that we can make it appear OVER the navigation bar.
-        [self.navigationController.view insertSubview:self.pickerDismissView aboveSubview:self.navigationController.navigationBar];
-    }
     
     // Cancel Button
     if(self.setEditStatus != @"Edit")
@@ -344,6 +298,24 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         
         NSLog(@"Semester Name: %@ Year: %@ Code: %@", self.semesterDetails.semesterName, self.semesterDetails.semesterYear, self.semesterDetails.semesterCode);
     }
+    
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    
+    semesterNameField.inputView = self.pickerView;
+    semesterNameField.inputAccessoryView = keyboardToolbar;
+    semesterYearField.inputView = self.pickerView;
+    semesterYearField.inputAccessoryView = keyboardToolbar;
 }
 
 - (void)viewDidUnload
@@ -354,7 +326,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 //    [self setSemesterCodeField:nil];
     [self setHeaderText:nil];
     [self setPickerView:nil];
-    [self setPickerDismissView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
