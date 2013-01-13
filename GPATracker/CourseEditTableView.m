@@ -63,10 +63,7 @@
 @synthesize courseDetails = _courseDetails;
 @synthesize setGradeType = _setGradeType;
 
-@synthesize pickerDismissView = _pickerDismissView;
 @synthesize pickerView = _pickerView;
-@synthesize pickerDismissViewShownFrame = _pickerDismissViewShownFrame;
-@synthesize pickerDismissViewHiddenFrame = _pickerDismissViewHiddenFrame;
 @synthesize pickerViewShownFrame = _pickerViewShownFrame;
 @synthesize pickerViewHiddenFrame = _pickerViewHiddenFrame;
 
@@ -79,78 +76,6 @@ static const CGFloat kPickerDefaultHeight = 216.f;
 static const CGFloat kPickerDismissViewShownOpacity = 0.333;
 static const CGFloat kPickerDismissViewHiddenOpacity = 0.f;
 static const NSTimeInterval kPickerAnimationTime = 0.333;
-
-- (void)showPickerView
-{
-    // To show the picker, we animate the frame and alpha values for the pickerview and the picker dismiss view.
-    [UIView animateWithDuration:kPickerAnimationTime animations:^{
-        self.pickerDismissView.frame = self.pickerDismissViewShownFrame;
-        self.pickerDismissView.alpha = kPickerDismissViewShownOpacity;
-        self.pickerView.frame = self.pickerViewShownFrame;
-    }];
-    
-    int selComp0;
-    int selComp1;
-    
-    if (self.setGradeType == @"Desired")
-    {
-        NSString *gradeValue;
-        NSString *modValue;
-        if (courseDesiredGradeField.text.length > 0)
-        {
-            gradeValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(0, 1)];
-            selComp0 = [self.gradeList indexOfObject:gradeValue];
-        }
-        else
-        {
-            selComp0 = 0;
-        }
-        if (courseDesiredGradeField.text.length > 1)
-        {
-            modValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(1, 1)];
-            selComp1 = [self.modList indexOfObject:modValue];
-        }
-        else
-        {
-            selComp1 = 0;
-        }
-    }
-    else if (self.setGradeType == @"Actual")
-    {
-        NSString *gradeValue;
-        NSString *modValue;
-        if (courseActualGradeField.text.length > 0)
-        {
-            gradeValue = [courseActualGradeField.text substringWithRange:NSMakeRange(0, 1)];
-            selComp0 = [self.gradeList indexOfObject:gradeValue];
-        }
-        else
-        {
-            selComp0 = 0;
-        }
-        if (courseActualGradeField.text.length > 1)
-        {
-            modValue = [courseActualGradeField.text substringWithRange:NSMakeRange(1, 1)];
-            selComp1 = [self.modList indexOfObject:modValue];
-        }
-        else
-        {
-            selComp1 = 0;
-        }
-    }
-    [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
-    [self.pickerView selectRow:selComp1 inComponent:1 animated:YES];
-}
-
-- (void)dismissPickerView
-{
-    // Ditto to dismiss.
-    [UIView animateWithDuration:kPickerAnimationTime animations:^{
-        self.pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
-        self.pickerDismissView.alpha = kPickerDismissViewHiddenOpacity;
-        self.pickerView.frame = self.pickerViewHiddenFrame;
-    }];
-}
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -200,30 +125,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     }
 }
 
--(IBAction)showDesiredGradePicker:(id)sender
-{
-    self.setGradeType = @"Desired";
-    [self showPickerView];
-}
-
--(IBAction)showActualGradePicker:(id)sender
-{
-    self.setGradeType = @"Actual";
-    [self showPickerView];
-}
-
--(IBAction)desiredGradeChange:(id)sender
-{
-    NSString *desiredGrade;
-    courseDesiredGradeField.text = desiredGrade;
-}
-
--(IBAction)actualGradeChange:(id)sender
-{
-    NSString *actualGrade;
-    courseActualGradeField.text = actualGrade;
-}
-
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -263,21 +164,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.showsSelectionIndicator = YES;
-    
-    // Add it as a subview of our view.
-    [self.navigationController.view insertSubview:self.pickerView aboveSubview:self.navigationController.navigationBar];
-
-    if (!self.pickerDismissView) {
-        // Set up the initial state of the picker dismiss view.
-        self.pickerDismissView = [[PickerDismissView alloc] init];
-        self.pickerDismissView.frame = self.pickerDismissViewHiddenFrame;
-        self.pickerDismissView.parentViewController = self;
-        self.pickerDismissView.backgroundColor = [UIColor blackColor];
-        self.pickerDismissView.alpha = kPickerDismissViewHiddenOpacity;
-        
-        // We are inserting it as a subview of the navigation controller's view. We do this so that we can make it appear OVER the navigation bar.
-        [self.navigationController.view insertSubview:self.pickerDismissView aboveSubview:self.navigationController.navigationBar];
-    }
 
     //cancelButton.
     if (self.setEditStatus != @"Edit")
@@ -311,6 +197,27 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             courseIncludeInGPAField.on = YES;
         }
     }
+    
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+
+    courseCodeField.inputAccessoryView = keyboardToolbar;
+    courseNameField.inputAccessoryView = keyboardToolbar;
+    courseUnitsField.inputAccessoryView = keyboardToolbar;
+    courseDesiredGradeField.inputView = self.pickerView;
+    courseDesiredGradeField.inputAccessoryView = keyboardToolbar;
+    courseActualGradeField.inputView = self.pickerView;
+    courseActualGradeField.inputAccessoryView = keyboardToolbar;
 }
 
 - (void)viewDidLoad
@@ -361,8 +268,8 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     if ([courseCodeField isFirstResponder])
     {
         [courseCodeField resignFirstResponder];
-        [courseUnitsField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[courseUnitsField superview] superview];
+        [courseActualGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseActualGradeField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
     else if ([courseNameField isFirstResponder])
@@ -377,6 +284,20 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         [courseUnitsField resignFirstResponder];
         [courseNameField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[courseNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseDesiredGradeField isFirstResponder])
+    {
+        [courseDesiredGradeField resignFirstResponder];
+        [courseUnitsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseUnitsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseActualGradeField isFirstResponder])
+    {
+        [courseActualGradeField resignFirstResponder];
+        [courseDesiredGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseDesiredGradeField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
@@ -401,6 +322,20 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     else if ([courseUnitsField isFirstResponder])
     {
         [courseUnitsField resignFirstResponder];
+        [courseDesiredGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseDesiredGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseDesiredGradeField isFirstResponder])
+    {
+        [courseDesiredGradeField resignFirstResponder];
+        [courseActualGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[courseActualGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([courseActualGradeField isFirstResponder])
+    {
+        [courseActualGradeField resignFirstResponder];
         [courseCodeField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[courseCodeField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];

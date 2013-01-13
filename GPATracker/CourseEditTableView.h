@@ -35,9 +35,4 @@
 
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
--(IBAction)desiredGradeChange:(id)sender;
--(IBAction)actualGradeChange:(id)sender;
--(IBAction)showDesiredGradePicker:(id)sender;
--(IBAction)showActualGradePicker:(id)sender;
-
 @end
