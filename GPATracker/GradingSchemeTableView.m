@@ -88,22 +88,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    /*//cancelButton.
-    
-    NSLog(@"viewWillAppear Event of GradingSchemeTableView");
-    
-    if (self.gradingInfo == nil)
-    {
-        NSLog(@"Database Error: Could not connect to Database");
-    }
-    else
-    {
-        NSLog(@"Load Grading Scheme Page");
-        gPAField.text = self.gradingInfo.gPA.stringValue;
-        letterGradeField.text = self.gradingInfo.letterGrade;
-    }
-    */
     [self setupFetchedResultsController];
 }
 

@@ -79,17 +79,6 @@
 {
     [super viewDidLoad];
 
-    /*
-    //Custom Back Button
-    UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape!
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"School List" forState:UIControlStateNormal];
-    // create button item -- possible because UIButton subclasses UIView!
-    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    // add to toolbar, or to a navbar (you should only have one of these!)
-    self.navigationItem.leftBarButtonItem = backItem;
-    */
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  

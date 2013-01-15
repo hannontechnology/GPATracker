@@ -100,23 +100,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    /*
-    //Custom Back Button
-    UIButton* backButton = [UIButton buttonWithType:101]; // left-pointing shape!
-    [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setTitle:@"Semester List" forState:UIControlStateNormal];
-    // create button item -- possible because UIButton subclasses UIView!
-    UIBarButtonItem* backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    // add to toolbar, or to a navbar (you should only have one of these!)
-    self.navigationItem.leftBarButtonItem = backItem;
-    */
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
