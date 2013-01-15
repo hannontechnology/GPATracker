@@ -2,8 +2,8 @@
 //  HTECHViewController.m
 //  GPATracker
 //
-//  Created by terryah on 12-03-17.
-//  Copyright (c) 2012 Hannon Technology. All rights reserved.
+//  Created by Terry Hannon on 12-03-17.
+//  Copyright (c) 2012 Hannon Technology Inc. All rights reserved.
 //
 
 #import "LoginView.h"

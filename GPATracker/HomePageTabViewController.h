@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by Terry Hannon on 12-09-10.
-//
+//  Copyright (c) 2012 Hannon Technology Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

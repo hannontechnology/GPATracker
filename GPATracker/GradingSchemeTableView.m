@@ -3,7 +3,7 @@
 //  GPATracker
 //
 //  Created by David Stevens on 12-07-16.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012 Hannon Technology Inc. All rights reserved.
 //
 
 #import "GradingSchemeTableView.h"

@@ -2,8 +2,8 @@
 //  ProfileEditTableView.h
 //  GPATracker
 //
-//  Created by terryah on 12-07-11.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Terry Hannon on 12-07-11.
+//  Copyright (c) 2012 Hannon Technology Inc. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
