@@ -164,14 +164,35 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.showsSelectionIndicator = YES;
+    
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    
+    courseCodeField.inputAccessoryView = keyboardToolbar;
+    courseNameField.inputAccessoryView = keyboardToolbar;
+    courseUnitsField.inputAccessoryView = keyboardToolbar;
+    courseDesiredGradeField.inputView = self.pickerView;
+    courseDesiredGradeField.inputAccessoryView = keyboardToolbar;
+    courseActualGradeField.inputView = self.pickerView;
+    courseActualGradeField.inputAccessoryView = keyboardToolbar;
 
     //cancelButton.
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    self.navigationItem.hidesBackButton = YES;
+
     if (self.setEditStatus != @"Edit")
     {
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
-        //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
-        self.navigationItem.leftBarButtonItem = cancelButton;
-        self.navigationItem.hidesBackButton = YES;
         return;
     }
 
@@ -197,27 +218,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             courseIncludeInGPAField.on = YES;
         }
     }
-    
-    if (keyboardToolbar == nil)
-    {
-        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
-        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
-        keyboardToolbar.alpha = 0.2;
-        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
-        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
-        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
-        
-        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
-    }
-
-    courseCodeField.inputAccessoryView = keyboardToolbar;
-    courseNameField.inputAccessoryView = keyboardToolbar;
-    courseUnitsField.inputAccessoryView = keyboardToolbar;
-    courseDesiredGradeField.inputView = self.pickerView;
-    courseDesiredGradeField.inputAccessoryView = keyboardToolbar;
-    courseActualGradeField.inputView = self.pickerView;
-    courseActualGradeField.inputAccessoryView = keyboardToolbar;
 }
 
 - (void)viewDidLoad

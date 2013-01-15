@@ -189,7 +189,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     semesterNameField.inputAccessoryView = keyboardToolbar;
     semesterYearField.inputView = self.pickerView;
     semesterYearField.inputAccessoryView = keyboardToolbar;
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -244,9 +244,18 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
+
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    //self.navigationItem.hidesBackButton = YES;
+    [self.navigationItem setHidesBackButton:YES animated:NO];
+
     NSArray *yearList = [self.dataCollection retrieveYearPicker:self.managedObjectContext];
     self.semesterYearList = [[NSMutableArray alloc] init];
     for (YearPicker *item in yearList)
@@ -273,16 +282,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.showsSelectionIndicator = YES;
-    
-    // Cancel Button
-    if(self.setEditStatus != @"Edit")
-    {
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
-        
-        self.navigationItem.leftBarButtonItem = cancelButton;
-        self.navigationItem.hidesBackButton = YES;
-        return;
-    }
     
     if(self.semesterDetails == nil)
     {
