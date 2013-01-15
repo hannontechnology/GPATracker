@@ -454,7 +454,7 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A+" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="azy-2X-2fc">
                                             <rect key="frame" x="20" y="11" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
@@ -1838,13 +1838,13 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="r2n-vz-Ixr"/>
         <segue reference="68m-8u-amb"/>
-        <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="phW-HU-sP7"/>
+        <segue reference="r2n-vz-Ixr"/>
+        <segue reference="fGJ-Vg-Bh6"/>
         <segue reference="sqq-oh-NbO"/>
-        <segue reference="lHh-OI-VXa"/>
         <segue reference="DG6-i7-zNC"/>
+        <segue reference="mwc-fS-4uK"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="oru-Wj-xvh"/>
     </inferredMetricsTieBreakers>
