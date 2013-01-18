@@ -67,7 +67,7 @@
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     for (CourseDetails *item in self.semesterInfo.courseDetails)
     {
-        if (item.actualGradeGPA != nil)
+        if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1])
         {
             NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
             sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];

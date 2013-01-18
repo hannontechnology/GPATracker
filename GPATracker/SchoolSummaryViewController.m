@@ -8,6 +8,9 @@
 
 #import "SchoolSummaryViewController.h"
 #import "SchoolDetails+Create.h"
+#import "SemesterDetails+Create.h"
+#import "CourseDetails.h"
+#import "GradingScheme+Create.h"
 #import "LoginView.h"
 
 @interface SchoolSummaryViewController ()
@@ -67,10 +70,46 @@
     schoolCode.text = self.schoolInfo.schoolName;
     schoolName.text = self.schoolInfo.schoolDetails;
     schoolYears.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
-    cGPA.text = [NSString stringWithFormat:@"0.00"];
-    semesterCount.text = [NSString stringWithFormat:@"0"];
-    courseCount.text = [NSString stringWithFormat:@"0"];
-    creditHours.text = [NSString stringWithFormat:@"0"];
+
+    NSDecimalNumber *sumCourses = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumCredits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumSemesters = [self.schoolInfo valueForKeyPath:@"semesterDetails.@count"];
+    for (SemesterDetails *semester in self.schoolInfo.semesterDetails)
+    {
+        sumCredits = [sumCredits decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@sum.units"]];
+        sumCourses = [sumCourses decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@count"]];
+        for (CourseDetails *item in semester.courseDetails)
+        {
+            if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1])
+            {
+                NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+                sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
+                sumUnits = [sumUnits decimalNumberByAdding:units];
+            }
+        }
+    }
+    NSDecimalNumber *gPA;
+    if ([sumUnits longValue] == 0)
+    {
+        gPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    }
+    else
+    {
+        gPA = [sumGrades decimalNumberByDividingBy:sumUnits];
+    }
+    
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+    [nf setMinimumFractionDigits:2];
+    [nf setMaximumFractionDigits:2];
+    [nf setZeroSymbol:@"0.00"];
+    NSString *ns  = [nf stringFromNumber:gPA];
+    
+    semesterCount.text = [NSString stringWithFormat:@"%@",sumSemesters.stringValue];
+    courseCount.text = [NSString stringWithFormat:@"%@",sumCourses.stringValue];
+    creditHours.text = [NSString stringWithFormat:@"%@", sumCredits.stringValue];
+    cGPA.text = [NSString stringWithFormat:@"%@",ns];
 }
 
 @end

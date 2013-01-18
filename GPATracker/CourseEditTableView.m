@@ -213,9 +213,17 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         {
             coursePassFailField.on = YES;
         }
+        else
+        {
+            coursePassFailField.on = NO;
+        }
         if (self.courseDetails.includeInGPA == [NSNumber numberWithInt:1])
         {
             courseIncludeInGPAField.on = YES;
+        }
+        else
+        {
+            courseIncludeInGPAField.on = NO;
         }
     }
 }
