@@ -166,12 +166,12 @@
     if (self.displayType == @"Schools")
     {
         SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
-        [newViewController DisplayInfo];
+        //[newViewController DisplayInfo];
     }
     else if (self.displayType == @"Semesters")
     {
         SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
-        [newViewController DisplayInfo];
+        //[newViewController DisplayInfo];
     }
 }
 

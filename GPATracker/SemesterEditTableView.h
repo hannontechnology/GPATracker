@@ -31,7 +31,4 @@
 
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
-- (IBAction)showSemesterNamePicker:(id)sender;
-- (IBAction)showSemesterYearPicker:(id)sender;
-
 @end

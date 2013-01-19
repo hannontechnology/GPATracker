@@ -66,12 +66,8 @@
 -(void)DisplayInfo
 {
     NSLog(@"School Name: %@", self.schoolInfo.schoolName);
-    
-    schoolCode.text = self.schoolInfo.schoolName;
-    schoolName.text = self.schoolInfo.schoolDetails;
-    schoolYears.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
 
-    NSDecimalNumber *sumCourses = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    int *sumCourses = 0;
     NSDecimalNumber *sumCredits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
@@ -79,7 +75,7 @@
     for (SemesterDetails *semester in self.schoolInfo.semesterDetails)
     {
         sumCredits = [sumCredits decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@sum.units"]];
-        sumCourses = [sumCourses decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@count"]];
+        sumCourses += [semester.courseDetails count];
         for (CourseDetails *item in semester.courseDetails)
         {
             if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1])
@@ -90,6 +86,13 @@
             }
         }
     }
+    schoolCode.text = self.schoolInfo.schoolName;
+    schoolName.text = self.schoolInfo.schoolDetails;
+    schoolYears.text = [NSString stringWithFormat:@"%@ - %@", [self.schoolInfo schoolStartYear], [self.schoolInfo schoolEndYear]];
+    semesterCount.text = [NSString stringWithFormat:@"%@",[sumSemesters stringValue]];
+    courseCount.text = [NSString stringWithFormat:@"%d", sumCourses];
+    creditHours.text = [NSString stringWithFormat:@"%@", [sumCredits stringValue]];
+
     NSDecimalNumber *gPA;
     if ([sumUnits longValue] == 0)
     {
@@ -105,10 +108,6 @@
     [nf setMaximumFractionDigits:2];
     [nf setZeroSymbol:@"0.00"];
     NSString *ns  = [nf stringFromNumber:gPA];
-    
-    semesterCount.text = [NSString stringWithFormat:@"%@",sumSemesters.stringValue];
-    courseCount.text = [NSString stringWithFormat:@"%@",sumCourses.stringValue];
-    creditHours.text = [NSString stringWithFormat:@"%@", sumCredits.stringValue];
     cGPA.text = [NSString stringWithFormat:@"%@",ns];
 }
 

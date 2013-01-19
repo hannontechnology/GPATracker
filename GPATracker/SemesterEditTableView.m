@@ -14,8 +14,6 @@
 
 @interface SemesterEditTableView ()
 @property (strong, nonatomic) UIPickerView *pickerView;
-@property CGRect pickerDismissViewShownFrame;
-@property CGRect pickerDismissViewHiddenFrame;
 @property CGRect pickerViewShownFrame;
 @property CGRect pickerViewHiddenFrame;
 @property (strong, nonatomic) NSMutableArray *semesterNameList;
@@ -39,8 +37,6 @@
 
 //@synthesize pickerDismissView = _pickerDismissView;
 @synthesize pickerView = _pickerView;
-@synthesize pickerDismissViewShownFrame = _pickerDismissViewShownFrame;
-@synthesize pickerDismissViewHiddenFrame = _pickerDismissViewHiddenFrame;
 @synthesize pickerViewShownFrame = _pickerViewShownFrame;
 @synthesize pickerViewHiddenFrame = _pickerViewHiddenFrame;
 
@@ -50,8 +46,6 @@
 // Some Picker size values that will be handy later on.
 static const CGFloat kPickerDefaultWidth = 320.f;
 static const CGFloat kPickerDefaultHeight = 216.f;
-static const CGFloat kPickerDismissViewShownOpacity = 0.333;
-static const CGFloat kPickerDismissViewHiddenOpacity = 0.f;
 static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
@@ -272,9 +266,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     // Set pickerView's shown and hidden position frames.
     self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
     self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
-    // Set picker dismiss view's shown and hidden position frames.
-    self.pickerDismissViewShownFrame = CGRectMake(0.f, 0.f, kPickerDefaultWidth, self.navigationController.view.frame.size.height - kPickerDefaultHeight);
-    self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
     
     // Set up the initial state of the picker.
     self.pickerView = [[UIPickerView alloc] init];

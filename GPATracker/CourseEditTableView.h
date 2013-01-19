@@ -12,7 +12,7 @@
 @class CourseDetails;
 @class DataCollection;
 
-@interface CourseEditTableView : UITableViewController
+@interface CourseEditTableView : UITableViewController <UIPickerViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 {
     IBOutlet UIToolbar *keyboardToolbar;
 }

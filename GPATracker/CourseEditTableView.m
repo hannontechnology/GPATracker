@@ -15,25 +15,8 @@
 #import "LoginView.h"
 #import "CourseTableView.h"
 
-// PickerDismissView's only job is to partially occlude the rest of the view when the picker appears and to catch touches to dismiss the picker.
-@interface PickerDismissView : UIView
-@property (nonatomic, strong) id parentViewController;
-@end
-
-@implementation PickerDismissView
-@synthesize parentViewController = _parentViewController;
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // Got a touch? Tell parentViewController to dismiss the picker.
-    [self.parentViewController performSelector:@selector(dismissPickerView)];
-}
-@end
-
 @interface CourseEditTableView ()
-@property (strong, nonatomic) PickerDismissView *pickerDismissView;
 @property (strong, nonatomic) UIPickerView *pickerView;
-@property CGRect pickerDismissViewShownFrame;
-@property CGRect pickerDismissViewHiddenFrame;
 @property CGRect pickerViewShownFrame;
 @property CGRect pickerViewHiddenFrame;
 @property (strong, nonatomic) NSMutableArray *gradeList;
@@ -73,9 +56,73 @@
 // Some values that will be handy later on.
 static const CGFloat kPickerDefaultWidth = 320.f;
 static const CGFloat kPickerDefaultHeight = 216.f;
-static const CGFloat kPickerDismissViewShownOpacity = 0.333;
-static const CGFloat kPickerDismissViewHiddenOpacity = 0.f;
 static const NSTimeInterval kPickerAnimationTime = 0.333;
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    int selComp0;
+    int selComp1;
+
+    if (textField == self.courseDesiredGradeField)
+    {
+        self.setGradeType = @"Desired";
+    }
+    else if (textField == self.courseActualGradeField)
+    {
+        self.setGradeType = @"Actual";
+    }
+    
+    if (self.setGradeType == @"Desired")
+    {
+        NSString *gradeValue;
+        NSString *modValue;
+        if (courseDesiredGradeField.text.length > 0)
+        {
+            gradeValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(0, 1)];
+            selComp0 = [self.gradeList indexOfObject:gradeValue];
+        }
+        else
+        {
+            selComp0 = 0;
+        }
+        if (courseDesiredGradeField.text.length > 1)
+        {
+            modValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(1, 1)];
+            selComp1 = [self.modList indexOfObject:modValue];
+        }
+        else
+        {
+            selComp1 = 0;
+        }
+    }
+    else if (self.setGradeType == @"Actual")
+    {
+        NSString *gradeValue;
+        NSString *modValue;
+        if (courseActualGradeField.text.length > 0)
+        {
+            gradeValue = [courseActualGradeField.text substringWithRange:NSMakeRange(0, 1)];
+            selComp0 = [self.gradeList indexOfObject:gradeValue];
+        }
+        else
+        {
+            selComp0 = 0;
+        }
+        if (courseActualGradeField.text.length > 1)
+        {
+            modValue = [courseActualGradeField.text substringWithRange:NSMakeRange(1, 1)];
+            selComp1 = [self.modList indexOfObject:modValue];
+        }
+        else
+        {
+            selComp1 = 0;
+        }
+    }
+    [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
+    [self.pickerView selectRow:selComp1 inComponent:1 animated:YES];
+    
+    return true;
+}
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -154,13 +201,10 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     // Set pickerView's shown and hidden position frames.
     self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
     self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
-    // Set picker dismiss view's shown and hidden position frames.
-    self.pickerDismissViewShownFrame = CGRectMake(0.f, 0.f, kPickerDefaultWidth, self.navigationController.view.frame.size.height - kPickerDefaultHeight);
-    self.pickerDismissViewHiddenFrame = self.navigationController.view.frame;
     
     // Set up the initial state of the picker.
     self.pickerView = [[UIPickerView alloc] init];
-    self.pickerView.frame = self.pickerViewHiddenFrame;
+    self.pickerView.frame = self.pickerViewShownFrame;
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.showsSelectionIndicator = YES;
@@ -231,6 +275,9 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.courseActualGradeField.delegate = self;
+    self.courseDesiredGradeField.delegate = self;
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -268,6 +315,10 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         [courseNameField resignFirstResponder];
     else if ([courseUnitsField isFirstResponder])
         [courseUnitsField resignFirstResponder];
+    else if ([courseDesiredGradeField isFirstResponder])
+        [courseDesiredGradeField resignFirstResponder];
+    else if ([courseActualGradeField isFirstResponder])
+        [courseActualGradeField resignFirstResponder];
 }
 
 - (void) prevField:(id)sender
@@ -362,7 +413,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     [self setCourseDescriptionField:nil];
     [self setHeaderText:nil];
     [self setPickerView:nil];
-    [self setPickerDismissView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
