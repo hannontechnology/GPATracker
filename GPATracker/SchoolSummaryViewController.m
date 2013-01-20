@@ -67,7 +67,7 @@
 {
     NSLog(@"School Name: %@", self.schoolInfo.schoolName);
 
-    int *sumCourses = 0;
+    int sumCourses = 0;
     NSDecimalNumber *sumCredits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
@@ -75,9 +75,9 @@
     for (SemesterDetails *semester in self.schoolInfo.semesterDetails)
     {
         sumCredits = [sumCredits decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@sum.units"]];
-        sumCourses += [semester.courseDetails count];
         for (CourseDetails *item in semester.courseDetails)
         {
+            sumCourses ++;
             if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1])
             {
                 NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
