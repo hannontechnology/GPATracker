@@ -2,8 +2,8 @@
 //  GradingScheme.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-01-04.
-//  Copyright (c) 2012 Hannon Technology Inc. All rights reserved.
+//  Created by Terry Hannon on 13-01-22.
+//
 //
 
 #import "GradingScheme.h"
@@ -14,6 +14,8 @@
 @implementation GradingScheme
 
 @dynamic gPA;
+@dynamic includeInGPA;
+@dynamic isPassFail;
 @dynamic letterGrade;
 @dynamic actualGPAGrade;
 @dynamic desiredGPAGrade;

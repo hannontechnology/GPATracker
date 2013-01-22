@@ -10,6 +10,7 @@
 #import "CourseDetails.h"
 #import "GradingScheme+Create.h"
 #import "SemesterDetails+Create.h"
+#import "SchoolDetails+Create.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "LoginView.h"
@@ -61,7 +62,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     int selComp0;
-    int selComp1;
 
     if (textField == self.courseDesiredGradeField)
     {
@@ -71,97 +71,75 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     {
         self.setGradeType = @"Actual";
     }
-    
+    else
+    {
+        return true;
+    }
+    if (self.courseDetails.isPassFail == [NSNumber numberWithBool:YES])
+    {
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    else
+    {
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:0 context:self.managedObjectContext]];
+    }
+    NSLog(@"GradeList=%@",self.gradeList);
     if (self.setGradeType == @"Desired")
     {
-        NSString *gradeValue;
-        NSString *modValue;
-        if (courseDesiredGradeField.text.length > 0)
+        if (self.courseDesiredGradeField.text.length > 0)
         {
-            gradeValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(0, 1)];
+            NSString *gradeValue;
+            gradeValue = courseDesiredGradeField.text;
             selComp0 = [self.gradeList indexOfObject:gradeValue];
         }
         else
         {
             selComp0 = 0;
-        }
-        if (courseDesiredGradeField.text.length > 1)
-        {
-            modValue = [courseDesiredGradeField.text substringWithRange:NSMakeRange(1, 1)];
-            selComp1 = [self.modList indexOfObject:modValue];
-        }
-        else
-        {
-            selComp1 = 0;
         }
     }
     else if (self.setGradeType == @"Actual")
     {
-        NSString *gradeValue;
-        NSString *modValue;
-        if (courseActualGradeField.text.length > 0)
+        if (self.courseActualGradeField.text.length > 0)
         {
-            gradeValue = [courseActualGradeField.text substringWithRange:NSMakeRange(0, 1)];
+            NSString *gradeValue;
+            gradeValue = courseActualGradeField.text;
             selComp0 = [self.gradeList indexOfObject:gradeValue];
         }
         else
         {
             selComp0 = 0;
         }
-        if (courseActualGradeField.text.length > 1)
-        {
-            modValue = [courseActualGradeField.text substringWithRange:NSMakeRange(1, 1)];
-            selComp1 = [self.modList indexOfObject:modValue];
-        }
-        else
-        {
-            selComp1 = 0;
-        }
     }
-    [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
-    [self.pickerView selectRow:selComp1 inComponent:1 animated:YES];
-    
+    if ([self.gradeList count] > 0)
+        [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
+
     return true;
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    if (component == 0)
-    {
-        return [self.gradeList count];
-    }
-    else if (component == 1)
-    {
-        return [self.modList count];
-    }
-    
-    return 0;
+    return [self.gradeList count];
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if (component == 0)
-    {
-        return [self.gradeList objectAtIndex:row];
-    }
-    else if (component == 1)
-    {
-        return [self.modList objectAtIndex:row];
-    }
-    
-    return nil;
+    GradingScheme *tmpGrades = [self.gradeList objectAtIndex:row];
+    return tmpGrades.letterGrade;
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSString *selectedGrade;
     
-    selectedGrade = [NSString stringWithFormat:@"%@%@", [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]], [self.modList objectAtIndex:[pickerView selectedRowInComponent:1]]];
+    GradingScheme *tmpGrades = [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]];
+    selectedGrade = tmpGrades.letterGrade;
     if (self.setGradeType == @"Desired")
     {
         courseDesiredGradeField.text = selectedGrade;
@@ -184,19 +162,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    self.gradeList = [[NSMutableArray alloc] init];
-    [self.gradeList addObject:@""];
-    [self.gradeList addObject:@"A"];
-    [self.gradeList addObject:@"B"];
-    [self.gradeList addObject:@"C"];
-    [self.gradeList addObject:@"D"];
-    [self.gradeList addObject:@"E"];
-    [self.gradeList addObject:@"F"];
-
-    self.modList = [[NSMutableArray alloc] init];
-    [self.modList addObject:@""];
-    [self.modList addObject:@"+"];
-    [self.modList addObject:@"-"];
+    //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:self.courseDetails.semesterDetails.schoolDetails context:self.managedObjectContext]];
 
     // Set pickerView's shown and hidden position frames.
     self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
@@ -426,19 +392,19 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Accept:(id)sender
 {
-    NSNumber *includeInGPA = [NSNumber numberWithInt:0];
-    NSNumber *isPassFail = [NSNumber numberWithInt:0];
+    NSNumber *includeInGPA = [NSNumber numberWithBool:NO];
+    NSNumber *isPassFail = [NSNumber numberWithBool:NO];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterNoStyle];
     NSNumber *s_units;
     
     if (coursePassFailField.on)
     {
-        isPassFail = [NSNumber numberWithInt:1];
+        isPassFail = [NSNumber numberWithBool:YES];
     }
     if (courseIncludeInGPAField.on)
     {
-        includeInGPA = [NSNumber numberWithInt:1];
+        includeInGPA = [NSNumber numberWithBool:YES];
     }
     if ([courseNameField.text length] == 0)
     {

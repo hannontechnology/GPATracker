@@ -95,8 +95,23 @@ static const int yearMax = 2020;
     NSArray *results = [inContext executeFetchRequest:request error:&error];
     return results;
 }
+- (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool passFail:(int)isPassFail context:(NSManagedObjectContext *)inContext
+{
+    NSString *entityName = @"GradingScheme";
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    if (isPassFail == 1)
+        request.predicate = [NSPredicate predicateWithFormat:@"school = %@ AND isPassFail = 1",inputSchool];
+    else
+        request.predicate = [NSPredicate predicateWithFormat:@"school = %@ AND isPassFail = 0",inputSchool];
 
-//Code for handling grading scheme information
+    NSLog(@"filtering data based on school = %@ and isPassFail = %d",inputSchool, isPassFail);
+    NSError *error = nil;
+    NSArray *results = [inContext executeFetchRequest:request error:&error];
+    NSLog(@"GradeList=%@",results);
+    return results;
+}
 - (GradingScheme *)retrieveGradingScheme:(SchoolDetails *)inputSchool letterGrade:(NSString *)inLetterGrade context:(NSManagedObjectContext *)inContext
 {
     NSString *entityName = @"GradingScheme";

@@ -356,7 +356,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             NSNumber *s_year = [f numberFromString:semesterYearField.text];
             self.semesterDetails.semesterYear = s_year;
             
-            NSNumber *s_code = [semesterNameField.text isEqualToString:@"Spring"] ? [NSNumber numberWithInt:0] : [semesterNameField.text isEqualToString:@"Summer"] ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:2];
+            NSNumber *s_code = [semesterNameField.text isEqualToString:@"Spring"] ? [NSNumber numberWithBool:NO] : [semesterNameField.text isEqualToString:@"Summer"] ? [NSNumber numberWithBool:YES] : [NSNumber numberWithInt:2];
             self.semesterDetails.semesterCode = s_code;
             
             NSError *err = nil;
@@ -393,7 +393,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         [f setNumberStyle:NSNumberFormatterNoStyle];
         NSNumber *s_year = [f numberFromString:semesterYearField.text];
         self.semesterDetails.semesterYear = s_year;
-        NSNumber *s_code = [semesterNameField.text isEqualToString:@"Spring"] ? [NSNumber numberWithInt:0] : [semesterNameField.text isEqualToString:@"Summer"] ? [NSNumber numberWithInt:1] : [NSNumber numberWithInt:2];
+        NSNumber *s_code = [semesterNameField.text isEqualToString:@"Spring"] ? [NSNumber numberWithBool:NO] : [semesterNameField.text isEqualToString:@"Summer"] ? [NSNumber numberWithBool:YES] : [NSNumber numberWithInt:2];
         self.semesterDetails.semesterCode = s_code;
         self.semesterDetails.schoolDetails = self.schoolDetails;
         

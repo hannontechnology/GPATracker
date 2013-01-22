@@ -14,10 +14,12 @@
     </entity>
     <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">
         <attribute name="gPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="includeInGPA" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isPassFail" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="letterGrade" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actualGPAGrade" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="actualGradeGPA" inverseEntity="CourseDetails" syncable="YES"/>
         <relationship name="desiredGPAGrade" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="desiredGradeGPA" inverseEntity="CourseDetails" syncable="YES"/>
-        <relationship name="school" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="gradingScheme" inverseEntity="SchoolDetails" syncable="YES"/>
+        <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="gradingScheme" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <entity name="SchoolDetails" representedClassName="SchoolDetails" syncable="YES">
         <attribute name="schoolDetails" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,7 +51,7 @@
     </entity>
     <elements>
         <element name="CourseDetails" positionX="0" positionY="0" width="128" height="195"/>
-        <element name="GradingScheme" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="GradingScheme" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>
         <element name="User" positionX="0" positionY="0" width="128" height="150"/>

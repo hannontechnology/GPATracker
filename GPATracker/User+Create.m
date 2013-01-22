@@ -44,7 +44,7 @@
     else
     {
         NSLog(@"Save was successful");
-        if (newUser.autoLogon == [NSNumber numberWithInt:1])
+        if (newUser.autoLogon == [NSNumber numberWithBool:YES])
         {
             //[self.dataCollection removeAutoLogin];
             //[self.dataCollection setAutoLogin:userNameField.text];
@@ -66,14 +66,14 @@
     NSArray *results = [inContext executeFetchRequest:request error:&error];
     
     for (User *item in results) {
-        if (item.autoLogon == [NSNumber numberWithInt:1] && !(item.userName == user.userName))
+        if (item.autoLogon == [NSNumber numberWithBool:YES] && !(item.userName == user.userName))
         {
-            item.autoLogon = [NSNumber numberWithInt:0];
+            item.autoLogon = [NSNumber numberWithBool:NO];
             count++;
         }
         else if (item.userName == user.userName)
         {
-            item.autoLogon = [NSNumber numberWithInt:1];
+            item.autoLogon = [NSNumber numberWithBool:YES];
             count++;
         }
     }
@@ -90,7 +90,7 @@
 {
     NSError *error = nil;
 
-    user.autoLogon = [NSNumber numberWithInt:1];
+    user.autoLogon = [NSNumber numberWithBool:YES];
 
     if (![inContext save:&error])
     {
