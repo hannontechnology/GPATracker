@@ -27,6 +27,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *semesterGPA;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
--(IBAction)back;
 
 @end

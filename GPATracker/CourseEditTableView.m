@@ -59,6 +59,37 @@ static const CGFloat kPickerDefaultWidth = 320.f;
 static const CGFloat kPickerDefaultHeight = 216.f;
 static const NSTimeInterval kPickerAnimationTime = 0.333;
 
+-(IBAction)switchPassFail:(id)sender
+{
+    courseDesiredGradeField.text = @"";
+    courseActualGradeField.text  = @"";
+    if (coursePassFailField.on)
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    else
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:0 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    [self.pickerView reloadAllComponents];
+}
+
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     int selComp0;
@@ -74,16 +105,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     else
     {
         return true;
-    }
-    if (self.courseDetails.isPassFail == [NSNumber numberWithBool:YES])
-    {
-        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
-        self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
-    }
-    else
-    {
-        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
-        self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:0 context:self.managedObjectContext]];
     }
     NSLog(@"GradeList=%@",self.gradeList);
     if (self.setGradeType == @"Desired")
@@ -130,16 +151,14 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    GradingScheme *tmpGrades = [self.gradeList objectAtIndex:row];
-    return tmpGrades.letterGrade;
+    return [self.gradeList objectAtIndex:row];
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSString *selectedGrade;
     
-    GradingScheme *tmpGrades = [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]];
-    selectedGrade = tmpGrades.letterGrade;
+    selectedGrade = [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]];
     if (self.setGradeType == @"Desired")
     {
         courseDesiredGradeField.text = selectedGrade;
@@ -236,6 +255,35 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             courseIncludeInGPAField.on = NO;
         }
     }
+    self.gradeList = [[NSMutableArray alloc] init];
+    if (coursePassFailField.on)
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+            NSLog(@"letterGrade = %@", grade.letterGrade);
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    else
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:0 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+            NSLog(@"letterGrade = %@", grade.letterGrade);
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    NSLog(@"%@",self.gradeList);
+    [self.pickerView reloadAllComponents];
 }
 
 - (void)viewDidLoad

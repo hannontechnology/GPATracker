@@ -46,11 +46,6 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
--(IBAction)back
-{
-    [self performSegueWithIdentifier: @"segueCourseList2SemesterList" sender: self];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
@@ -67,7 +62,7 @@
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     for (CourseDetails *item in self.semesterInfo.courseDetails)
     {
-        if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1])
+        if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1] && item.actualGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
         {
             NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
             sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
@@ -145,7 +140,6 @@
     
     return cell;
 }
-
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

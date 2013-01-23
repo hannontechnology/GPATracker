@@ -35,4 +35,6 @@
 
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
+-(IBAction)switchPassFail:(id)sender;
+
 @end
