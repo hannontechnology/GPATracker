@@ -2,7 +2,7 @@
 //  GradingScheme.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-01-22.
+//  Created by Terry Hannon on 13-01-29.
 //
 //
 
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSNumber * includeInGPA;
 @property (nonatomic, retain) NSNumber * isPassFail;
 @property (nonatomic, retain) NSString * letterGrade;
+@property (nonatomic, retain) NSDecimalNumber * minGrade;
 @property (nonatomic, retain) NSSet *actualGPAGrade;
 @property (nonatomic, retain) NSSet *desiredGPAGrade;
 @property (nonatomic, retain) SchoolDetails *school;

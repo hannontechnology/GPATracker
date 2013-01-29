@@ -45,7 +45,19 @@
     request.predicate = [NSPredicate predicateWithFormat: @"school = %@", self.schoolInfo];
     NSLog(@"filtering data based on school = %@", self.schoolInfo);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"gradeCache"];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"isPassFail" cacheName:@"gradeCache"];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	NSString *sectionName;
+    
+    if (section == 0)
+        sectionName = @"Standard Grades";
+    else
+        sectionName = @"Pass/Fail Grades";
+    
+    return sectionName;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -61,6 +73,17 @@
     cell.cellLabel1.text = [selectedObject letterGrade];
     NSDecimalNumber *gPA = [selectedObject gPA];
     cell.cellField1.text = gPA.stringValue;
+    
+    if (selectedObject.includeInGPA == [NSNumber numberWithInt:1])
+    {
+        UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_checked.png"];
+        [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
+    }
+    else
+    {
+        UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_unchecked.png"];
+        [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
+    }
     
     NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], gPA.stringValue);
     

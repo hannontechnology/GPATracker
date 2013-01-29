@@ -2,7 +2,7 @@
 //  GradingScheme.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-01-22.
+//  Created by Terry Hannon on 13-01-29.
 //
 //
 
@@ -17,6 +17,7 @@
 @dynamic includeInGPA;
 @dynamic isPassFail;
 @dynamic letterGrade;
+@dynamic minGrade;
 @dynamic actualGPAGrade;
 @dynamic desiredGPAGrade;
 @dynamic school;

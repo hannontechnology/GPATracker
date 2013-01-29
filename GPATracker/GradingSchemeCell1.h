@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *cellField1;
 @property (weak, nonatomic) IBOutlet UITextField *minGrade;
 @property (weak, nonatomic) IBOutlet UIButton *btnInGPA;
-@property (weak, nonatomic) IBOutlet UIButton *btnPassFail;
 @property (strong, nonatomic) NSIndexPath *indexPath;
 
 @end
