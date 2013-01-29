@@ -73,6 +73,10 @@
     cell.cellLabel1.text = [selectedObject letterGrade];
     NSDecimalNumber *gPA = [selectedObject gPA];
     cell.cellField1.text = gPA.stringValue;
+    NSDecimalNumber *minGrade = [selectedObject minGrade];
+    cell.minGrade.text = minGrade.stringValue;
+    NSDecimalNumber *maxGrade = [selectedObject maxGrade];
+    cell.maxGrade.text = maxGrade.stringValue;
     
     if (selectedObject.includeInGPA == [NSNumber numberWithInt:1])
     {

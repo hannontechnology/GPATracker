@@ -462,13 +462,13 @@
                                             <rect key="frame" x="121" y="4" width="46" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Fqm-Fh-7Ba">
                                             <rect key="frame" x="121" y="37" width="46" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tFJ-U3-v1i">
                                             <rect key="frame" x="238" y="3" width="35" height="34"/>
@@ -507,7 +507,7 @@
                                             <rect key="frame" x="240" y="35" width="46" height="31"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Max Grade:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rIo-OD-XUa">
                                             <rect key="frame" x="173" y="40" width="65" height="21"/>
@@ -523,6 +523,7 @@
                                     <outlet property="btnInGPA" destination="tFJ-U3-v1i" id="NId-MW-hrr"/>
                                     <outlet property="cellField1" destination="OqS-Hm-f6V" id="pYA-au-8TL"/>
                                     <outlet property="cellLabel1" destination="azy-2X-2fc" id="Gph-Ll-GDe"/>
+                                    <outlet property="maxGrade" destination="w5W-YG-pMT" id="wWI-Zf-TPT"/>
                                     <outlet property="minGrade" destination="Fqm-Fh-7Ba" id="AUW-qQ-4Kr"/>
                                 </connections>
                             </tableViewCell>
