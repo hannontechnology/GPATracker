@@ -526,8 +526,11 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
+                                    <outlet property="btnInGPA" destination="tFJ-U3-v1i" id="NId-MW-hrr"/>
+                                    <outlet property="btnPassFail" destination="Ra7-Wz-JK5" id="T5Q-78-e32"/>
                                     <outlet property="cellField1" destination="OqS-Hm-f6V" id="pYA-au-8TL"/>
                                     <outlet property="cellLabel1" destination="azy-2X-2fc" id="Gph-Ll-GDe"/>
+                                    <outlet property="minGrade" destination="Fqm-Fh-7Ba" id="AUW-qQ-4Kr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
