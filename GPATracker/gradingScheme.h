@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSNumber * isPassFail;
 @property (nonatomic, retain) NSString * letterGrade;
 @property (nonatomic, retain) NSDecimalNumber * minGrade;
+@property (nonatomic, retain) NSDecimalNumber * maxGrade;
 @property (nonatomic, retain) NSSet *actualGPAGrade;
 @property (nonatomic, retain) NSSet *desiredGPAGrade;
 @property (nonatomic, retain) SchoolDetails *school;
