@@ -18,6 +18,7 @@
 @dynamic isPassFail;
 @dynamic letterGrade;
 @dynamic minGrade;
+@dynamic maxGrade;
 @dynamic actualGPAGrade;
 @dynamic desiredGPAGrade;
 @dynamic school;

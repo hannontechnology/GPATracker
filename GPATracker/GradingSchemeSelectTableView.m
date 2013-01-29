@@ -86,6 +86,7 @@
         self.gradingInfo.letterGrade = @"A+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.33)];
         self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(100)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -95,7 +96,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"A";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(89)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(94)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -105,7 +107,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"A-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(86)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(88)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -115,7 +118,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(80)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(85)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -125,7 +129,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(76)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(79)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -135,7 +140,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(72)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(75)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -145,7 +151,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.33)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(68)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(71)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -155,7 +162,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(64)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(67)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -165,7 +173,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(60)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(63)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -175,7 +184,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"D";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(50)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(59)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -185,7 +195,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"F";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(49)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -195,7 +206,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"P";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(50)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(100)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:NO];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:YES];
         [self.managedObjectContext save:nil];
@@ -205,7 +217,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"F";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(49)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:YES];
         [self.managedObjectContext save:nil];
@@ -221,6 +234,7 @@
         self.gradingInfo.letterGrade = @"A";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(4.00)];
         self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(100)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -230,7 +244,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"A-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.67)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(89)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(94)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -240,7 +255,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.33)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(86)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(88)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -250,7 +266,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(3.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(80)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(85)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -260,7 +277,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.67)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(76)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(79)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -270,7 +288,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.33)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(72)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(75)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -280,7 +299,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(2.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(68)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(71)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -290,7 +310,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.67)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(64)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(67)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -300,7 +321,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"D";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(1.33)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(60)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(63)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -310,7 +332,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"F";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(59)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -320,7 +343,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"P";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(60)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(100)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:NO];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:YES];
         [self.managedObjectContext save:nil];
@@ -330,7 +354,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"F";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(59)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:YES];
         [self.managedObjectContext save:nil];
@@ -345,7 +370,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"A+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -355,7 +381,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"A";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -365,7 +392,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"A-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -375,7 +403,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -385,7 +414,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -395,7 +425,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"B-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -405,7 +436,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C+";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -415,7 +447,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -425,7 +458,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"C-";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -435,7 +469,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"D";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -445,7 +480,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"F";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:NO];
         [self.managedObjectContext save:nil];
@@ -455,7 +491,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"P";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:NO];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:YES];
         [self.managedObjectContext save:nil];
@@ -465,7 +502,8 @@
         self.gradingInfo.school = self.schoolInfo;
         self.gradingInfo.letterGrade = @"F";
         self.gradingInfo.gPA = [[NSDecimalNumber alloc]initWithDouble:(0.00)];
-        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(95)];
+        self.gradingInfo.minGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
+        self.gradingInfo.maxGrade = [[NSDecimalNumber alloc]initWithDouble:(0)];
         self.gradingInfo.includeInGPA = [NSNumber numberWithBool:YES];
         self.gradingInfo.isPassFail = [NSNumber numberWithBool:YES];
         [self.managedObjectContext save:nil];
