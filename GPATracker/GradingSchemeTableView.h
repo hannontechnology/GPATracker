@@ -20,6 +20,7 @@
 }
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (strong, nonatomic) NSNumber *selectedSection;
 
 @property (strong,nonatomic) User *userInfo;
 @property (strong, nonatomic) SchoolDetails *schoolInfo;

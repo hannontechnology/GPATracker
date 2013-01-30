@@ -25,6 +25,8 @@
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize tableView = _tableView;
+@synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize selectedSection = _selectedSection;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -98,8 +100,9 @@
     cell.cellField1.delegate = self;
     cell.minGrade.delegate = self;
     cell.maxGrade.delegate = self;
+    cell.indexPath = indexPath;
     
-    NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], gPA.stringValue);
+    NSLog(@"Row: %d, Section: %d",indexPath.row, indexPath.section);
     
     return cell;
 }
@@ -107,23 +110,21 @@
 -(IBAction)checkIsGPA:(id)sender
 {
     UIButton *tmp = (UIButton *)sender;
-    int row = tmp.tag;
-
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:0];
-    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+    UIView *tmpCell = tmp.superview;
+    GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
 
     if (cell == nil)
         return;
     
-    if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
+    if (tmp.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
     {
         UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_unchecked.png"];
-        [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
+        [tmp setImage:btnImage1 forState:UIControlStateNormal];
     }
     else
     {
         UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_checked.png"];
-        [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
+        [tmp setImage:btnImage1 forState:UIControlStateNormal];
     }
 }
 
@@ -175,19 +176,22 @@
     for (int i=0;i<[self.tableView numberOfRowsInSection:0];i++)
     {
         NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
-        GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+        UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
+        GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
         if (cell == nil)
         {
             NSLog(@"Index Row: %d",[ip row]);
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0]-1 inSection:0];
             [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-            cell = [[self tableView] cellForRowAtIndexPath:ip];
+            cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
+            cell = (GradingSchemeCell1 *)cellTmp;
             if (cell == nil)
             {
                 NSLog(@"Index Row: %d",[ip row]);
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
                 [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-                cell = [[self tableView] cellForRowAtIndexPath:ip];                
+                cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
+                cell = (GradingSchemeCell1 *)cellTmp;
             }
         }
         GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
@@ -209,19 +213,22 @@
     for (int i=0;i<[self.tableView numberOfRowsInSection:1];i++)
     {
         NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:1];
-        GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+        UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
+        GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
         if (cell == nil)
         {
             NSLog(@"Index Row: %d",[ip row]);
             NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:1]-1 inSection:1];
             [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-            cell = [[self tableView] cellForRowAtIndexPath:ip];
+            cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
+            cell = (GradingSchemeCell1 *)cellTmp;
             if (cell == nil)
             {
                 NSLog(@"Index Row: %d",[ip row]);
                 NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
                 [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-                cell = [[self tableView] cellForRowAtIndexPath:ip];
+                cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
+                cell = (GradingSchemeCell1 *)cellTmp;
             }
         }
         GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
@@ -266,7 +273,8 @@
 }
 - (void) doneKey:(id)sender
 {
-    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
     if (cell == nil)
     {
         return;
@@ -282,7 +290,11 @@
 - (void) prevField:(id)sender
 {
     NSLog(@"Previous Field");
-    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
+
+    int selectedSection = self.selectedIndexPath.section;
+    
     if (cell == nil)
     {
         return;
@@ -294,11 +306,19 @@
         row --;
         
         if (row < 0)
-            row = [self.tableView numberOfRowsInSection:0];
+        {
+            if (selectedSection == 0)
+                selectedSection = 1;
+            else
+                selectedSection = 0;
+
+            row = [self.tableView numberOfRowsInSection:selectedSection] - 1;
+        }
         
-        GradingSchemeCell1 *cell2 = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-        [cell2.maxGrade becomeFirstResponder];
-        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell2] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        cellTmp = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:selectedSection]];
+        cell = (GradingSchemeCell1 *)cellTmp;
+        [cell.maxGrade becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
     else if ([cell.minGrade isFirstResponder])
     {
@@ -317,7 +337,11 @@
 - (void) nextField:(id)sender
 {
     NSLog(@"Next Field");
-    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
+
+    int selectedSection = self.selectedIndexPath.section;
+
     if (cell == nil)
     {
         return;
@@ -340,19 +364,32 @@
         int row = cell.maxGrade.tag;
         row ++;
         
-        if (row > [self.tableView numberOfRowsInSection:0])
-            row = 1;
+        if (row >= [self.tableView numberOfRowsInSection:selectedSection])
+        {
+            if (selectedSection == 0)
+                selectedSection = 1;
+            else
+                selectedSection = 0;
+            
+            row = 0;
+        }
         
-        GradingSchemeCell1 *cell2 = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
-        [cell2.cellField1 becomeFirstResponder];
-        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell2] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+        cellTmp = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:selectedSection]];
+        cell = (GradingSchemeCell1 *)cellTmp;
+        [cell.cellField1 becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    int row = textField.tag;
-    self.selectedIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    UIView *tmpCell = textField.superview.superview;
+    GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
+    
+    if (cell == nil)
+        return true;
+
+    self.selectedIndexPath = cell.indexPath;
     
     return true;
 }

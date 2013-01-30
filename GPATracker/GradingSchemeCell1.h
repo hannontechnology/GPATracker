@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *minGrade;
 @property (weak, nonatomic) IBOutlet UITextField *maxGrade;
 @property (weak, nonatomic) IBOutlet UIButton *btnInGPA;
+
 @property (strong, nonatomic) NSIndexPath *indexPath;
 
 @end

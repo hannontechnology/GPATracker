@@ -11,6 +11,8 @@
 @implementation GradingSchemeCell1
 @synthesize cellLabel1;
 @synthesize cellField1;
+@synthesize minGrade;
+@synthesize maxGrade;
 @synthesize indexPath;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
