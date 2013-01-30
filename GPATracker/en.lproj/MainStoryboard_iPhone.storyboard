@@ -481,6 +481,9 @@
                                             <state key="highlighted">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
+                                            <connections>
+                                                <action selector="checkIsGPA:" destination="1tm-RG-Rrr" eventType="touchUpInside" id="YRL-g3-FQz"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="GPA:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5EN-Ac-azC">
                                             <rect key="frame" x="59" y="9" width="60" height="21"/>

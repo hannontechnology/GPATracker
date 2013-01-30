@@ -14,7 +14,10 @@
 @class DataCollection;
 @class GradingScheme;
 
-@interface GradingSchemeTableView : CoreDataTableViewController
+@interface GradingSchemeTableView : CoreDataTableViewController<UITextFieldDelegate>
+{
+    IBOutlet UIToolbar *keyboardToolbar;
+}
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
@@ -24,5 +27,9 @@
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
+
+-(IBAction)checkIsGPA:(id)sender;
 
 @end

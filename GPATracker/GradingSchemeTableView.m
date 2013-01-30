@@ -88,10 +88,43 @@
         UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_unchecked.png"];
         [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
     }
+    [cell.btnInGPA setTag:indexPath.row];
+    [cell.cellField1 setTag:indexPath.row];
+    [cell.minGrade setTag:indexPath.row];
+    [cell.maxGrade setTag:indexPath.row];
+    cell.cellField1.inputAccessoryView = keyboardToolbar;
+    cell.minGrade.inputAccessoryView = keyboardToolbar;
+    cell.maxGrade.inputAccessoryView = keyboardToolbar;
+    cell.cellField1.delegate = self;
+    cell.minGrade.delegate = self;
+    cell.maxGrade.delegate = self;
     
     NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], gPA.stringValue);
     
     return cell;
+}
+
+-(IBAction)checkIsGPA:(id)sender
+{
+    UIButton *tmp = (UIButton *)sender;
+    int row = tmp.tag;
+
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:row inSection:0];
+    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+
+    if (cell == nil)
+        return;
+    
+    if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
+    {
+        UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_unchecked.png"];
+        [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
+    }
+    else
+    {
+        UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_checked.png"];
+        [cell.btnInGPA setImage:btnImage1 forState:UIControlStateNormal];
+    }
 }
 
 - (void)viewDidLoad
@@ -103,6 +136,18 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
 }
 
 - (void)viewDidUnload
@@ -149,6 +194,50 @@
         NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
 
         selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
+        selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
+        selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
+        if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
+        {
+            selectedObject.includeInGPA = [NSNumber numberWithInt:1];
+        }
+        else
+        {
+            selectedObject.includeInGPA = [NSNumber numberWithInt:0];
+        }
+    }
+
+    for (int i=0;i<[self.tableView numberOfRowsInSection:1];i++)
+    {
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:1];
+        GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:ip];
+        if (cell == nil)
+        {
+            NSLog(@"Index Row: %d",[ip row]);
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:1]-1 inSection:1];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+            cell = [[self tableView] cellForRowAtIndexPath:ip];
+            if (cell == nil)
+            {
+                NSLog(@"Index Row: %d",[ip row]);
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
+                cell = [[self tableView] cellForRowAtIndexPath:ip];
+            }
+        }
+        GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
+        NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
+        
+        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
+        selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
+        selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
+        if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
+        {
+            selectedObject.includeInGPA = [NSNumber numberWithInt:1];
+        }
+        else
+        {
+            selectedObject.includeInGPA = [NSNumber numberWithInt:0];
+        }
     }
 
     //NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
@@ -175,7 +264,112 @@
         SchoolListTableView.managedObjectContext = self.managedObjectContext;
     }
 }
+- (void) doneKey:(id)sender
+{
+    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    if (cell == nil)
+    {
+        return;
+    }
+    if ([cell.cellField1 isFirstResponder])
+        [cell.cellField1 resignFirstResponder];
+    else if([cell.minGrade isFirstResponder])
+        [cell.minGrade resignFirstResponder];
+    else if([cell.maxGrade isFirstResponder])
+        [cell.maxGrade resignFirstResponder];
+}
+
+- (void) prevField:(id)sender
+{
+    NSLog(@"Previous Field");
+    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    if (cell == nil)
+    {
+        return;
+    }
+    if ([cell.cellField1 isFirstResponder])
+    {
+        [cell.cellField1 resignFirstResponder];
+        int row = cell.maxGrade.tag;
+        row --;
+        
+        if (row < 0)
+            row = [self.tableView numberOfRowsInSection:0];
+        
+        GradingSchemeCell1 *cell2 = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+        [cell2.maxGrade becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell2] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([cell.minGrade isFirstResponder])
+    {
+        [cell.minGrade resignFirstResponder];
+        [cell.cellField1 becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([cell.maxGrade isFirstResponder])
+    {
+        [cell.maxGrade resignFirstResponder];
+        [cell.minGrade becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
+- (void) nextField:(id)sender
+{
+    NSLog(@"Next Field");
+    GradingSchemeCell1 *cell = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
+    if (cell == nil)
+    {
+        return;
+    }
+    if ([cell.cellField1 isFirstResponder])
+    {
+        [cell.cellField1 resignFirstResponder];
+        [cell.minGrade becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([cell.minGrade isFirstResponder])
+    {
+        [cell.minGrade resignFirstResponder];
+        [cell.maxGrade becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([cell.maxGrade isFirstResponder])
+    {
+        [cell.maxGrade resignFirstResponder];
+        int row = cell.maxGrade.tag;
+        row ++;
+        
+        if (row > [self.tableView numberOfRowsInSection:0])
+            row = 1;
+        
+        GradingSchemeCell1 *cell2 = [[self tableView] cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0]];
+        [cell2.cellField1 becomeFirstResponder];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell2] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    int row = textField.tag;
+    self.selectedIndexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    
+    return true;
+}
 
 #pragma mark - Table view data source
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.selectedIndexPath = indexPath;
+    
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+}
 
 @end
