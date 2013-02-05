@@ -53,6 +53,8 @@
 		1FD3E08F169797F900E4AB15 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */; };
 		1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */; };
 		1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */; };
+		1FFE778D16C17F020037F681 /* CourseListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE778916C17F020037F681 /* CourseListTableView.m */; };
+		1FFE778E16C17F020037F681 /* CourseTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE778A16C17F020037F681 /* CourseTableCell1.m */; };
 		2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */; };
 		2D9C62AE15B51FE400B82973 /* SchoolEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */; };
 		2D9C62B215B5370700B82973 /* GradingSchemeSelectTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B115B5370700B82973 /* GradingSchemeSelectTableView.m */; };
@@ -147,6 +149,10 @@
 		1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewController.m; sourceTree = "<group>"; };
 		1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSummaryViewController.h; sourceTree = "<group>"; };
 		1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolSummaryViewController.m; sourceTree = "<group>"; };
+		1FFE778916C17F020037F681 /* CourseListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListTableView.m; sourceTree = "<group>"; };
+		1FFE778A16C17F020037F681 /* CourseTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableCell1.m; sourceTree = "<group>"; };
+		1FFE778B16C17F020037F681 /* CourseListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListTableView.h; sourceTree = "<group>"; };
+		1FFE778C16C17F020037F681 /* CourseTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableCell1.h; sourceTree = "<group>"; };
 		2D07636D16016CDA008BAF95 /* GradingSchemeCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeCell1.h; sourceTree = "<group>"; };
 		2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeCell1.m; sourceTree = "<group>"; };
 		2D9C62AC15B51FE400B82973 /* SchoolEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolEditTableView.h; sourceTree = "<group>"; };
@@ -272,6 +278,10 @@
 		1F754A58151559EA00BD72F0 /* GPATracker */ = {
 			isa = PBXGroup;
 			children = (
+				1FFE778916C17F020037F681 /* CourseListTableView.m */,
+				1FFE778A16C17F020037F681 /* CourseTableCell1.m */,
+				1FFE778B16C17F020037F681 /* CourseListTableView.h */,
+				1FFE778C16C17F020037F681 /* CourseTableCell1.h */,
 				1F41902C15C319350031A4BC /* Core Data */,
 				1F5DB97C168248880048564D /* Images */,
 				1FE4D0AE1659ABCD00B408A1 /* PagerViewController.h */,
@@ -496,6 +506,8 @@
 				1F58586616AF0B5B002A930D /* SchoolDetails.m in Sources */,
 				1F58586916AF0B5B002A930D /* SemesterDetails.m in Sources */,
 				1F27DA3A16B8476A00E0C8C8 /* GradingScheme.m in Sources */,
+				1FFE778D16C17F020037F681 /* CourseListTableView.m in Sources */,
+				1FFE778E16C17F020037F681 /* CourseTableCell1.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
