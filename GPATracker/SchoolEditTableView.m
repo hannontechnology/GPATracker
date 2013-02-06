@@ -516,18 +516,55 @@
     }
 }
 
+- (IBAction)Cancel:(id)sender
+{
+    //[self.navigationController popViewControllerAnimated:YES];
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    if (self.setEditStatus != @"Edit")
+    {
+        if ((schoolNameField.text.length || schoolDetailsField.text.length || schoolStartYearField.text.length || schoolEndYearField.text.length) == 0)
+        {
+            //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self.view];
+        }
+        else
+        {
+            [popup showInView:self.view];
+        }
+    }
+    [popup showInView:self.view];
+}
+
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    switch (buttonIndex)
+    if (actionSheet.title == @"Discard Changes")
     {
-        case 0:
-            NSLog(@"User Clicked the Yes button");
-            [self.managedObjectContext deleteObject:self.schoolInfo];
-            [self.managedObjectContext save:nil];
+        if (buttonIndex == 0)
+        {
+            NSLog(@"User Click the Yes button");
+            [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self.view];
+            //[self.navigationController popViewControllerAnimated:YES];
+        }
+        else if (buttonIndex == 1)
+        {
+            NSLog(@"User Click the No button");
             [self.navigationController popViewControllerAnimated:YES];
-            break;
-        default:
-            break;
+        }
+ 
+    }
+    else if (actionSheet.title == @"Delete School")
+    {
+        switch (buttonIndex)
+        {
+            case 0:
+                NSLog(@"User Clicked the Yes button");
+                [self.managedObjectContext deleteObject:self.schoolInfo];
+                [self.managedObjectContext save:nil];
+                [self.navigationController popViewControllerAnimated:YES];
+                break;
+            default:
+                break;
+        }
+
     }
 }
 
@@ -537,19 +574,6 @@
     [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
 }
 
-- (IBAction)Cancel:(id)sender
-{
-    if (self.setEditStatus == @"Edit")
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
-    }
-    else
-    {
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
-    }
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {

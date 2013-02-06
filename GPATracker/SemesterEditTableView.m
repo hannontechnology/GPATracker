@@ -478,7 +478,21 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 {
     //[self.navigationController popViewControllerAnimated:YES];
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    [popup showInView:semesterNameField];
+    if (self.setEditStatus != @"Edit")
+    {
+        if (semesterNameField.text.length == 0 || semesterYearField.text.length == 0)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            [popup showInView:self.view];
+        }
+    }
+    else
+    {
+        [popup showInView:self.view];
+    }
 }
 
 
@@ -486,12 +500,29 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 {
     if (buttonIndex == 0)
     {
+        NSLog(@"User Click the Yes button");
         //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
         [self.navigationController popViewControllerAnimated:YES];
     }
     else if (buttonIndex == 1)
     {
-        //[self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"User Click the No button");
+        [self.navigationController popViewControllerAnimated:YES];
+        
+        if(semesterNameField.text.length == 0)
+        {
+            // TODO: Error message
+        }
+        else if(semesterYearField.text.length == 0)
+        {
+            // TODO: Error message
+        }
+
+        self.semesterDetails.semesterName = semesterNameField.text;
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterNoStyle];
+        NSNumber *s_year = [f numberFromString:semesterYearField.text];
+        self.semesterDetails.semesterYear = s_year;
     }
 }
 
