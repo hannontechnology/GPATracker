@@ -110,7 +110,7 @@
 -(IBAction)checkIsGPA:(id)sender
 {
     UIButton *tmp = (UIButton *)sender;
-    UIView *tmpCell = tmp.superview;
+    UIView *tmpCell = tmp.superview.superview;
     GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
 
     if (cell == nil)
@@ -125,6 +125,21 @@
     {
         UIImage * btnImage1 = [UIImage imageNamed:@"Checkbox_checked.png"];
         [tmp setImage:btnImage1 forState:UIControlStateNormal];
+    }
+
+    GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:cell.indexPath];
+    NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
+    
+    selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
+    selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
+    selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
+    if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
+    {
+        selectedObject.includeInGPA = [NSNumber numberWithInt:1];
+    }
+    else
+    {
+        selectedObject.includeInGPA = [NSNumber numberWithInt:0];
     }
 }
 
