@@ -2034,14 +2034,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="oru-Wj-xvh"/>
-        <segue reference="zyl-Bd-lJ4"/>
-        <segue reference="LMs-sZ-M1E"/>
-        <segue reference="sqq-oh-NbO"/>
-        <segue reference="r2n-vz-Ixr"/>
         <segue reference="68m-8u-amb"/>
         <segue reference="fGJ-Vg-Bh6"/>
+        <segue reference="r2n-vz-Ixr"/>
         <segue reference="Vzz-SA-ORC"/>
         <segue reference="mwc-fS-4uK"/>
+        <segue reference="sqq-oh-NbO"/>
+        <segue reference="LMs-sZ-M1E"/>
+        <segue reference="k7a-QP-sia"/>
+        <segue reference="oru-Wj-xvh"/>
     </inferredMetricsTieBreakers>
 </document>
