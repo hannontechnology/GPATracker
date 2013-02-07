@@ -24,6 +24,7 @@
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+@property (strong, nonatomic) NSString *setInputType;
 @property (weak, nonatomic) IBOutlet UITextField *schoolNameField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolDetailsField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;

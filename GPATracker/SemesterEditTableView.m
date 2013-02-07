@@ -105,6 +105,57 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     return true;
 }
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+    int selComp;
+    NSString *origName;
+    origName = semesterNameField.text;
+    NSString *origYear;
+    origYear = semesterYearField.text;
+    
+    if (textField == self.semesterNameField)
+    {
+        self.setInputType = @"Name";
+    }
+    else if (textField == self.semesterYearField)
+    {
+        self.setInputType = @"Year";
+    }
+    
+    if (self.setInputType == @"Year")
+    {
+        NSString *yearValue;
+        if (semesterYearField.text.length > 0)
+        {
+            yearValue = semesterYearField.text;
+            selComp = [self.semesterYearList indexOfObject:yearValue];
+        }
+        else
+        {
+            selComp =[self.semesterYearList indexOfObject:origYear];
+            return false;
+        }
+    }
+    else if (self.setInputType == @"Name")
+    {
+        NSString *nameValue;
+        if (semesterNameField.text.length > 0)
+        {
+            nameValue = semesterNameField.text;
+            selComp = [self.semesterNameList indexOfObject:nameValue];
+        }
+        else
+        {
+            selComp = [self.semesterNameList indexOfObject:origName];
+            return false;
+        }
+    }
+    [self.pickerView selectRow:selComp inComponent:0 animated:YES];
+    
+    return true;
+
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
@@ -425,15 +476,26 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Cancel:(id)sender
 {
-    if (self.setEditStatus == @"Edit")
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    [popup showInView:self.view];
+    //[self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+
+- (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
     {
+        NSLog(@"User Click the Yes button");
         [self.navigationController popViewControllerAnimated:YES];
-        //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+        //[self.parentViewController.navigationController popViewControllerAnimated:YES];
     }
-    else
+    else if (buttonIndex == 1)
     {
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self performSegueWithIdentifier:@"segueEditSemesterToHomePage" sender:self];
+        NSLog(@"User Click the No button");
+        // Maybe do something else
+
     }
 }
 

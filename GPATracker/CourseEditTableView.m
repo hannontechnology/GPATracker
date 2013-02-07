@@ -568,15 +568,23 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Cancel:(id)sender
 {
-    if (self.setEditStatus == @"Edit")
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    [popup showInView:self.view];
+}
+
+- (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
     {
+        NSLog(@"User Click the Yes button");
         [self.navigationController popViewControllerAnimated:YES];
-        //[self performSegueWithIdentifier:@"segueCourse2CourseList" sender:self];
+        //[self.parentViewController.navigationController popViewControllerAnimated:YES];
     }
-    else
+    else if (buttonIndex == 1)
     {
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self performSegueWithIdentifier:@"segueCourse2CourseList" sender:self];
+        NSLog(@"User Click the No button");
+        // Maybe do something else
+        
     }
 }
 
