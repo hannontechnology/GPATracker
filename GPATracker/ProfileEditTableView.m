@@ -357,14 +357,23 @@
 
 - (IBAction)Cancel:(id)sender
 {
-    if (self.setEditStatus == @"Edit")
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    [popup showInView:self.view];
+}
+
+- (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
     {
-        [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+        NSLog(@"User Click the Yes button");
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self.parentViewController.navigationController popViewControllerAnimated:YES];
     }
-    else
+    else if (buttonIndex == 1)
     {
-        self.setCancel = @"Y";
-        [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
+        NSLog(@"User Click the No button");
+        // Maybe do something else
+        
     }
 }
 

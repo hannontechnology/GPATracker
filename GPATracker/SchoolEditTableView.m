@@ -518,20 +518,9 @@
 
 - (IBAction)Cancel:(id)sender
 {
-    //[self.navigationController popViewControllerAnimated:YES];
     UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    if (self.setEditStatus != @"Edit")
-    {
-        if ((schoolNameField.text.length || schoolDetailsField.text.length || schoolStartYearField.text.length || schoolEndYearField.text.length) == 0)
-        {
-            //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self.view];
-        }
-        else
-        {
-            [popup showInView:self.view];
-        }
-    }
     [popup showInView:self.view];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -541,12 +530,14 @@
         if (buttonIndex == 0)
         {
             NSLog(@"User Click the Yes button");
-            [self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self.view];
-            //[self.navigationController popViewControllerAnimated:YES];
+            // This does not work as intended.
+            [self.navigationController popViewControllerAnimated:YES];
+            //[self.parentViewController.navigationController popViewControllerAnimated:YES];
         }
         else if (buttonIndex == 1)
         {
             NSLog(@"User Click the No button");
+            // Maybe do something else
             [self.navigationController popViewControllerAnimated:YES];
         }
  
