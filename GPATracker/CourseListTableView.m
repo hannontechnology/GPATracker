@@ -1,8 +1,8 @@
 //
-//  SemesterTableView.m
+//  CourseListTableView.m
 //  GPATracker
 //
-//  Created by Aiste Guden on 12-07-14.
+//  Created by Terry Hannon on 13-02-08.
 //  Copyright (c) 2012 Hannon Technology Inc. All rights reserved.
 //
 
