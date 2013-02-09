@@ -179,7 +179,7 @@
     self.navigationItem.leftBarButtonItem = cancelButton;
     self.navigationItem.hidesBackButton = YES;
 
-    if (self.setEditStatus != @"Edit")
+    if (self.setEditStatus != (NSString *)@"Edit")
     {
         self.gradingScheme.enabled = NO;
         self.gradingScheme.userInteractionEnabled = NO;
@@ -222,7 +222,7 @@
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveSchools:schoolNameField.text user:(User *)self.userInfo context:(NSManagedObjectContext *)self.managedObjectContext];
 
-    if (self.setEditStatus == @"Edit")
+    if (self.setEditStatus == (NSString *)@"Edit")
     {
         if (self.schoolInfo == nil)
         {
@@ -243,7 +243,7 @@
             if ([[self managedObjectContext] save:&error])
             {
                 NSLog(@"Save was successful");
-                if (self.setEditStatus == @"Edit")
+                if (self.setEditStatus == (NSString *)@"Edit")
                 {
                     [self.navigationController popViewControllerAnimated:YES];
                     //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
@@ -287,7 +287,7 @@
             }
             else
             {
-                if (self.setEditStatus == @"Edit")
+                if (self.setEditStatus == (NSString *)@"Edit")
                 {
                     [self.navigationController popViewControllerAnimated:YES];
                     //[self performSegueWithIdentifier:@"segueSchool2HomePage" sender:self];
@@ -404,7 +404,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && self.setEditStatus == @"Edit")
+    if (indexPath.section == 1 && self.setEditStatus == (NSString *)@"Edit")
     {
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -427,7 +427,7 @@
         NSError *error = nil;
         NSArray *results = [self.dataCollection retrieveSchools:schoolNameField.text user:(User *)self.userInfo context:(NSManagedObjectContext *)self.managedObjectContext];
         
-        if (self.setEditStatus == @"Edit")
+        if (self.setEditStatus == (NSString *)@"Edit")
         {
             if (self.schoolInfo == nil)
             {
@@ -507,10 +507,11 @@
        //Control visiability of button later
     }
 
-    if (indexPath.section == 2 && self.setEditStatus == @"Edit")
+    if (indexPath.section == 2 && self.setEditStatus == (NSString *)@"Edit")
     {
         NSLog(@"Delete School");
         UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Delete School" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+        popUp.tag = 0;
         
         [popUp showInView:self.view];
     }
@@ -518,14 +519,20 @@
 
 - (IBAction)Cancel:(id)sender
 {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    [popup showInView:self.view];
+    UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    popUp.tag = 1;
+    
+    [popUp showInView:self.view];
     //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (actionSheet.title == @"Discard Changes")
+    NSLog(@"actionSheet.title = %@", actionSheet.title);
+    NSLog(@"actionSheet.tag = %d", actionSheet.tag);
+    //if (actionSheet.title == (NSString *)@"Discard Changes")
+    NSInteger *iTag = actionSheet.tag;
+    if (iTag == 1)
     {
         if (buttonIndex == 0)
         {
@@ -542,7 +549,8 @@
         }
  
     }
-    else if (actionSheet.title == @"Delete School")
+    //else if (actionSheet.title == (NSString *)@"Delete School")
+    else if (iTag == 0)
     {
         switch (buttonIndex)
         {
