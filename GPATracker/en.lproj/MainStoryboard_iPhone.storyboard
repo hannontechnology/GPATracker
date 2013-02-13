@@ -1332,7 +1332,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseListTableCell1" rowHeight="82" id="tf2-vS-3wZ" customClass="CourseTableCell1">
+                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseTableCell1" rowHeight="82" id="tf2-vS-3wZ" customClass="CourseTableCell1">
                                 <rect key="frame" x="0.0" y="127" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1717,6 +1717,8 @@
                         <segue destination="doq-fP-RTd" kind="push" identifier="segueHomePageCreateSchool" id="KvF-9q-C6b"/>
                         <segue destination="YTG-zN-KQM" kind="push" identifier="segueHomePageEditSemester" id="sH2-t5-pXi"/>
                         <segue destination="YTG-zN-KQM" kind="push" identifier="segueHomePageCreateSemester" id="khB-Ho-E86"/>
+                        <segue destination="J3F-p1-3o6" kind="push" identifier="segueHomePageCreateCourse" id="5HQ-Fb-SrV"/>
+                        <segue destination="J3F-p1-3o6" kind="push" identifier="segueHomePageEditCourse" id="xWR-GP-plh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwL-GE-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1942,7 +1944,7 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="semesterListTableCell1" rowHeight="78" id="McQ-Ca-2H5" customClass="CourseListTableCell1">
+                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="courseListTableCell1" rowHeight="78" id="McQ-Ca-2H5" customClass="CourseListTableCell1">
                                 <rect key="frame" x="0.0" y="127" width="320" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1970,14 +1972,14 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="SMB-dH-oWx">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="B+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="SMB-dH-oWx">
                                             <rect key="frame" x="8" y="3" width="56" height="68"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="CGPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="STP-bY-E0a">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Grade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="STP-bY-E0a">
                                             <rect key="frame" x="12" y="0.0" width="49" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
@@ -2015,6 +2017,7 @@
                         <outlet property="schoolDescText" destination="VlA-Hh-tOr" id="iCt-ME-ZUN"/>
                         <outlet property="schoolNameText" destination="pAz-g1-Rsd" id="Xng-Af-1yr"/>
                         <outlet property="schoolYearsText" destination="v5f-zg-7DW" id="wBi-Io-Pf0"/>
+                        <segue destination="J3F-p1-3o6" kind="push" identifier="segueHomePageEditCourse" id="pgP-pB-hYJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vi3-uq-5Hs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2040,10 +2043,10 @@
         <segue reference="Vzz-SA-ORC"/>
         <segue reference="KvF-9q-C6b"/>
         <segue reference="mwc-fS-4uK"/>
-        <segue reference="VVr-Ld-9wW"/>
         <segue reference="1dU-6g-oZa"/>
+        <segue reference="VVr-Ld-9wW"/>
         <segue reference="sH2-t5-pXi"/>
-        <segue reference="oru-Wj-xvh"/>
+        <segue reference="pgP-pB-hYJ"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
     </inferredMetricsTieBreakers>

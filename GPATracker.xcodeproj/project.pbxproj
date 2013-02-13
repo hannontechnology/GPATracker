@@ -42,6 +42,7 @@
 		1F95470D15B29D4B002D2D61 /* SchoolListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* SchoolListTableCell1.m */; };
 		1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
+		1FA9B0C216CC29F4009B4F1E /* CourseDetails+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9B0C016CC29F3009B4F1E /* CourseDetails+Create.m */; };
 		1FAF582115BCCF4500304676 /* CourseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF581F15BCCF4500304676 /* CourseTableView.m */; };
 		1FAF582415BCCF7100304676 /* CourseEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF582315BCCF7100304676 /* CourseEditTableView.m */; };
 		1FB105DD15D05CE200A5B6AC /* SemesterListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB105DC15D05CE200A5B6AC /* SemesterListTableCell1.m */; };
@@ -129,6 +130,8 @@
 		1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTabViewController.m; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollection.h; path = GPATracker/DataCollection.h; sourceTree = "<group>"; };
 		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCollection.m; path = GPATracker/DataCollection.m; sourceTree = "<group>"; };
+		1FA9B0C016CC29F3009B4F1E /* CourseDetails+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CourseDetails+Create.m"; path = "GPATracker/CourseDetails+Create.m"; sourceTree = "<group>"; };
+		1FA9B0C116CC29F3009B4F1E /* CourseDetails+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CourseDetails+Create.h"; path = "GPATracker/CourseDetails+Create.h"; sourceTree = "<group>"; };
 		1FAF581F15BCCF4500304676 /* CourseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableView.m; sourceTree = "<group>"; };
 		1FAF582015BCCF4500304676 /* CourseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableView.h; sourceTree = "<group>"; };
 		1FAF582215BCCF7100304676 /* CourseEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseEditTableView.h; sourceTree = "<group>"; };
@@ -197,6 +200,8 @@
 		1F41902C15C319350031A4BC /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				1FA9B0C016CC29F3009B4F1E /* CourseDetails+Create.m */,
+				1FA9B0C116CC29F3009B4F1E /* CourseDetails+Create.h */,
 				1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */,
 				1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
@@ -508,6 +513,7 @@
 				1F27DA3A16B8476A00E0C8C8 /* GradingScheme.m in Sources */,
 				1FFE778D16C17F020037F681 /* CourseListTableView.m in Sources */,
 				1FFE778E16C17F020037F681 /* CourseTableCell1.m in Sources */,
+				1FA9B0C216CC29F4009B4F1E /* CourseDetails+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

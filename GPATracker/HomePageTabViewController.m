@@ -15,6 +15,7 @@
 #import "SchoolEditTableView.h"
 #import "SemesterTableView.h"
 #import "SemesterEditTableView.h"
+#import "CourseEditTableView.h"
 
 @interface HomePageTabViewController ()
 @end
@@ -188,7 +189,7 @@
     
     for (SchoolDetails *item in self.schoolList)
     {
-        SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"SemesterListView"];
+        SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
         
         View.dataCollection = self.dataCollection;
         View.managedObjectContext = self.managedObjectContext;
@@ -274,6 +275,16 @@
         SemesterEditTableView.dataCollection = self.dataCollection;
         SemesterEditTableView.managedObjectContext = self.managedObjectContext;
     }
+    else if ([segue.identifier isEqualToString:@"segueHomePageCreateCourse"])
+    {
+        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
+        
+        CourseEditTableView.setEditStatus = @"Create";
+        //CourseEditTableView.userInfo = self.userInfo;
+        //CourseEditTableView.schoolDetails = [self.schoolList objectAtIndex:self.pageControl.currentPage];
+        CourseEditTableView.dataCollection = self.dataCollection;
+        CourseEditTableView.managedObjectContext = self.managedObjectContext;
+    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
@@ -299,35 +310,35 @@
 
 -(IBAction)BtnAddSchool:(id)sender
 {
-    if (self.displayType == @"Schools")
+    if (self.displayType == (NSString *)@"Schools")
     {
         [self performSegueWithIdentifier: @"segueHomePageCreateSchool" sender: self];
     }
-    else if (self.displayType == @"Semesters")
+    else if (self.displayType == (NSString *)@"Semesters")
     {
         [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
     }
-    else if (self.displayType == @"Courses")
+    else if (self.displayType == (NSString *)@"Courses")
     {
-        [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
+        [self performSegueWithIdentifier: @"segueHomePageCreateCourse" sender: self];
     }
 }
 
 -(IBAction)BtnEditSchool:(id)sender
 {
-    if (buttonEditSchool.currentTitle == @"Edit")
+    if (buttonEditSchool.currentTitle == (NSString *)@"Edit")
     {
-        if (self.displayType == @"Schools")
+        if (self.displayType == (NSString *)@"Schools")
         {
             [self performSegueWithIdentifier: @"segueHomePageEditSchool" sender: self];
         }
-        else if (self.displayType == @"Semesters")
+        else if (self.displayType == (NSString *)@"Semesters")
         {
             SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
             [sender setTitle:@"Done" forState:UIControlStateNormal];
             [newViewController setEditing:YES animated:YES];
         }
-        else if (self.displayType == @"Courses")
+        else if (self.displayType == (NSString *)@"Courses")
         {
             SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
             [sender setTitle:@"Done" forState:UIControlStateNormal];

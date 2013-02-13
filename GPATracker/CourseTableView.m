@@ -12,7 +12,7 @@
 #import "CourseEditTableView.h"
 #import "SemesterTableView.h"
 #import "SemesterDetails.h"
-#import "CourseListTableCell1.h"
+#import "CourseTableCell1.h"
 #import "SchoolDetails+Create.h"
 
 @interface CourseTableView ()
@@ -115,12 +115,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"courseListTableCell1";
-    CourseListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"courseTableCell1";
+    CourseTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil)
     {
-        cell = [[CourseListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CourseTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];

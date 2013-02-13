@@ -10,10 +10,10 @@
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "CourseTableView.h"
-#import "SemesterEditTableView.h"
+#import "CourseEditTableView.h"
 #import "SemesterDetails+Create.h"
-#import "CourseDetails.h"
-#import "SemesterListTableCell1.h"
+#import "CourseDetails+Create.h"
+#import "CourseListTableCell1.h"
 #import "SchoolDetails+Create.h"
 #import "GradingScheme+Create.h"
 
@@ -35,17 +35,19 @@
 {
     // Create fetch request for the entity
     // Edit the entity name as appropriate
-    NSString *entityName = @"SemesterDetails";
+    NSString *entityName = @"CourseDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:NO];
-    NSSortDescriptor *sortDescriptorCode = [[NSSortDescriptor alloc] initWithKey:@"semesterCode" ascending:NO]; //selector:@selector(localizedStandardCompare:)];
-    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorCode, nil]];
-    request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", self.schoolInfo];
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterYear" ascending:NO];
+    NSSortDescriptor *sortDescriptorSCode = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterCode" ascending:NO];
+    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:NO];
+    //selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorSCode, sortDescriptorCCode, nil]];
+    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails.schoolDetails = %@", self.schoolInfo];
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
 }
 
 -(IBAction)back
@@ -139,75 +141,56 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"semesterListTableCell1";
-    SemesterListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"courseListTableCell1";
+    CourseListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if(cell == nil)
     {
-        cell = [[SemesterListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CourseListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
-
-    int courseCount = [selectedObject.courseDetails count];
-    NSDecimalNumber *sumCredits = [selectedObject valueForKeyPath:@"courseDetails.@sum.units"];
-    NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-    NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-    for (CourseDetails *item in selectedObject.courseDetails)
-    { 
-        if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1] && item.actualGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
-        {
-            NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
-            sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
-            sumUnits = [sumUnits decimalNumberByAdding:units];
-        }
-    }
-    NSDecimalNumber *gPA;
-    if ([sumUnits longValue] == 0)
+    
+    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    // TODO: create class courseListCell2 and include custom labels for display to cell
+    cell.cellLabel1.text = [selectedObject courseCode];
+    cell.cellLabel2.text = [selectedObject courseName];
+    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
+    if (selectedObject.actualGradeGPA != nil)
     {
-        gPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+        cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
     }
     else
     {
-        gPA = [sumGrades decimalNumberByDividingBy:sumUnits];
+        cell.cellLabelGPA.text = @"";
     }
-
-    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
-    [nf setMinimumFractionDigits:2];
-    [nf setMaximumFractionDigits:2];
-    [nf setZeroSymbol:@"0.00"];
-    NSString *ns  = [nf stringFromNumber:gPA];
-    
-    cell.cellLabel1.text = [NSString stringWithFormat:@"%@ - %@", [selectedObject semesterName], [selectedObject semesterYear]];
-    cell.cellLabel2.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];
-    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
-    cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@",ns];
     
     return cell;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueAddSemester"])
+    if ([segue.identifier isEqualToString:@"segueAddCourse"])
     {
         // Use this code if going to a navigation controller before accessing destination screen
         //UINavigationController *navCon = [segue destinationViewController];
         //SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
-        SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
+        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
         
-        SemesterEditTableView.schoolDetails = self.schoolInfo;
-        SemesterEditTableView.dataCollection = self.dataCollection;
-        SemesterEditTableView.managedObjectContext = self.managedObjectContext;
+        //CourseEditTableView.semesterDetails = self.semesterDetails;
+        CourseEditTableView.dataCollection = self.dataCollection;
+        CourseEditTableView.managedObjectContext = self.managedObjectContext;
     }
-    else if ([segue.identifier isEqualToString:@"segueEditSemester"])
+    else if ([segue.identifier isEqualToString:@"segueHomePageEditCourse"])
     {
-        SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SemesterEditTableView *SemesterEditTableView = [segue destinationViewController];
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
         
-        SemesterEditTableView.userInfo = self.userInfo;
-        SemesterEditTableView.semesterDetails = selectedObject;
-        SemesterEditTableView.schoolDetails = self.schoolInfo;
-        SemesterEditTableView.dataCollection = self.dataCollection;
-        SemesterEditTableView.managedObjectContext = self.managedObjectContext;
-        SemesterEditTableView.setEditStatus = @"Edit";
+        //CourseEditTableView.userInfo = self.userInfo;
+        CourseEditTableView.courseDetails = selectedObject;
+        //CourseEditTableView.schoolDetails = self.schoolInfo;
+        CourseEditTableView.dataCollection = self.dataCollection;
+        CourseEditTableView.managedObjectContext = self.managedObjectContext;
+        CourseEditTableView.setEditStatus = @"Edit";
     }
     else if ([segue.identifier isEqualToString:@"segueCourseList"])
     {
@@ -244,7 +227,19 @@
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-
+/*
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	NSString *sectionName;
+    
+    if (section == 0)
+        sectionName = @"Standard Grades";
+    else
+        sectionName = @"Pass/Fail Grades";
+    
+    return sectionName;
+}
+*/
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -280,7 +275,7 @@
 {
     if (buttonIndex == 1)
     {
-        [self performSegueWithIdentifier:@"segueEditSemester" sender:self];
+        [self performSegueWithIdentifier:@"segueHomePageEditCourse" sender:self];
     }
     else if (buttonIndex == 2)
     {
@@ -298,11 +293,11 @@
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        [self performSegueWithIdentifier: @"segueEditSemester" sender: self];
+        [self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
     }
     else
     {
-        [self performSegueWithIdentifier: @"segueCourseList" sender: self];
+        [self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
