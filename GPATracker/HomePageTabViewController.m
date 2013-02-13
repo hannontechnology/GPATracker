@@ -42,13 +42,17 @@
         self.displayType = @"Schools";
     }
     
-    if (self.displayType == @"Schools")
+    if (self.displayType == (NSString *)@"Schools")
     {
         [self viewSchools];
     }
-    else if (self.displayType == @"Semesters")
+    else if (self.displayType == (NSString *)@"Semesters")
     {
         [self viewSemesters];
+    }
+    else if (self.displayType == (NSString *)@"Courses")
+    {
+        [self viewCourses];
     }
     [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
     
@@ -72,13 +76,17 @@
         self.displayType = @"Schools";
     }
     
-    if (self.displayType == @"Schools")
+    if (self.displayType == (NSString *)@"Schools")
     {
         [self viewSchools];
     }
-    else if (self.displayType == @"Semesters")
+    else if (self.displayType == (NSString *)@"Semesters")
     {
         [self viewSemesters];
+    }
+    else if (self.displayType == (NSString *)@"Courses")
+    {
+        [self viewCourses];
     }
     [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
     
@@ -100,6 +108,12 @@
 {
     self.displayType = @"Semesters";
     [self viewSemesters];
+}
+
+-(IBAction)DisplayCourses:(id)sender
+{
+    self.displayType = @"Courses";
+    [self viewCourses];
 }
 
 - (void)viewSchools
@@ -161,14 +175,49 @@
     [self selectPage:tmpPage];
 }
 
+- (void)viewCourses
+{
+    int tmpPage = self.pageControl.currentPage;
+    for (SchoolSummaryViewController *item in self.childViewControllers)
+    {
+        [item.view removeFromSuperview];
+        [item removeFromParentViewController];
+    }
+    
+    self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    
+    for (SchoolDetails *item in self.schoolList)
+    {
+        SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"SemesterListView"];
+        
+        View.dataCollection = self.dataCollection;
+        View.managedObjectContext = self.managedObjectContext;
+        View.schoolInfo = item;
+        View.userInfo = self.userInfo;
+        [View DisplayInfo];
+        
+        [self addChildViewController:View];
+    }
+    
+    self.pageControl.numberOfPages = self.schoolList.count;
+    //    [self viewWillAppear:true];
+    [super viewWillAppear:true];
+    [self selectPage:tmpPage];
+}
+
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
-    if (self.displayType == @"Schools")
+    if (self.displayType == (NSString *)@"Schools")
     {
         SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
     }
-    else if (self.displayType == @"Semesters")
+    else if (self.displayType == (NSString *)@"Semesters")
+    {
+        SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        //[newViewController DisplayInfo];
+    }
+    else if (self.displayType == (NSString *)@"Courses")
     {
         SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
@@ -258,6 +307,10 @@
     {
         [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
     }
+    else if (self.displayType == @"Courses")
+    {
+        [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
+    }
 }
 
 -(IBAction)BtnEditSchool:(id)sender
@@ -269,6 +322,12 @@
             [self performSegueWithIdentifier: @"segueHomePageEditSchool" sender: self];
         }
         else if (self.displayType == @"Semesters")
+        {
+            SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+            [sender setTitle:@"Done" forState:UIControlStateNormal];
+            [newViewController setEditing:YES animated:YES];
+        }
+        else if (self.displayType == @"Courses")
         {
             SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
             [sender setTitle:@"Done" forState:UIControlStateNormal];

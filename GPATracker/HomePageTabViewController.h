@@ -26,6 +26,7 @@
 -(IBAction)EditProfile:(id)sender;
 -(IBAction)DisplaySchools:(id)sender;
 -(IBAction)DisplaySemesters:(id)sender;
+-(IBAction)DisplayCourses:(id)sender;
 -(IBAction)BtnNextPage:(id)sender;
 -(IBAction)BtnPreviousPage:(id)sender;
 -(IBAction)BtnAddSchool:(id)sender;
@@ -33,4 +34,5 @@
 
 - (void)viewSchools;
 - (void)viewSemesters;
+- (void)viewCourses;
 @end
