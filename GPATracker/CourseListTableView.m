@@ -171,12 +171,10 @@
 {
     if ([segue.identifier isEqualToString:@"segueAddCourse"])
     {
-        // Use this code if going to a navigation controller before accessing destination screen
-        //UINavigationController *navCon = [segue destinationViewController];
-        //SemesterEditTableView *SemesterEditTableView = [navCon.viewControllers objectAtIndex:0];
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
         CourseEditTableView *CourseEditTableView = [segue destinationViewController];
         
-        //CourseEditTableView.semesterDetails = self.semesterDetails;
+        CourseEditTableView.semesterDetails = selectedObject.semesterDetails;
         CourseEditTableView.dataCollection = self.dataCollection;
         CourseEditTableView.managedObjectContext = self.managedObjectContext;
     }

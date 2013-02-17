@@ -210,17 +210,17 @@
 {
     if (self.displayType == (NSString *)@"Schools")
     {
-        SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        //SchoolSummaryViewController *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
     }
     else if (self.displayType == (NSString *)@"Semesters")
     {
-        SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        //SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
     }
     else if (self.displayType == (NSString *)@"Courses")
     {
-        SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        //SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
     }
 }
