@@ -476,26 +476,31 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (IBAction)Cancel:(id)sender
 {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    [popup showInView:self.view];
-    //[self.navigationController popViewControllerAnimated:YES];
+    UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    popUp.tag = 0;
+    [popUp showInView:self.view];
     
 }
 
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if (buttonIndex == 0)
+    NSLog(@"actionSheet.title = %@", actionSheet.title);
+    NSInteger *iTag = actionSheet.tag;
+    if (iTag == 0)
     {
-        NSLog(@"User Click the Yes button");
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self.parentViewController.navigationController popViewControllerAnimated:YES];
-    }
-    else if (buttonIndex == 1)
-    {
-        NSLog(@"User Click the No button");
-        // Maybe do something else
-
+        if (buttonIndex == 0)
+        {
+            NSLog(@"User Click the Yes button");
+            [self.navigationController popViewControllerAnimated:YES];
+            //Does not return to the issuing school's semester view - need to fix
+        }
+        else if (buttonIndex == 1)
+        {
+            NSLog(@"User Click the No button");
+            // Maybe do something else
+            
+        }
     }
 }
 
