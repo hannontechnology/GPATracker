@@ -41,7 +41,7 @@
     // Sort using the year / then name properties
     NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterYear" ascending:NO];
     NSSortDescriptor *sortDescriptorSCode = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterCode" ascending:NO];
-    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:NO];
+    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:YES];
     //selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorSCode, sortDescriptorCCode, nil]];
     request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails.schoolDetails = %@", self.schoolInfo];
@@ -185,7 +185,7 @@
         
         //CourseEditTableView.userInfo = self.userInfo;
         CourseEditTableView.courseDetails = selectedObject;
-        //CourseEditTableView.schoolDetails = self.schoolInfo;
+        CourseEditTableView.semesterDetails = selectedObject.semesterDetails;
         CourseEditTableView.dataCollection = self.dataCollection;
         CourseEditTableView.managedObjectContext = self.managedObjectContext;
         CourseEditTableView.setEditStatus = @"Edit";
