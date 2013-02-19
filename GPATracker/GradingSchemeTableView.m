@@ -354,6 +354,8 @@
     NSLog(@"Next Field");
     UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:self.selectedIndexPath];
     GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
+    GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:cell.indexPath];
+    NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
 
     int selectedSection = self.selectedIndexPath.section;
 
@@ -409,16 +411,23 @@
     return true;
 }
 
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+- (void)textFieldDidEndEditing:(UITextField *)textField
 {
     UIView *tmpCell = textField.superview.superview;
     GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
     
     if (cell == nil)
-        return true;
+        return; // true;
     
     GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:cell.indexPath];
     NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
+    
+    if (textField == cell.cellField1)
+        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:textField.text];
+    else if (textField == cell.minGrade)
+        selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:textField.text];
+    else if (textField == cell.maxGrade)
+        selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:textField.text];
     
     selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
     selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
@@ -431,8 +440,7 @@
     {
         selectedObject.includeInGPA = [NSNumber numberWithInt:0];
     }
-    
-    return true;
+    return; // true;
 }
 
 #pragma mark - Table view data source
