@@ -194,14 +194,10 @@
     
     //cancelButton.
     
-    if (self.setEditStatus != @"Edit")
-    {
-        UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
-        //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
-        self.navigationItem.leftBarButtonItem = cancelButton;
-        self.navigationItem.hidesBackButton = YES;
-        return;
-    }
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+    //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    self.navigationItem.hidesBackButton = YES;
 
     if (self.userInfo == nil)
     {
@@ -357,24 +353,31 @@
 
 - (IBAction)Cancel:(id)sender
 {
-    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    [popup showInView:self.view];
+    UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    [popUp showInView:self.view];
 }
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    NSLog(@"actionSheet.title = %@", actionSheet.title);
     if (buttonIndex == 0)
     {
         NSLog(@"User Click the Yes button");
-        [self.navigationController popViewControllerAnimated:YES];
-        //[self.parentViewController.navigationController popViewControllerAnimated:YES];
+        if (self.setEditStatus != @"Edit")
+        {
+            [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
+        }
+        else
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
     }
     else if (buttonIndex == 1)
     {
         NSLog(@"User Click the No button");
         // Maybe do something else
-        
     }
+
 }
 
 - (IBAction)textFieldReturn:(id)sender
