@@ -366,6 +366,8 @@
     if ([cell.cellField1 isFirstResponder])
     {
         [cell.cellField1 resignFirstResponder];
+        //selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
+        //BOOL *bTest = [cell.minGrade canBecomeFirstResponder];
         [cell.minGrade becomeFirstResponder];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
@@ -410,7 +412,7 @@
     
     return true;
 }
-
+/*
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     UIView *tmpCell = textField.superview.superview;
@@ -442,6 +444,7 @@
     }
     return; // true;
 }
+*/
 
 #pragma mark - Table view data source
 
