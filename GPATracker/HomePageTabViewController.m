@@ -277,11 +277,15 @@
     }
     else if ([segue.identifier isEqualToString:@"segueHomePageCreateCourse"])
     {
+        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.pageControl.currentPage];
+        NSArray *semesterList = [self.dataCollection retrieveSemesterList:selectedObject context:self.managedObjectContext];
+        SemesterDetails *currSemester = [semesterList objectAtIndex:0];
+        
         CourseEditTableView *CourseEditTableView = [segue destinationViewController];
         
         CourseEditTableView.setEditStatus = @"Create";
         //CourseEditTableView.userInfo = self.userInfo;
-        //CourseEditTableView.schoolDetails = [self.schoolList objectAtIndex:self.pageControl.currentPage];
+        CourseEditTableView.semesterDetails = currSemester;
         CourseEditTableView.dataCollection = self.dataCollection;
         CourseEditTableView.managedObjectContext = self.managedObjectContext;
     }
@@ -320,7 +324,11 @@
     }
     else if (self.displayType == (NSString *)@"Courses")
     {
-        [self performSegueWithIdentifier: @"segueHomePageCreateCourse" sender: self];
+        NSArray *semesterList = [self.dataCollection retrieveSemesterList:[self.schoolList objectAtIndex:self.pageControl.currentPage] context:self.managedObjectContext];
+        if ([semesterList count] == 0)
+            [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
+        else
+            [self performSegueWithIdentifier: @"segueHomePageCreateCourse" sender: self];
     }
 }
 

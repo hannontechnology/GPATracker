@@ -145,7 +145,9 @@ static const int yearMax = 2020;
 {
     NSString *entityName = @"SemesterDetails";
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"semesterCode" ascending:NO]];
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterYear" ascending:NO];
+    NSSortDescriptor *sortDescriptorCode = [[NSSortDescriptor alloc] initWithKey:@"semesterCode" ascending:NO]; //selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorCode, nil]];
     request.predicate = [NSPredicate predicateWithFormat: @"schoolDetails = %@", inputSchoolDetails];
     
     NSError *error = nil;
