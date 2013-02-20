@@ -48,11 +48,6 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
--(IBAction)back
-{
-    [self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
