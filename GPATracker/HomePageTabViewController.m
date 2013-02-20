@@ -16,6 +16,7 @@
 #import "SemesterTableView.h"
 #import "SemesterEditTableView.h"
 #import "CourseEditTableView.h"
+#import "CourseTableView.h"
 
 @interface HomePageTabViewController ()
 @end
@@ -25,6 +26,7 @@
 @synthesize buttonEditProfile;
 @synthesize buttonSemesterList;
 @synthesize buttonSchoolList;
+@synthesize buttonCourseList;
 @synthesize buttonNext;
 @synthesize buttonPrevious;
 @synthesize buttonAddSchool;
@@ -189,7 +191,8 @@
     
     for (SchoolDetails *item in self.schoolList)
     {
-        SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
+        //SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
+        CourseTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
         
         View.dataCollection = self.dataCollection;
         View.managedObjectContext = self.managedObjectContext;

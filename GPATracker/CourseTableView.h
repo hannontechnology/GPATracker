@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 
+@class User;
+@class SchoolDetails;
 @class SemesterDetails;
 @class DataCollection;
 
@@ -18,6 +20,8 @@
 }
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
+@property (strong, nonatomic) User *userInfo;
+@property (strong, nonatomic) SchoolDetails *schoolInfo;
 @property (strong, nonatomic) SemesterDetails *semesterInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -27,5 +31,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *semesterGPA;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
+
+-(void)DisplayInfo;
 
 @end

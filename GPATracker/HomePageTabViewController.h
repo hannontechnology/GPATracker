@@ -15,6 +15,7 @@
 @interface HomePageTabViewController : PagerViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonLogout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonEditProfile;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonCourseList;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSemesterList;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonSchoolList;
 @property (weak, nonatomic) IBOutlet UIButton *buttonNext;
