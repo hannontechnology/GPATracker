@@ -187,91 +187,11 @@
 - (IBAction)Save:(id)sender
 {
     NSError *error = nil;
-    /*
-    for (int i=0;i<[self.tableView numberOfRowsInSection:0];i++)
-    {
-        NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:0];
-        UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
-        GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
-        if (cell == nil)
-        {
-            //NSLog(@"Index Row: %d",[ip row]);
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:0]-1 inSection:0];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-            cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
-            cell = (GradingSchemeCell1 *)cellTmp;
-            if (cell == nil)
-            {
-                //NSLog(@"Index Row: %d",[ip row]);
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-                cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
-                cell = (GradingSchemeCell1 *)cellTmp;
-            }
-        }
-        GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
-        NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
-
-        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
-        selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
-        selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
-        if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
-        {
-            selectedObject.includeInGPA = [NSNumber numberWithInt:1];
-        }
-        else
-        {
-            selectedObject.includeInGPA = [NSNumber numberWithInt:0];
-        }
-    }
-
-    for (int i=0;i<[self.tableView numberOfRowsInSection:1];i++)
-    {
-        NSIndexPath *ip = [NSIndexPath indexPathForRow:i inSection:1];
-        UITableViewCell *cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
-        GradingSchemeCell1 *cell = (GradingSchemeCell1 *)cellTmp;
-        if (cell == nil)
-        {
-            //NSLog(@"Index Row: %d",[ip row]);
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.tableView numberOfRowsInSection:1]-1 inSection:1];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-            cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
-            cell = (GradingSchemeCell1 *)cellTmp;
-            if (cell == nil)
-            {
-                //NSLog(@"Index Row: %d",[ip row]);
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
-                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-                cellTmp = [[self tableView] cellForRowAtIndexPath:ip];
-                cell = (GradingSchemeCell1 *)cellTmp;
-            }
-        }
-        GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:ip];
-        NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
-        
-        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
-        selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
-        selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
-        if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
-        {
-            selectedObject.includeInGPA = [NSNumber numberWithInt:1];
-        }
-        else
-        {
-            selectedObject.includeInGPA = [NSNumber numberWithInt:0];
-        }
-    }
-    */
-    //NSArray *results = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.gradingInfo context:self.managedObjectContext];
-
     if (self.gradingInfo == nil)
     {
         NSLog(@"Error: Could not connect to database.");
     }
-    //if ([results count] != 0)
-    //{
         [self.managedObjectContext save:&error];
-    //}
 
     [self performSegueWithIdentifier:@"segueGrading2Home" sender:self];
 }
@@ -366,9 +286,6 @@
     if ([cell.cellField1 isFirstResponder])
     {
         [cell.cellField1 resignFirstResponder];
-//        NSDecimalNumber *tmpGPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
-//        selectedObject.gPA = tmpGPA;
-//        BOOL *bTest = [cell.minGrade canBecomeFirstResponder];
         [cell.minGrade becomeFirstResponder];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
@@ -420,7 +337,7 @@
     GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
     
     if (cell == nil)
-        return; // true;
+        return;
     
     GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:cell.indexPath];
     NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
@@ -431,20 +348,7 @@
         selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:textField.text];
     else if (textField == cell.maxGrade)
         selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:textField.text];
-    /*
-    selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
-    selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
-    selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
-    if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
-    {
-        selectedObject.includeInGPA = [NSNumber numberWithInt:1];
-    }
-    else
-    {
-        selectedObject.includeInGPA = [NSNumber numberWithInt:0];
-    }
-    */
-    return; // true;
+    return;
 }
 
 
