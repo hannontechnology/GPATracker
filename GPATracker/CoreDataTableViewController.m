@@ -120,7 +120,7 @@
     }
 }
 
-
+/*
 - (void)controller:(NSFetchedResultsController *)controller
    didChangeObject:(id)anObject
 	   atIndexPath:(NSIndexPath *)indexPath
@@ -150,7 +150,7 @@
         }
     }
 }
-
+*/
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     if (self.beganUpdates) [self.tableView endUpdates];

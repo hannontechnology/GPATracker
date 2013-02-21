@@ -462,9 +462,6 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                            <connections>
-                                                <action selector="textDataChanged:" destination="1tm-RG-Rrr" eventType="editingChanged" id="xwM-5Q-9TM"/>
-                                            </connections>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="Fqm-Fh-7Ba">
                                             <rect key="frame" x="121" y="37" width="46" height="31"/>
