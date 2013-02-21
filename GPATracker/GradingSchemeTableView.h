@@ -32,5 +32,6 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 -(IBAction)checkIsGPA:(id)sender;
+-(IBAction)textDataChanged:(id)sender;
 
 @end

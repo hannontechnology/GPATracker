@@ -37,6 +37,30 @@
     return self;
 }
 
+-(IBAction)textDataChanged:(id)sender
+{
+/*
+    UITextField *tmpField = sender;
+    UIView *tmpCell = tmpField.superview.superview;
+    GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
+    
+    if (cell == nil)
+        return; // true;
+    
+    GradingScheme *selectedObject = [self.fetchedResultsController objectAtIndexPath:cell.indexPath];
+    NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
+    
+    if (tmpField == cell.cellField1)
+        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:tmpField.text];
+    else if (tmpField == cell.minGrade)
+        selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:tmpField.text];
+    else if (tmpField == cell.maxGrade)
+        selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:tmpField.text];
+    
+    [tmpField becomeFirstResponder];
+*/
+}
+
 - (void)setupFetchedResultsController
 {
     NSString *entityName = @"GradingScheme";
@@ -366,8 +390,8 @@
     if ([cell.cellField1 isFirstResponder])
     {
         [cell.cellField1 resignFirstResponder];
-        //selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
-        //BOOL *bTest = [cell.minGrade canBecomeFirstResponder];
+//        selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
+//        BOOL *bTest = [cell.minGrade canBecomeFirstResponder];
         [cell.minGrade becomeFirstResponder];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
