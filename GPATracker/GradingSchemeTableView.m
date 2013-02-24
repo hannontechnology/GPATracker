@@ -14,6 +14,7 @@
 #import "SemesterEditTableView.h"
 #import "GradingSchemeCell1.h"
 #import "CustomCellBackground.h"
+#import "CustomHeader.h"
 
 @interface GradingSchemeTableView ()
 - (IBAction)Save:(id)sender;
@@ -36,6 +37,23 @@
         // Custom initialization
     }
     return self;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CustomHeader *header = [[CustomHeader alloc] init];
+    header.titleLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    if (section == 1)
+    {
+        header.lightColor = [UIColor colorWithRed:147.0/255.0 green:105.0/255.0 blue:216.0/255.0 alpha:1.0];
+        header.darkColor = [UIColor colorWithRed:72.0/255.0 green:22.0/255.0 blue:137.0/255.0 alpha:1.0];
+    }
+    return header;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
 }
 
 - (void)setupFetchedResultsController
