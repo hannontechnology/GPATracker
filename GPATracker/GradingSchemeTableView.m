@@ -13,6 +13,7 @@
 #import "SchoolListTableView.h"
 #import "SemesterEditTableView.h"
 #import "GradingSchemeCell1.h"
+#import "CustomCellBackground.h"
 
 @interface GradingSchemeTableView ()
 - (IBAction)Save:(id)sender;
@@ -104,6 +105,11 @@
     
     //NSLog(@"Row: %d, Section: %d",indexPath.row, indexPath.section);
     
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    
+    // At end of function, right before return cell:
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     return cell;
 }
 

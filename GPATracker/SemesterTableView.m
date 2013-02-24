@@ -16,6 +16,7 @@
 #import "SemesterListTableCell1.h"
 #import "SchoolDetails+Create.h"
 #import "GradingScheme+Create.h"
+#import "CustomCellBackground.h"
 
 @interface SemesterTableView ()
 @end
@@ -175,7 +176,11 @@
     cell.cellLabel2.text = [NSString stringWithFormat:@"Course Count: %d",courseCount];
     cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", sumCredits.stringValue];
     cell.cellLabelGPA.text = [NSString stringWithFormat:@"%@",ns];
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     
+    // At end of function, right before return cell:
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
