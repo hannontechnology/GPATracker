@@ -14,6 +14,7 @@
 #import "SemesterDetails.h"
 #import "CourseTableCell1.h"
 #import "SchoolDetails+Create.h"
+#import "CustomCellBackground.h"
 
 @interface CourseTableView ()
 
@@ -138,6 +139,11 @@
         cell.cellLabelGPA.text = @"";
     }
     
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    
+    // At end of function, right before return cell:
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
