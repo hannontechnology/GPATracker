@@ -198,6 +198,7 @@
         UINavigationController *navCon = [segue destinationViewController];
         ProfileEditTableView *ProfileEditTableView = [navCon.viewControllers objectAtIndex:0];
         
+        ProfileEditTableView.setEditStatus = @"Create";
         ProfileEditTableView.dataCollection = self.dataCollection;
         ProfileEditTableView.managedObjectContext = self.managedObjectContext;
 	}

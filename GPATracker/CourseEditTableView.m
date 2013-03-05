@@ -15,6 +15,8 @@
 #import "SchoolListTableView.h"
 #import "LoginView.h"
 #import "CourseTableView.h"
+#import "CustomCellBackground.h"
+#import "CustomHeader.h"
 
 @interface CourseEditTableView ()
 @property (strong, nonatomic) UIPickerView *pickerView;
@@ -58,6 +60,41 @@
 static const CGFloat kPickerDefaultWidth = 320.f;
 static const CGFloat kPickerDefaultHeight = 216.f;
 static const NSTimeInterval kPickerAnimationTime = 0.333;
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CustomHeader *header = [[CustomHeader alloc] init];
+    header.titleLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    if (section == 1)
+    {
+        header.lightColor = [UIColor colorWithRed:147.0/255.0 green:105.0/255.0 blue:216.0/255.0 alpha:1.0];
+        header.darkColor = [UIColor colorWithRed:72.0/255.0 green:22.0/255.0 blue:137.0/255.0 alpha:1.0];
+    }
+    return header;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 50;
+}
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"courseListTableCell1";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if(cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+*/
 
 -(IBAction)switchPassFail:(id)sender
 {
@@ -107,7 +144,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         return true;
     }
     NSLog(@"GradeList=%@",self.gradeList);
-    if (self.setGradeType == @"Desired")
+    if (self.setGradeType == (NSString *)@"Desired")
     {
         if (self.courseDesiredGradeField.text.length > 0)
         {
@@ -120,7 +157,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
             selComp0 = 0;
         }
     }
-    else if (self.setGradeType == @"Actual")
+    else if (self.setGradeType == (NSString *)@"Actual")
     {
         if (self.courseActualGradeField.text.length > 0)
         {
@@ -159,11 +196,11 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     NSString *selectedGrade;
     
     selectedGrade = [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]];
-    if (self.setGradeType == @"Desired")
+    if (self.setGradeType == (NSString *)@"Desired")
     {
         courseDesiredGradeField.text = selectedGrade;
     }
-    else if (self.setGradeType == @"Actual")
+    else if (self.setGradeType == (NSString *)@"Actual")
     {
         courseActualGradeField.text = selectedGrade;
     }
@@ -178,11 +215,10 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     return self;
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
     
-    //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:self.courseDetails.semesterDetails.schoolDetails context:self.managedObjectContext]];
-
     // Set pickerView's shown and hidden position frames.
     self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
     self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
@@ -220,7 +256,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     self.navigationItem.leftBarButtonItem = cancelButton;
     self.navigationItem.hidesBackButton = YES;
 
-    if (self.setEditStatus != @"Edit")
+    if (self.setEditStatus != (NSString *)@"Edit")
     {
         return;
     }
@@ -476,7 +512,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveCourse:courseCodeField.text semesterDetails:self.semesterDetails context:self.managedObjectContext];
     
-    if (self.setEditStatus == @"Edit")
+    if (self.setEditStatus == (NSString *)@"Edit")
     {
         if (results == nil)
         {

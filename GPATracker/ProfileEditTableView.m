@@ -98,21 +98,21 @@
 - (void) prevField:(id)sender
 {
     NSLog(@"Previous Field");
-    if ([userNameField isFirstResponder] && self.setEditStatus != @"Edit")
+    if ([userNameField isFirstResponder] && self.setEditStatus != (NSString *)@"Edit")
     {
         [userNameField resignFirstResponder];
         [emailField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[emailField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([passwordField isFirstResponder] && self.setEditStatus != @"Edit")
+    else if ([passwordField isFirstResponder] && self.setEditStatus != (NSString *)@"Edit")
     {
         [passwordField resignFirstResponder];
         [userNameField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[userNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([passwordField isFirstResponder] && self.setEditStatus == @"Edit")
+    else if ([passwordField isFirstResponder] && self.setEditStatus == (NSString *)@"Edit")
     {
         [passwordField resignFirstResponder];
         [emailField becomeFirstResponder];
@@ -159,21 +159,21 @@
         UITableViewCell *cell = (UITableViewCell*) [[emailField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([emailField isFirstResponder] && self.setEditStatus != @"Edit")
+    else if ([emailField isFirstResponder] && self.setEditStatus != (NSString *)@"Edit")
     {
         [emailField resignFirstResponder];
         [userNameField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[userNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([emailField isFirstResponder] && self.setEditStatus == @"Edit")
+    else if ([emailField isFirstResponder] && self.setEditStatus == (NSString *)@"Edit")
     {
         [emailField resignFirstResponder];
         [passwordField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[passwordField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([userNameField isFirstResponder] && self.setEditStatus != @"Edit")
+    else if ([userNameField isFirstResponder] && self.setEditStatus != (NSString *)@"Edit")
     {
         [userNameField resignFirstResponder];
         [passwordField becomeFirstResponder];
@@ -217,7 +217,10 @@
             autoLoginField.on = YES;
         }
     }
-    userNameField.enabled = NO;
+    if (self.setEditStatus == (NSString *)@"Edit")
+        userNameField.enabled = NO;
+    else
+        userNameField.enabled = YES;
 }
 
 - (void)viewDidUnload
@@ -270,7 +273,7 @@
     NSError *error = nil;
     NSArray *results = [self.dataCollection retrieveUsers:userNameField.text inContext:self.managedObjectContext];
 
-    if (self.setEditStatus == @"Edit")
+    if (self.setEditStatus == (NSString *)@"Edit")
     {
         if (self.userInfo == nil)
         {
@@ -363,7 +366,7 @@
     if (buttonIndex == 0)
     {
         NSLog(@"User Click the Yes button");
-        if (self.setEditStatus != @"Edit")
+        if (self.setEditStatus != (NSString *)@"Edit")
         {
             [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
         }
@@ -399,7 +402,7 @@
 	{
         LoginView *LoginView = [segue destinationViewController];
         
-        if (self.setCancel == @"Y")
+        if (self.setCancel == (NSString *)@"Y")
             LoginView.setLogoutStatus = @"Logout";
         LoginView.dataCollection = self.dataCollection;
         LoginView.managedObjectContext = self.managedObjectContext;
