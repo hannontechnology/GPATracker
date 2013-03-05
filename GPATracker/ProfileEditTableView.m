@@ -357,7 +357,7 @@
 - (IBAction)Cancel:(id)sender
 {
     UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    [popUp showInView:self.view];
+    [popUp showFromTabBar:self.view];
 }
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

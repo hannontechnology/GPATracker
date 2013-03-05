@@ -478,7 +478,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 {
     UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     popUp.tag = 0;
-    [popUp showInView:self.view];
+    [popUp showFromTabBar:self.view];
     
 }
 
