@@ -522,8 +522,7 @@
     UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
     popUp.tag = 1;
     
-    [popUp showInView:self.view];
-    //[self.navigationController popViewControllerAnimated:YES];
+    [popUp showFromTabBar:self.view];
 }
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex

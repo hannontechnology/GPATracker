@@ -172,7 +172,7 @@
         [passwordField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[passwordField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-    }
+    } 
     else if ([userNameField isFirstResponder] && self.setEditStatus != @"Edit")
     {
         [userNameField resignFirstResponder];
@@ -354,7 +354,7 @@
 - (IBAction)Cancel:(id)sender
 {
     UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
-    [popUp showInView:self.view];
+    [popUp showFromTabBar:self.view];
 }
 
 - (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
