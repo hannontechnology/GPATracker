@@ -18,6 +18,7 @@
 #import "GradingScheme+Create.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
+#import "CustomFooter.h"
 
 @interface CourseListTableView ()
 @end
@@ -50,6 +51,18 @@
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+}
+
+-(CGFloat) tableView:(UITableView *)tableView
+heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *) tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section
+{
+    return [[CustomFooter alloc] init];
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
@@ -166,6 +179,7 @@
     if(cell == nil)
     {
         cell = [[CourseListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        ((CustomCellBackground *)cell.selectedBackgroundView).selected = YES;
     }
     
     CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];

@@ -15,6 +15,7 @@
 #import "GradingSchemeCell1.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
+#import "CustomFooter.h"
 
 @interface GradingSchemeTableView ()
 - (IBAction)Save:(id)sender;
@@ -37,6 +38,18 @@
         // Custom initialization
     }
     return self;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView
+heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *) tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section
+{
+    return [[CustomFooter alloc] init];
 }
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
