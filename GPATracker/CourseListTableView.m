@@ -79,7 +79,7 @@ viewForFooterInSection:(NSInteger)section
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 28;
 }
 
 -(IBAction)back

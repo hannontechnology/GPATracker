@@ -37,7 +37,7 @@
         _titleLabel.textAlignment = UITextAlignmentCenter;
         _titleLabel.opaque = NO;
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:12.0];
         _titleLabel.textColor = [UIColor whiteColor];
         _titleLabel.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
         _titleLabel.shadowOffset = CGSizeMake(0, -1);
@@ -52,13 +52,13 @@
 {
     
     CGFloat coloredBoxMargin = 6.0;
-    CGFloat coloredBoxHeight = 40.0;
+    CGFloat coloredBoxHeight = 20.0;
     _coloredBoxRect = CGRectMake(coloredBoxMargin,
                                  coloredBoxMargin,
                                  self.bounds.size.width-coloredBoxMargin*2,
                                  coloredBoxHeight);
     
-    CGFloat paperMargin = 9.0;
+    CGFloat paperMargin = 5.0;
     _paperRect = CGRectMake(paperMargin,
                             CGRectGetMaxY(_coloredBoxRect),
                             self.bounds.size.width-paperMargin*2,

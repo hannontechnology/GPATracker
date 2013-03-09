@@ -34,7 +34,8 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
-    if (self) {
+    if (self)
+    {
         // Custom initialization
     }
     return self;
@@ -66,7 +67,7 @@ viewForFooterInSection:(NSInteger)section
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 28;
 }
 
 - (void)setupFetchedResultsController
