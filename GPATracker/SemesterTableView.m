@@ -51,18 +51,6 @@
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
 }
 
--(CGFloat) tableView:(UITableView *)tableView
-heightForFooterInSection:(NSInteger)section
-{
-    return 10;
-}
-
-- (UIView *) tableView:(UITableView *)tableView
-viewForFooterInSection:(NSInteger)section
-{
-    return [[CustomFooter alloc] init];
-}
-
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     CustomHeader *header = [[CustomHeader alloc] init];
@@ -87,6 +75,16 @@ viewForFooterInSection:(NSInteger)section
     sectionName = @"Semester List";
     
     return sectionName;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [[CustomFooter alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated
