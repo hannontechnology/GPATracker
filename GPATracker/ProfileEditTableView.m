@@ -12,6 +12,9 @@
 #import "SchoolListTableView.h"
 #import "LoginView.h"
 #import "SchoolEditTableView.h"
+#import "CustomCellBackground.h"
+#import "CustomHeader.h"
+#import "CustomFooter.h"
 
 @interface ProfileEditTableView ()
 
@@ -43,6 +46,43 @@
         // Custom initialization
     }
     return self;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CustomHeader *header = [[CustomHeader alloc] init];
+    header.titleLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    if (section == 1)
+    {
+        header.lightColor = [UIColor colorWithRed:147.0/255.0 green:105.0/255.0 blue:216.0/255.0 alpha:1.0];
+        header.darkColor = [UIColor colorWithRed:72.0/255.0 green:22.0/255.0 blue:137.0/255.0 alpha:1.0];
+    }
+    return header;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 28;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    return [[CustomFooter alloc] init];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    return cell;
 }
 
 - (void)viewDidLoad

@@ -17,6 +17,7 @@
 #import "CourseTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
+#import "CustomFooter.h"
 
 @interface CourseEditTableView ()
 @property (strong, nonatomic) UIPickerView *pickerView;
@@ -75,26 +76,30 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 50;
+    return 28;
 }
 
-/*
+-(CGFloat) tableView:(UITableView *)tableView
+heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *) tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section
+{
+    return [[CustomFooter alloc] init];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"courseListTableCell1";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if(cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
-    
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+ 
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     return cell;
 }
-*/
 
 -(IBAction)switchPassFail:(id)sender
 {

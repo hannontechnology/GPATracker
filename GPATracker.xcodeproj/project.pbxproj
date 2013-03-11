@@ -11,6 +11,7 @@
 		1F0E390C16D9E7FC0036F142 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E390B16D9E7FC0036F142 /* CustomCellBackground.m */; };
 		1F0E390F16D9E9080036F142 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E390E16D9E9080036F142 /* Common.m */; };
 		1F0E391216DAC5C40036F142 /* CustomHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E391116DAC5C40036F142 /* CustomHeader.m */; };
+		1F24D31716EBD82A004B65B9 /* CustomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F24D31616EBD82A004B65B9 /* CustomFooter.m */; };
 		1F27DA3216B81A0500E0C8C8 /* Checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F27DA3016B81A0500E0C8C8 /* Checkbox_checked.png */; };
 		1F27DA3316B81A0500E0C8C8 /* Checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F27DA3116B81A0500E0C8C8 /* Checkbox_unchecked.png */; };
 		1F27DA3A16B8476A00E0C8C8 /* GradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */; };
@@ -86,6 +87,8 @@
 		1F0E390E16D9E9080036F142 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Common.m; path = ../Common.m; sourceTree = "<group>"; };
 		1F0E391016DAC5C40036F142 /* CustomHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHeader.h; sourceTree = "<group>"; };
 		1F0E391116DAC5C40036F142 /* CustomHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHeader.m; sourceTree = "<group>"; };
+		1F24D31516EBD82A004B65B9 /* CustomFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFooter.h; sourceTree = "<group>"; };
+		1F24D31616EBD82A004B65B9 /* CustomFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFooter.m; sourceTree = "<group>"; };
 		1F27DA3016B81A0500E0C8C8 /* Checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkbox_checked.png; path = Images/Checkbox_checked.png; sourceTree = "<group>"; };
 		1F27DA3116B81A0500E0C8C8 /* Checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkbox_unchecked.png; path = Images/Checkbox_unchecked.png; sourceTree = "<group>"; };
 		1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradingScheme.h; path = GPATracker/GradingScheme.h; sourceTree = "<group>"; };
@@ -335,6 +338,8 @@
 				1F754A6B151559EA00BD72F0 /* LoginView.m */,
 				1FB771C315AE1E85006BC18A /* ProfileEditTableView.h */,
 				1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */,
+				1F24D31516EBD82A004B65B9 /* CustomFooter.h */,
+				1F24D31616EBD82A004B65B9 /* CustomFooter.m */,
 				2D9C62AC15B51FE400B82973 /* SchoolEditTableView.h */,
 				2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */,
 				1FC4B4F815BC94040079767C /* SemesterEditTableView.h */,
@@ -532,6 +537,7 @@
 				1F0E390C16D9E7FC0036F142 /* CustomCellBackground.m in Sources */,
 				1F0E390F16D9E9080036F142 /* Common.m in Sources */,
 				1F0E391216DAC5C40036F142 /* CustomHeader.m in Sources */,
+				1F24D31716EBD82A004B65B9 /* CustomFooter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
