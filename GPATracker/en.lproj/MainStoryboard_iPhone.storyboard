@@ -978,7 +978,6 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                     <connections>
                                                         <action selector="textFieldReturn:" destination="J3F-p1-3o6" eventType="editingDidEndOnExit" id="MpY-gb-5wL"/>
-                                                        <segue destination="wtt-27-mum" kind="modal" identifier="segueSyllabusBreakdown" id="6Pd-fj-Opq"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -2032,6 +2031,7 @@
                         <outlet property="schoolNameText" destination="pAz-g1-Rsd" id="Xng-Af-1yr"/>
                         <outlet property="schoolYearsText" destination="v5f-zg-7DW" id="wBi-Io-Pf0"/>
                         <segue destination="J3F-p1-3o6" kind="push" identifier="segueHomePageEditCourse" id="pgP-pB-hYJ"/>
+                        <segue destination="wtt-27-mum" kind="modal" identifier="segueSyllabusBreakdown" id="DA2-3x-Jlf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vi3-uq-5Hs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2434,7 +2434,7 @@
         <segue reference="sH2-t5-pXi"/>
         <segue reference="QIE-od-UF8"/>
         <segue reference="Vzz-SA-ORC"/>
-        <segue reference="XFF-ob-f75"/>
+        <segue reference="pgP-pB-hYJ"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
     </inferredMetricsTieBreakers>
