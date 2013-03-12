@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -2038,10 +2038,10 @@
             </objects>
             <point key="canvasLocation" x="1600" y="1518"/>
         </scene>
-        <!--Table View Controller - Syllabus Breakdown-->
+        <!--Syllabus Edit Table View - Syllabus Breakdown-->
         <scene sceneID="69s-Fg-qPZ">
             <objects>
-                <tableViewController storyboardIdentifier="" id="wtt-27-mum" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="" id="wtt-27-mum" customClass="SyllabusEditTableView" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" allowsSelectionDuringEditing="YES" rowHeight="34" sectionHeaderHeight="10" sectionFooterHeight="10" id="Y9q-m5-DRY">
                         <rect key="frame" x="0.0" y="64" width="320" height="372"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2421,6 +2421,9 @@
                 <relationship kind="outlet" name="schoolYearsText" candidateClass="UILabel"/>
             </relationships>
         </class>
+        <class className="SyllabusEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusEditTableView.h"/>
+        </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -2429,8 +2432,11 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="Vzz-SA-ORC"/>
-        <segue reference="pgP-pB-hYJ"/>
-        <segue reference="k7a-QP-sia"/>
+        <segue reference="KvF-9q-C6b"/>
+        <segue reference="EPI-uN-kbf"/>
+        <segue reference="1dU-6g-oZa"/>
+        <segue reference="VVr-Ld-9wW"/>
+        <segue reference="sqq-oh-NbO"/>
         <segue reference="LMs-sZ-M1E"/>
         <segue reference="zyl-Bd-lJ4"/>
         <segue reference="oru-Wj-xvh"/>
