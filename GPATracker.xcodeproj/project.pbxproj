@@ -12,6 +12,7 @@
 		1F0E390F16D9E9080036F142 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E390E16D9E9080036F142 /* Common.m */; };
 		1F0E391216DAC5C40036F142 /* CustomHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E391116DAC5C40036F142 /* CustomHeader.m */; };
 		1F24D31716EBD82A004B65B9 /* CustomFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F24D31616EBD82A004B65B9 /* CustomFooter.m */; };
+		1F24D31A16F1000C004B65B9 /* CustomViewBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F24D31916F1000C004B65B9 /* CustomViewBackground.m */; };
 		1F27DA3216B81A0500E0C8C8 /* Checkbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F27DA3016B81A0500E0C8C8 /* Checkbox_checked.png */; };
 		1F27DA3316B81A0500E0C8C8 /* Checkbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F27DA3116B81A0500E0C8C8 /* Checkbox_unchecked.png */; };
 		1F27DA3A16B8476A00E0C8C8 /* GradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */; };
@@ -90,6 +91,8 @@
 		1F0E391116DAC5C40036F142 /* CustomHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHeader.m; sourceTree = "<group>"; };
 		1F24D31516EBD82A004B65B9 /* CustomFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFooter.h; sourceTree = "<group>"; };
 		1F24D31616EBD82A004B65B9 /* CustomFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFooter.m; sourceTree = "<group>"; };
+		1F24D31816F1000C004B65B9 /* CustomViewBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewBackground.h; sourceTree = "<group>"; };
+		1F24D31916F1000C004B65B9 /* CustomViewBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomViewBackground.m; sourceTree = "<group>"; };
 		1F27DA3016B81A0500E0C8C8 /* Checkbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkbox_checked.png; path = Images/Checkbox_checked.png; sourceTree = "<group>"; };
 		1F27DA3116B81A0500E0C8C8 /* Checkbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkbox_unchecked.png; path = Images/Checkbox_unchecked.png; sourceTree = "<group>"; };
 		1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GradingScheme.h; path = GPATracker/GradingScheme.h; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				2DA715FC16EFE603003A639A /* SyllabusEditTableView.m */,
 				1F0E390A16D9E7FB0036F142 /* CustomCellBackground.h */,
 				1F0E390B16D9E7FC0036F142 /* CustomCellBackground.m */,
+				1F24D31816F1000C004B65B9 /* CustomViewBackground.h */,
+				1F24D31916F1000C004B65B9 /* CustomViewBackground.m */,
 				1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */,
 				1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */,
 				1F9B1AD415FEBD520059E26D /* HomePageTabViewController.h */,
@@ -544,6 +549,7 @@
 				1F0E391216DAC5C40036F142 /* CustomHeader.m in Sources */,
 				1F24D31716EBD82A004B65B9 /* CustomFooter.m in Sources */,
 				2DA715FD16EFE603003A639A /* SyllabusEditTableView.m in Sources */,
+				1F24D31A16F1000C004B65B9 /* CustomViewBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
