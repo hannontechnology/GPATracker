@@ -7,12 +7,97 @@
 //
 
 #import "SyllabusEditTableView.h"
+#import "DataCollection.h"
+#import "SchoolListTableView.h"
+#import "CourseTableView.h"
+#import "CourseEditTableView.h"
+#import "SemesterDetails+Create.h"
+#import "CourseDetails+Create.h"
+#import "CourseListTableCell1.h"
+#import "SchoolDetails+Create.h"
+#import "GradingScheme+Create.h"
+#import "CustomCellBackground.h"
+#import "CustomHeader.h"
+#import "CustomFooter.h"
 
 @interface SyllabusEditTableView ()
-
 @end
 
 @implementation SyllabusEditTableView
+@synthesize userInfo = _userInfo;
+@synthesize schoolInfo = _schoolInfo;
+@synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize dataCollection = _dataCollection;
+@synthesize managedObjectContext = _managedObjectContext;
+@synthesize schoolNameText = _schoolNameText;
+@synthesize schoolDescText = _schoolDescText;
+@synthesize schoolYearsText = _schoolYearsText;
+@synthesize schoolCGPAText = _schoolCGPAText;
+
+
+- (void)setupFetchedResultsController
+{
+    // Create fetch request for the entity
+    // Edit the entity name as appropriate
+    NSString *entityName = @"SyllabusBreakdown";
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    // Sort using the year / then name properties
+    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterYear" ascending:NO];
+    NSSortDescriptor *sortDescriptorSCode = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterCode" ascending:NO];
+    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:YES];
+    //selector:@selector(localizedStandardCompare:)];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorSCode, sortDescriptorCCode, nil]];
+    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails.schoolDetails = %@", self.schoolInfo];
+    NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+}
+
+-(CGFloat) tableView:(UITableView *)tableView
+heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (UIView *) tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section
+{
+    return [[CustomFooter alloc] init];
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    CustomHeader *header = [[CustomHeader alloc] init];
+    header.titleLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+    if (section == 1)
+    {
+        header.lightColor = [UIColor colorWithRed:147.0/255.0 green:105.0/255.0 blue:216.0/255.0 alpha:1.0];
+        header.darkColor = [UIColor colorWithRed:72.0/255.0 green:22.0/255.0 blue:137.0/255.0 alpha:1.0];
+    }
+    return header;
+}
+
+-(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return 28;
+}
+
+-(IBAction)back
+{
+    [self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    lpgr.minimumPressDuration = 2.0; //seconds
+    lpgr.delegate = self;
+    [self.tableView addGestureRecognizer:lpgr];
+    
+    [super viewWillAppear:(BOOL)animated];
+    [self DisplayInfo];
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

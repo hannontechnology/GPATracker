@@ -14,6 +14,7 @@
 #import "SemesterDetails.h"
 #import "CourseTableCell1.h"
 #import "SchoolDetails+Create.h"
+#import "SyllabusEditTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
@@ -216,6 +217,16 @@ viewForFooterInSection:(NSInteger)section
         SemesterTableView.userInfo = self.semesterInfo.schoolDetails.user;
         SemesterTableView.dataCollection = self.dataCollection;
         SemesterTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueEditSyllabus"])
+    {
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusEditTableView *SyllabusEditTableView = [segue destinationViewController];
+        
+        //SyllabusEditTableView.courseDetails = selectedObject;
+        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
+        SyllabusEditTableView.dataCollection = self.dataCollection;
+        SyllabusEditTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 
