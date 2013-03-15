@@ -16,6 +16,7 @@
 #import "CourseListTableCell1.h"
 #import "SchoolDetails+Create.h"
 #import "GradingScheme+Create.h"
+#import "SyllabusEditTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
