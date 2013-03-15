@@ -120,7 +120,6 @@
     }
 }
 
-/*
 - (void)controller:(NSFetchedResultsController *)controller
    didChangeObject:(id)anObject
 	   atIndexPath:(NSIndexPath *)indexPath
@@ -139,9 +138,9 @@
                 [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
                 break;
                 
-            case NSFetchedResultsChangeUpdate:
-                [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                break;
+            //case NSFetchedResultsChangeUpdate:
+            //    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            //    break;
                 
             case NSFetchedResultsChangeMove:
                 [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -150,7 +149,7 @@
         }
     }
 }
-*/
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     if (self.beganUpdates) [self.tableView endUpdates];
