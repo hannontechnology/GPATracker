@@ -7,15 +7,15 @@
 //
 
 #import "SyllabusEditTableView.h"
+#import "CourseDetails.h"
+#import "GradingScheme+Create.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "CourseTableView.h"
+#import "CourseListTableView.h"
+#import "SyllabusTableCell1.h"
 #import "CourseEditTableView.h"
-#import "SemesterDetails+Create.h"
-#import "CourseDetails+Create.h"
-#import "CourseListTableCell1.h"
 #import "SchoolDetails+Create.h"
-#import "GradingScheme+Create.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
@@ -96,7 +96,15 @@ viewForFooterInSection:(NSInteger)section
     [self.tableView addGestureRecognizer:lpgr];
     
     [super viewWillAppear:(BOOL)animated];
-    [self DisplayInfo];
+    
+    
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+    [nf setMinimumFractionDigits:2];
+    [nf setMaximumFractionDigits:2];
+    [nf setZeroSymbol:@"0.00"];
+    
+    [self setupFetchedResultsController];
+
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -111,12 +119,16 @@ viewForFooterInSection:(NSInteger)section
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+- (void)viewDidUnload
+{
+
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,75 +137,106 @@ viewForFooterInSection:(NSInteger)section
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"SyllabusTableCell1";
+    SyllabusTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil)
+    {
+        cell = [[SyllabusTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
+    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    // TODO: create class
+    cell.cellLabel1.text = [selectedObject courseCode];
+    cell.cellLabel2.text = [selectedObject courseName];
+    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
+    if (selectedObject.actualGradeGPA != nil)
+    {
+        cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
+    }
+    else
+    {
+        cell.cellLabelGPA.text = @"";
+    }
+    
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    
+    // At end of function, right before return cell:
+    cell.textLabel.backgroundColor = [UIColor clearColor];
     return cell;
 }
 
-/*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        CourseDetails *courseToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:courseToDelete];
+        [self.managedObjectContext save:nil];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
-*/
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
-/*
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-*/
 
-#pragma mark - Table view delegate
+- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+{
+    if ( gestureRecognizer.state != UIGestureRecognizerStateBegan )
+        return; // discard everything else
+    
+    CGPoint p = [gestureRecognizer locationInView:self.tableView];
+    
+    self.selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
+    if (self.selectedIndexPath == nil)
+        NSLog(@"long press on table view but not on a row");
+    else
+        NSLog(@"long press on table view at row %d", self.selectedIndexPath.row);
+    
+    alert = [[UIAlertView alloc] initWithTitle:@"Edit/Delete" message:@"Please edit or delete item" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Edit", @"Delete", nil];
+    [alert show];
+}
+
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.selectedIndexPath = indexPath;
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isEditing] == YES)
+    {
+        
+    }
+    else
+    {
+        
+    }
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];

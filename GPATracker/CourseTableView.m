@@ -301,7 +301,16 @@ viewForFooterInSection:(NSInteger)section
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
-    [self performSegueWithIdentifier: @"segueEditCourse" sender: self];
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isEditing]== YES)
+    {
+        [self performSegueWithIdentifier: @"segueEditCourse" sender: self];
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"segueEditSyllabus" sender: self];
+    }
+    
     // Navigation logic may go here. Create and push another view controller.
     /*
      <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
