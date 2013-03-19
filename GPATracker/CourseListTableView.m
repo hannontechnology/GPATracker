@@ -236,6 +236,16 @@ viewForFooterInSection:(NSInteger)section
         CourseTableView.dataCollection = self.dataCollection;
         CourseTableView.managedObjectContext = self.managedObjectContext;
     }
+    else if ([segue.identifier isEqualToString:@"segueAddSyllabus"])
+    {
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusEditTableView *SyllabusEditTableView = [segue destinationViewController];
+        
+        //SyllabusEditTableView.courseDetails = selectedObject;
+        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
+        SyllabusEditTableView.dataCollection = self.dataCollection;
+        SyllabusEditTableView.managedObjectContext = self.managedObjectContext;
+    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
@@ -332,7 +342,7 @@ viewForFooterInSection:(NSInteger)section
     }
     else
     {
-        [self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
+        [self performSegueWithIdentifier: @"segueAddSyllabus" sender: self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
