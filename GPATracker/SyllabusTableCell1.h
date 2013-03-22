@@ -6,7 +6,7 @@
 //
 //
 
-#import "CourseListTableCell1.h"
+#import <UIKit/UIKit.h>
 
 @interface SyllabusTableCell1 : UITableViewCell
 

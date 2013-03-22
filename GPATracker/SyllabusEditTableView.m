@@ -39,7 +39,7 @@
 {
     // Create fetch request for the entity
     // Edit the entity name as appropriate
-    NSString *entityName = @"SyllabusBreakdown";
+    NSString *entityName = @"CourseDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
