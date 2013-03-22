@@ -12,6 +12,7 @@
 @class SchoolDetails;
 @class SemesterDetails;
 @class GradingScheme;
+@class CourseDetails;
 
 @interface DataCollection : NSObject
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -41,7 +42,7 @@
 - (NSArray *)retrieveCourseList:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;
 
 // Syllabus Breakdown Section
-//- (NSArray *)retrieveSyllabusBreakdown:(NSString *)inputCourseCode courseDetails:(CourseDetails *)inputCourseDetails context:(NSManagedObjectContext *) inContext;
+// - (NSArray *)retrieveSyllabusBreakdown:(NSString *)inputCourseCode courseDetails:(CourseDetails *)inputCourseDetails context:(NSManagedObjectContext *) inContext;
 
 // Retrieve Year List for picker
 - (NSArray *)retrieveYearPicker:(NSManagedObjectContext *) inContext;
