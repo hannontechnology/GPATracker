@@ -67,6 +67,7 @@
 		2D9C62B515B5385300B82973 /* GradingSchemeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */; };
 		2DA715FD16EFE603003A639A /* SyllabusEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA715FC16EFE603003A639A /* SyllabusEditTableView.m */; };
 		2DA78B4516F874B400CBC27C /* SyllabusTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA78B4416F874B400CBC27C /* SyllabusTableCell1.m */; };
+		2DB4C26416FE8B0F00465AE0 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4C26316FE8B0F00465AE0 /* SyllabusDetails.m */; };
 		2DC1D7E315C48B7800EE9A78 /* GradingScheme+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1D7E215C48B7800EE9A78 /* GradingScheme+Create.m */; };
 		34EDF98415B21C9C00C5FFA0 /* SemesterTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EDF98315B21C9C00C5FFA0 /* SemesterTableView.m */; };
 /* End PBXBuildFile section */
@@ -185,6 +186,8 @@
 		2DA715FC16EFE603003A639A /* SyllabusEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusEditTableView.m; sourceTree = "<group>"; };
 		2DA78B4316F874B400CBC27C /* SyllabusTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusTableCell1.h; sourceTree = "<group>"; };
 		2DA78B4416F874B400CBC27C /* SyllabusTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusTableCell1.m; sourceTree = "<group>"; };
+		2DB4C26216FE8B0F00465AE0 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
+		2DB4C26316FE8B0F00465AE0 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
 		2DC1D7E115C48B7800EE9A78 /* GradingScheme+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GradingScheme+Create.h"; path = "GPATracker/GradingScheme+Create.h"; sourceTree = "<group>"; };
 		2DC1D7E215C48B7800EE9A78 /* GradingScheme+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GradingScheme+Create.m"; path = "GPATracker/GradingScheme+Create.m"; sourceTree = "<group>"; };
 		34EDF98215B21C9C00C5FFA0 /* SemesterTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterTableView.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				34F1853915C47CB000E0E1E9 /* SemesterDetails+Create.m */,
 				1F41904F15C34A610031A4BC /* User+Create.h */,
 				1F41905015C34A610031A4BC /* User+Create.m */,
+				2DB4C26216FE8B0F00465AE0 /* SyllabusDetails.h */,
+				2DB4C26316FE8B0F00465AE0 /* SyllabusDetails.m */,
 			);
 			name = "Core Data";
 			path = ..;
@@ -556,6 +561,7 @@
 				2DA715FD16EFE603003A639A /* SyllabusEditTableView.m in Sources */,
 				1F24D31A16F1000C004B65B9 /* CustomViewBackground.m in Sources */,
 				2DA78B4516F874B400CBC27C /* SyllabusTableCell1.m in Sources */,
+				2DB4C26416FE8B0F00465AE0 /* SyllabusDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

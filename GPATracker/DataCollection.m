@@ -177,19 +177,19 @@ static const int yearMax = 2020;
     return results;
 }
 
-/*
+
 //Code for handling syllabus breakdown information
-- (NSArray *)retrieveSyllabusBreakdown:(NSString *)inputCourseCode courseDetails:(id)inputCourseDetails context:(NSManagedObjectContext *)inContext
+- (NSArray *)retrieveSyllabusBreakdown:(NSString *)inputSectionName percentBreakdown:(SyllabusDetails *)inputPercentBreakdown context:(NSManagedObjectContext *)inContext
 {
-    NSString *entityName = @"SyllabusBreakdown";
-    NSFetchRequest *request = [inContext executeFetchRequest:request error:& error];
-    request.predicate = [NSPredicate predicateWithFormat:@"courseDetails = %@ AND courseCode = %@", inputCourseDetails, inputCourseCode];
+    NSString *entityName = @"SyllabusDetails";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.predicate = [NSPredicate predicateWithFormat:@"sectionName = %@ AND percentBreakdown = %@", inputSectionName, inputPercentBreakdown];
     
     NSError *error = nil;
     NSArray*results = [inContext executeFetchRequest:request error:& error];
     return results;
 }
-*/
+
 
 // Code for retrieving Year List
 - (NSArray *)retrieveYearPicker:(NSManagedObjectContext *)inContext
