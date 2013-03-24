@@ -236,7 +236,7 @@ viewForFooterInSection:(NSInteger)section
         CourseTableView.dataCollection = self.dataCollection;
         CourseTableView.managedObjectContext = self.managedObjectContext;
     }
-    else if ([segue.identifier isEqualToString:@"segueAddSyllabus"])
+    else if ([segue.identifier isEqualToString:@"segueCourseList2SyllabusList"])
     {
         CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SyllabusEditTableView *SyllabusEditTableView = [segue destinationViewController];
@@ -342,7 +342,7 @@ viewForFooterInSection:(NSInteger)section
     }
     else
     {
-        [self performSegueWithIdentifier: @"segueAddSyllabus" sender: self];
+        [self performSegueWithIdentifier: @"segueCourseList2SyllabusList" sender: self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
