@@ -244,3 +244,5 @@ viewForFooterInSection:(NSInteger)section
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+@end
