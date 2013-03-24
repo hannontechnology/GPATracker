@@ -11,7 +11,7 @@
         <relationship name="actualGradeGPA" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="actualGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="desiredGradeGPA" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="GradingScheme" inverseName="desiredGPAGrade" inverseEntity="GradingScheme" syncable="YES"/>
         <relationship name="semesterDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SemesterDetails" inverseName="courseDetails" inverseEntity="SemesterDetails" syncable="YES"/>
-        <relationship name="syllabusBreakdown" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SyllabusDetails" inverseName="courseDetails" inverseEntity="SyllabusDetails" syncable="YES"/>
+        <relationship name="syllabusDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SyllabusDetails" inverseName="courseDetails" inverseEntity="SyllabusDetails" syncable="YES"/>
     </entity>
     <entity name="GradingScheme" representedClassName="GradingScheme" syncable="YES">
         <attribute name="gPA" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -43,7 +43,7 @@
     <entity name="SyllabusDetails" syncable="YES">
         <attribute name="percentBreakdown" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sectionName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="courseDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="syllabusBreakdown" inverseEntity="CourseDetails" syncable="YES"/>
+        <relationship name="courseDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="syllabusDetails" inverseEntity="CourseDetails" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="autoLogon" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>

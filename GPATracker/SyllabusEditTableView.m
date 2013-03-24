@@ -39,17 +39,15 @@
 {
     // Create fetch request for the entity
     // Edit the entity name as appropriate
-    NSString *entityName = @"CourseDetails";
+    NSString *entityName = @"SyllabusDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterYear" ascending:NO];
-    NSSortDescriptor *sortDescriptorSCode = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterCode" ascending:NO];
-    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:YES];
+    NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"sectionName" ascending:NO];
     //selector:@selector(localizedStandardCompare:)];
-    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorSCode, sortDescriptorCCode, nil]];
-    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails.schoolDetails = %@", self.schoolInfo];
-    NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorSName, nil]];
+    //request.predicate = [NSPredicate predicateWithFormat: @"courseDetails = %@", self.];
+    NSLog(@"filtering data based on courseDetails = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
 }
