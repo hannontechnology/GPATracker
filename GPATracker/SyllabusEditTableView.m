@@ -83,7 +83,7 @@ viewForFooterInSection:(NSInteger)section
 
 -(IBAction)back
 {
-    [self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
+    //[self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
 }
 
 - (void)viewWillAppear:(BOOL)animated

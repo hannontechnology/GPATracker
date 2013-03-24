@@ -84,7 +84,7 @@ viewForFooterInSection:(NSInteger)section
 
 -(IBAction)back
 {
-    [self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
+    //[self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -146,12 +146,13 @@ viewForFooterInSection:(NSInteger)section
         cell = [[SyllabusTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class
-    cell.cellLabel1.text = [selectedObject courseCode];
-    cell.cellLabel2.text = [selectedObject courseName];
-    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
+    cell.cellLabel1.text = [selectedObject sectionName];
+    cell.cellLabel2.text = [NSString stringWithFormat:@"Percent Breakdown: %@", [selectedObject percentBreakdown].stringValue];
+    //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
+    /*
     if (selectedObject.actualGradeGPA != nil)
     {
         cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
@@ -160,6 +161,7 @@ viewForFooterInSection:(NSInteger)section
     {
         cell.cellLabelGPA.text = @"";
     }
+    */
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -222,6 +224,19 @@ viewForFooterInSection:(NSInteger)section
     [alert show];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusDetails"])
+    {
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
+        
+        //SyllabusEditTableView.courseDetails = selectedObject;
+        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
+        SyllabusListTableView.dataCollection = self.dataCollection;
+        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
+    }
+}
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -230,11 +245,11 @@ viewForFooterInSection:(NSInteger)section
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        
+        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
     }
     else
     {
-        
+        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
