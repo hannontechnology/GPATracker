@@ -1,13 +1,14 @@
 //
-//  SyllabusEditTableView.m
+//  SyllabusTableView.m
 //  GPATracker
 //
-//  Created by David Stevens on 13-03-13.
+//  Created by David Stevens on 13-03-24.
 //
 //
 
-#import "SyllabusEditTableView.h"
+#import "SyllabusTableView.h"
 #import "CourseDetails.h"
+#import "SyllabusDetails.h"
 #import "GradingScheme+Create.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
@@ -20,10 +21,10 @@
 #import "CustomHeader.h"
 #import "CustomFooter.h"
 
-@interface SyllabusEditTableView ()
+@interface SyllabusTableView ()
 @end
 
-@implementation SyllabusEditTableView
+@implementation SyllabusTableView
 @synthesize userInfo = _userInfo;
 @synthesize schoolInfo = _schoolInfo;
 @synthesize selectedIndexPath = _selectedIndexPath;
@@ -102,7 +103,7 @@ viewForFooterInSection:(NSInteger)section
     [nf setZeroSymbol:@"0.00"];
     
     [self setupFetchedResultsController];
-
+    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -121,7 +122,7 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
-
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -145,20 +146,22 @@ viewForFooterInSection:(NSInteger)section
         cell = [[SyllabusTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class
-    cell.cellLabel1.text = [selectedObject courseCode];
-    cell.cellLabel2.text = [selectedObject courseName];
-    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
-    if (selectedObject.actualGradeGPA != nil)
-    {
-        cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
-    }
-    else
-    {
-        cell.cellLabelGPA.text = @"";
-    }
+    cell.cellLabel1.text = [selectedObject sectionName];
+    cell.cellLabel2.text = [NSString stringWithFormat:@"Percent Breakdown: %@", [selectedObject percentBreakdown].stringValue];
+    //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
+    /*
+     if (selectedObject.actualGradeGPA != nil)
+     {
+     cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
+     }
+     else
+     {
+     cell.cellLabelGPA.text = @"";
+     }
+     */
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -221,6 +224,19 @@ viewForFooterInSection:(NSInteger)section
     [alert show];
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusDetails"])
+    {
+        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusTableView *SyllabusTableView = [segue destinationViewController];
+        
+        //SyllabusEditTableView.courseDetails = selectedObject;
+        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
+        SyllabusTableView.dataCollection = self.dataCollection;
+        SyllabusTableView.managedObjectContext = self.managedObjectContext;
+    }
+}
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -229,11 +245,11 @@ viewForFooterInSection:(NSInteger)section
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        
+        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
     }
     else
     {
-        
+        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -243,5 +259,6 @@ viewForFooterInSection:(NSInteger)section
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
 
 @end
