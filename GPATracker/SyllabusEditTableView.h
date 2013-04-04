@@ -9,29 +9,33 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTableViewController.h"
 
-@class User;
-@class SchoolDetails;
+@class SyllabusDetails;
+@class CourseDetails;
 @class DataCollection;
+@class SemesterDetails;
 
-@interface SyllabusEditTableView : CoreDataTableViewController
+@interface SyllabusEditTableView : UITableViewController <UIPickerViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 {
-    IBOutlet UIAlertView *alert;
+    IBOutlet UIToolbar *keyboardToolbar;
 }
-@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+@property (weak, nonatomic) IBOutlet UITextField *sectionNameField;
+@property (weak, nonatomic) IBOutlet UITextField *sectionDesiredGradeField;
+@property (weak, nonatomic) IBOutlet UITextField *sectionActualGradeField;
+@property (weak, nonatomic) IBOutlet UISwitch *sectionPassFailField;
+@property (weak, nonatomic) IBOutlet UISwitch *sectionIncludeInGPAField;
+@property (weak, nonatomic) IBOutlet UITextField *sectionPercentageField;
+@property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
+@property (weak, nonatomic) IBOutlet UITextField *sectionDescriptionField;
 
-@property (strong, nonatomic) User *userInfo;
-@property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) NSString *setGradeType;
+@property (strong, nonatomic) NSString *setEditStatus;
+@property (strong, nonatomic) SyllabusDetails *syllabusDetails;
+@property (strong, nonatomic) SemesterDetails *semesterDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (weak, nonatomic) IBOutlet UILabel *schoolNameText;
-@property (weak, nonatomic) IBOutlet UILabel *schoolDescText;
-@property (weak, nonatomic) IBOutlet UILabel *schoolYearsText;
-@property (weak, nonatomic) IBOutlet UILabel *schoolCGPAText;
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
--(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
--(IBAction)back;
-
--(void)DisplayInfo;
+-(IBAction)switchPassFail:(id)sender;
 
 @end
