@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CourseDetails;
+@class CourseDetails, GradingScheme;
 
 @interface SyllabusDetails : NSManagedObject
 

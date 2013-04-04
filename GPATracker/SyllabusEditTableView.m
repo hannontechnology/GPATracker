@@ -8,61 +8,54 @@
 
 #import "SyllabusEditTableView.h"
 #import "CourseDetails.h"
-#import "GradingScheme+Create.h"
+#import "SemesterDetails.h"
+#import "SchoolDetails.h"
+#import "gradingScheme.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
-#import "CourseTableView.h"
-#import "CourseListTableView.h"
-#import "SyllabusTableCell1.h"
 #import "CourseEditTableView.h"
-#import "SchoolDetails+Create.h"
+#import "CustomCellBackground.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
 
 @interface SyllabusEditTableView ()
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property CGRect pickerViewShownFrame;
+@property CGRect pickerViewHiddenFrame;
+@property (strong, nonatomic) NSMutableArray *gradeList;
+@property (strong, nonatomic) NSMutableArray *modList;
+
+- (IBAction)Accept:(id)sender;
+- (IBAction)Cancel:(id)sender;
+- (IBAction)textFieldReturn:(id)sender;
+
 @end
 
 @implementation SyllabusEditTableView
-@synthesize userInfo = _userInfo;
-@synthesize schoolInfo = _schoolInfo;
-@synthesize selectedIndexPath = _selectedIndexPath;
+@synthesize sectionNameField;
+@synthesize sectionActualGradeField;
+@synthesize sectionDesiredGradeField;
+@synthesize sectionPassFailField;
+@synthesize sectionIncludeInGPAField;
+@synthesize sectionPercentageField;
+@synthesize sectionDescriptionField;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
-@synthesize schoolNameText = _schoolNameText;
-@synthesize schoolDescText = _schoolDescText;
-@synthesize schoolYearsText = _schoolYearsText;
-@synthesize schoolCGPAText = _schoolCGPAText;
+@synthesize setEditStatus = _setEditStatus;
+@synthesize setGradeType = _setGradeType;
 
+@synthesize pickerView = _pickerView;
+@synthesize pickerViewShownFrame = _pickerViewShownFrame;
+@synthesize pickerViewHiddenFrame = _pickerViewHiddenFrame;
 
-- (void)setupFetchedResultsController
-{
-    // Create fetch request for the entity
-    // Edit the entity name as appropriate
-    NSString *entityName = @"SyllabusDetails";
-    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
-    // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"sectionName" ascending:NO];
-    //selector:@selector(localizedStandardCompare:)];
-    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorSName, nil]];
-    //request.predicate = [NSPredicate predicateWithFormat: @"courseDetails = %@", self.];
-    NSLog(@"filtering data based on courseDetails = %@", self.schoolInfo);
-    
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
-}
+@synthesize gradeList = _gradeList;
+@synthesize modList = _modList;
 
--(CGFloat) tableView:(UITableView *)tableView
-heightForFooterInSection:(NSInteger)section
-{
-    return 10;
-}
-
-- (UIView *) tableView:(UITableView *)tableView
-viewForFooterInSection:(NSInteger)section
-{
-    return [[CustomFooter alloc] init];
-}
+// Some values that will be handy later on.
+static const CGFloat kPickerDefaultWidth = 320.f;
+static const CGFloat kPickerDefaultHeight = 216.f;
+static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -81,28 +74,136 @@ viewForFooterInSection:(NSInteger)section
     return 28;
 }
 
--(IBAction)back
+-(CGFloat) tableView:(UITableView *)tableView
+heightForFooterInSection:(NSInteger)section
 {
-    //[self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
+    return 10;
 }
 
-- (void)viewWillAppear:(BOOL)animated
+- (UIView *) tableView:(UITableView *)tableView
+viewForFooterInSection:(NSInteger)section
 {
-    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
-    lpgr.minimumPressDuration = 2.0; //seconds
-    lpgr.delegate = self;
-    [self.tableView addGestureRecognizer:lpgr];
-    
-    [super viewWillAppear:(BOOL)animated];
-    
-    
-    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
-    [nf setMinimumFractionDigits:2];
-    [nf setMaximumFractionDigits:2];
-    [nf setZeroSymbol:@"0.00"];
-    
-    [self setupFetchedResultsController];
+    return [[CustomFooter alloc] init];
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    
+    cell.backgroundView = [[CustomCellBackground alloc] init];
+    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    return cell;
+}
+
+-(IBAction)switchPassFail:(id)sender
+{
+    sectionDesiredGradeField.text = @"";
+    sectionActualGradeField.text  = @"";
+    if (sectionPassFailField.on)
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    else
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:0 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    [self.pickerView reloadAllComponents];
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    int selComp0;
+    
+    if (textField == sectionDesiredGradeField)
+    {
+        self.setGradeType = @"Desired";
+    }
+    else if (textField == self.sectionActualGradeField)
+    {
+        self.setGradeType = @"Actual";
+    }
+    else
+    {
+        return true;
+    }
+    NSLog(@"GradeList=%@",self.gradeList);
+    if (self.setGradeType == (NSString *)@"Desired")
+    {
+        if (self.sectionDesiredGradeField.text.length > 0)
+        {
+            NSString *gradeValue;
+            gradeValue = sectionDesiredGradeField.text;
+            selComp0 = [self.gradeList indexOfObject:gradeValue];
+        }
+        else
+        {
+            selComp0 = 0;
+        }
+    }
+    else if (self.setGradeType == (NSString *)@"Actual")
+    {
+        if (self.sectionActualGradeField.text.length > 0)
+        {
+            NSString *gradeValue;
+            gradeValue = sectionActualGradeField.text;
+            selComp0 = [self.gradeList indexOfObject:gradeValue];
+        }
+        else
+        {
+            selComp0 = 0;
+        }
+    }
+    if ([self.gradeList count] > 0)
+        [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
+    
+    return true;
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.gradeList count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return [self.gradeList objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSString *selectedGrade;
+    
+    selectedGrade = [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]];
+    if (self.setGradeType == (NSString *)@"Desired")
+    {
+        sectionDesiredGradeField.text = selectedGrade;
+    }
+    else if (self.setGradeType == (NSString *)@"Actual")
+    {
+        sectionActualGradeField.text = selectedGrade;
+    }
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -114,14 +215,248 @@ viewForFooterInSection:(NSInteger)section
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // Set pickerView's shown and hidden position frames.
+    self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    
+    // Set up the initial state of the picker.
+    self.pickerView = [[UIPickerView alloc] init];
+    self.pickerView.frame = self.pickerViewShownFrame;
+    self.pickerView.delegate = self;
+    self.pickerView.dataSource = self;
+    self.pickerView.showsSelectionIndicator = YES;
+    
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    
+    sectionNameField.inputAccessoryView = keyboardToolbar;
+    sectionDesiredGradeField.inputAccessoryView = keyboardToolbar;
+    sectionActualGradeField.inputAccessoryView = keyboardToolbar;
+    sectionDesiredGradeField.inputView = self.pickerView;
+    sectionActualGradeField.inputView = self.pickerView;
+        
+    //cancelButton.
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+    self.navigationItem.hidesBackButton = YES;
+    
+    self.gradeList = [[NSMutableArray alloc] init];
+    if (sectionPassFailField.on)
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+            NSLog(@"letterGrade = %@", grade.letterGrade);
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    else
+    {
+        self.gradeList = [[NSMutableArray alloc] init];
+        [self.gradeList addObject:@""];
+        SchoolDetails *tmpSchool = self.semesterDetails.schoolDetails;
+        NSArray *tmpGrades = [self.dataCollection retrieveGradingScheme:tmpSchool passFail:0 context:self.managedObjectContext];
+        for (GradingScheme *grade in tmpGrades)
+        {
+            [self.gradeList addObject:grade.letterGrade];
+            NSLog(@"letterGrade = %@", grade.letterGrade);
+        }
+        //self.gradeList = [[NSMutableArray alloc] initWithArray:[self.dataCollection retrieveGradingScheme:tmpSchool passFail:1 context:self.managedObjectContext]];
+    }
+    NSLog(@"%@",self.gradeList);
+    [self.pickerView reloadAllComponents];
+    
+    if (self.setEditStatus != (NSString *)@"Edit")
+    {
+        return;
+    }
+    
+    if (self.syllabusDetails == nil)
+    {
+        NSLog(@"Database Error: Could not connect to Database");
+    }
+    /*else
+    {
+        NSLog(@"Load Course Information");
+        headerText.title = @"Edit Section";
+        sectionNameField.text = self.syllabusDetails.sectionName;
+        sectionPercentageField.text = self.syllabusDetails.stringValue;
+        
+        sectionDesiredGradeField.text = self.courseDetails.desiredGradeGPA.letterGrade;
+        sectionActualGradeField.text  = self.courseDetails.actualGradeGPA.letterGrade;
+        if (self.syllabusDetails.isPassFail == [NSNumber numberWithInt:1])
+        {
+            sectionPassFailField.on = YES;
+        }
+        else
+        {
+            sectionPassFailField.on = NO;
+        }
+        if (self.syllabusDetails.includeInGPA == [NSNumber numberWithInt:1])
+        {
+            sectionIncludeInGPAField.on = YES;
+        }
+        else
+        {
+            sectionIncludeInGPAField.on = NO;
+        }
+    }*/
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.sectionActualGradeField.delegate = self;
+    self.sectionDesiredGradeField.delegate = self;
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    if (keyboardToolbar == nil)
+    {
+        keyboardToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0.0, 0.0, 100.0, 44.0)];
+        keyboardToolbar.barStyle = UIBarStyleBlackTranslucent;
+        keyboardToolbar.alpha = 0.2;
+        UIBarButtonItem *prevButton = [[UIBarButtonItem alloc] initWithTitle:@"Previous" style:UIBarButtonItemStyleBordered target:self action:@selector(prevField:)];
+        UIBarButtonItem *nextButton = [[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(nextField:)];
+        UIBarButtonItem *extraSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneKey:)];
+        
+        [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
+    }
+    sectionNameField.inputAccessoryView = keyboardToolbar;
+    sectionPercentageField.inputAccessoryView = keyboardToolbar;
+       
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void) doneKey:(id)sender
+{
+    if ([sectionNameField isFirstResponder])
+        [sectionNameField resignFirstResponder];
+    else if ([sectionDesiredGradeField isFirstResponder])
+        [sectionDesiredGradeField resignFirstResponder];
+    else if ([sectionActualGradeField isFirstResponder])
+        [sectionActualGradeField resignFirstResponder];
+    else if ([sectionPercentageField isFirstResponder])
+        [sectionPercentageField resignFirstResponder];
+    else if ([sectionDescriptionField isFirstResponder])
+        [sectionDescriptionField resignFirstResponder];
+}
+
+- (void) prevField:(id)sender
+{
+    NSLog(@"Previous Field");
+    if ([sectionDescriptionField isFirstResponder])
+    {
+        [sectionDescriptionField resignFirstResponder];
+        [sectionPercentageField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionPercentageField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionNameField isFirstResponder])
+    {
+        [sectionNameField resignFirstResponder];
+        [sectionDescriptionField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionDescriptionField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionPercentageField isFirstResponder])
+    {
+        [sectionPercentageField resignFirstResponder];
+        [sectionActualGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionActualGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionActualGradeField isFirstResponder])
+    {
+        [sectionActualGradeField resignFirstResponder];
+        [sectionDesiredGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionDesiredGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+}
+
+- (void) nextField:(id)sender
+{
+    NSLog(@"Next Field");
+    if ([sectionDescriptionField isFirstResponder])
+    {
+        [sectionDescriptionField resignFirstResponder];
+        [sectionNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionNameField isFirstResponder])
+    {
+        [sectionNameField resignFirstResponder];
+        [sectionDesiredGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionDesiredGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionDesiredGradeField isFirstResponder])
+    {
+        [sectionDesiredGradeField resignFirstResponder];
+        [sectionActualGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionActualGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionActualGradeField isFirstResponder])
+    {
+        [sectionActualGradeField resignFirstResponder];
+        [sectionPercentageField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionPercentageField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([sectionPercentageField isFirstResponder])
+    {
+        [sectionPercentageField resignFirstResponder];
+        [sectionDescriptionField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionDescriptionField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
 }
 
 - (void)viewDidUnload
 {
-
+    [self setHeaderText:nil];
+    [self setPickerView:nil];
+    [self setSectionNameField:nil];
+    [self setSectionDesiredGradeField:nil];
+    [self setSectionDesiredGradeField:nil];
+    [self setSectionActualGradeField:nil];
+    [self setSectionPassFailField:nil];
+    [self setSectionIncludeInGPAField:nil];
+    [self setSectionPercentageField:nil];
+    [self setSectionDescriptionField:nil];
+    [super viewDidUnload];
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -129,119 +464,165 @@ viewForFooterInSection:(NSInteger)section
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (IBAction)Accept:(id)sender
 {
-    static NSString *CellIdentifier = @"SyllabusTableCell1";
-    SyllabusTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    NSNumber *includeInGPA = [NSNumber numberWithBool:NO];
+    NSNumber *isPassFail = [NSNumber numberWithBool:NO];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterNoStyle];
+    NSNumber *s_units;
     
-    if (cell == nil)
+    if (sectionPassFailField.on)
     {
-        cell = [[SyllabusTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        isPassFail = [NSNumber numberWithBool:YES];
+    }
+    if (sectionIncludeInGPAField.on)
+    {
+        includeInGPA = [NSNumber numberWithBool:YES];
+    }
+    if ([sectionNameField.text length] == 0)
+    {
+        NSLog(@"Section Name field is Required.");
+        return;
+    }
+    if ([sectionDescriptionField.text length] == 0)
+    {
+        NSLog(@"Section Description field is Required.");
+        return;
+    }
+    if ([sectionPercentageField.text length] == 0)
+    {
+        NSLog(@"Course Units field is Required.");
+        return;
     }
     
-    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    //NSError *error = nil;
+    /* //NSArray *results = [self.dataCollection retrieveCourse:sylla.text semesterDetails:self.semesterDetails context:self.managedObjectContext];
     
-    // TODO: create class
-    cell.cellLabel1.text = [selectedObject courseCode];
-    cell.cellLabel2.text = [selectedObject courseName];
-    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
-    if (selectedObject.actualGradeGPA != nil)
+    if (self.setEditStatus == (NSString *)@"Edit")
     {
-        cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
+        if (results == nil)
+        {
+            NSLog(@"Database Error: Could not connect to Database");
+        }
+        else
+        {
+            if ([results count] > 0)
+            {
+                NSLog(@"Save Course Information");
+                self.courseDetails.courseCode   = courseCodeField.text;
+                self.courseDetails.courseName   = courseNameField.text;
+                self.courseDetails.units        = s_units;
+                if (courseDesiredGradeField.text == nil || courseDesiredGradeField.text == nil)
+                {
+                    self.courseDetails.desiredGradeGPA = nil;
+                }
+                else
+                {
+                    self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
+                }
+                if (courseActualGradeField.text == nil || courseActualGradeField.text == nil)
+                {
+                    self.courseDetails.actualGradeGPA = nil;
+                }
+                else
+                {
+                    self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
+                }
+                self.courseDetails.isPassFail   = isPassFail;
+                self.courseDetails.includeInGPA = includeInGPA;
+                self.courseDetails.courseDesc   = courseDescriptionField.text;
+                if ([self.managedObjectContext save:&error])
+                {
+                    [self.navigationController popViewControllerAnimated:YES];
+                    //[self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+                }
+                else
+                {
+                }
+            }
+        }
+    }
+    else if ([results count] == 0)
+    {
+        NSString *entityName = @"CourseDetails";
+        self.courseDetails = [NSEntityDescription
+                              insertNewObjectForEntityForName:entityName
+                              inManagedObjectContext:self.managedObjectContext];
+        self.courseDetails.semesterDetails = self.semesterDetails;
+        self.courseDetails.courseCode   = courseCodeField.text;
+        self.courseDetails.courseName   = courseNameField.text;
+        self.courseDetails.units        = s_units;
+        if (courseDesiredGradeField.text == nil || courseDesiredGradeField.text == nil)
+        {
+            self.courseDetails.desiredGradeGPA = nil;
+        }
+        else
+        {
+            self.courseDetails.desiredGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseDesiredGradeField.text context:self.managedObjectContext];
+        }
+        if (courseActualGradeField.text == nil || courseActualGradeField.text == nil)
+        {
+            self.courseDetails.actualGradeGPA = nil;
+        }
+        else
+        {
+            self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
+        }
+        self.courseDetails.isPassFail   = isPassFail;
+        self.courseDetails.includeInGPA = includeInGPA;
+        self.courseDetails.courseDesc   = courseDescriptionField.text;
+        NSLog(@"About to save data = %@", self.courseDetails);
+        if ([self.managedObjectContext save:&error])
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+            //[self performSegueWithIdentifier: @"segueCourse2CourseList" sender: self];
+        }
+        else
+        {
+            NSLog(@"Add Course Failed! :%@", error.userInfo);
+        }
     }
     else
     {
-        cell.cellLabelGPA.text = @"";
-    }
-    
-    cell.backgroundView = [[CustomCellBackground alloc] init];
-    cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
-    
-    // At end of function, right before return cell:
-    cell.textLabel.backgroundColor = [UIColor clearColor];
-    return cell;
+        NSLog(@"Course Code already taken.");
+    }*/
+} 
+
+- (IBAction)Cancel:(id)sender
+{
+    UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Discard Changes" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
+    [popup showFromTabBar:self.view];
 }
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)actionSheet: (UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        CourseDetails *courseToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self.managedObjectContext deleteObject:courseToDelete];
-        [self.managedObjectContext save:nil];
-        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-}
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-
-- (void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-{
-    if ( gestureRecognizer.state != UIGestureRecognizerStateBegan )
-        return; // discard everything else
-    
-    CGPoint p = [gestureRecognizer locationInView:self.tableView];
-    
-    self.selectedIndexPath = [self.tableView indexPathForRowAtPoint:p];
-    if (self.selectedIndexPath == nil)
-        NSLog(@"long press on table view but not on a row");
-    else
-        NSLog(@"long press on table view at row %d", self.selectedIndexPath.row);
-    
-    alert = [[UIAlertView alloc] initWithTitle:@"Edit/Delete" message:@"Please edit or delete item" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Edit", @"Delete", nil];
-    [alert show];
-}
-
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.selectedIndexPath = indexPath;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell isEditing] == YES)
+    if (buttonIndex == 0)
     {
+        NSLog(@"User Click the Yes button");
+        [self.navigationController popViewControllerAnimated:YES];
+        //[self.parentViewController.navigationController popViewControllerAnimated:YES];
+    }
+    else if (buttonIndex == 1)
+    {
+        NSLog(@"User Click the No button");
+        // Maybe do something else
         
     }
-    else
-    {
-        
-    }
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
+- (IBAction)textFieldReturn:(id)sender
+{
+    [sender resignFirstResponder];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+	if ([segue.identifier isEqualToString:@"segueCourse2CourseList"])
+	{
+        //[self.navigationController popViewControllerAnimated:YES];
+       
+	}
+}
 @end

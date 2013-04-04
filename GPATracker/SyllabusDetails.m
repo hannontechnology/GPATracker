@@ -7,6 +7,8 @@
 //
 
 #import "SyllabusDetails.h"
+#import "CourseDetails.h"
+#import "GradingScheme.h"
 
 @implementation SyllabusDetails
 

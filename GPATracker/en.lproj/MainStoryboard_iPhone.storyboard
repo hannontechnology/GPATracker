@@ -2314,7 +2314,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Syllabus Breakdown" id="Z3O-ht-Dg3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="m62-nD-6Zg"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="m62-nD-6Zg">
+                            <connections>
+                                <segue destination="O4L-Ki-pro" kind="push" identifier="segueAddSyllabus" id="hY1-pn-D4S"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -2342,17 +2346,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Course Information" id="95P-mh-kSd">
+                            <tableViewSection headerTitle="Section Name" id="95P-mh-kSd">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="PlO-Qm-x4o">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="k3J-3F-yHU">
-                                                    <rect key="frame" x="20" y="11" width="46" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Section:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="k3J-3F-yHU">
+                                                    <rect key="frame" x="20" y="11" width="64" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2371,66 +2375,12 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="1LA-bk-86A">
-                                        <rect key="frame" x="0.0" y="91" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="lSM-Qs-Seg">
-                                                    <rect key="frame" x="20" y="11" width="51" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="Eo4-Fv-Neb">
-                                                    <rect key="frame" x="80" y="6" width="200" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                                    <connections>
-                                                        <action selector="textFieldReturn:" destination="O4L-Ki-pro" eventType="editingDidEndOnExit" id="ban-kw-KeL"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Dbv-An-snO">
-                                        <rect key="frame" x="0.0" y="135" width="320" height="45"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Units:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="9Pc-dF-SUG">
-                                                    <rect key="frame" x="20" y="11" width="46" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="Kzd-F3-Hrl">
-                                                    <rect key="frame" x="80" y="6" width="200" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    <connections>
-                                                        <action selector="textFieldReturn:" destination="O4L-Ki-pro" eventType="editingDidEndOnExit" id="64s-uZ-7g2"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Grade Information" id="6of-2P-1Dq">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="GkZ-ss-Q4g">
-                                        <rect key="frame" x="0.0" y="226" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="138" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -2457,7 +2407,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KeZ-JM-u7Q">
-                                        <rect key="frame" x="0.0" y="271" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -2484,7 +2434,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dGd-IF-Fs1">
-                                        <rect key="frame" x="0.0" y="315" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="227" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -2509,7 +2459,7 @@
                                         </view>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="54n-jp-4gX">
-                                        <rect key="frame" x="0.0" y="359" width="320" height="45"/>
+                                        <rect key="frame" x="0.0" y="271" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="0.0" width="300" height="43"/>
@@ -2530,12 +2480,39 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="KIY-HQ-PiP">
+                                        <rect key="frame" x="0.0" y="315" width="320" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Percentage:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Vrt-mt-jBo">
+                                                    <rect key="frame" x="20" y="11" width="120" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="Ucg-LD-rNq">
+                                                    <rect key="frame" x="153" y="6" width="60" height="31"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" keyboardType="URL"/>
+                                                    <connections>
+                                                        <action selector="textFieldReturn:" destination="O4L-Ki-pro" eventType="editingDidEndOnExit" id="46f-fW-DZ8"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Course Description" id="HhR-tE-DcS">
+                            <tableViewSection headerTitle="Description" id="HhR-tE-DcS">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="B7B-5U-HBI">
-                                        <rect key="frame" x="0.0" y="450" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="406" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -2556,10 +2533,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Semester Assigned To" id="1yP-gy-QNw">
+                            <tableViewSection headerTitle="Course Assigned To" id="1yP-gy-QNw">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="HuA-2g-iMi">
-                                        <rect key="frame" x="0.0" y="542" width="320" height="46"/>
+                                        <rect key="frame" x="0.0" y="498" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="300" height="43"/>
@@ -2589,10 +2566,15 @@
                         <outlet property="courseDescriptionField" destination="jEg-4N-0pU" id="c1U-7Q-pa2"/>
                         <outlet property="courseDesiredGradeField" destination="Ib4-DN-4W3" id="RNl-k1-FFa"/>
                         <outlet property="courseIncludeInGPAField" destination="QNU-Dh-TO2" id="4km-pm-IqY"/>
-                        <outlet property="courseNameField" destination="Eo4-Fv-Neb" id="nsw-j6-jvh"/>
                         <outlet property="coursePassFailField" destination="79v-yD-k1R" id="jZz-MR-gZE"/>
-                        <outlet property="courseUnitsField" destination="Kzd-F3-Hrl" id="g0G-gL-E4H"/>
                         <outlet property="headerText" destination="kdq-4Z-Jp1" id="1fv-bH-WLa"/>
+                        <outlet property="sectionActualGradeField" destination="xNB-Kd-WLH" id="JaV-iv-Tht"/>
+                        <outlet property="sectionDescriptionField" destination="jEg-4N-0pU" id="zr7-Qa-wgM"/>
+                        <outlet property="sectionDesiredGradeField" destination="Ib4-DN-4W3" id="0fA-Bz-yNm"/>
+                        <outlet property="sectionIncludeInGPAField" destination="QNU-Dh-TO2" id="H5v-yG-tK6"/>
+                        <outlet property="sectionNameField" destination="8Vh-N4-TKY" id="nkz-99-Er9"/>
+                        <outlet property="sectionPassFailField" destination="79v-yD-k1R" id="q3f-yd-jrb"/>
+                        <outlet property="sectionPercentageField" destination="Ucg-LD-rNq" id="X0a-4p-XOg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWk-64-8co" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2615,15 +2597,16 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="k7a-QP-sia"/>
         <segue reference="pgP-pB-hYJ"/>
+        <segue reference="GjO-wZ-Znt"/>
+        <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
-        <segue reference="iZp-yv-ib1"/>
+        <segue reference="hY1-pn-D4S"/>
+        <segue reference="Vzz-SA-ORC"/>
+        <segue reference="3xK-NI-FQs"/>
         <segue reference="VVr-Ld-9wW"/>
         <segue reference="lHh-OI-VXa"/>
         <segue reference="sH2-t5-pXi"/>
-        <segue reference="3xK-NI-FQs"/>
         <segue reference="fGJ-Vg-Bh6"/>
-        <segue reference="Vzz-SA-ORC"/>
     </inferredMetricsTieBreakers>
 </document>
