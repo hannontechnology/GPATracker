@@ -228,12 +228,19 @@ viewForFooterInSection:(NSInteger)section
 {
     if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusDetails"])
     {
-        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
         SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
         
         //SyllabusEditTableView.courseDetails = selectedObject;
         //SyllabusEditTableView.semesterDetails = self.semesterInfo;
         SyllabusListTableView.dataCollection = self.dataCollection;
+        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
+    }
+    if ([segue.identifier isEqualToString:@"segueAddSyllabusFromList"])
+    {
+        SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
+        SyllabusListTableView.DataCollection = self.dataCollection;
         SyllabusListTableView.managedObjectContext = self.managedObjectContext;
     }
 }

@@ -2160,7 +2160,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Syllabus Breakdown" id="IbT-Jk-N1f">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lx9-gZ-6C9"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lx9-gZ-6C9">
+                            <connections>
+                                <segue destination="O4L-Ki-pro" kind="push" identifier="segueAddSyllabusFromList" id="6qw-s8-V3P"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -2601,7 +2605,7 @@
         <segue reference="GjO-wZ-Znt"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
-        <segue reference="hY1-pn-D4S"/>
+        <segue reference="6qw-s8-V3P"/>
         <segue reference="Vzz-SA-ORC"/>
         <segue reference="3xK-NI-FQs"/>
         <segue reference="VVr-Ld-9wW"/>
