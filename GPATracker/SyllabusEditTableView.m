@@ -23,6 +23,7 @@
 @property (strong, nonatomic) UIPickerView *pickerView;
 @property CGRect pickerViewShownFrame;
 @property CGRect pickerViewHiddenFrame;
+@property (strong, nonatomic) NSMutableArray *sectionList;
 @property (strong, nonatomic) NSMutableArray *gradeList;
 @property (strong, nonatomic) NSMutableArray *modList;
 
@@ -49,6 +50,7 @@
 @synthesize pickerViewShownFrame = _pickerViewShownFrame;
 @synthesize pickerViewHiddenFrame = _pickerViewHiddenFrame;
 
+@synthesize sectionList = _sectionList;
 @synthesize gradeList = _gradeList;
 @synthesize modList = _modList;
 
@@ -127,7 +129,7 @@ viewForFooterInSection:(NSInteger)section
     [self.pickerView reloadAllComponents];
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+/*- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     int selComp0;
     
@@ -174,7 +176,9 @@ viewForFooterInSection:(NSInteger)section
         [self.pickerView selectRow:selComp0 inComponent:0 animated:YES];
     
     return true;
-}
+}*/
+
+
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -193,7 +197,10 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSString *selectedGrade;
+    NSString *selectedSection;
+    
+    selectedSection = [self.sectionList objectAtIndex:[pickerView selectedRowInComponent:0]];
+    /*NSString *selectedGrade;
     
     selectedGrade = [self.gradeList objectAtIndex:[pickerView selectedRowInComponent:0]];
     if (self.setGradeType == (NSString *)@"Desired")
@@ -203,7 +210,7 @@ viewForFooterInSection:(NSInteger)section
     else if (self.setGradeType == (NSString *)@"Actual")
     {
         sectionActualGradeField.text = selectedGrade;
-    }
+    }*/
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -243,11 +250,14 @@ viewForFooterInSection:(NSInteger)section
         [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
     }
     
+    sectionNameField.inputAccessoryView = self.pickerView;
     sectionNameField.inputAccessoryView = keyboardToolbar;
-    sectionDesiredGradeField.inputAccessoryView = keyboardToolbar;
-    sectionActualGradeField.inputAccessoryView = keyboardToolbar;
-    sectionDesiredGradeField.inputView = self.pickerView;
-    sectionActualGradeField.inputView = self.pickerView;
+    sectionPercentageField.inputAccessoryView = keyboardToolbar;
+    sectionDescriptionField.inputAccessoryView = keyboardToolbar;
+    //sectionDesiredGradeField.inputAccessoryView = keyboardToolbar;
+    //sectionActualGradeField.inputAccessoryView = keyboardToolbar;
+    //sectionDesiredGradeField.inputView = self.pickerView;
+    //sectionActualGradeField.inputView = self.pickerView;
         
     //cancelButton.
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
@@ -325,8 +335,11 @@ viewForFooterInSection:(NSInteger)section
 {
     [super viewDidLoad];
     
-    self.sectionActualGradeField.delegate = self;
-    self.sectionDesiredGradeField.delegate = self;
+    //self.sectionActualGradeField.delegate = self;
+    //self.sectionDesiredGradeField.delegate = self;
+    self.sectionNameField.delegate = self;
+    self.sectionPercentageField.delegate = self;
+    self.sectionDescriptionField.delegate = self;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -359,10 +372,10 @@ viewForFooterInSection:(NSInteger)section
 {
     if ([sectionNameField isFirstResponder])
         [sectionNameField resignFirstResponder];
-    else if ([sectionDesiredGradeField isFirstResponder])
-        [sectionDesiredGradeField resignFirstResponder];
-    else if ([sectionActualGradeField isFirstResponder])
-        [sectionActualGradeField resignFirstResponder];
+    //else if ([sectionDesiredGradeField isFirstResponder])
+      //  [sectionDesiredGradeField resignFirstResponder];
+    //else if ([sectionActualGradeField isFirstResponder])
+      //  [sectionActualGradeField resignFirstResponder];
     else if ([sectionPercentageField isFirstResponder])
         [sectionPercentageField resignFirstResponder];
     else if ([sectionDescriptionField isFirstResponder])
@@ -390,16 +403,23 @@ viewForFooterInSection:(NSInteger)section
     {
         [sectionPercentageField resignFirstResponder];
         [sectionActualGradeField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[sectionActualGradeField superview] superview];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([sectionActualGradeField isFirstResponder])
+    /*else if ([sectionActualGradeField isFirstResponder])
     {
         [sectionActualGradeField resignFirstResponder];
         [sectionDesiredGradeField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[sectionDesiredGradeField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
+    else if ([sectionDesiredGradeField isFirstResponder])
+    {
+     [sectionDesiredGradeField resignFirstResponder];
+     [sectionNameField becomeFirstResponder];
+     UITableViewCell *cell = (UITableViewCell*) [[sectionNameField superview] superview];
+     [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }*/
 }
 
 - (void) nextField:(id)sender
@@ -416,10 +436,10 @@ viewForFooterInSection:(NSInteger)section
     {
         [sectionNameField resignFirstResponder];
         [sectionDesiredGradeField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[sectionDesiredGradeField superview] superview];
+        UITableViewCell *cell = (UITableViewCell*) [[sectionPercentageField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([sectionDesiredGradeField isFirstResponder])
+    /*else if ([sectionDesiredGradeField isFirstResponder])
     {
         [sectionDesiredGradeField resignFirstResponder];
         [sectionActualGradeField becomeFirstResponder];
@@ -432,7 +452,7 @@ viewForFooterInSection:(NSInteger)section
         [sectionPercentageField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[sectionPercentageField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-    }
+    }*/
     else if ([sectionPercentageField isFirstResponder])
     {
         [sectionPercentageField resignFirstResponder];
@@ -619,10 +639,6 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-	if ([segue.identifier isEqualToString:@"segueCourse2CourseList"])
-	{
-        //[self.navigationController popViewControllerAnimated:YES];
-       
-	}
+	
 }
 @end
