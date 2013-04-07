@@ -96,6 +96,10 @@ viewForFooterInSection:(NSInteger)section
     
     [super viewWillAppear:(BOOL)animated];
     
+    self.schoolNameText.text = self.courseDetails.courseCode;
+    self.schoolDescText.text = self.courseDetails.courseName;
+    self.schoolYearsText.text = self.courseDetails.courseDesc;
+    self.schoolCGPAText.text = self.courseDetails.desiredGradeGPA.minGrade.stringValue;
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
