@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-322" y="241"/>
+            <point key="canvasLocation" x="-327" y="236"/>
         </scene>
         <!--School Edit Table View-->
         <scene sceneID="woZ-Kz-P8a">
@@ -323,7 +323,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="26i-sz-waC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="-404"/>
+            <point key="canvasLocation" x="152" y="-404"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="isu-b5-E5q">
@@ -349,7 +349,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qp1-f9-6VK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-322" y="-404"/>
+            <point key="canvasLocation" x="-327" y="-404"/>
         </scene>
         <!--Grading Scheme Select Table View-->
         <scene sceneID="XFq-c5-wP6">
@@ -432,7 +432,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H6E-XD-vcS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="-404"/>
+            <point key="canvasLocation" x="632" y="-404"/>
         </scene>
         <!--Grading Scheme Table View-->
         <scene sceneID="cSj-ex-k0t">
@@ -555,7 +555,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zGb-eW-Kcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="-404"/>
+            <point key="canvasLocation" x="1115" y="-404"/>
         </scene>
         <!--School List Table View - School List-->
         <scene sceneID="Lwr-K1-gYp">
@@ -656,7 +656,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVE-hO-6vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="241"/>
+            <point key="canvasLocation" x="632" y="236"/>
         </scene>
         <!--Semester Edit Table View - Add Semester-->
         <scene sceneID="I7w-Fp-qPP">
@@ -761,7 +761,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mep-03-TKK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079" y="241"/>
+            <point key="canvasLocation" x="2074" y="236"/>
         </scene>
         <!--Course Edit Table View - Create Course-->
         <scene sceneID="PV2-N8-lIg">
@@ -1028,7 +1028,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vZD-G9-8Fm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2586" y="864"/>
+            <point key="canvasLocation" x="2553" y="875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="I1j-aw-DTS">
@@ -1053,7 +1053,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ei6-Fz-Vjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2079" y="880"/>
+            <point key="canvasLocation" x="2074" y="875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pq6-VH-shm">
@@ -1079,7 +1079,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JS9-dR-AM7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1600" y="241"/>
+            <point key="canvasLocation" x="1595" y="236"/>
         </scene>
         <!--Profile Edit Table View - Create Profile-->
         <scene sceneID="doR-w5-7aq">
@@ -1288,7 +1288,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="znG-BI-5DK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="880"/>
+            <point key="canvasLocation" x="1115" y="875"/>
         </scene>
         <!--Course Table View - Course List-->
         <scene sceneID="g3S-5a-XO4">
@@ -1428,7 +1428,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWv-2o-iEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1631" y="880"/>
+            <point key="canvasLocation" x="1595" y="875"/>
         </scene>
         <!--Semester Table View - Semester List-->
         <scene sceneID="rD3-1f-wf6">
@@ -1568,7 +1568,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NCk-VG-Zbv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="241"/>
+            <point key="canvasLocation" x="1115" y="236"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Vle-3D-yDl">
@@ -1596,7 +1596,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1rD-EY-j2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="241"/>
+            <point key="canvasLocation" x="152" y="236"/>
         </scene>
         <!--Home Page Tab View Controller-->
         <scene sceneID="aoa-9z-enc">
@@ -1737,7 +1737,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bwL-GE-JfZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="1518"/>
+            <point key="canvasLocation" x="632" y="1518"/>
         </scene>
         <!--School Summary View Controller-->
         <scene sceneID="i3a-yO-1iC">
@@ -1846,7 +1846,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u47-n5-m2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="1518"/>
+            <point key="canvasLocation" x="1115" y="1518"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fl1-ki-c2M">
@@ -1874,7 +1874,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDb-8X-C0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="638" y="880"/>
+            <point key="canvasLocation" x="632" y="875"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KGN-MP-lzb">
@@ -1901,7 +1901,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5b-5t-mOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="157" y="1518"/>
+            <point key="canvasLocation" x="152" y="1518"/>
         </scene>
         <!--Course List Table View - Course List-->
         <scene sceneID="iKJ-YE-w7j">
@@ -2037,7 +2037,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vi3-uq-5Hs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1589" y="1544"/>
+            <point key="canvasLocation" x="1595" y="1518"/>
         </scene>
         <!--Syllabus List Table View - Syllabus Breakdown-->
         <scene sceneID="69s-Fg-qPZ">
@@ -2181,7 +2181,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uCW-hV-NMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2099" y="1544"/>
+            <point key="canvasLocation" x="2074" y="1518"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="M3B-1G-DEF">
@@ -2318,11 +2318,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Syllabus Breakdown" id="Z3O-ht-Dg3">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="m62-nD-6Zg">
-                            <connections>
-                                <segue destination="O4L-Ki-pro" kind="push" identifier="segueAddSyllabus" id="hY1-pn-D4S"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="m62-nD-6Zg"/>
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -2334,12 +2330,11 @@
                         <outlet property="schoolDescText" destination="qLc-fS-IqH" id="x7C-4q-9S2"/>
                         <outlet property="schoolNameText" destination="Tzg-mh-BAH" id="RS3-M4-CLt"/>
                         <outlet property="schoolYearsText" destination="sn2-3S-6bE" id="r5l-0e-HYf"/>
-                        <segue destination="O4L-Ki-pro" kind="push" identifier="segueEditSyllabus" id="gWi-hA-onS"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJR-Ad-sg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2549" y="1544"/>
+            <point key="canvasLocation" x="2074" y="2155"/>
         </scene>
         <!--Syllabus Edit Table View - Syllabus Breakdown-->
         <scene sceneID="78t-ao-Ghp">
@@ -2583,7 +2578,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWk-64-8co" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2974" y="1544"/>
+            <point key="canvasLocation" x="2553" y="1518"/>
         </scene>
     </scenes>
     <resources>
@@ -2601,16 +2596,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="pgP-pB-hYJ"/>
-        <segue reference="GjO-wZ-Znt"/>
         <segue reference="k7a-QP-sia"/>
-        <segue reference="LMs-sZ-M1E"/>
-        <segue reference="6qw-s8-V3P"/>
-        <segue reference="Vzz-SA-ORC"/>
-        <segue reference="3xK-NI-FQs"/>
+        <segue reference="xWR-GP-plh"/>
+        <segue reference="RFh-nA-BNa"/>
         <segue reference="VVr-Ld-9wW"/>
-        <segue reference="lHh-OI-VXa"/>
         <segue reference="sH2-t5-pXi"/>
-        <segue reference="fGJ-Vg-Bh6"/>
+        <segue reference="KvF-9q-C6b"/>
+        <segue reference="1dU-6g-oZa"/>
+        <segue reference="DG6-i7-zNC"/>
+        <segue reference="LMs-sZ-M1E"/>
+        <segue reference="GjO-wZ-Znt"/>
     </inferredMetricsTieBreakers>
 </document>

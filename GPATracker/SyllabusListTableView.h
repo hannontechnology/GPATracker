@@ -10,7 +10,7 @@
 #import "CoreDataTableViewController.h"
 
 @class User;
-@class SchoolDetails;
+@class CourseDetails;
 @class DataCollection;
 
 @interface SyllabusListTableView : CoreDataTableViewController
@@ -21,7 +21,7 @@
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @property (strong, nonatomic) User *userInfo;
-@property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) CourseDetails *courseDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

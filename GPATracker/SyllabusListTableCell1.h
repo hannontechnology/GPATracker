@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SyllabusTableCell1 : UITableViewCell
+@interface SyllabusListTableCell1 : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel2;

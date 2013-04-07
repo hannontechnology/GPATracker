@@ -18,7 +18,6 @@
 		1F27DA3A16B8476A00E0C8C8 /* GradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */; };
 		1F41905115C34A620031A4BC /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41905015C34A610031A4BC /* User+Create.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
-		1F58585A16AF0B5B002A930D /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58585916AF0B5B002A930D /* CourseDetails.m */; };
 		1F58585D16AF0B5B002A930D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58585C16AF0B5B002A930D /* User.m */; };
 		1F58586316AF0B5B002A930D /* YearPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58586216AF0B5B002A930D /* YearPicker.m */; };
 		1F58586616AF0B5B002A930D /* SchoolDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58586516AF0B5B002A930D /* SchoolDetails.m */; };
@@ -30,6 +29,8 @@
 		1F5DB9771682381C0048564D /* Profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9761682381C0048564D /* Profileicon.png */; };
 		1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9781682399B0048564D /* CoursesIcon.png */; };
 		1F5DB97B168246A40048564D /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB97A168246A40048564D /* circleIcon.png */; };
+		1F70BB07171226F000B8A052 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70BB06171226F000B8A052 /* SyllabusDetails.m */; };
+		1F70BB0A171226F100B8A052 /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70BB09171226F100B8A052 /* CourseDetails.m */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A56151559EA00BD72F0 /* CoreGraphics.framework */; };
@@ -67,8 +68,7 @@
 		2D9C62B215B5370700B82973 /* GradingSchemeSelectTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B115B5370700B82973 /* GradingSchemeSelectTableView.m */; };
 		2D9C62B515B5385300B82973 /* GradingSchemeTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */; };
 		2DA715FD16EFE603003A639A /* SyllabusEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA715FC16EFE603003A639A /* SyllabusEditTableView.m */; };
-		2DA78B4516F874B400CBC27C /* SyllabusTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA78B4416F874B400CBC27C /* SyllabusTableCell1.m */; };
-		2DB4C26416FE8B0F00465AE0 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DB4C26316FE8B0F00465AE0 /* SyllabusDetails.m */; };
+		2DA78B4516F874B400CBC27C /* SyllabusListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DA78B4416F874B400CBC27C /* SyllabusListTableCell1.m */; };
 		2DC1D7E315C48B7800EE9A78 /* GradingScheme+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DC1D7E215C48B7800EE9A78 /* GradingScheme+Create.m */; };
 		2DD4EF5616FEAE2100613091 /* SyllabusListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4EF5516FEAE2100613091 /* SyllabusListTableView.m */; };
 		2DD4EF5916FEAE8800613091 /* SyllabusTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD4EF5816FEAE8800613091 /* SyllabusTableView.m */; };
@@ -106,8 +106,6 @@
 		1F41904F15C34A610031A4BC /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Create.h"; path = "GPATracker/User+Create.h"; sourceTree = "<group>"; };
 		1F41905015C34A610031A4BC /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Create.m"; path = "GPATracker/User+Create.m"; sourceTree = "<group>"; };
 		1F447033156AD48F0045242C /* GPATracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPATracker.xcdatamodel; sourceTree = "<group>"; };
-		1F58585816AF0B5B002A930D /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
-		1F58585916AF0B5B002A930D /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
 		1F58585B16AF0B5B002A930D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = GPATracker/User.h; sourceTree = "<group>"; };
 		1F58585C16AF0B5B002A930D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = GPATracker/User.m; sourceTree = "<group>"; };
 		1F58586116AF0B5B002A930D /* YearPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YearPicker.h; path = GPATracker/YearPicker.h; sourceTree = "<group>"; };
@@ -123,6 +121,10 @@
 		1F5DB9761682381C0048564D /* Profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profileicon.png; path = Images/Profileicon.png; sourceTree = "<group>"; };
 		1F5DB9781682399B0048564D /* CoursesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CoursesIcon.png; path = Images/CoursesIcon.png; sourceTree = "<group>"; };
 		1F5DB97A168246A40048564D /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circleIcon.png; path = Images/circleIcon.png; sourceTree = "<group>"; };
+		1F70BB05171226F000B8A052 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
+		1F70BB06171226F000B8A052 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
+		1F70BB08171226F100B8A052 /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
+		1F70BB09171226F100B8A052 /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
 		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A52151559EA00BD72F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F754A54151559EA00BD72F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,10 +191,8 @@
 		2D9C62B415B5385300B82973 /* GradingSchemeTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeTableView.m; sourceTree = "<group>"; };
 		2DA715FB16EFE603003A639A /* SyllabusEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusEditTableView.h; sourceTree = "<group>"; };
 		2DA715FC16EFE603003A639A /* SyllabusEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusEditTableView.m; sourceTree = "<group>"; };
-		2DA78B4316F874B400CBC27C /* SyllabusTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusTableCell1.h; sourceTree = "<group>"; };
-		2DA78B4416F874B400CBC27C /* SyllabusTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusTableCell1.m; sourceTree = "<group>"; };
-		2DB4C26216FE8B0F00465AE0 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
-		2DB4C26316FE8B0F00465AE0 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
+		2DA78B4316F874B400CBC27C /* SyllabusListTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusListTableCell1.h; sourceTree = "<group>"; };
+		2DA78B4416F874B400CBC27C /* SyllabusListTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusListTableCell1.m; sourceTree = "<group>"; };
 		2DC1D7E115C48B7800EE9A78 /* GradingScheme+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GradingScheme+Create.h"; path = "GPATracker/GradingScheme+Create.h"; sourceTree = "<group>"; };
 		2DC1D7E215C48B7800EE9A78 /* GradingScheme+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "GradingScheme+Create.m"; path = "GPATracker/GradingScheme+Create.m"; sourceTree = "<group>"; };
 		2DD4EF5416FEAE2100613091 /* SyllabusListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusListTableView.h; sourceTree = "<group>"; };
@@ -238,6 +238,10 @@
 				1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */,
 				1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				1F70BB08171226F100B8A052 /* CourseDetails.h */,
+				1F70BB09171226F100B8A052 /* CourseDetails.m */,
+				1F70BB05171226F000B8A052 /* SyllabusDetails.h */,
+				1F70BB06171226F000B8A052 /* SyllabusDetails.m */,
 				1F58586716AF0B5B002A930D /* SemesterDetails.h */,
 				1F58586816AF0B5B002A930D /* SemesterDetails.m */,
 				1F58586416AF0B5B002A930D /* SchoolDetails.h */,
@@ -246,8 +250,6 @@
 				1F58586216AF0B5B002A930D /* YearPicker.m */,
 				1F58585B16AF0B5B002A930D /* User.h */,
 				1F58585C16AF0B5B002A930D /* User.m */,
-				1F58585816AF0B5B002A930D /* CourseDetails.h */,
-				1F58585916AF0B5B002A930D /* CourseDetails.m */,
 				1FB7A54515C316F800237DDD /* CoreDataTableViewController.h */,
 				1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */,
 				1F9B8D77156C165E00CFB46C /* DataCollection.h */,
@@ -260,10 +262,8 @@
 				34F1853915C47CB000E0E1E9 /* SemesterDetails+Create.m */,
 				1F41904F15C34A610031A4BC /* User+Create.h */,
 				1F41905015C34A610031A4BC /* User+Create.m */,
-				2DB4C26216FE8B0F00465AE0 /* SyllabusDetails.h */,
 				2D975E04170D881E003EF840 /* SyllabusDetails+Create.h */,
 				2D975E05170D881E003EF840 /* SyllabusDetails+Create.m */,
-				2DB4C26316FE8B0F00465AE0 /* SyllabusDetails.m */,
 			);
 			name = "Core Data";
 			path = ..;
@@ -324,8 +324,8 @@
 				1F0E390E16D9E9080036F142 /* Common.m */,
 				1FFE778916C17F020037F681 /* CourseListTableView.m */,
 				1FFE778A16C17F020037F681 /* CourseTableCell1.m */,
-				2DA78B4316F874B400CBC27C /* SyllabusTableCell1.h */,
-				2DA78B4416F874B400CBC27C /* SyllabusTableCell1.m */,
+				2DA78B4316F874B400CBC27C /* SyllabusListTableCell1.h */,
+				2DA78B4416F874B400CBC27C /* SyllabusListTableCell1.m */,
 				1FFE778B16C17F020037F681 /* CourseListTableView.h */,
 				1FFE778C16C17F020037F681 /* CourseTableCell1.h */,
 				1F41902C15C319350031A4BC /* Core Data */,
@@ -560,7 +560,6 @@
 				2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */,
 				1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */,
 				1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */,
-				1F58585A16AF0B5B002A930D /* CourseDetails.m in Sources */,
 				1F58585D16AF0B5B002A930D /* User.m in Sources */,
 				1F58586316AF0B5B002A930D /* YearPicker.m in Sources */,
 				1F58586616AF0B5B002A930D /* SchoolDetails.m in Sources */,
@@ -575,11 +574,12 @@
 				1F24D31716EBD82A004B65B9 /* CustomFooter.m in Sources */,
 				2DA715FD16EFE603003A639A /* SyllabusEditTableView.m in Sources */,
 				1F24D31A16F1000C004B65B9 /* CustomViewBackground.m in Sources */,
-				2DA78B4516F874B400CBC27C /* SyllabusTableCell1.m in Sources */,
-				2DB4C26416FE8B0F00465AE0 /* SyllabusDetails.m in Sources */,
+				2DA78B4516F874B400CBC27C /* SyllabusListTableCell1.m in Sources */,
 				2DD4EF5616FEAE2100613091 /* SyllabusListTableView.m in Sources */,
 				2DD4EF5916FEAE8800613091 /* SyllabusTableView.m in Sources */,
 				2D975E06170D881E003EF840 /* SyllabusDetails+Create.m in Sources */,
+				1F70BB07171226F000B8A052 /* SyllabusDetails.m in Sources */,
+				1F70BB0A171226F100B8A052 /* CourseDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

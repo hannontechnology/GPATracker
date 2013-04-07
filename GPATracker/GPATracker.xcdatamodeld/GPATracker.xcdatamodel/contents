@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="11G63b" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="1.0" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="CourseDetails" representedClassName="CourseDetails" syncable="YES">
         <attribute name="courseCode" attributeType="String" syncable="YES"/>
         <attribute name="courseDesc" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,7 +40,7 @@
         <relationship name="courseDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="semesterDetails" inverseEntity="CourseDetails" syncable="YES"/>
         <relationship name="schoolDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="semesterDetails" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
-    <entity name="SyllabusDetails" syncable="YES">
+    <entity name="SyllabusDetails" representedClassName="SyllabusDetails" syncable="YES">
         <attribute name="percentBreakdown" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sectionName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="courseDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="syllabusDetails" inverseEntity="CourseDetails" syncable="YES"/>
@@ -62,8 +62,8 @@
         <element name="GradingScheme" positionX="0" positionY="0" width="128" height="180"/>
         <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>
+        <element name="SyllabusDetails" positionX="160" positionY="192" width="128" height="90"/>
         <element name="User" positionX="0" positionY="0" width="128" height="150"/>
         <element name="YearPicker" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="SyllabusDetails" positionX="160" positionY="192" width="128" height="90"/>
     </elements>
 </model>

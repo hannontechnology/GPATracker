@@ -10,6 +10,4 @@
 
 @interface SyllabusDetails (Create)
 
--(NSString*) sectionName;
-
 @end

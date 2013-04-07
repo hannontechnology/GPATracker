@@ -2,18 +2,19 @@
 //  SyllabusDetails.h
 //  GPATracker
 //
-//  Created by David Stevens on 13-03-24.
+//  Created by Terry Hannon on 13-04-07.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class CourseDetails, GradingScheme;
+@class CourseDetails;
 
 @interface SyllabusDetails : NSManagedObject
 
-@property (nonatomic, retain) NSString *sectionName;
-@property (nonatomic, retain) NSNumber *percentBreakdown;
+@property (nonatomic, retain) NSDecimalNumber * percentBreakdown;
+@property (nonatomic, retain) NSString * sectionName;
+@property (nonatomic, retain) CourseDetails *courseDetails;
 
 @end

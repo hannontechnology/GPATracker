@@ -11,8 +11,5 @@
 
 @implementation SyllabusDetails (Create)
 
--(NSString*) sectionName{
-    return [NSString stringWithFormat:@"%@", self.sectionName];
-}
 
 @end

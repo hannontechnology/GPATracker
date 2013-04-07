@@ -2,13 +2,14 @@
 //  CourseDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-01-22.
+//  Created by Terry Hannon on 13-04-07.
 //
 //
 
 #import "CourseDetails.h"
 #import "GradingScheme.h"
 #import "SemesterDetails.h"
+#import "SyllabusDetails.h"
 
 
 @implementation CourseDetails
@@ -23,5 +24,6 @@
 @dynamic actualGradeGPA;
 @dynamic desiredGradeGPA;
 @dynamic semesterDetails;
+@dynamic syllabusDetails;
 
 @end

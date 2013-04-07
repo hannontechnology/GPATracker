@@ -2,14 +2,14 @@
 //  CourseDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-01-22.
+//  Created by Terry Hannon on 13-04-07.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class GradingScheme, SemesterDetails;
+@class GradingScheme, SemesterDetails, SyllabusDetails;
 
 @interface CourseDetails : NSManagedObject
 
@@ -23,5 +23,6 @@
 @property (nonatomic, retain) GradingScheme *actualGradeGPA;
 @property (nonatomic, retain) GradingScheme *desiredGradeGPA;
 @property (nonatomic, retain) SemesterDetails *semesterDetails;
+@property (nonatomic, retain) SyllabusDetails *syllabusDetails;
 
 @end

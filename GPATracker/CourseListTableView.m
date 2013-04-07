@@ -16,7 +16,7 @@
 #import "CourseListTableCell1.h"
 #import "SchoolDetails+Create.h"
 #import "GradingScheme+Create.h"
-#import "SyllabusEditTableView.h"
+#import "SyllabusListTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
@@ -239,12 +239,12 @@ viewForFooterInSection:(NSInteger)section
     else if ([segue.identifier isEqualToString:@"segueCourseList2SyllabusList"])
     {
         CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SyllabusEditTableView *SyllabusEditTableView = [segue destinationViewController];
+        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
         
-        //SyllabusEditTableView.courseDetails = selectedObject;
+        SyllabusListTableView.courseDetails = selectedObject;
         //SyllabusEditTableView.semesterDetails = self.semesterInfo;
-        SyllabusEditTableView.dataCollection = self.dataCollection;
-        SyllabusEditTableView.managedObjectContext = self.managedObjectContext;
+        SyllabusListTableView.dataCollection = self.dataCollection;
+        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
     }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
@@ -272,25 +272,6 @@ viewForFooterInSection:(NSInteger)section
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
-/*
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-	NSString *sectionName;
-    
-    if (section == 0)
-        sectionName = @"Standard Grades";
-    else
-        sectionName = @"Pass/Fail Grades";
-    
-    return sectionName;
-}
-*/
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath

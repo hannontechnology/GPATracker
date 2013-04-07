@@ -8,13 +8,13 @@
 
 #import "SyllabusListTableView.h"
 #import "CourseDetails.h"
-#import "SyllabusDetails.h"
+#import "SyllabusDetails+Create.h"
 #import "GradingScheme+Create.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
 #import "CourseTableView.h"
 #import "CourseListTableView.h"
-#import "SyllabusTableCell1.h"
+#import "SyllabusListTableCell1.h"
 #import "CourseEditTableView.h"
 #import "SchoolDetails+Create.h"
 #import "CustomCellBackground.h"
@@ -26,7 +26,7 @@
 
 @implementation SyllabusListTableView
 @synthesize userInfo = _userInfo;
-@synthesize schoolInfo = _schoolInfo;
+@synthesize courseDetails = _courseDetails;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
@@ -47,8 +47,8 @@
     NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"sectionName" ascending:NO];
     //selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorSName, nil]];
-    //request.predicate = [NSPredicate predicateWithFormat: @"courseDetails = %@", self.];
-    NSLog(@"filtering data based on courseDetails = %@", self.schoolInfo);
+    request.predicate = [NSPredicate predicateWithFormat: @"courseDetails = %@", self.courseDetails];
+    NSLog(@"filtering data based on courseDetails = %@", self.courseDetails);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
 }
@@ -138,12 +138,12 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SyllabusTableCell1";
-    SyllabusTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"CourseListTableCell1";
+    SyllabusListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
     {
-        cell = [[SyllabusTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SyllabusListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -183,8 +183,8 @@ viewForFooterInSection:(NSInteger)section
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        CourseDetails *courseToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self.managedObjectContext deleteObject:courseToDelete];
+        SyllabusDetails *syllabusToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:syllabusToDelete];
         [self.managedObjectContext save:nil];
         //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }

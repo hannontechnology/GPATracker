@@ -14,7 +14,7 @@
 #import "SchoolListTableView.h"
 #import "CourseTableView.h"
 #import "CourseListTableView.h"
-#import "SyllabusTableCell1.h"
+#import "SyllabusListTableCell1.h"
 #import "CourseEditTableView.h"
 #import "SchoolDetails+Create.h"
 #import "CustomCellBackground.h"
@@ -138,12 +138,12 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SyllabusTableCell1";
-    SyllabusTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"SyllabusListTableCell1";
+    SyllabusListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
     {
-        cell = [[SyllabusTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SyllabusListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
