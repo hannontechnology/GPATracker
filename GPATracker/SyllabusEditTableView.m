@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSMutableArray *sectionList;
 @property (strong, nonatomic) NSMutableArray *gradeList;
 @property (strong, nonatomic) NSMutableArray *modList;
+//@property (strong, nonatomic) SyllabusDetails *syllabusDetails;
 
 - (IBAction)Accept:(id)sender;
 - (IBAction)Cancel:(id)sender;
@@ -302,6 +303,13 @@ viewForFooterInSection:(NSInteger)section
     if (self.syllabusDetails == nil)
     {
         NSLog(@"Database Error: Could not connect to Database");
+    }
+    else
+    {
+        NSLog(@"Load Syllabus Information");
+        //headerText.title = @"Edit Section";
+        //sectionNameField.text = self.syllabusDetails.sectionName;
+        
     }
     /*else
     {
