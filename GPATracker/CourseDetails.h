@@ -2,7 +2,7 @@
 //  CourseDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-07.
+//  Created by Terry Hannon on 13-04-11.
 //
 //
 
@@ -23,6 +23,14 @@
 @property (nonatomic, retain) GradingScheme *actualGradeGPA;
 @property (nonatomic, retain) GradingScheme *desiredGradeGPA;
 @property (nonatomic, retain) SemesterDetails *semesterDetails;
-@property (nonatomic, retain) SyllabusDetails *syllabusDetails;
+@property (nonatomic, retain) NSSet *syllabusDetails;
+@end
+
+@interface CourseDetails (CoreDataGeneratedAccessors)
+
+- (void)addSyllabusDetailsObject:(SyllabusDetails *)value;
+- (void)removeSyllabusDetailsObject:(SyllabusDetails *)value;
+- (void)addSyllabusDetails:(NSSet *)values;
+- (void)removeSyllabusDetails:(NSSet *)values;
 
 @end

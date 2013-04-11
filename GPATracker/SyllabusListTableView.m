@@ -30,11 +30,12 @@
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
-@synthesize schoolNameText = _schoolNameText;
-@synthesize schoolDescText = _schoolDescText;
-@synthesize schoolYearsText = _schoolYearsText;
-@synthesize schoolCGPAText = _schoolCGPAText;
-
+@synthesize courseCodeText = _courseCodeText;
+@synthesize courseNameText = _courseNameText;
+@synthesize courseDesiredGradeText = _courseDesiredGradeText;
+@synthesize courseMinPercentText = _courseMinPercentText;
+@synthesize courseMaxPercentText = _courseMaxPercentText;
+@synthesize courseCreditsText = _courseCreditsText;
 
 - (void)setupFetchedResultsController
 {
@@ -96,10 +97,11 @@ viewForFooterInSection:(NSInteger)section
     
     [super viewWillAppear:(BOOL)animated];
     
-    self.schoolNameText.text = self.courseDetails.courseCode;
-    self.schoolDescText.text = self.courseDetails.courseName;
-    self.schoolYearsText.text = self.courseDetails.courseDesc;
-    self.schoolCGPAText.text = self.courseDetails.desiredGradeGPA.minGrade.stringValue;
+    self.courseCodeText.text = self.courseDetails.courseCode;
+    self.courseNameText.text = self.courseDetails.courseName;
+    self.courseDesiredGradeText.text = self.courseDetails.desiredGradeGPA.letterGrade;
+    self.courseMinPercentText.text = [NSString stringWithFormat:@"%@%%", self.courseDetails.desiredGradeGPA.minGrade.stringValue];
+    self.courseCreditsText.text = [NSString stringWithFormat:@"Credit Hours: %@", [self.courseDetails units].stringValue];
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
@@ -142,7 +144,7 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"CourseListTableCell1";
+    static NSString *CellIdentifier = @"syllabusListTableCell1";
     SyllabusListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
@@ -154,18 +156,7 @@ viewForFooterInSection:(NSInteger)section
     
     // TODO: create class
     cell.cellLabel1.text = [selectedObject sectionName];
-    cell.cellLabel2.text = [NSString stringWithFormat:@"Percent Breakdown: %@", [selectedObject percentBreakdown].stringValue];
-    //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
-    /*
-    if (selectedObject.actualGradeGPA != nil)
-    {
-        cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
-    }
-    else
-    {
-        cell.cellLabelGPA.text = @"";
-    }
-    */
+    cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -242,10 +233,10 @@ viewForFooterInSection:(NSInteger)section
     }
     if ([segue.identifier isEqualToString:@"segueAddSyllabusFromList"])
     {
-        SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
-        SyllabusListTableView.DataCollection = self.dataCollection;
-        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
+        SyllabusListTableView *syllabusListTableView = [segue destinationViewController];
+        syllabusListTableView.courseDetails = self.courseDetails;
+        syllabusListTableView.DataCollection = self.dataCollection;
+        syllabusListTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

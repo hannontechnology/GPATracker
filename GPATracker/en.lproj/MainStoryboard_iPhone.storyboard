@@ -2122,50 +2122,50 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="34" id="pmH-Rf-TEb" customClass="SyllabusListTableCell1">
+                            <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="syllabusListTableCell1" rowHeight="34" id="pmH-Rf-TEb" customClass="SyllabusListTableCell1">
                                 <rect key="frame" x="0.0" y="109" width="320" height="36"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="33"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Cnt-oH-pSd">
-                                            <rect key="frame" x="60" y="13" width="128" height="20"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="0OB-Z2-NeR">
+                                            <rect key="frame" x="56" y="13" width="128" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="20%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="TwH-tT-5O1">
-                                            <rect key="frame" x="6" y="13" width="56" height="20"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="20%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="01q-NY-bw5">
+                                            <rect key="frame" x="2" y="13" width="56" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="90%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="6yo-Rz-XlP">
-                                            <rect key="frame" x="222" y="13" width="56" height="20"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="90%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yHs-Gt-4hP">
+                                            <rect key="frame" x="218" y="13" width="56" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="4K6-Hm-9uw">
-                                            <rect key="frame" x="6" y="0.0" width="60" height="12"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="aM9-3H-i1y">
+                                            <rect key="frame" x="2" y="0.0" width="60" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="NRf-Az-HbY">
-                                            <rect key="frame" x="60" y="0.0" width="60" height="12"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ndA-hL-73y">
+                                            <rect key="frame" x="56" y="0.0" width="60" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Grade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="r2w-9R-XEw">
-                                            <rect key="frame" x="222" y="0.0" width="60" height="12"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Grade" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="m8Y-pb-jp3">
+                                            <rect key="frame" x="218" y="0.0" width="60" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2176,8 +2176,9 @@
                                 </view>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outlet property="cellLabel2" destination="Cnt-oH-pSd" id="5qd-Qg-JOs"/>
-                                    <outlet property="cellLabelGPA" destination="TwH-tT-5O1" id="COK-Y2-r20"/>
+                                    <outlet property="cellLabel1" destination="0OB-Z2-NeR" id="w4U-q9-aLf"/>
+                                    <outlet property="cellLabel2" destination="yHs-Gt-4hP" id="Ss1-Rr-7mW"/>
+                                    <outlet property="cellLabel3" destination="01q-NY-bw5" id="Ptj-je-R14"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2200,10 +2201,12 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="schoolCGPAText" destination="och-fr-6AA" id="6BK-ir-5eS"/>
-                        <outlet property="schoolDescText" destination="ZHm-Q3-Qep" id="hl9-XJ-XG7"/>
-                        <outlet property="schoolNameText" destination="XKo-iB-UeC" id="kav-0u-f16"/>
-                        <outlet property="schoolYearsText" destination="TJd-XN-POB" id="nXL-M0-n3Y"/>
+                        <outlet property="courseCodeText" destination="XKo-iB-UeC" id="r8U-bB-Rbg"/>
+                        <outlet property="courseCreditsText" destination="TJd-XN-POB" id="wHG-Lp-7DO"/>
+                        <outlet property="courseDesiredGradeText" destination="och-fr-6AA" id="OaO-eq-PdX"/>
+                        <outlet property="courseMaxPercentText" destination="lAr-UR-1J2" id="LSD-Qb-73h"/>
+                        <outlet property="courseMinPercentText" destination="9MH-Su-Ke8" id="nRn-bK-b7z"/>
+                        <outlet property="courseNameText" destination="ZHm-Q3-Qep" id="d6g-9K-ShF"/>
                         <segue destination="uYL-hK-7nw" kind="push" identifier="segueSyllabusList2SyllabusDetails" id="wxv-pp-keg"/>
                     </connections>
                 </tableViewController>
@@ -2447,9 +2450,9 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="courseCodeField" destination="8Vh-N4-TKY" id="dnm-kx-qfz"/>
                         <outlet property="headerText" destination="kdq-4Z-Jp1" id="1fv-bH-WLa"/>
                         <outlet property="sectionNameField" destination="8Vh-N4-TKY" id="nkz-99-Er9"/>
+                        <outlet property="sectionPercentageField" destination="hfX-IL-mMP" id="cAv-jE-5Bz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dWk-64-8co" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2716,15 +2719,15 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="k7a-QP-sia"/>
-        <segue reference="xWR-GP-plh"/>
+        <segue reference="sH2-t5-pXi"/>
         <segue reference="RFh-nA-BNa"/>
         <segue reference="VVr-Ld-9wW"/>
-        <segue reference="sH2-t5-pXi"/>
-        <segue reference="KvF-9q-C6b"/>
         <segue reference="1dU-6g-oZa"/>
+        <segue reference="KvF-9q-C6b"/>
         <segue reference="DG6-i7-zNC"/>
-        <segue reference="LMs-sZ-M1E"/>
         <segue reference="GjO-wZ-Znt"/>
+        <segue reference="pgP-pB-hYJ"/>
+        <segue reference="k7a-QP-sia"/>
+        <segue reference="LMs-sZ-M1E"/>
     </inferredMetricsTieBreakers>
 </document>

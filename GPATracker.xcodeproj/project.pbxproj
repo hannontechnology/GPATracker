@@ -29,8 +29,8 @@
 		1F5DB9771682381C0048564D /* Profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9761682381C0048564D /* Profileicon.png */; };
 		1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9781682399B0048564D /* CoursesIcon.png */; };
 		1F5DB97B168246A40048564D /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB97A168246A40048564D /* circleIcon.png */; };
+		1F6D589A17170AD8003B9A58 /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589917170AD8003B9A58 /* CourseDetails.m */; };
 		1F70BB07171226F000B8A052 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70BB06171226F000B8A052 /* SyllabusDetails.m */; };
-		1F70BB0A171226F100B8A052 /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F70BB09171226F100B8A052 /* CourseDetails.m */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A56151559EA00BD72F0 /* CoreGraphics.framework */; };
@@ -121,10 +121,10 @@
 		1F5DB9761682381C0048564D /* Profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profileicon.png; path = Images/Profileicon.png; sourceTree = "<group>"; };
 		1F5DB9781682399B0048564D /* CoursesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CoursesIcon.png; path = Images/CoursesIcon.png; sourceTree = "<group>"; };
 		1F5DB97A168246A40048564D /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circleIcon.png; path = Images/circleIcon.png; sourceTree = "<group>"; };
+		1F6D589817170AD8003B9A58 /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
+		1F6D589917170AD8003B9A58 /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
 		1F70BB05171226F000B8A052 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
 		1F70BB06171226F000B8A052 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
-		1F70BB08171226F100B8A052 /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
-		1F70BB09171226F100B8A052 /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
 		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A52151559EA00BD72F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F754A54151559EA00BD72F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -237,9 +237,9 @@
 				1FA9B0C116CC29F3009B4F1E /* CourseDetails+Create.h */,
 				1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */,
 				1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */,
+				1F6D589817170AD8003B9A58 /* CourseDetails.h */,
+				1F6D589917170AD8003B9A58 /* CourseDetails.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
-				1F70BB08171226F100B8A052 /* CourseDetails.h */,
-				1F70BB09171226F100B8A052 /* CourseDetails.m */,
 				1F70BB05171226F000B8A052 /* SyllabusDetails.h */,
 				1F70BB06171226F000B8A052 /* SyllabusDetails.m */,
 				1F58586716AF0B5B002A930D /* SemesterDetails.h */,
@@ -579,7 +579,7 @@
 				2DD4EF5916FEAE8800613091 /* SyllabusTableView.m in Sources */,
 				2D975E06170D881E003EF840 /* SyllabusDetails+Create.m in Sources */,
 				1F70BB07171226F000B8A052 /* SyllabusDetails.m in Sources */,
-				1F70BB0A171226F100B8A052 /* CourseDetails.m in Sources */,
+				1F6D589A17170AD8003B9A58 /* CourseDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -2,7 +2,7 @@
 //  CourseDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-07.
+//  Created by Terry Hannon on 13-04-11.
 //
 //
 
