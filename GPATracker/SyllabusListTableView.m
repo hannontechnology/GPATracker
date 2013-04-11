@@ -36,6 +36,7 @@
 @synthesize courseMinPercentText = _courseMinPercentText;
 @synthesize courseMaxPercentText = _courseMaxPercentText;
 @synthesize courseCreditsText = _courseCreditsText;
+@synthesize courseTotalWeightText = _courseTotalWeightText;
 
 - (void)setupFetchedResultsController
 {
@@ -45,13 +46,13 @@
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"sectionName" ascending:NO];
+    NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"sectionName" ascending:YES];
     //selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorSName, nil]];
     request.predicate = [NSPredicate predicateWithFormat: @"courseDetails = %@", self.courseDetails];
     NSLog(@"filtering data based on courseDetails = %@", self.courseDetails);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"groupName" cacheName:nil];
 }
 
 -(CGFloat) tableView:(UITableView *)tableView
@@ -96,12 +97,15 @@ viewForFooterInSection:(NSInteger)section
     [self.tableView addGestureRecognizer:lpgr];
     
     [super viewWillAppear:(BOOL)animated];
+
+    NSDecimalNumber *sumWeight = [self.courseDetails valueForKeyPath:@"syllabusDetails.@sum.percentBreakdown"];
     
     self.courseCodeText.text = self.courseDetails.courseCode;
     self.courseNameText.text = self.courseDetails.courseName;
     self.courseDesiredGradeText.text = self.courseDetails.desiredGradeGPA.letterGrade;
     self.courseMinPercentText.text = [NSString stringWithFormat:@"%@%%", self.courseDetails.desiredGradeGPA.minGrade.stringValue];
-    self.courseCreditsText.text = [NSString stringWithFormat:@"Credit Hours: %@", [self.courseDetails units].stringValue];
+    self.courseCreditsText.text = [NSString stringWithFormat:@"%@", [self.courseDetails units].stringValue];
+    self.courseTotalWeightText.text = [NSString stringWithFormat:@"%@%%", sumWeight.stringValue];
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
@@ -128,7 +132,7 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
-    
+    [self setCourseTotalWeightText:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

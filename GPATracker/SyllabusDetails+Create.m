@@ -11,5 +11,8 @@
 
 @implementation SyllabusDetails (Create)
 
+-(NSString*) groupName{
+    return [NSString stringWithFormat:@"%@", self.courseDetails.courseCode];
+}
 
 @end

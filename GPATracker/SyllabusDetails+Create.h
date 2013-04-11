@@ -10,4 +10,6 @@
 
 @interface SyllabusDetails (Create)
 
+-(NSString*) groupName;
+
 @end

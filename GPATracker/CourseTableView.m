@@ -14,7 +14,7 @@
 #import "SemesterDetails.h"
 #import "CourseTableCell1.h"
 #import "SchoolDetails+Create.h"
-#import "SyllabusEditTableView.h"
+#import "SyllabusListTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
@@ -221,12 +221,12 @@ viewForFooterInSection:(NSInteger)section
     else if ([segue.identifier isEqualToString:@"segueCourseTable2SyllabusList"])
     {
         CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SyllabusEditTableView *SyllabusEditTableView = [segue destinationViewController];
+        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
         
-        //SyllabusEditTableView.courseDetails = selectedObject;
+        SyllabusListTableView.courseDetails = selectedObject;
         //SyllabusEditTableView.semesterDetails = self.semesterInfo;
-        SyllabusEditTableView.dataCollection = self.dataCollection;
-        SyllabusEditTableView.managedObjectContext = self.managedObjectContext;
+        SyllabusListTableView.dataCollection = self.dataCollection;
+        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 
