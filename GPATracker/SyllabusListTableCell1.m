@@ -30,4 +30,9 @@
     // Configure the view for the selected state
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    self.accessoryView.frame = CGRectMake(self.accessoryView.frame.origin.x + 20, self.accessoryView.frame.origin.y, self.accessoryView.frame.size.width, self.accessoryView.frame.size.height);
+}
+
 @end

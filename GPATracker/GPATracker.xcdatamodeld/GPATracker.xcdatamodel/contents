@@ -44,6 +44,14 @@
         <attribute name="percentBreakdown" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sectionName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="courseDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="CourseDetails" inverseName="syllabusDetails" inverseEntity="CourseDetails" syncable="YES"/>
+        <relationship name="syllabusItemDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SyllabusItemDetails" inverseName="syllabusDetails" inverseEntity="SyllabusItemDetails" syncable="YES"/>
+    </entity>
+    <entity name="SyllabusItemDetails" representedClassName="SyllabusItemDetails" syncable="YES">
+        <attribute name="itemDueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="itemNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="itemOutOf" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="itemScore" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="syllabusDetails" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SyllabusDetails" inverseName="syllabusItemDetails" inverseEntity="SyllabusDetails" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="autoLogon" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
@@ -62,8 +70,9 @@
         <element name="GradingScheme" positionX="0" positionY="0" width="128" height="180"/>
         <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>
-        <element name="SyllabusDetails" positionX="160" positionY="192" width="128" height="90"/>
+        <element name="SyllabusDetails" positionX="160" positionY="192" width="128" height="105"/>
         <element name="User" positionX="0" positionY="0" width="128" height="150"/>
         <element name="YearPicker" positionX="0" positionY="0" width="128" height="60"/>
+        <element name="SyllabusItemDetails" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

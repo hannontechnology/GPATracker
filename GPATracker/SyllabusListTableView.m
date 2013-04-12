@@ -15,7 +15,7 @@
 #import "CourseTableView.h"
 #import "CourseListTableView.h"
 #import "SyllabusListTableCell1.h"
-#import "CourseEditTableView.h"
+#import "SyllabusEditTableView.h"
 #import "SchoolDetails+Create.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
@@ -106,6 +106,10 @@ viewForFooterInSection:(NSInteger)section
     self.courseMinPercentText.text = [NSString stringWithFormat:@"%@%%", self.courseDetails.desiredGradeGPA.minGrade.stringValue];
     self.courseCreditsText.text = [NSString stringWithFormat:@"%@", [self.courseDetails units].stringValue];
     self.courseTotalWeightText.text = [NSString stringWithFormat:@"%@%%", sumWeight.stringValue];
+    if ([sumWeight.stringValue isEqualToString:@"100"])
+        [self.courseTotalWeightText setTextColor:[UIColor blackColor]];
+    else
+        [self.courseTotalWeightText setTextColor:[UIColor redColor]];
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
@@ -223,24 +227,49 @@ viewForFooterInSection:(NSInteger)section
     [alert show];
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self performSegueWithIdentifier:@"segueEditSyllabusFromList" sender:self];
+    }
+    else if (buttonIndex == 2)
+    {
+        SyllabusDetails *syllabusToDelete = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        [self.managedObjectContext deleteObject:syllabusToDelete];
+        [self.managedObjectContext save:nil];
+        //        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusDetails"])
     {
-        SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
+        //SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        //SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
         
-        //SyllabusEditTableView.courseDetails = selectedObject;
-        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
-        SyllabusListTableView.dataCollection = self.dataCollection;
-        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
+        //SyllabusListTableView.syllabusDetails = selectedObject;
+        //SyllabusListTableView.courseDetails = self.courseDetails;
+        //SyllabusListTableView.dataCollection = self.dataCollection;
+        //SyllabusListTableView.managedObjectContext = self.managedObjectContext;
     }
-    if ([segue.identifier isEqualToString:@"segueAddSyllabusFromList"])
+    else if ([segue.identifier isEqualToString:@"segueAddSyllabusFromList"])
     {
-        SyllabusListTableView *syllabusListTableView = [segue destinationViewController];
-        syllabusListTableView.courseDetails = self.courseDetails;
-        syllabusListTableView.DataCollection = self.dataCollection;
-        syllabusListTableView.managedObjectContext = self.managedObjectContext;
+        SyllabusEditTableView *syllabusEditTableView = [segue destinationViewController];
+        syllabusEditTableView.courseDetails = self.courseDetails;
+        syllabusEditTableView.DataCollection = self.dataCollection;
+        syllabusEditTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueEditSyllabusFromList"])
+    {
+        SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusEditTableView *syllabusEditTableView = [segue destinationViewController];
+        syllabusEditTableView.syllabusDetails = selectedObject;
+        syllabusEditTableView.courseDetails = self.courseDetails;
+        syllabusEditTableView.DataCollection = self.dataCollection;
+        syllabusEditTableView.managedObjectContext = self.managedObjectContext;
+        syllabusEditTableView.setEditStatus = @"Edit";
     }
 }
 
@@ -265,5 +294,4 @@ viewForFooterInSection:(NSInteger)section
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
-
 @end
