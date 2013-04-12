@@ -6,27 +6,21 @@
 //
 //
 
-#import "SyllabusTableView.h"
-#import "CourseDetails.h"
-#import "SyllabusDetails.h"
-#import "GradingScheme+Create.h"
+#import "SyllabusItemTableView.h"
+#import "SyllabusDetails+Create.h"
+#import "SyllabusItemDetails.h"
+#import "SyllabusItemEditTableView.h"
 #import "DataCollection.h"
-#import "SchoolListTableView.h"
-#import "CourseTableView.h"
-#import "CourseListTableView.h"
-#import "SyllabusListTableCell1.h"
-#import "CourseEditTableView.h"
-#import "SchoolDetails+Create.h"
+#import "SyllabusItemTableCell1.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
 
-@interface SyllabusTableView ()
+@interface SyllabusItemTableView ()
 @end
 
-@implementation SyllabusTableView
-@synthesize userInfo = _userInfo;
-@synthesize schoolInfo = _schoolInfo;
+@implementation SyllabusItemTableView
+@synthesize syllabusDetails = _syllabusDetails;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
@@ -40,17 +34,17 @@
 {
     // Create fetch request for the entity
     // Edit the entity name as appropriate
-    NSString *entityName = @"SyllabusDetails";
+    NSString *entityName = @"SyllabusItemDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"sectionName" ascending:NO];
+    NSSortDescriptor *sortDescriptorSName = [[NSSortDescriptor alloc] initWithKey:@"syllabusDetails.sectionName" ascending:NO];
     //selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorSName, nil]];
-    //request.predicate = [NSPredicate predicateWithFormat: @"courseDetails = %@", self.];
-    NSLog(@"filtering data based on courseDetails = %@", self.schoolInfo);
+    request.predicate = [NSPredicate predicateWithFormat: @"syllabusDetails = %@", self.syllabusDetails];
+    NSLog(@"filtering data based on syllabusDetails = %@", self.syllabusDetails);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"syllabusDetails.sectionName" cacheName:nil];
 }
 
 -(CGFloat) tableView:(UITableView *)tableView
@@ -138,12 +132,12 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SyllabusListTableCell1";
-    SyllabusListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"syllabusItemTableCell1";
+    SyllabusItemTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
     {
-        cell = [[SyllabusListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[SyllabusItemTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -193,13 +187,6 @@ viewForFooterInSection:(NSInteger)section
     }
 }
 
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
- {
- }
- */
-
 // Override to support conditional rearranging of the table view.
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -226,15 +213,23 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusDetails"])
+    if ([segue.identifier isEqualToString:@"segueEditSyllabusItemFromList"])
     {
-        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SyllabusTableView *SyllabusTableView = [segue destinationViewController];
+        //CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        //SyllabusTableView *SyllabusTableView = [segue destinationViewController];
         
         //SyllabusEditTableView.courseDetails = selectedObject;
         //SyllabusEditTableView.semesterDetails = self.semesterInfo;
-        SyllabusTableView.dataCollection = self.dataCollection;
-        SyllabusTableView.managedObjectContext = self.managedObjectContext;
+        //SyllabusTableView.dataCollection = self.dataCollection;
+        //SyllabusTableView.managedObjectContext = self.managedObjectContext;
+    }
+    else if ([segue.identifier isEqualToString:@"segueAddSyllabusItemFromList"])
+    {
+        SyllabusItemEditTableView *syllabusItemEditTableView = [segue destinationViewController];
+        
+        syllabusItemEditTableView.syllabusDetails = self.syllabusDetails;
+        syllabusItemEditTableView.dataCollection = self.dataCollection;
+        syllabusItemEditTableView.managedObjectContext = self.managedObjectContext;
     }
 }
 

@@ -9,18 +9,17 @@
 #import "CoreDataTableViewController.h"
 
 @class User;
-@class SchoolDetails;
+@class SyllabusDetails;
 @class DataCollection;
 
-@interface SyllabusTableView : CoreDataTableViewController
+@interface SyllabusItemTableView : CoreDataTableViewController
 {
     IBOutlet UIAlertView *alert;
 }
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
-@property (strong, nonatomic) User *userInfo;
-@property (strong, nonatomic) SchoolDetails *schoolInfo;
+@property (strong, nonatomic) SyllabusDetails *syllabusDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

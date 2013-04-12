@@ -6,9 +6,9 @@
 //
 //
 
-#import "SyllabusListTableCell1.h"
+#import "SyllabusItemTableCell1.h"
 
-@implementation SyllabusListTableCell1
+@implementation SyllabusItemTableCell1
 @synthesize cellLabel1;
 @synthesize cellLabel2;
 @synthesize cellLabel3;

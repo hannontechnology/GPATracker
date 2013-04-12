@@ -16,6 +16,7 @@
 #import "CourseListTableView.h"
 #import "SyllabusListTableCell1.h"
 #import "SyllabusEditTableView.h"
+#import "SyllabusItemTableView.h"
 #import "SchoolDetails+Create.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
@@ -244,15 +245,13 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusDetails"])
+    if ([segue.identifier isEqualToString:@"segueSyllabusList2SyllabusItems"])
     {
-        //SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        //SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
-        
-        //SyllabusListTableView.syllabusDetails = selectedObject;
-        //SyllabusListTableView.courseDetails = self.courseDetails;
-        //SyllabusListTableView.dataCollection = self.dataCollection;
-        //SyllabusListTableView.managedObjectContext = self.managedObjectContext;
+        SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusItemTableView *syllabusItemTableView = [segue destinationViewController];
+        syllabusItemTableView.syllabusDetails = selectedObject;
+        syllabusItemTableView.dataCollection = self.dataCollection;
+        syllabusItemTableView.managedObjectContext = self.managedObjectContext;
     }
     else if ([segue.identifier isEqualToString:@"segueAddSyllabusFromList"])
     {
@@ -280,11 +279,11 @@ viewForFooterInSection:(NSInteger)section
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
+        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusItems" sender:self];
     }
     else
     {
-        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
+        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusItems" sender:self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*
