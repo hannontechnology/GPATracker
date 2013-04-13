@@ -44,6 +44,7 @@
 
 // Syllabus Breakdown Section
 - (NSArray *)retrieveSyllabusBreakdown:(NSString *)inputSectionName courseDetails:(CourseDetails *)inputCourseDetails context:(NSManagedObjectContext *) inContext;
+- (NSArray *)retrieveSyllabusItem:(NSString *)inputItemName syllabusDetails:(SyllabusDetails *)inputSyllabusDetails context:(NSManagedObjectContext *) inContext;
 
 // Retrieve Year List for picker
 - (NSArray *)retrieveYearPicker:(NSManagedObjectContext *) inContext;

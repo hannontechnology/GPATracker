@@ -24,10 +24,6 @@
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
-@synthesize schoolNameText = _schoolNameText;
-@synthesize schoolDescText = _schoolDescText;
-@synthesize schoolYearsText = _schoolYearsText;
-@synthesize schoolCGPAText = _schoolCGPAText;
 
 
 - (void)setupFetchedResultsController
@@ -90,11 +86,13 @@ viewForFooterInSection:(NSInteger)section
     
     [super viewWillAppear:(BOOL)animated];
     
-    
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
     [nf setZeroSymbol:@"0.00"];
+    
+    self.sectionNameField.text = self.syllabusDetails.sectionName;
+    self.sectionWeightField.text = [NSString stringWithFormat:@"%@%%", self.syllabusDetails.percentBreakdown.stringValue];
     
     [self setupFetchedResultsController];
     
@@ -116,6 +114,9 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
+    [self setSectionGradeField:nil];
+    [self setSectionWeightField:nil];
+    [self setSectionNameField:nil];
     
 }
 
@@ -140,11 +141,11 @@ viewForFooterInSection:(NSInteger)section
         cell = [[SyllabusItemTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SyllabusItemDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class
-    cell.cellLabel1.text = [selectedObject sectionName];
-    cell.cellLabel2.text = [NSString stringWithFormat:@"Percent Breakdown: %@", [selectedObject percentBreakdown].stringValue];
+    cell.cellLabel1.text = [selectedObject itemName];
+    //cell.cellLabel2.text = [NSString stringWithFormat:@"Percent Breakdown: %@", [selectedObject percentBreakdown].stringValue];
     //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
     /*
      if (selectedObject.actualGradeGPA != nil)
@@ -215,13 +216,14 @@ viewForFooterInSection:(NSInteger)section
 {
     if ([segue.identifier isEqualToString:@"segueEditSyllabusItemFromList"])
     {
-        //CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        //SyllabusTableView *SyllabusTableView = [segue destinationViewController];
+        SyllabusItemDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusItemEditTableView *syllabusItemEditTableView = [segue destinationViewController];
         
-        //SyllabusEditTableView.courseDetails = selectedObject;
-        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
-        //SyllabusTableView.dataCollection = self.dataCollection;
-        //SyllabusTableView.managedObjectContext = self.managedObjectContext;
+        syllabusItemEditTableView.syllabusItemDetails = selectedObject;
+        syllabusItemEditTableView.syllabusDetails = self.syllabusDetails;
+        syllabusItemEditTableView.dataCollection = self.dataCollection;
+        syllabusItemEditTableView.managedObjectContext = self.managedObjectContext;
+        syllabusItemEditTableView.setEditStatus = @"Edit";
     }
     else if ([segue.identifier isEqualToString:@"segueAddSyllabusItemFromList"])
     {
@@ -240,11 +242,11 @@ viewForFooterInSection:(NSInteger)section
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
+        [self performSegueWithIdentifier:@"segueEditSyllabusItemFromList" sender:self];
     }
     else
     {
-        [self performSegueWithIdentifier:@"segueSyllabusList2SyllabusDetails" sender:self];
+        [self performSegueWithIdentifier:@"segueEditSyllabusItemFromList" sender:self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*

@@ -2,7 +2,7 @@
 //  SyllabusItemDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-11.
+//  Created by Terry Hannon on 13-04-13.
 //
 //
 
@@ -13,7 +13,7 @@
 
 @interface SyllabusItemDetails : NSManagedObject
 
-@property (nonatomic, retain) NSNumber * itemNumber;
+@property (nonatomic, retain) NSString * itemName;
 @property (nonatomic, retain) NSDate * itemDueDate;
 @property (nonatomic, retain) NSDecimalNumber * itemScore;
 @property (nonatomic, retain) NSDecimalNumber * itemOutOf;

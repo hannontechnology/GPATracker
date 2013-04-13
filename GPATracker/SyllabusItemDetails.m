@@ -2,7 +2,7 @@
 //  SyllabusItemDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-11.
+//  Created by Terry Hannon on 13-04-13.
 //
 //
 
@@ -12,7 +12,7 @@
 
 @implementation SyllabusItemDetails
 
-@dynamic itemNumber;
+@dynamic itemName;
 @dynamic itemDueDate;
 @dynamic itemScore;
 @dynamic itemOutOf;

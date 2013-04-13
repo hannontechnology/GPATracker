@@ -23,10 +23,9 @@
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
-@property (weak, nonatomic) IBOutlet UILabel *schoolNameText;
-@property (weak, nonatomic) IBOutlet UILabel *schoolDescText;
-@property (weak, nonatomic) IBOutlet UILabel *schoolYearsText;
-@property (weak, nonatomic) IBOutlet UILabel *schoolCGPAText;
+@property (weak, nonatomic) IBOutlet UILabel *sectionNameField;
+@property (weak, nonatomic) IBOutlet UILabel *sectionWeightField;
+@property (weak, nonatomic) IBOutlet UILabel *sectionGradeField;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 -(IBAction)back;

@@ -30,10 +30,10 @@
 		1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9781682399B0048564D /* CoursesIcon.png */; };
 		1F5DB97B168246A40048564D /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB97A168246A40048564D /* circleIcon.png */; };
 		1F6D589A17170AD8003B9A58 /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589917170AD8003B9A58 /* CourseDetails.m */; };
-		1F6D589D1717875E003B9A58 /* SyllabusItemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589C1717875E003B9A58 /* SyllabusItemDetails.m */; };
 		1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589F1717875E003B9A58 /* SyllabusDetails.m */; };
 		1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */; };
 		1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A517188423003B9A58 /* SyllabusItemEditTableView.m */; };
+		1F6D58A9171A09D6003B9A58 /* SyllabusItemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A8171A09D6003B9A58 /* SyllabusItemDetails.m */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A56151559EA00BD72F0 /* CoreGraphics.framework */; };
@@ -126,14 +126,14 @@
 		1F5DB97A168246A40048564D /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circleIcon.png; path = Images/circleIcon.png; sourceTree = "<group>"; };
 		1F6D589817170AD8003B9A58 /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
 		1F6D589917170AD8003B9A58 /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
-		1F6D589B1717875D003B9A58 /* SyllabusItemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusItemDetails.h; path = GPATracker/SyllabusItemDetails.h; sourceTree = "<group>"; };
-		1F6D589C1717875E003B9A58 /* SyllabusItemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusItemDetails.m; path = GPATracker/SyllabusItemDetails.m; sourceTree = "<group>"; };
 		1F6D589E1717875E003B9A58 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
 		1F6D589F1717875E003B9A58 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
 		1F6D58A1171799B4003B9A58 /* SyllabusItemTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusItemTableCell1.h; sourceTree = "<group>"; };
 		1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusItemTableCell1.m; sourceTree = "<group>"; };
 		1F6D58A417188422003B9A58 /* SyllabusItemEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusItemEditTableView.h; sourceTree = "<group>"; };
 		1F6D58A517188423003B9A58 /* SyllabusItemEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusItemEditTableView.m; sourceTree = "<group>"; };
+		1F6D58A7171A09D5003B9A58 /* SyllabusItemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusItemDetails.h; path = GPATracker/SyllabusItemDetails.h; sourceTree = "<group>"; };
+		1F6D58A8171A09D6003B9A58 /* SyllabusItemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusItemDetails.m; path = GPATracker/SyllabusItemDetails.m; sourceTree = "<group>"; };
 		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A52151559EA00BD72F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F754A54151559EA00BD72F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -249,10 +249,10 @@
 				1F6D589817170AD8003B9A58 /* CourseDetails.h */,
 				1F6D589917170AD8003B9A58 /* CourseDetails.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				1F6D58A7171A09D5003B9A58 /* SyllabusItemDetails.h */,
+				1F6D58A8171A09D6003B9A58 /* SyllabusItemDetails.m */,
 				1F6D589E1717875E003B9A58 /* SyllabusDetails.h */,
 				1F6D589F1717875E003B9A58 /* SyllabusDetails.m */,
-				1F6D589B1717875D003B9A58 /* SyllabusItemDetails.h */,
-				1F6D589C1717875E003B9A58 /* SyllabusItemDetails.m */,
 				1F58586716AF0B5B002A930D /* SemesterDetails.h */,
 				1F58586816AF0B5B002A930D /* SemesterDetails.m */,
 				1F58586416AF0B5B002A930D /* SchoolDetails.h */,
@@ -594,10 +594,10 @@
 				2DD4EF5916FEAE8800613091 /* SyllabusItemTableView.m in Sources */,
 				2D975E06170D881E003EF840 /* SyllabusDetails+Create.m in Sources */,
 				1F6D589A17170AD8003B9A58 /* CourseDetails.m in Sources */,
-				1F6D589D1717875E003B9A58 /* SyllabusItemDetails.m in Sources */,
 				1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */,
 				1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */,
 				1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */,
+				1F6D58A9171A09D6003B9A58 /* SyllabusItemDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

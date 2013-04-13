@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class SyllabusDetails;
-@class CourseDetails;
+@class SyllabusItemDetails;
 @class DataCollection;
 @class SemesterDetails;
 
@@ -17,13 +17,16 @@
 {
     IBOutlet UIToolbar *keyboardToolbar;
 }
-@property (weak, nonatomic) IBOutlet UITextField *sectionNameField;
-@property (weak, nonatomic) IBOutlet UITextField *sectionPercentageField;
+@property (weak, nonatomic) IBOutlet UITextField *itemNameField;
+@property (weak, nonatomic) IBOutlet UITextField *itemDueDateField;
+@property (weak, nonatomic) IBOutlet UITextField *itemGradeField;
+@property (weak, nonatomic) IBOutlet UITextField *itemOutOfField;
+@property (weak, nonatomic) IBOutlet UISwitch *itemIncludeSwitch;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 @property (strong, nonatomic) NSString *setEditStatus;
 @property (strong, nonatomic) SyllabusDetails *syllabusDetails;
-@property (strong, nonatomic) CourseDetails *courseDetails;
+@property (strong, nonatomic) SyllabusItemDetails *syllabusItemDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

@@ -7,7 +7,7 @@
 //
 
 #import "SyllabusItemEditTableView.h"
-#import "CourseDetails.h"
+#import "SyllabusItemDetails.h"
 #import "SyllabusDetails.h"
 #import "DataCollection.h"
 #import "CustomCellBackground.h"
@@ -24,11 +24,11 @@
 @end
 
 @implementation SyllabusItemEditTableView
-@synthesize sectionNameField;
-@synthesize sectionPercentageField;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
+@synthesize syllabusDetails = _syllabusDetails;
+@synthesize syllabusItemDetails = _syllabusItemDetails;
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -95,8 +95,8 @@ viewForFooterInSection:(NSInteger)section
         [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
     }
     
-    sectionNameField.inputAccessoryView = keyboardToolbar;
-    sectionPercentageField.inputAccessoryView = keyboardToolbar;
+    self.itemNameField.inputAccessoryView = keyboardToolbar;
+    self.itemDueDateField.inputAccessoryView = keyboardToolbar;
     
     //cancelButton.
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
@@ -105,6 +105,12 @@ viewForFooterInSection:(NSInteger)section
     
     if (self.setEditStatus != (NSString *)@"Edit")
     {
+        NSString *itemName;
+        int itemCount;
+        itemCount = [self.syllabusDetails.syllabusItemDetails count];
+        itemCount ++;
+        itemName = [NSString stringWithFormat:@"%@ #%d",self.syllabusDetails.sectionName, itemCount];
+        self.itemNameField.text = itemName;
         return;
     }
     
@@ -116,8 +122,8 @@ viewForFooterInSection:(NSInteger)section
     {
         NSLog(@"Load Syllabus Information");
         self.headerText.title = @"Edit Section";
-        self.sectionNameField.text = self.syllabusDetails.sectionName;
-        self.sectionPercentageField.text = self.syllabusDetails.percentBreakdown.stringValue;
+        self.itemNameField.text = self.syllabusDetails.sectionName;
+        self.itemDueDateField.text = self.syllabusDetails.percentBreakdown.stringValue;
     }
 }
 
@@ -125,14 +131,8 @@ viewForFooterInSection:(NSInteger)section
 {
     [super viewDidLoad];
     
-    self.sectionNameField.delegate = self;
-    self.sectionPercentageField.delegate = self;
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.itemNameField.delegate = self;
+    self.itemDueDateField.delegate = self;
 
     if (keyboardToolbar == nil)
     {
@@ -146,33 +146,33 @@ viewForFooterInSection:(NSInteger)section
         
         [keyboardToolbar setItems:[[NSArray alloc] initWithObjects:prevButton, nextButton, extraSpace, doneButton, nil]];
     }
-    sectionNameField.inputAccessoryView = keyboardToolbar;
-    sectionPercentageField.inputAccessoryView = keyboardToolbar;
+    self.itemNameField.inputAccessoryView = keyboardToolbar;
+    self.itemDueDateField.inputAccessoryView = keyboardToolbar;
 }
 
 - (void) doneKey:(id)sender
 {
-    if ([sectionNameField isFirstResponder])
-        [sectionNameField resignFirstResponder];
-    else if ([sectionPercentageField isFirstResponder])
-        [sectionPercentageField resignFirstResponder];
+    if ([self.itemNameField isFirstResponder])
+        [self.itemNameField resignFirstResponder];
+    else if ([self.itemDueDateField isFirstResponder])
+        [self.itemDueDateField resignFirstResponder];
 }
 
 - (void) prevField:(id)sender
 {
     NSLog(@"Previous Field");
-    if ([sectionNameField isFirstResponder])
+    if ([self.itemNameField isFirstResponder])
     {
-        [sectionNameField resignFirstResponder];
-        [sectionPercentageField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[sectionPercentageField superview] superview];
+        [self.itemNameField resignFirstResponder];
+        [self.itemDueDateField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemDueDateField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([sectionPercentageField isFirstResponder])
+    else if ([self.itemDueDateField isFirstResponder])
     {
-        [sectionPercentageField resignFirstResponder];
-        [sectionNameField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[sectionNameField superview] superview];
+        [self.itemDueDateField resignFirstResponder];
+        [self.itemNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
@@ -180,18 +180,18 @@ viewForFooterInSection:(NSInteger)section
 - (void) nextField:(id)sender
 {
     NSLog(@"Next Field");
-    if ([sectionNameField isFirstResponder])
+    if ([self.itemNameField isFirstResponder])
     {
-        [sectionNameField resignFirstResponder];
-        [sectionPercentageField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[sectionPercentageField superview] superview];
+        [self.itemNameField resignFirstResponder];
+        [self.itemDueDateField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemDueDateField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
-    else if ([sectionPercentageField isFirstResponder])
+    else if ([self.itemDueDateField isFirstResponder])
     {
-        [sectionPercentageField resignFirstResponder];
-        [sectionNameField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[sectionNameField superview] superview];
+        [self.itemDueDateField resignFirstResponder];
+        [self.itemNameField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
@@ -199,8 +199,11 @@ viewForFooterInSection:(NSInteger)section
 - (void)viewDidUnload
 {
     [self setHeaderText:nil];
-    [self setSectionNameField:nil];
-    [self setSectionPercentageField:nil];
+    [self setItemNameField:nil];
+    [self setItemDueDateField:nil];
+    [self setItemGradeField:nil];
+    [self setItemOutOfField:nil];
+    [self setItemIncludeSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -214,19 +217,14 @@ viewForFooterInSection:(NSInteger)section
 
 - (IBAction)Accept:(id)sender
 {
-    if ([sectionNameField.text length] == 0)
+    if ([self.itemNameField.text length] == 0)
     {
-        NSLog(@"Section Name field is Required.");
-        return;
-    }
-    if ([sectionPercentageField.text length] == 0)
-    {
-        NSLog(@"Course Units field is Required.");
+        NSLog(@"Item Name field is Required.");
         return;
     }
     
     NSError *error = nil;
-    NSArray *results = [self.dataCollection retrieveSyllabusBreakdown:sectionNameField.text courseDetails:self.courseDetails context:self.managedObjectContext];
+    NSArray *results = [self.dataCollection retrieveSyllabusItem:self.itemNameField.text syllabusDetails:self.syllabusDetails context:self.managedObjectContext];
     
     if (self.setEditStatus == (NSString *)@"Edit")
     {
@@ -238,10 +236,11 @@ viewForFooterInSection:(NSInteger)section
         {
             if ([results count] > 0)
             {
-                NSLog(@"Save Course Information");
-                self.syllabusDetails.sectionName = sectionNameField.text;
-                self.syllabusDetails.percentBreakdown = [[NSDecimalNumber alloc] initWithString:sectionPercentageField.text];
-                self.syllabusDetails.courseDetails = self.courseDetails;
+                NSLog(@"Save Syllabus Item Information");
+                self.syllabusItemDetails.itemName = self.itemNameField.text;
+                //self.syllabusItemDetails.itemDueDate = self.itemDueDateField.text;
+                //self.syllabusItemDetails.itemScore = self.courseDetails;
+                //self.syllabusItemDetails.itemOutOf = self.courseDetails;
                 if ([self.managedObjectContext save:&error])
                 {
                     [self.navigationController popViewControllerAnimated:YES];
@@ -255,14 +254,16 @@ viewForFooterInSection:(NSInteger)section
     }
     else if ([results count] == 0)
     {
-        NSString *entityName = @"SyllabusDetails";
-        self.syllabusDetails = [NSEntityDescription
+        NSString *entityName = @"SyllabusItemDetails";
+        self.syllabusItemDetails = [NSEntityDescription
                               insertNewObjectForEntityForName:entityName
                               inManagedObjectContext:self.managedObjectContext];
-        self.syllabusDetails.sectionName = sectionNameField.text;
-        self.syllabusDetails.percentBreakdown = [[NSDecimalNumber alloc] initWithString:sectionPercentageField.text];
-        self.syllabusDetails.courseDetails = self.courseDetails;
-        NSLog(@"About to save data = %@", self.syllabusDetails);
+        self.syllabusItemDetails.itemName = self.itemNameField.text;
+        //self.syllabusItemDetails.itemDueDate = self.itemDueDateField.text;
+        //self.syllabusItemDetails.itemScore = self.courseDetails;
+        //self.syllabusItemDetails.itemOutOf = self.courseDetails;
+        self.syllabusItemDetails.syllabusDetails = self.syllabusDetails;
+        NSLog(@"About to save data = %@", self.syllabusItemDetails);
         if ([self.managedObjectContext save:&error])
         {
             [self.navigationController popViewControllerAnimated:YES];

@@ -189,6 +189,17 @@ static const int yearMax = 2020;
     return results;
 }
 
+- (NSArray *)retrieveSyllabusItem:(NSString *)inputItemName syllabusDetails:(SyllabusDetails *)inputSyllabusDetails context:(NSManagedObjectContext *)inContext
+{
+    NSString *entityName = @"SyllabusItemDetails";
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    request.predicate = [NSPredicate predicateWithFormat:@"itemName = %@ AND syllabusDetails = %@", inputItemName, inputSyllabusDetails];
+    
+    NSError *error = nil;
+    NSArray*results = [inContext executeFetchRequest:request error:& error];
+    return results;
+}
+
 // Code for retrieving Year List
 - (NSArray *)retrieveYearPicker:(NSManagedObjectContext *)inContext
 {
