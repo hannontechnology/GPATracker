@@ -206,7 +206,6 @@
     
     for (SchoolDetails *item in self.schoolList)
     {
-        //SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
         CourseTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
         
         View.dataCollection = self.dataCollection;
@@ -267,6 +266,11 @@
         //[newViewController DisplayInfo];
     }
     else if (self.displayType == (NSString *)@"Courses")
+    {
+        //SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        //[newViewController DisplayInfo];
+    }
+    else if (self.displayType == (NSString *)@"Calendar")
     {
         //SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
