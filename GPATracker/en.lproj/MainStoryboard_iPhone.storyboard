@@ -1696,7 +1696,11 @@
                                 <action selector="DisplayCourses:" destination="I4e-vy-Asq" id="XMc-sQ-wQz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem image="CalendarIcon.png" id="qMO-SL-Vrm"/>
+                        <barButtonItem image="CalendarIcon.png" id="qMO-SL-Vrm">
+                            <connections>
+                                <action selector="DisplayCalendar:" destination="I4e-vy-Asq" id="XOp-WP-YjV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem image="ProfileButton.png" id="vZp-Uc-tGS">
                             <connections>
                                 <action selector="EditProfile:" destination="I4e-vy-Asq" id="vcQ-f3-zSO"/>
@@ -1716,6 +1720,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="buttonAddSchool" destination="DIz-ia-ZY3" id="u28-bl-uf3"/>
+                        <outlet property="buttonCourseList" destination="RDz-RD-SIE" id="0Qk-SD-KdP"/>
                         <outlet property="buttonEditProfile" destination="vZp-Uc-tGS" id="cAJ-XK-5R7"/>
                         <outlet property="buttonEditSchool" destination="ZqV-2J-Xed" id="Wyd-9T-Qb9"/>
                         <outlet property="buttonLogout" destination="y6C-oj-6Wx" id="4sy-F1-4iS"/>
@@ -2806,17 +2811,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="GjO-wZ-Znt"/>
-        <segue reference="pgP-pB-hYJ"/>
-        <segue reference="6qw-s8-V3P"/>
-        <segue reference="PW4-ds-YHd"/>
+        <segue reference="VVr-Ld-9wW"/>
+        <segue reference="RFh-nA-BNa"/>
+        <segue reference="xWR-GP-plh"/>
+        <segue reference="KvF-9q-C6b"/>
+        <segue reference="sH2-t5-pXi"/>
+        <segue reference="1dU-6g-oZa"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
-        <segue reference="KvF-9q-C6b"/>
-        <segue reference="RFh-nA-BNa"/>
-        <segue reference="VVr-Ld-9wW"/>
-        <segue reference="1dU-6g-oZa"/>
-        <segue reference="sH2-t5-pXi"/>
         <segue reference="DG6-i7-zNC"/>
+        <segue reference="6qw-s8-V3P"/>
+        <segue reference="GjO-wZ-Znt"/>
+        <segue reference="PW4-ds-YHd"/>
     </inferredMetricsTieBreakers>
 </document>

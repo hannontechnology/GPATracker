@@ -13,7 +13,7 @@
 #import "CourseEditTableView.h"
 #import "SemesterDetails+Create.h"
 #import "CourseDetails+Create.h"
-#import "CourseListTableCell1.h"
+#import "CalendarListTableCell1.h"
 #import "SchoolDetails+Create.h"
 #import "GradingScheme+Create.h"
 #import "SyllabusListTableView.h"
@@ -174,12 +174,12 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"courseListTableCell1";
-    CourseListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"calendarListTableCell1";
+    CalendarListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil)
     {
-        cell = [[CourseListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CalendarListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         ((CustomCellBackground *)cell.selectedBackgroundView).selected = YES;
     }
     

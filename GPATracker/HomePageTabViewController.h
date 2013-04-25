@@ -36,4 +36,5 @@
 - (void)viewSchools;
 - (void)viewSemesters;
 - (void)viewCourses;
+- (void)viewCalendar;
 @end
