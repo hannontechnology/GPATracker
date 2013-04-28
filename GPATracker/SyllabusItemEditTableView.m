@@ -111,6 +111,10 @@ viewForFooterInSection:(NSInteger)section
         itemCount ++;
         itemName = [NSString stringWithFormat:@"%@ #%d",self.syllabusDetails.sectionName, itemCount];
         self.itemNameField.text = itemName;
+        
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        self.itemDueDateField.text = [dateFormatter stringFromDate:[NSDate date]];
         return;
     }
     
@@ -238,6 +242,11 @@ viewForFooterInSection:(NSInteger)section
             {
                 NSLog(@"Save Syllabus Item Information");
                 self.syllabusItemDetails.itemName = self.itemNameField.text;
+                
+                NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+                self.syllabusItemDetails.itemDueDate = [dateFormatter dateFromString:self.itemDueDateField.text];
+
                 //self.syllabusItemDetails.itemDueDate = self.itemDueDateField.text;
                 //self.syllabusItemDetails.itemScore = self.courseDetails;
                 //self.syllabusItemDetails.itemOutOf = self.courseDetails;
@@ -259,7 +268,11 @@ viewForFooterInSection:(NSInteger)section
                               insertNewObjectForEntityForName:entityName
                               inManagedObjectContext:self.managedObjectContext];
         self.syllabusItemDetails.itemName = self.itemNameField.text;
-        //self.syllabusItemDetails.itemDueDate = self.itemDueDateField.text;
+        
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+        self.syllabusItemDetails.itemDueDate = [dateFormatter dateFromString:self.itemDueDateField.text];
+
         //self.syllabusItemDetails.itemScore = self.courseDetails;
         //self.syllabusItemDetails.itemOutOf = self.courseDetails;
         self.syllabusItemDetails.syllabusDetails = self.syllabusDetails;

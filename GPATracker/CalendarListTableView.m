@@ -13,9 +13,11 @@
 #import "CourseEditTableView.h"
 #import "SemesterDetails+Create.h"
 #import "CourseDetails+Create.h"
-#import "CourseListTableCell1.h"
+#import "CalendarListTableCell1.h"
 #import "SchoolDetails+Create.h"
 #import "GradingScheme+Create.h"
+#import "SyllabusItemDetails+Create.h"
+#import "SyllabusDetails+Create.h"
 #import "SyllabusListTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
@@ -39,19 +41,18 @@
 {
     // Create fetch request for the entity
     // Edit the entity name as appropriate
-    NSString *entityName = @"CourseDetails";
+    NSString *entityName = @"SyllabusItemDetails";
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     // Sort using the year / then name properties
-    NSSortDescriptor *sortDescriptorYear = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterYear" ascending:NO];
-    NSSortDescriptor *sortDescriptorSCode = [[NSSortDescriptor alloc] initWithKey:@"semesterDetails.semesterCode" ascending:NO];
-    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"courseCode" ascending:YES];
+    NSSortDescriptor *sortDescriptorDate = [[NSSortDescriptor alloc] initWithKey:@"itemDueDate" ascending:YES];
+    NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"syllabusDetails.courseDetails.courseCode" ascending:YES];
     //selector:@selector(localizedStandardCompare:)];
-    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorYear, sortDescriptorSCode, sortDescriptorCCode, nil]];
-    request.predicate = [NSPredicate predicateWithFormat: @"semesterDetails.schoolDetails = %@", self.schoolInfo];
+    [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorDate, sortDescriptorCCode, nil]];
+    request.predicate = [NSPredicate predicateWithFormat: @"syllabusDetails.courseDetails.semesterDetails.schoolDetails = %@", self.schoolInfo];
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
-    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"sectionName" cacheName:nil];
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"groupName" cacheName:nil];
 }
 
 -(CGFloat) tableView:(UITableView *)tableView
@@ -174,29 +175,21 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"courseListTableCell1";
-    CourseListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    static NSString *CellIdentifier = @"calendarListTableCell1";
+    CalendarListTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if(cell == nil)
     {
-        cell = [[CourseListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[CalendarListTableCell1 alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         ((CustomCellBackground *)cell.selectedBackgroundView).selected = YES;
     }
     
-    CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    SyllabusItemDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class courseListCell2 and include custom labels for display to cell
-    cell.cellLabel1.text = [selectedObject courseCode];
-    cell.cellLabel2.text = [selectedObject courseName];
-    cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
-    if (selectedObject.actualGradeGPA != nil)
-    {
-        cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
-    }
-    else
-    {
-        cell.cellLabelGPA.text = @"";
-    }
+    cell.cellLabel1.text = selectedObject.syllabusDetails.courseDetails.courseCode;
+    cell.cellLabel2.text = selectedObject.itemName;
+    cell.cellLabel3.text = selectedObject.syllabusDetails.sectionName;
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -319,11 +312,11 @@ viewForFooterInSection:(NSInteger)section
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        [self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
+        //[self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
     }
     else
     {
-        [self performSegueWithIdentifier: @"segueCourseList2SyllabusList" sender: self];
+        //[self performSegueWithIdentifier: @"segueCourseList2SyllabusList" sender: self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*

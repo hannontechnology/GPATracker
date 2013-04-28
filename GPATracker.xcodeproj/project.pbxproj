@@ -18,6 +18,7 @@
 		1F27DA3A16B8476A00E0C8C8 /* GradingScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */; };
 		1F2F0C361728A5A100907856 /* CalendarListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2F0C331728A5A100907856 /* CalendarListTableCell1.m */; };
 		1F2F0C371728A5A100907856 /* CalendarListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2F0C351728A5A100907856 /* CalendarListTableView.m */; };
+		1F2F0C3A1729898C00907856 /* SyllabusItemDetails+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F2F0C381729898C00907856 /* SyllabusItemDetails+Create.m */; };
 		1F41905115C34A620031A4BC /* User+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F41905015C34A610031A4BC /* User+Create.m */; };
 		1F447034156AD48F0045242C /* GPATracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */; };
 		1F58585D16AF0B5B002A930D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F58585C16AF0B5B002A930D /* User.m */; };
@@ -111,6 +112,8 @@
 		1F2F0C331728A5A100907856 /* CalendarListTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarListTableCell1.m; sourceTree = "<group>"; };
 		1F2F0C341728A5A100907856 /* CalendarListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarListTableView.h; sourceTree = "<group>"; };
 		1F2F0C351728A5A100907856 /* CalendarListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarListTableView.m; sourceTree = "<group>"; };
+		1F2F0C381729898C00907856 /* SyllabusItemDetails+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SyllabusItemDetails+Create.m"; path = "GPATracker/SyllabusItemDetails+Create.m"; sourceTree = "<group>"; };
+		1F2F0C391729898C00907856 /* SyllabusItemDetails+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SyllabusItemDetails+Create.h"; path = "GPATracker/SyllabusItemDetails+Create.h"; sourceTree = "<group>"; };
 		1F359B6C151CDCCE00B7FBAD /* GPATracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = GPATracker.entitlements; sourceTree = "<group>"; };
 		1F41904F15C34A610031A4BC /* User+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "User+Create.h"; path = "GPATracker/User+Create.h"; sourceTree = "<group>"; };
 		1F41905015C34A610031A4BC /* User+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "User+Create.m"; path = "GPATracker/User+Create.m"; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 		1F41902C15C319350031A4BC /* Core Data */ = {
 			isa = PBXGroup;
 			children = (
+				1F2F0C381729898C00907856 /* SyllabusItemDetails+Create.m */,
+				1F2F0C391729898C00907856 /* SyllabusItemDetails+Create.h */,
 				1FA9B0C016CC29F3009B4F1E /* CourseDetails+Create.m */,
 				1FA9B0C116CC29F3009B4F1E /* CourseDetails+Create.h */,
 				1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */,
@@ -610,6 +615,7 @@
 				1F6D58A9171A09D6003B9A58 /* SyllabusItemDetails.m in Sources */,
 				1F2F0C361728A5A100907856 /* CalendarListTableCell1.m in Sources */,
 				1F2F0C371728A5A100907856 /* CalendarListTableView.m in Sources */,
+				1F2F0C3A1729898C00907856 /* SyllabusItemDetails+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

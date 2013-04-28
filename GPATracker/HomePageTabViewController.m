@@ -17,6 +17,7 @@
 #import "SemesterEditTableView.h"
 #import "CourseEditTableView.h"
 #import "CourseTableView.h"
+#import "CalendarListTableView.h"
 
 @interface HomePageTabViewController ()
 @end
@@ -57,6 +58,10 @@
     {
         [self viewCourses];
     }
+    else if (self.displayType == (NSString *)@"Calendar")
+    {
+        [self viewCalendar];
+    }
     [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
     
     UIImage *faceImage = [UIImage imageNamed:@"BlueHomeButton.png"];
@@ -91,6 +96,10 @@
     {
         [self viewCourses];
     }
+    else if (self.displayType == (NSString *)@"Calendar")
+    {
+        [self viewCalendar];
+    }
     [buttonEditSchool setTitle:@"Edit" forState:UIControlStateNormal];
     
     UIImage *faceImage = [UIImage imageNamed:@"BlueHomeButton.png"];
@@ -117,6 +126,12 @@
 {
     self.displayType = @"Courses";
     [self viewCourses];
+}
+
+-(IBAction)DisplayCalendar:(id)sender
+{
+    self.displayType = @"Calendar";
+    [self viewCalendar];
 }
 
 - (void)viewSchools
@@ -191,8 +206,37 @@
     
     for (SchoolDetails *item in self.schoolList)
     {
-        //SemesterTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
         CourseTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CourseListView"];
+        
+        View.dataCollection = self.dataCollection;
+        View.managedObjectContext = self.managedObjectContext;
+        View.schoolInfo = item;
+        View.userInfo = self.userInfo;
+        [View DisplayInfo];
+        
+        [self addChildViewController:View];
+    }
+    
+    self.pageControl.numberOfPages = self.schoolList.count;
+    //    [self viewWillAppear:true];
+    [super viewWillAppear:true];
+    [self selectPage:tmpPage];
+}
+
+- (void)viewCalendar
+{
+    int tmpPage = self.pageControl.currentPage;
+    for (SchoolSummaryViewController *item in self.childViewControllers)
+    {
+        [item.view removeFromSuperview];
+        [item removeFromParentViewController];
+    }
+    
+    self.schoolList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
+    
+    for (SchoolDetails *item in self.schoolList)
+    {
+        CalendarListTableView *View = [self.storyboard instantiateViewControllerWithIdentifier:@"CalendarListView"];
         
         View.dataCollection = self.dataCollection;
         View.managedObjectContext = self.managedObjectContext;
@@ -222,6 +266,11 @@
         //[newViewController DisplayInfo];
     }
     else if (self.displayType == (NSString *)@"Courses")
+    {
+        //SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+        //[newViewController DisplayInfo];
+    }
+    else if (self.displayType == (NSString *)@"Calendar")
     {
         //SemesterTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
         //[newViewController DisplayInfo];
