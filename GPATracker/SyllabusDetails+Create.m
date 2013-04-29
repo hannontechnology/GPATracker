@@ -12,7 +12,7 @@
 @implementation SyllabusDetails (Create)
 
 -(NSString*) groupName{
-    return [NSString stringWithFormat:@"%@-%@", self.sectionName, self.percentBreakdown];
+    return [NSString stringWithFormat:@"%@", self.courseDetails.syllabusDetails];
 }
 
 @end
