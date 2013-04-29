@@ -270,12 +270,12 @@ viewForFooterInSection:(NSInteger)section
         }
         else
         {
-            NSLog(@"Add Course Failed! :%@", error.userInfo);
+            NSLog(@"Add Section Failed! :%@", error.userInfo);
         }
     }
     else
     {
-        NSLog(@"Course Code already taken.");
+        NSLog(@"Section already taken.");
     }
 } 
 

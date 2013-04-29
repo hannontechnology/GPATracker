@@ -2796,17 +2796,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VVr-Ld-9wW"/>
-        <segue reference="RFh-nA-BNa"/>
-        <segue reference="xWR-GP-plh"/>
+        <segue reference="DG6-i7-zNC"/>
         <segue reference="KvF-9q-C6b"/>
-        <segue reference="sH2-t5-pXi"/>
+        <segue reference="RFh-nA-BNa"/>
+        <segue reference="VVr-Ld-9wW"/>
         <segue reference="1dU-6g-oZa"/>
+        <segue reference="sH2-t5-pXi"/>
+        <segue reference="xWR-GP-plh"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
-        <segue reference="DG6-i7-zNC"/>
-        <segue reference="6qw-s8-V3P"/>
         <segue reference="GjO-wZ-Znt"/>
+        <segue reference="jxS-5C-xzp"/>
         <segue reference="PW4-ds-YHd"/>
     </inferredMetricsTieBreakers>
 </document>
