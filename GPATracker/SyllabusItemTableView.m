@@ -93,6 +93,7 @@ viewForFooterInSection:(NSInteger)section
     
     self.sectionNameField.text = self.syllabusDetails.sectionName;
     self.sectionWeightField.text = [NSString stringWithFormat:@"%@%%", self.syllabusDetails.percentBreakdown.stringValue];
+    //self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", self.syllabusDetails];
     
     [self setupFetchedResultsController];
     
@@ -133,7 +134,7 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"syllabusItemTableCell1";
+    static NSString *CellIdentifier = @"SyllabusItemTableCell1";
     SyllabusItemTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
@@ -145,18 +146,11 @@ viewForFooterInSection:(NSInteger)section
     
     // TODO: create class
     cell.cellLabel1.text = [selectedObject itemName];
-    //cell.cellLabel2.text = [NSString stringWithFormat:@"Percent Breakdown: %@", [selectedObject percentBreakdown].stringValue];
-    //cell.cellLabel3.text = [NSString stringWithFormat:@"Credit Hours: %@", [selectedObject units].stringValue];
-    /*
-     if (selectedObject.actualGradeGPA != nil)
-     {
-     cell.cellLabelGPA.text = selectedObject.actualGradeGPA.letterGrade;
-     }
-     else
-     {
-     cell.cellLabelGPA.text = @"";
-     }
-     */
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    cell.cellLabel2.text = [dateFormatter stringFromDate:[selectedObject itemDueDate]];
+
+    cell.cellLabel3.text = [selectedObject itemScore].stringValue;
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -178,8 +172,8 @@ viewForFooterInSection:(NSInteger)section
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        CourseDetails *courseToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self.managedObjectContext deleteObject:courseToDelete];
+        SyllabusItemDetails *syllabusItemToDelete = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.managedObjectContext deleteObject:syllabusItemToDelete];
         [self.managedObjectContext save:nil];
         //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
