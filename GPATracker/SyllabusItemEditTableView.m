@@ -129,6 +129,8 @@ viewForFooterInSection:(NSInteger)section
     self.itemNameField.inputAccessoryView = keyboardToolbar;
     self.itemDueDateField.inputAccessoryView = keyboardToolbar;
     self.itemDueDateField.inputView = self.datePicker;
+    self.itemGradeField.inputAccessoryView = keyboardToolbar;
+    self.itemOutOfField.inputAccessoryView = keyboardToolbar;
     
     //cancelButton.
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
@@ -163,7 +165,10 @@ viewForFooterInSection:(NSInteger)section
         self.itemNameField.text = self.syllabusDetails.sectionName;
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyy"];
+        [datePicker addTarget:self action:@selector(LabelChange:) forControlEvents:UIControlEventValueChanged];
         self.itemDueDateField.text = [dateFormatter stringFromDate:self.syllabusItemDetails.itemDueDate];
+        self.itemGradeField.text = self.syllabusItemDetails.itemScore.stringValue;
+        self.itemOutOfField.text = self.syllabusItemDetails.itemOutOf.stringValue;
     }
   
 }
@@ -195,6 +200,8 @@ viewForFooterInSection:(NSInteger)section
     self.itemNameField.inputAccessoryView = keyboardToolbar;
     self.itemDueDateField.inputAccessoryView = keyboardToolbar;
     self.itemDueDateField.inputView = self.datePicker;
+    self.itemGradeField.inputAccessoryView = keyboardToolbar;
+    self.itemOutOfField.inputAccessoryView = keyboardToolbar;
 }
 
 - (void) doneKey:(id)sender
@@ -203,6 +210,10 @@ viewForFooterInSection:(NSInteger)section
         [self.itemNameField resignFirstResponder];
     else if ([self.itemDueDateField isFirstResponder])
         [self.itemDueDateField resignFirstResponder];
+    else if ([self.itemGradeField isFirstResponder])
+        [self.itemGradeField resignFirstResponder];
+    else if ([self.itemOutOfField isFirstResponder])
+        [self.itemOutOfField resignFirstResponder];
 }
 
 - (void) prevField:(id)sender
@@ -211,8 +222,8 @@ viewForFooterInSection:(NSInteger)section
     if ([self.itemNameField isFirstResponder])
     {
         [self.itemNameField resignFirstResponder];
-        [self.itemDueDateField becomeFirstResponder];
-        UITableViewCell *cell = (UITableViewCell*) [[self.itemDueDateField superview] superview];
+        [self.itemOutOfField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemOutOfField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
     else if ([self.itemDueDateField isFirstResponder])
@@ -220,6 +231,20 @@ viewForFooterInSection:(NSInteger)section
         [self.itemDueDateField resignFirstResponder];
         [self.itemNameField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[self.itemNameField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([self.itemGradeField isFirstResponder])
+    {
+        [self.itemGradeField resignFirstResponder];
+        [self.itemDueDateField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemDueDateField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([self.itemOutOfField isFirstResponder])
+    {
+        [self.itemOutOfField resignFirstResponder];
+        [self.itemGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemGradeField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
 }
@@ -237,6 +262,20 @@ viewForFooterInSection:(NSInteger)section
     else if ([self.itemDueDateField isFirstResponder])
     {
         [self.itemDueDateField resignFirstResponder];
+        [self.itemGradeField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([self.itemGradeField isFirstResponder])
+    {
+        [self.itemGradeField resignFirstResponder];
+        [self.itemOutOfField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[self.itemGradeField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([self.itemOutOfField isFirstResponder])
+    {
+        [self.itemOutOfField resignFirstResponder];
         [self.itemNameField becomeFirstResponder];
         UITableViewCell *cell = (UITableViewCell*) [[self.itemNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
@@ -289,10 +328,15 @@ viewForFooterInSection:(NSInteger)section
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                 [dateFormatter setDateFormat:@"MM/dd/yyyy"];
                 self.syllabusItemDetails.itemDueDate = [dateFormatter dateFromString:self.itemDueDateField.text];
-
-                //self.syllabusItemDetails.itemDueDate = self.itemDueDateField.text;
-                //self.syllabusItemDetails.itemScore = self.courseDetails;
-                //self.syllabusItemDetails.itemOutOf = self.courseDetails;
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                [f setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSNumber *score;
+                NSNumber *outOf;
+                score = [f numberFromString:self.itemGradeField.text];
+                outOf = [f numberFromString:self.itemOutOfField.text];
+                self.syllabusItemDetails.itemScore = score;
+                self.syllabusItemDetails.itemOutOf = outOf;
+                
                 if ([self.managedObjectContext save:&error])
                 {
                     [self.navigationController popViewControllerAnimated:YES];
@@ -300,6 +344,7 @@ viewForFooterInSection:(NSInteger)section
                 }
                 else
                 {
+                    [self.navigationController popViewControllerAnimated:YES];
                 }
             }
         }
@@ -315,9 +360,14 @@ viewForFooterInSection:(NSInteger)section
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
         self.syllabusItemDetails.itemDueDate = [dateFormatter dateFromString:self.itemDueDateField.text];
-
-        //self.syllabusItemDetails.itemScore = self.courseDetails;
-        //self.syllabusItemDetails.itemOutOf = self.courseDetails;
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *score;
+        NSNumber *outOf;
+        score = [f numberFromString:self.itemGradeField.text];
+        outOf = [f numberFromString:self.itemOutOfField.text];
+        self.syllabusItemDetails.itemScore = score;
+        self.syllabusItemDetails.itemOutOf = outOf;
         self.syllabusItemDetails.syllabusDetails = self.syllabusDetails;
         NSLog(@"About to save data = %@", self.syllabusItemDetails);
         if ([self.managedObjectContext save:&error])
