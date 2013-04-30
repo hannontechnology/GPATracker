@@ -85,37 +85,6 @@ viewForFooterInSection:(NSInteger)section
     return cell;
 }
 
-/*- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    int selComp0;
-    
-
-
-
-}*/
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-/*- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-
-}*/
-
-/*- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-
-}*/
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-//    NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
-    NSDate *pickerDate = [datePicker date];
-    self.itemDueDateField.text = pickerDate;
-
-}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -129,6 +98,20 @@ viewForFooterInSection:(NSInteger)section
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    self.pickerViewShownFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height - kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    self.pickerViewHiddenFrame = CGRectMake(0.f, self.navigationController.view.frame.size.height + kPickerDefaultHeight, kPickerDefaultWidth, kPickerDefaultHeight);
+    
+    // Set up the initial state of the picker.
+    self.datePicker = [[UIDatePicker alloc] init];
+    self.datePicker.datePickerMode = UIDatePickerModeDate;
+    self.datePicker.date = [NSDate date];
+    self.datePicker.frame = self.pickerViewShownFrame;
+    //self.pickerView = [[UIPickerView alloc] init];
+    //self.pickerView.frame = self.pickerViewShownFrame;
+    //self.pickerView.delegate = self;
+    //self.pickerView.dataSource = datePicker.date;
+    //self.pickerView.showsSelectionIndicator = YES;
 
     if (keyboardToolbar == nil)
     {
@@ -145,6 +128,7 @@ viewForFooterInSection:(NSInteger)section
     
     self.itemNameField.inputAccessoryView = keyboardToolbar;
     self.itemDueDateField.inputAccessoryView = keyboardToolbar;
+    self.itemDueDateField.inputView = self.datePicker;
     
     //cancelButton.
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
@@ -163,7 +147,8 @@ viewForFooterInSection:(NSInteger)section
         
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
-        self.itemDueDateField.text = [dateFormatter stringFromDate:[NSDate date]];
+        [datePicker addTarget:self action:@selector(LabelChange:) forControlEvents:UIControlEventValueChanged];
+        self.itemDueDateField.text = [dateFormatter stringFromDate:self.datePicker.date];
         return;
     }
     
@@ -176,9 +161,16 @@ viewForFooterInSection:(NSInteger)section
         NSLog(@"Load Syllabus Information");
         self.headerText.title = @"Edit Section";
         self.itemNameField.text = self.syllabusDetails.sectionName;
-        self.itemDueDateField.text = self.syllabusDetails.percentBreakdown.stringValue;
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM/dd/yyy"];
+        self.itemDueDateField.text = [dateFormatter stringFromDate:self.syllabusItemDetails.itemDueDate];
     }
   
+}
+- (void)LabelChange:(id)sender{
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyyy"];
+    self.itemDueDateField.text = [dateFormatter stringFromDate:self.datePicker.date];
 }
 
 - (void)viewDidLoad
@@ -202,6 +194,7 @@ viewForFooterInSection:(NSInteger)section
     }
     self.itemNameField.inputAccessoryView = keyboardToolbar;
     self.itemDueDateField.inputAccessoryView = keyboardToolbar;
+    self.itemDueDateField.inputView = self.datePicker;
 }
 
 - (void) doneKey:(id)sender
