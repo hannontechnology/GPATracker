@@ -16,6 +16,10 @@
 #import "CustomFooter.h"
 
 @interface SyllabusItemEditTableView ()
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property (strong, nonatomic) UIDatePicker *datePicker;
+@property CGRect pickerViewShownFrame;
+@property CGRect pickerViewHiddenFrame;
 
 - (IBAction)Accept:(id)sender;
 - (IBAction)Cancel:(id)sender;
@@ -29,6 +33,18 @@
 @synthesize setEditStatus = _setEditStatus;
 @synthesize syllabusDetails = _syllabusDetails;
 @synthesize syllabusItemDetails = _syllabusItemDetails;
+
+@synthesize datePicker;
+@synthesize pickerView = _pickerView;
+@synthesize pickerViewShownFrame = _pickerViewShownFrame;
+@synthesize pickerViewHiddenFrame = _pickerViewHiddenFrame;
+
+
+// Some values that will be handy later on.
+static const CGFloat kPickerDefaultWidth = 320.f;
+static const CGFloat kPickerDefaultHeight = 216.f;
+static const NSTimeInterval kPickerAnimationTime = 0.333;
+
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
@@ -67,6 +83,38 @@ viewForFooterInSection:(NSInteger)section
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     cell.textLabel.backgroundColor = [UIColor clearColor];
     return cell;
+}
+
+/*- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    int selComp0;
+    
+
+
+
+}*/
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+/*- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+
+}*/
+
+/*- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+
+}*/
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+//    NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] autorelease];
+    NSDate *pickerDate = [datePicker date];
+    self.itemDueDateField.text = pickerDate;
+
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -111,6 +159,7 @@ viewForFooterInSection:(NSInteger)section
         itemCount ++;
         itemName = [NSString stringWithFormat:@"%@ #%d",self.syllabusDetails.sectionName, itemCount];
         self.itemNameField.text = itemName;
+        self.itemNameField.enabled = NO;
         
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
@@ -129,6 +178,7 @@ viewForFooterInSection:(NSInteger)section
         self.itemNameField.text = self.syllabusDetails.sectionName;
         self.itemDueDateField.text = self.syllabusDetails.percentBreakdown.stringValue;
     }
+  
 }
 
 - (void)viewDidLoad

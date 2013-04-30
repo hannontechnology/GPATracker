@@ -13,7 +13,7 @@
 @class DataCollection;
 @class SemesterDetails;
 
-@interface SyllabusItemEditTableView : UITableViewController <UITextFieldDelegate,UIActionSheetDelegate>
+@interface SyllabusItemEditTableView : UITableViewController <UIPickerViewDelegate,UITextFieldDelegate,UIActionSheetDelegate>
 {
     IBOutlet UIToolbar *keyboardToolbar;
 }
