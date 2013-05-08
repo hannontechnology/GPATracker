@@ -134,7 +134,7 @@ viewForFooterInSection:(NSInteger)section
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"SyllabusItemTableCell1";
+    static NSString *CellIdentifier = @"syllabusItemTableCell1";
     SyllabusItemTableCell1 *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil)
@@ -149,7 +149,6 @@ viewForFooterInSection:(NSInteger)section
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     cell.cellLabel2.text = [dateFormatter stringFromDate:[selectedObject itemDueDate]];
-
     cell.cellLabel3.text = [selectedObject itemScore].stringValue;
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
