@@ -18,7 +18,7 @@
 #import "GradingScheme+Create.h"
 #import "SyllabusItemDetails+Create.h"
 #import "SyllabusDetails+Create.h"
-#import "SyllabusListTableView.h"
+#import "SyllabusItemEditTableView.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
@@ -199,45 +199,16 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"segueAddCourse"])
+    if ([segue.identifier isEqualToString:@"segueEditSyllabusItemFromCalendar"])
     {
-        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
+        SyllabusItemDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
+        SyllabusItemEditTableView *syllabusItemEditTableView = [segue destinationViewController];
         
-        CourseEditTableView.semesterDetails = selectedObject.semesterDetails;
-        CourseEditTableView.dataCollection = self.dataCollection;
-        CourseEditTableView.managedObjectContext = self.managedObjectContext;
-    }
-    else if ([segue.identifier isEqualToString:@"segueHomePageEditCourse"])
-    {
-        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
-        
-        //CourseEditTableView.userInfo = self.userInfo;
-        CourseEditTableView.courseDetails = selectedObject;
-        CourseEditTableView.semesterDetails = selectedObject.semesterDetails;
-        CourseEditTableView.dataCollection = self.dataCollection;
-        CourseEditTableView.managedObjectContext = self.managedObjectContext;
-        CourseEditTableView.setEditStatus = @"Edit";
-    }
-    else if ([segue.identifier isEqualToString:@"segueCourseList"])
-    {
-        SemesterDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        CourseTableView *CourseTableView = [segue destinationViewController];
-        
-        CourseTableView.semesterInfo = selectedObject;
-        CourseTableView.dataCollection = self.dataCollection;
-        CourseTableView.managedObjectContext = self.managedObjectContext;
-    }
-    else if ([segue.identifier isEqualToString:@"segueCourseList2SyllabusList"])
-    {
-        CourseDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:self.selectedIndexPath];
-        SyllabusListTableView *SyllabusListTableView = [segue destinationViewController];
-        
-        SyllabusListTableView.courseDetails = selectedObject;
-        //SyllabusEditTableView.semesterDetails = self.semesterInfo;
-        SyllabusListTableView.dataCollection = self.dataCollection;
-        SyllabusListTableView.managedObjectContext = self.managedObjectContext;
+        syllabusItemEditTableView.syllabusItemDetails = selectedObject;
+        syllabusItemEditTableView.syllabusDetails = selectedObject.syllabusDetails;
+        syllabusItemEditTableView.dataCollection = self.dataCollection;
+        syllabusItemEditTableView.managedObjectContext = self.managedObjectContext;
+        syllabusItemEditTableView.setEditStatus = @"Edit";
     }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
@@ -294,7 +265,7 @@ viewForFooterInSection:(NSInteger)section
 {
     if (buttonIndex == 1)
     {
-        [self performSegueWithIdentifier:@"segueHomePageEditCourse" sender:self];
+        [self performSegueWithIdentifier:@"segueEditSyllabusItemFromCalendar" sender:self];
     }
     else if (buttonIndex == 2)
     {
@@ -312,11 +283,11 @@ viewForFooterInSection:(NSInteger)section
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if ([cell isEditing] == YES)
     {
-        //[self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
+        [self performSegueWithIdentifier: @"segueEditSyllabusItemFromCalendar" sender: self];
     }
     else
     {
-        //[self performSegueWithIdentifier: @"segueCourseList2SyllabusList" sender: self];
+        [self performSegueWithIdentifier: @"segueEditSyllabusItemFromCalendar" sender: self];
     }
     // Navigation logic may go here. Create and push another view controller.
     /*

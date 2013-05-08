@@ -47,7 +47,9 @@
         <relationship name="syllabusItemDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SyllabusItemDetails" inverseName="syllabusDetails" inverseEntity="SyllabusItemDetails" syncable="YES"/>
     </entity>
     <entity name="SyllabusItemDetails" representedClassName="SyllabusItemDetails" syncable="YES">
+        <attribute name="itemComplete" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="itemDueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="itemInclude" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="itemOutOf" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
         <attribute name="itemScore" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
@@ -71,8 +73,8 @@
         <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>
         <element name="SyllabusDetails" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="SyllabusItemDetails" positionX="160" positionY="192" width="128" height="150"/>
         <element name="User" positionX="0" positionY="0" width="128" height="150"/>
         <element name="YearPicker" positionX="0" positionY="0" width="128" height="60"/>
-        <element name="SyllabusItemDetails" positionX="160" positionY="192" width="128" height="120"/>
     </elements>
 </model>

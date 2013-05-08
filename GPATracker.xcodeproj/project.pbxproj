@@ -36,7 +36,6 @@
 		1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589F1717875E003B9A58 /* SyllabusDetails.m */; };
 		1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */; };
 		1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A517188423003B9A58 /* SyllabusItemEditTableView.m */; };
-		1F6D58A9171A09D6003B9A58 /* SyllabusItemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A8171A09D6003B9A58 /* SyllabusItemDetails.m */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
 		1F754A55151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A57151559EA00BD72F0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A56151559EA00BD72F0 /* CoreGraphics.framework */; };
@@ -63,6 +62,7 @@
 		1FB771C515AE1E86006BC18A /* ProfileEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB771C415AE1E85006BC18A /* ProfileEditTableView.m */; };
 		1FB7A54715C316F800237DDD /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */; };
 		1FC4B4FA15BC94040079767C /* SemesterEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B4F915BC94040079767C /* SemesterEditTableView.m */; };
+		1FC6287A173AB32100767732 /* SyllabusItemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC62879173AB32100767732 /* SyllabusItemDetails.m */; };
 		1FD3E08F169797F900E4AB15 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */; };
 		1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */; };
 		1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */; };
@@ -141,8 +141,6 @@
 		1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusItemTableCell1.m; sourceTree = "<group>"; };
 		1F6D58A417188422003B9A58 /* SyllabusItemEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusItemEditTableView.h; sourceTree = "<group>"; };
 		1F6D58A517188423003B9A58 /* SyllabusItemEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusItemEditTableView.m; sourceTree = "<group>"; };
-		1F6D58A7171A09D5003B9A58 /* SyllabusItemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusItemDetails.h; path = GPATracker/SyllabusItemDetails.h; sourceTree = "<group>"; };
-		1F6D58A8171A09D6003B9A58 /* SyllabusItemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusItemDetails.m; path = GPATracker/SyllabusItemDetails.m; sourceTree = "<group>"; };
 		1F754A4E151559EA00BD72F0 /* GPATracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPATracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F754A52151559EA00BD72F0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1F754A54151559EA00BD72F0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +186,8 @@
 		1FB7A54615C316F800237DDD /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataTableViewController.m; path = GPATracker/CoreDataTableViewController.m; sourceTree = "<group>"; };
 		1FC4B4F815BC94040079767C /* SemesterEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SemesterEditTableView.h; sourceTree = "<group>"; };
 		1FC4B4F915BC94040079767C /* SemesterEditTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SemesterEditTableView.m; sourceTree = "<group>"; };
+		1FC62878173AB32100767732 /* SyllabusItemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusItemDetails.h; path = GPATracker/SyllabusItemDetails.h; sourceTree = "<group>"; };
+		1FC62879173AB32100767732 /* SyllabusItemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusItemDetails.m; path = GPATracker/SyllabusItemDetails.m; sourceTree = "<group>"; };
 		1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		1FE4D0AE1659ABCD00B408A1 /* PagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerViewController.h; sourceTree = "<group>"; };
 		1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewController.m; sourceTree = "<group>"; };
@@ -260,8 +260,8 @@
 				1F6D589817170AD8003B9A58 /* CourseDetails.h */,
 				1F6D589917170AD8003B9A58 /* CourseDetails.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
-				1F6D58A7171A09D5003B9A58 /* SyllabusItemDetails.h */,
-				1F6D58A8171A09D6003B9A58 /* SyllabusItemDetails.m */,
+				1FC62878173AB32100767732 /* SyllabusItemDetails.h */,
+				1FC62879173AB32100767732 /* SyllabusItemDetails.m */,
 				1F6D589E1717875E003B9A58 /* SyllabusDetails.h */,
 				1F6D589F1717875E003B9A58 /* SyllabusDetails.m */,
 				1F58586716AF0B5B002A930D /* SemesterDetails.h */,
@@ -612,10 +612,10 @@
 				1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */,
 				1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */,
 				1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */,
-				1F6D58A9171A09D6003B9A58 /* SyllabusItemDetails.m in Sources */,
 				1F2F0C361728A5A100907856 /* CalendarListTableCell1.m in Sources */,
 				1F2F0C371728A5A100907856 /* CalendarListTableView.m in Sources */,
 				1F2F0C3A1729898C00907856 /* SyllabusItemDetails+Create.m in Sources */,
+				1FC6287A173AB32100767732 /* SyllabusItemDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
