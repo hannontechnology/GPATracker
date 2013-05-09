@@ -49,7 +49,7 @@
     NSSortDescriptor *sortDescriptorCCode = [[NSSortDescriptor alloc] initWithKey:@"syllabusDetails.courseDetails.courseCode" ascending:YES];
     //selector:@selector(localizedStandardCompare:)];
     [request setSortDescriptors:[NSArray arrayWithObjects:sortDescriptorDate, sortDescriptorCCode, nil]];
-    request.predicate = [NSPredicate predicateWithFormat: @"syllabusDetails.courseDetails.semesterDetails.schoolDetails = %@", self.schoolInfo];
+    request.predicate = [NSPredicate predicateWithFormat: @"syllabusDetails.courseDetails.semesterDetails.schoolDetails = %@ AND itemComplete = 0", self.schoolInfo];
     NSLog(@"filtering data based on schoolDetails = %@", self.schoolInfo);
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"groupName" cacheName:nil];
