@@ -94,16 +94,19 @@ viewForFooterInSection:(NSInteger)section
     NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    int count = 0;
     
     for (SyllabusItemDetails *item in self.syllabusDetails.syllabusItemDetails)
     {
         if (item.itemOutOf != nil && item.itemInclude.longValue == [NSNumber numberWithBool:YES].longValue)
         {
             sumTotal = [sumTotal decimalNumberByAdding:item.itemOutOf];
+            count++;
         }
         if (item.itemScore != nil && item.itemInclude.longValue == [NSNumber numberWithBool:YES].longValue)
         {
             sumGrades = [sumGrades decimalNumberByAdding:item.itemScore];
+            count++;
         }
     }
     
@@ -119,8 +122,16 @@ viewForFooterInSection:(NSInteger)section
         currentGrade = [sumGrades decimalNumberByDividingBy:sumTotal];
         currentGrade = [currentGrade decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
     }
-    NSString *nsCurrentGrade  = [nf stringFromNumber:currentGrade];
-    self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    if (count > 0)
+    {
+        NSString *nsCurrentGrade  = [nf stringFromNumber:currentGrade];
+        self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
+    else
+    {
+        NSString *nsCurrentGrade  = @"--";
+        self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
     
     [self setupFetchedResultsController];
 }
@@ -202,9 +213,9 @@ viewForFooterInSection:(NSInteger)section
     
     // At end of function, right before return cell:
     if (selectedObject.itemInclude.longValue == [NSNumber numberWithBool:YES].longValue)
-        cell.cellLabelBck.backgroundColor = [UIColor clearColor];
+        cell.cellLabel3.backgroundColor = [UIColor clearColor];
     else
-        cell.cellLabelBck.backgroundColor = [UIColor lightGrayColor];
+        cell.cellLabel3.backgroundColor = [UIColor lightGrayColor];
 
     return cell;
 }
