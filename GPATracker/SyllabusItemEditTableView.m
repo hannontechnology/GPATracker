@@ -21,13 +21,20 @@
 @property CGRect pickerViewShownFrame;
 @property CGRect pickerViewHiddenFrame;
 
-- (IBAction)Accept:(id)sender;
+- (IBAction)Save:(id)sender;
 - (IBAction)Cancel:(id)sender;
 - (IBAction)textFieldReturn:(id)sender;
 
 @end
 
 @implementation SyllabusItemEditTableView
+@synthesize itemNameField;
+@synthesize itemDueDateField;
+@synthesize itemGradeField;
+@synthesize itemOutOfField;
+@synthesize itemIncludeSwitch;
+@synthesize headerText;
+
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize setEditStatus = _setEditStatus;
@@ -162,13 +169,23 @@ viewForFooterInSection:(NSInteger)section
     {
         NSLog(@"Load Syllabus Information");
         self.headerText.title = @"Edit Section";
-        self.itemNameField.text = self.syllabusDetails.sectionName;
+        self.itemNameField.text = self.syllabusItemDetails.itemName;
+        self.itemNameField.enabled = NO;
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyy"];
         [datePicker addTarget:self action:@selector(LabelChange:) forControlEvents:UIControlEventValueChanged];
         self.itemDueDateField.text = [dateFormatter stringFromDate:self.syllabusItemDetails.itemDueDate];
         self.itemGradeField.text = self.syllabusItemDetails.itemScore.stringValue;
         self.itemOutOfField.text = self.syllabusItemDetails.itemOutOf.stringValue;
+        /*
+        if (self.syllabusItemDetails.itemInclude == [NSNumber numberWithInt:1])
+        {
+            itemIncludeSwitch.on = YES;
+        }
+        else
+        {
+            itemIncludeSwitch.on = NO;
+        }*/
     }
   
 }
@@ -301,8 +318,15 @@ viewForFooterInSection:(NSInteger)section
 }
 
 
-- (IBAction)Accept:(id)sender
+- (IBAction)Save:(id)sender
 {
+    NSNumber *includeItem = [NSNumber numberWithBool:NO];
+    
+    if (itemIncludeSwitch.on)
+    {
+        includeItem = [NSNumber numberWithBool:YES];
+    }
+    
     if ([self.itemNameField.text length] == 0)
     {
         NSLog(@"Item Name field is Required.");
@@ -336,6 +360,7 @@ viewForFooterInSection:(NSInteger)section
                 outOf = [f numberFromString:self.itemOutOfField.text];
                 self.syllabusItemDetails.itemScore = score;
                 self.syllabusItemDetails.itemOutOf = outOf;
+                //self.syllabusItemDetails.itemInclude = includeItem;
                 
                 if ([self.managedObjectContext save:&error])
                 {
@@ -369,6 +394,7 @@ viewForFooterInSection:(NSInteger)section
         self.syllabusItemDetails.itemScore = score;
         self.syllabusItemDetails.itemOutOf = outOf;
         self.syllabusItemDetails.syllabusDetails = self.syllabusDetails;
+        //self.syllabusItemDetails.itemInclude = includeItem;
         NSLog(@"About to save data = %@", self.syllabusItemDetails);
         if ([self.managedObjectContext save:&error])
         {
@@ -377,12 +403,12 @@ viewForFooterInSection:(NSInteger)section
         }
         else
         {
-            NSLog(@"Add Course Failed! :%@", error.userInfo);
+            NSLog(@"Add Syllabus Item Failed! :%@", error.userInfo);
         }
     }
     else
     {
-        NSLog(@"Course Code already taken.");
+        NSLog(@"Syllabus Item already taken.");
     }
 } 
 
@@ -417,4 +443,5 @@ viewForFooterInSection:(NSInteger)section
 {
 	
 }*/
+
 @end
