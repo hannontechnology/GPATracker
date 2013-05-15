@@ -20,6 +20,10 @@
 @end
 
 @implementation SyllabusItemTableView
+@synthesize sectionNameField;
+@synthesize sectionGradeField;
+@synthesize sectionWeightField;
+
 @synthesize syllabusDetails = _syllabusDetails;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
@@ -86,6 +90,22 @@ viewForFooterInSection:(NSInteger)section
     
     [super viewWillAppear:(BOOL)animated];
     
+    NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    
+    for (SyllabusItemDetails *item in self.syllabusDetails.syllabusItemDetails)
+    {
+        if (item.itemOutOf != nil)
+        {
+            sumTotal = [sumTotal decimalNumberByAdding:item.itemOutOf];
+        }
+        else if (item.itemScore != nil)
+        {
+            sumGrades = [sumGrades decimalNumberByAdding:item.itemScore];
+        }
+    }
+    
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
@@ -93,7 +113,9 @@ viewForFooterInSection:(NSInteger)section
     
     self.sectionNameField.text = self.syllabusDetails.sectionName;
     self.sectionWeightField.text = [NSString stringWithFormat:@"%@%%", self.syllabusDetails.percentBreakdown.stringValue];
-    //self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", self.syllabusDetails];
+    currentGrade = [sumGrades decimalNumberByDividingBy:sumTotal];
+    self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", sumGrades];
+    
     
     [self setupFetchedResultsController];
     

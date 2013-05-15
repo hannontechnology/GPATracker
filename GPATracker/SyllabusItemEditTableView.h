@@ -30,8 +30,10 @@
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
+
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
+- (IBAction)Save:(id)sender;
 -(IBAction)switchPassFail:(id)sender;
 
 @end

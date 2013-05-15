@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -2357,7 +2357,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Test" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="YPX-bE-RHG">
-                                            <rect key="frame" x="60" y="13" width="128" height="20"/>
+                                            <rect key="frame" x="70" y="13" width="128" height="20"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2377,7 +2377,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Weight" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="D8h-wQ-Slv">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="D8h-wQ-Slv">
                                             <rect key="frame" x="6" y="0.0" width="60" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
@@ -2385,7 +2385,7 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="NTz-Ej-iRq">
-                                            <rect key="frame" x="60" y="0.0" width="60" height="12"/>
+                                            <rect key="frame" x="70" y="0.0" width="60" height="12"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -2699,7 +2699,7 @@
                     <navigationItem key="navigationItem" title="Syllabus Breakdown" id="Qia-Tb-Vi8">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="m5c-rf-jRn">
                             <connections>
-                                <action selector="Accept:" destination="OrC-GG-uQ8" id="2QR-X4-pFR"/>
+                                <action selector="Save:" destination="OrC-GG-uQ8" id="yyp-47-kTq"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2857,17 +2857,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="1dU-6g-oZa"/>
-        <segue reference="yNE-KK-7NP"/>
-        <segue reference="KvF-9q-C6b"/>
         <segue reference="DG6-i7-zNC"/>
+        <segue reference="KvF-9q-C6b"/>
+        <segue reference="yNE-KK-7NP"/>
+        <segue reference="xWR-GP-plh"/>
         <segue reference="VVr-Ld-9wW"/>
         <segue reference="sH2-t5-pXi"/>
-        <segue reference="xWR-GP-plh"/>
+        <segue reference="1dU-6g-oZa"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>
-        <segue reference="GjO-wZ-Znt"/>
         <segue reference="jxS-5C-xzp"/>
-        <segue reference="iaY-LF-wG6"/>
+        <segue reference="GjO-wZ-Znt"/>
+        <segue reference="PW4-ds-YHd"/>
     </inferredMetricsTieBreakers>
 </document>
