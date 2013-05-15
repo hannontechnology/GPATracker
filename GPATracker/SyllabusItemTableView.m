@@ -97,11 +97,11 @@ viewForFooterInSection:(NSInteger)section
     
     for (SyllabusItemDetails *item in self.syllabusDetails.syllabusItemDetails)
     {
-        if (item.itemOutOf != nil)
+        if (item.itemOutOf != nil && item.itemInclude.longValue == [NSNumber numberWithBool:YES].longValue)
         {
             sumTotal = [sumTotal decimalNumberByAdding:item.itemOutOf];
         }
-        if (item.itemScore != nil)
+        if (item.itemScore != nil && item.itemInclude.longValue == [NSNumber numberWithBool:YES].longValue)
         {
             sumGrades = [sumGrades decimalNumberByAdding:item.itemScore];
         }
@@ -119,7 +119,8 @@ viewForFooterInSection:(NSInteger)section
         currentGrade = [sumGrades decimalNumberByDividingBy:sumTotal];
         currentGrade = [currentGrade decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
     }
-    self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", currentGrade];
+    NSString *nsCurrentGrade  = [nf stringFromNumber:currentGrade];
+    self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
     
     [self setupFetchedResultsController];
 }
@@ -174,21 +175,37 @@ viewForFooterInSection:(NSInteger)section
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     cell.cellLabel2.text = [dateFormatter stringFromDate:[selectedObject itemDueDate]];
+    
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+    [nf setMinimumFractionDigits:1];
+    [nf setMaximumFractionDigits:1];
+    [nf setZeroSymbol:@"0.0"];
 
     NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSString *nsCurrentGrade;
     if ([selectedObject itemOutOf].longValue != zero.longValue)
     {
         currentGrade = [[selectedObject itemScore] decimalNumberByDividingBy:[selectedObject itemOutOf]];
         currentGrade = [currentGrade decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+        nsCurrentGrade = [nf stringFromNumber:currentGrade];
+        cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
     }
-    cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", currentGrade];
+    else
+    {
+        nsCurrentGrade = @"--";
+        cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     
     // At end of function, right before return cell:
-    cell.textLabel.backgroundColor = [UIColor clearColor];
+    if (selectedObject.itemInclude.longValue == [NSNumber numberWithBool:YES].longValue)
+        cell.cellLabelBck.backgroundColor = [UIColor clearColor];
+    else
+        cell.cellLabelBck.backgroundColor = [UIColor lightGrayColor];
+
     return cell;
 }
 
