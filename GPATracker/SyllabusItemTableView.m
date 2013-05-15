@@ -93,6 +93,7 @@ viewForFooterInSection:(NSInteger)section
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     
     for (SyllabusItemDetails *item in self.syllabusDetails.syllabusItemDetails)
     {
@@ -100,7 +101,7 @@ viewForFooterInSection:(NSInteger)section
         {
             sumTotal = [sumTotal decimalNumberByAdding:item.itemOutOf];
         }
-        else if (item.itemScore != nil)
+        if (item.itemScore != nil)
         {
             sumGrades = [sumGrades decimalNumberByAdding:item.itemScore];
         }
@@ -113,12 +114,14 @@ viewForFooterInSection:(NSInteger)section
     
     self.sectionNameField.text = self.syllabusDetails.sectionName;
     self.sectionWeightField.text = [NSString stringWithFormat:@"%@%%", self.syllabusDetails.percentBreakdown.stringValue];
-    currentGrade = [sumGrades decimalNumberByDividingBy:sumTotal];
-    self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", sumGrades];
-    
+    if (sumTotal.longValue != zero.longValue)
+    {
+        currentGrade = [sumGrades decimalNumberByDividingBy:sumTotal];
+        currentGrade = [currentGrade decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+    }
+    self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", currentGrade];
     
     [self setupFetchedResultsController];
-    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -171,7 +174,15 @@ viewForFooterInSection:(NSInteger)section
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"MM/dd/yyyy"];
     cell.cellLabel2.text = [dateFormatter stringFromDate:[selectedObject itemDueDate]];
-    cell.cellLabel3.text = [selectedObject itemScore].stringValue;
+
+    NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    if ([selectedObject itemOutOf].longValue != zero.longValue)
+    {
+        currentGrade = [[selectedObject itemScore] decimalNumberByDividingBy:[selectedObject itemOutOf]];
+        currentGrade = [currentGrade decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+    }
+    cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", currentGrade];
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];

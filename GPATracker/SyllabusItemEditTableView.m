@@ -33,6 +33,7 @@
 @synthesize itemGradeField;
 @synthesize itemOutOfField;
 @synthesize itemIncludeSwitch;
+@synthesize itemCompleteSwitch;
 @synthesize headerText;
 
 @synthesize dataCollection = _dataCollection;
@@ -177,7 +178,7 @@ viewForFooterInSection:(NSInteger)section
         self.itemDueDateField.text = [dateFormatter stringFromDate:self.syllabusItemDetails.itemDueDate];
         self.itemGradeField.text = self.syllabusItemDetails.itemScore.stringValue;
         self.itemOutOfField.text = self.syllabusItemDetails.itemOutOf.stringValue;
-        /*
+        
         if (self.syllabusItemDetails.itemInclude == [NSNumber numberWithInt:1])
         {
             itemIncludeSwitch.on = YES;
@@ -185,7 +186,16 @@ viewForFooterInSection:(NSInteger)section
         else
         {
             itemIncludeSwitch.on = NO;
-        }*/
+        }
+        
+        if (self.syllabusItemDetails.itemComplete == [NSNumber numberWithInt:1])
+        {
+            itemCompleteSwitch.on = YES;
+        }
+        else
+        {
+            itemCompleteSwitch.on = NO;
+        }
     }
   
 }
@@ -307,6 +317,7 @@ viewForFooterInSection:(NSInteger)section
     [self setItemGradeField:nil];
     [self setItemOutOfField:nil];
     [self setItemIncludeSwitch:nil];
+    [self setItemCompleteSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -321,6 +332,7 @@ viewForFooterInSection:(NSInteger)section
 - (IBAction)Save:(id)sender
 {
     NSNumber *includeItem = [NSNumber numberWithBool:NO];
+    NSNumber *completeItem = [NSNumber numberWithBool:NO];
     
     if (itemIncludeSwitch.on)
     {
@@ -348,6 +360,16 @@ viewForFooterInSection:(NSInteger)section
             {
                 NSLog(@"Save Syllabus Item Information");
                 self.syllabusItemDetails.itemName = self.itemNameField.text;
+
+                if (itemIncludeSwitch.on)
+                {
+                    includeItem = [NSNumber numberWithBool:YES];
+                }
+                
+                if (itemCompleteSwitch.on)
+                {
+                    completeItem = [NSNumber numberWithBool:YES];
+                }
                 
                 NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
                 [dateFormatter setDateFormat:@"MM/dd/yyyy"];
@@ -360,7 +382,8 @@ viewForFooterInSection:(NSInteger)section
                 outOf = [f numberFromString:self.itemOutOfField.text];
                 self.syllabusItemDetails.itemScore = score;
                 self.syllabusItemDetails.itemOutOf = outOf;
-                //self.syllabusItemDetails.itemInclude = includeItem;
+                self.syllabusItemDetails.itemInclude = includeItem;
+                self.syllabusItemDetails.itemComplete = completeItem;
                 
                 if ([self.managedObjectContext save:&error])
                 {
@@ -382,6 +405,16 @@ viewForFooterInSection:(NSInteger)section
                               inManagedObjectContext:self.managedObjectContext];
         self.syllabusItemDetails.itemName = self.itemNameField.text;
         
+        if (itemIncludeSwitch.on)
+        {
+            includeItem = [NSNumber numberWithBool:YES];
+        }
+        
+        if (itemCompleteSwitch.on)
+        {
+            completeItem = [NSNumber numberWithBool:YES];
+        }
+        
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MM/dd/yyyy"];
         self.syllabusItemDetails.itemDueDate = [dateFormatter dateFromString:self.itemDueDateField.text];
@@ -394,7 +427,9 @@ viewForFooterInSection:(NSInteger)section
         self.syllabusItemDetails.itemScore = score;
         self.syllabusItemDetails.itemOutOf = outOf;
         self.syllabusItemDetails.syllabusDetails = self.syllabusDetails;
-        //self.syllabusItemDetails.itemInclude = includeItem;
+        self.syllabusItemDetails.itemInclude = includeItem;
+        self.syllabusItemDetails.itemComplete = completeItem;
+
         NSLog(@"About to save data = %@", self.syllabusItemDetails);
         if ([self.managedObjectContext save:&error])
         {

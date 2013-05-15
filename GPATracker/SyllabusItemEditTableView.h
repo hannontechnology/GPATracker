@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *itemGradeField;
 @property (weak, nonatomic) IBOutlet UITextField *itemOutOfField;
 @property (weak, nonatomic) IBOutlet UISwitch *itemIncludeSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *itemCompleteSwitch;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 @property (strong, nonatomic) NSString *setEditStatus;
