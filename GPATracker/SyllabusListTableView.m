@@ -26,6 +26,7 @@
 @end
 
 @implementation SyllabusListTableView
+
 @synthesize userInfo = _userInfo;
 @synthesize courseDetails = _courseDetails;
 @synthesize selectedIndexPath = _selectedIndexPath;
