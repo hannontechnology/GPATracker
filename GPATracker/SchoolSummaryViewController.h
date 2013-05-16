@@ -22,6 +22,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalSemesterCount;
 @property (weak, nonatomic) IBOutlet UILabel *totalCourseCount;
 @property (weak, nonatomic) IBOutlet UILabel *totalCreditHours;
+@property (weak, nonatomic) IBOutlet UILabel *desiredGPA;
+@property (weak, nonatomic) IBOutlet UILabel *calculatedGPA;
 
 @property (strong, nonatomic) SchoolDetails *schoolInfo;
 @property (strong, nonatomic) DataCollection *dataCollection;

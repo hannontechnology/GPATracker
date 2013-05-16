@@ -28,6 +28,8 @@
 @synthesize totalSemesterCount;
 @synthesize totalCourseCount;
 @synthesize totalCreditHours;
+@synthesize desiredGPA;
+@synthesize calculatedGPA;
 @synthesize schoolInfo = _schoolInfo;
 @synthesize dataCollection = _dataCollection;
 @synthesize managedObjectContext = _managedObjectContext;
@@ -60,6 +62,8 @@
     [self setTotalSemesterCount:nil];
     [self setTotalCourseCount:nil];
     [self setTotalCreditHours:nil];
+    [self setDesiredGPA:nil];
+    [self setCalculatedGPA:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -78,6 +82,8 @@
     NSDecimalNumber *sumCredits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumDesiredUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumDesiredGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumSemesters = [self.schoolInfo valueForKeyPath:@"semesterDetails.@count"];
     for (SemesterDetails *semester in self.schoolInfo.semesterDetails)
     {
@@ -91,6 +97,14 @@
                 NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
                 sumGrades = [sumGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
                 sumUnits = [sumUnits decimalNumberByAdding:units];
+                sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
+                sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
+            }
+            else if (item.desiredGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1] && item.desiredGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
+            {
+                NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+                sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.desiredGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
+                sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
             }
         }
     }
@@ -105,6 +119,7 @@
     totalCreditHours.text = [NSString stringWithFormat:@"%@", [sumCredits stringValue]];
 
     NSDecimalNumber *gPA;
+    NSDecimalNumber *dGPA;
     if ([sumUnits longValue] == 0)
     {
         gPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
@@ -113,13 +128,23 @@
     {
         gPA = [sumGrades decimalNumberByDividingBy:sumUnits];
     }
+    if ([sumDesiredUnits longValue] == 0)
+    {
+        dGPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    }
+    else
+    {
+        dGPA = [sumDesiredGrades decimalNumberByDividingBy:sumDesiredUnits];
+    }
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
     [nf setZeroSymbol:@"0.00"];
-    NSString *ns  = [nf stringFromNumber:gPA];
-    cGPA.text = [NSString stringWithFormat:@"%@",ns];
+    NSString *nsGPA  = [nf stringFromNumber:gPA];
+    cGPA.text = [NSString stringWithFormat:@"%@",nsGPA];
+    NSString *nsDGPA  = [nf stringFromNumber:dGPA];
+    desiredGPA.text = [NSString stringWithFormat:@"%@",nsDGPA];
 }
 
 @end

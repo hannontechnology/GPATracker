@@ -1788,7 +1788,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="3.67" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Tup-Fe-aC4">
-                                <rect key="frame" x="20" y="184" width="280" height="60"/>
+                                <rect key="frame" x="20" y="184" width="150" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="50"/>
                                 <color key="textColor" red="0.50980395079999996" green="0.11372549830000001" blue="0.1019607931" alpha="1" colorSpace="deviceRGB"/>
@@ -1810,6 +1810,34 @@
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Semesters:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="TVF-Bg-D5w">
                                 <rect key="frame" x="79" y="299" width="125" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.32941177490000001" green="0.32941177490000001" blue="0.32941177490000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Desired:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Gn2-Bz-ctj">
+                                <rect key="frame" x="173" y="186" width="89" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.32941177490000001" green="0.32941177490000001" blue="0.32941177490000001" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="4.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="1aE-Lz-tWA">
+                                <rect key="frame" x="260" y="186" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.50980395079999996" green="0.11372549830000001" blue="0.1019607931" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="4.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="aLT-tt-GBx">
+                                <rect key="frame" x="260" y="211" width="40" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="0.50980395079999996" green="0.11372549830000001" blue="0.1019607931" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Calculated:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="GZS-lp-QMj">
+                                <rect key="frame" x="173" y="211" width="89" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.32941177490000001" green="0.32941177490000001" blue="0.32941177490000001" alpha="1" colorSpace="deviceRGB"/>
@@ -1876,8 +1904,10 @@
                     </view>
                     <connections>
                         <outlet property="cGPA" destination="Tup-Fe-aC4" id="b4q-8x-1tS"/>
+                        <outlet property="calculatedGPA" destination="aLT-tt-GBx" id="hW1-RQ-HdS"/>
                         <outlet property="courseCount" destination="iNU-hW-Qhy" id="7S2-QT-DtI"/>
                         <outlet property="creditHours" destination="2Tx-Q7-qvy" id="EZ2-bf-1du"/>
+                        <outlet property="desiredGPA" destination="1aE-Lz-tWA" id="mCy-zt-ndN"/>
                         <outlet property="schoolCode" destination="iDj-4a-kuH" id="RJl-sI-ye5"/>
                         <outlet property="schoolName" destination="Mig-QL-dy8" id="WoC-1z-HMM"/>
                         <outlet property="schoolYears" destination="qV5-kY-gqd" id="KHB-EE-wvb"/>
