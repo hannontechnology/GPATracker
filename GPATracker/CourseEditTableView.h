@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *courseActualGradeField;
 @property (weak, nonatomic) IBOutlet UISwitch *coursePassFailField;
 @property (weak, nonatomic) IBOutlet UISwitch *courseIncludeInGPAField;
+@property (weak, nonatomic) IBOutlet UISwitch *courseEnableSyllabus;
 @property (weak, nonatomic) IBOutlet UITextField *courseDescriptionField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 

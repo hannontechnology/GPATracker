@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel3;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabelGPA;
+@property (strong, nonatomic) NSString *enableSyllabus;
 
 @end

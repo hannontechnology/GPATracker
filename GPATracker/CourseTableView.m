@@ -179,6 +179,14 @@ viewForFooterInSection:(NSInteger)section
     {
         cell.cellLabelGPA.text = @"";
     }
+    if (selectedObject.enableSyllabus == [NSNumber numberWithInt:1])
+    {
+        cell.enableSyllabus = @"Y";
+    }
+    else
+    {
+        cell.enableSyllabus = @"N";
+    }
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -301,8 +309,9 @@ viewForFooterInSection:(NSInteger)section
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedIndexPath = indexPath;
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell isEditing]== YES)
+
+    CourseTableCell1 *cell = (CourseTableCell1 *)[tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isEditing] == YES || [cell.enableSyllabus isEqual: @"N"])
     {
         [self performSegueWithIdentifier: @"segueEditCourse" sender: self];
     }

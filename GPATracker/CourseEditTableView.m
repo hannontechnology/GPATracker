@@ -40,6 +40,7 @@
 @synthesize courseActualGradeField;
 @synthesize coursePassFailField;
 @synthesize courseIncludeInGPAField;
+@synthesize courseEnableSyllabus;
 @synthesize courseDescriptionField;
 @synthesize headerText;
 
@@ -325,6 +326,14 @@ viewForFooterInSection:(NSInteger)section
         {
             courseIncludeInGPAField.on = NO;
         }
+        if (self.courseDetails.enableSyllabus == [NSNumber numberWithInt:1])
+        {
+            courseEnableSyllabus.on = YES;
+        }
+        else
+        {
+            courseEnableSyllabus.on = NO;
+        }
     }
 }
 
@@ -469,6 +478,7 @@ viewForFooterInSection:(NSInteger)section
     [self setCourseDescriptionField:nil];
     [self setHeaderText:nil];
     [self setPickerView:nil];
+    [self setCourseEnableSyllabus:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -484,6 +494,7 @@ viewForFooterInSection:(NSInteger)section
 {
     NSNumber *includeInGPA = [NSNumber numberWithBool:NO];
     NSNumber *isPassFail = [NSNumber numberWithBool:NO];
+    NSNumber *enableSyllabus = [NSNumber numberWithBool:NO];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
     [f setNumberStyle:NSNumberFormatterNoStyle];
     NSNumber *s_units;
@@ -495,6 +506,10 @@ viewForFooterInSection:(NSInteger)section
     if (courseIncludeInGPAField.on)
     {
         includeInGPA = [NSNumber numberWithBool:YES];
+    }
+    if (courseEnableSyllabus.on)
+    {
+        enableSyllabus = [NSNumber numberWithBool:YES];
     }
     if ([courseNameField.text length] == 0)
     {
@@ -548,9 +563,10 @@ viewForFooterInSection:(NSInteger)section
                 {
                     self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
                 }
-                self.courseDetails.isPassFail   = isPassFail;
-                self.courseDetails.includeInGPA = includeInGPA;
-                self.courseDetails.courseDesc   = courseDescriptionField.text;
+                self.courseDetails.isPassFail     = isPassFail;
+                self.courseDetails.includeInGPA   = includeInGPA;
+                self.courseDetails.enableSyllabus = enableSyllabus;
+                self.courseDetails.courseDesc     = courseDescriptionField.text;
                 if ([self.managedObjectContext save:&error])
                 {
                     [self.navigationController popViewControllerAnimated:YES];
@@ -588,9 +604,10 @@ viewForFooterInSection:(NSInteger)section
         {
             self.courseDetails.actualGradeGPA = [self.dataCollection retrieveGradingScheme:self.semesterDetails.schoolDetails letterGrade:courseActualGradeField.text context:self.managedObjectContext];
         }
-        self.courseDetails.isPassFail   = isPassFail;
-        self.courseDetails.includeInGPA = includeInGPA;
-        self.courseDetails.courseDesc   = courseDescriptionField.text;
+        self.courseDetails.isPassFail     = isPassFail;
+        self.courseDetails.includeInGPA   = includeInGPA;
+        self.courseDetails.enableSyllabus = enableSyllabus;
+        self.courseDetails.courseDesc     = courseDescriptionField.text;
         NSLog(@"About to save data = %@", self.courseDetails);
         if ([self.managedObjectContext save:&error])
         {

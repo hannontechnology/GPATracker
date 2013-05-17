@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F029AC81746D20B000D1EF1 /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F029AC71746D20B000D1EF1 /* CourseDetails.m */; };
 		1F0C5C1015A754D2001A6BEA /* SchoolListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0C5C0F15A754D2001A6BEA /* SchoolListTableView.m */; };
 		1F0E390C16D9E7FC0036F142 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E390B16D9E7FC0036F142 /* CustomCellBackground.m */; };
 		1F0E390F16D9E9080036F142 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0E390E16D9E9080036F142 /* Common.m */; };
@@ -32,7 +33,6 @@
 		1F5DB9771682381C0048564D /* Profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9761682381C0048564D /* Profileicon.png */; };
 		1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9781682399B0048564D /* CoursesIcon.png */; };
 		1F5DB97B168246A40048564D /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB97A168246A40048564D /* circleIcon.png */; };
-		1F6D589A17170AD8003B9A58 /* CourseDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589917170AD8003B9A58 /* CourseDetails.m */; };
 		1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589F1717875E003B9A58 /* SyllabusDetails.m */; };
 		1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */; };
 		1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A517188423003B9A58 /* SyllabusItemEditTableView.m */; };
@@ -92,6 +92,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F029AC61746D20B000D1EF1 /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
+		1F029AC71746D20B000D1EF1 /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
 		1F0C5C0E15A754D2001A6BEA /* SchoolListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolListTableView.h; sourceTree = "<group>"; };
 		1F0C5C0F15A754D2001A6BEA /* SchoolListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListTableView.m; sourceTree = "<group>"; };
 		1F0E390A16D9E7FB0036F142 /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
@@ -133,8 +135,6 @@
 		1F5DB9761682381C0048564D /* Profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profileicon.png; path = Images/Profileicon.png; sourceTree = "<group>"; };
 		1F5DB9781682399B0048564D /* CoursesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CoursesIcon.png; path = Images/CoursesIcon.png; sourceTree = "<group>"; };
 		1F5DB97A168246A40048564D /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circleIcon.png; path = Images/circleIcon.png; sourceTree = "<group>"; };
-		1F6D589817170AD8003B9A58 /* CourseDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CourseDetails.h; path = GPATracker/CourseDetails.h; sourceTree = "<group>"; };
-		1F6D589917170AD8003B9A58 /* CourseDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CourseDetails.m; path = GPATracker/CourseDetails.m; sourceTree = "<group>"; };
 		1F6D589E1717875E003B9A58 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
 		1F6D589F1717875E003B9A58 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
 		1F6D58A1171799B4003B9A58 /* SyllabusItemTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusItemTableCell1.h; sourceTree = "<group>"; };
@@ -257,9 +257,9 @@
 				1FA9B0C116CC29F3009B4F1E /* CourseDetails+Create.h */,
 				1F27DA3816B8476A00E0C8C8 /* GradingScheme.h */,
 				1F27DA3916B8476A00E0C8C8 /* GradingScheme.m */,
-				1F6D589817170AD8003B9A58 /* CourseDetails.h */,
-				1F6D589917170AD8003B9A58 /* CourseDetails.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				1F029AC61746D20B000D1EF1 /* CourseDetails.h */,
+				1F029AC71746D20B000D1EF1 /* CourseDetails.m */,
 				1FC62878173AB32100767732 /* SyllabusItemDetails.h */,
 				1FC62879173AB32100767732 /* SyllabusItemDetails.m */,
 				1F6D589E1717875E003B9A58 /* SyllabusDetails.h */,
@@ -608,7 +608,6 @@
 				2DD4EF5616FEAE2100613091 /* SyllabusListTableView.m in Sources */,
 				2DD4EF5916FEAE8800613091 /* SyllabusItemTableView.m in Sources */,
 				2D975E06170D881E003EF840 /* SyllabusDetails+Create.m in Sources */,
-				1F6D589A17170AD8003B9A58 /* CourseDetails.m in Sources */,
 				1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */,
 				1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */,
 				1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */,
@@ -616,6 +615,7 @@
 				1F2F0C371728A5A100907856 /* CalendarListTableView.m in Sources */,
 				1F2F0C3A1729898C00907856 /* SyllabusItemDetails+Create.m in Sources */,
 				1FC6287A173AB32100767732 /* SyllabusItemDetails.m in Sources */,
+				1F029AC81746D20B000D1EF1 /* CourseDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

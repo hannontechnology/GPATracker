@@ -197,6 +197,14 @@ viewForFooterInSection:(NSInteger)section
     {
         cell.cellLabelGPA.text = @"";
     }
+    if (selectedObject.enableSyllabus == [NSNumber numberWithInt:1])
+    {
+        cell.enableSyllabus = @"Y";
+    }
+    else
+    {
+        cell.enableSyllabus = @"N";
+    }
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
@@ -316,8 +324,8 @@ viewForFooterInSection:(NSInteger)section
 {
     self.selectedIndexPath = indexPath;
 
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if ([cell isEditing] == YES)
+    CourseListTableCell1 *cell = (CourseListTableCell1 *)[tableView cellForRowAtIndexPath:indexPath];
+    if ([cell isEditing] == YES || [cell.enableSyllabus isEqual: @"N"])
     {
         [self performSegueWithIdentifier: @"segueHomePageEditCourse" sender: self];
     }

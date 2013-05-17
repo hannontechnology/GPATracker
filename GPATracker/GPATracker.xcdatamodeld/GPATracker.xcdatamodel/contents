@@ -5,6 +5,7 @@
         <attribute name="courseDesc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="courseID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="courseName" attributeType="String" syncable="YES"/>
+        <attribute name="enableSyllabus" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="includeInGPA" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="isPassFail" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
         <attribute name="units" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -68,7 +69,7 @@
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CourseDetails" positionX="0" positionY="0" width="128" height="210"/>
+        <element name="CourseDetails" positionX="0" positionY="0" width="128" height="225"/>
         <element name="GradingScheme" positionX="0" positionY="0" width="128" height="180"/>
         <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>

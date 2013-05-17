@@ -2,7 +2,7 @@
 //  CourseDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-11.
+//  Created by Terry Hannon on 13-05-17.
 //
 //
 
@@ -21,6 +21,7 @@
 @dynamic includeInGPA;
 @dynamic isPassFail;
 @dynamic units;
+@dynamic enableSyllabus;
 @dynamic actualGradeGPA;
 @dynamic desiredGradeGPA;
 @dynamic semesterDetails;

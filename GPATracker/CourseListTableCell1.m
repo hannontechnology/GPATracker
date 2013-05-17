@@ -13,6 +13,7 @@
 @synthesize cellLabel2;
 @synthesize cellLabel3;
 @synthesize cellLabelGPA;
+@synthesize enableSyllabus;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
