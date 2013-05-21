@@ -2,7 +2,7 @@
 //  SchoolDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-01-22.
+//  Created by Terry Hannon on 13-05-21.
 //
 //
 
@@ -17,6 +17,8 @@
 @property (nonatomic, retain) NSNumber * schoolEndYear;
 @property (nonatomic, retain) NSString * schoolName;
 @property (nonatomic, retain) NSNumber * schoolStartYear;
+@property (nonatomic, retain) NSDecimalNumber * historicalGPA;
+@property (nonatomic, retain) NSNumber * historicalCredits;
 @property (nonatomic, retain) NSSet *gradingScheme;
 @property (nonatomic, retain) NSSet *semesterDetails;
 @property (nonatomic, retain) User *user;

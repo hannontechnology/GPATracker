@@ -85,6 +85,19 @@
     NSDecimalNumber *sumDesiredUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumDesiredGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumSemesters = [self.schoolInfo valueForKeyPath:@"semesterDetails.@count"];
+    
+    if (self.schoolInfo.historicalGPA != nil && self.schoolInfo.historicalCredits != nil)
+    {
+        NSDecimalNumber *credits = [NSDecimalNumber decimalNumberWithMantissa:[self.schoolInfo.historicalCredits longValue] exponent:0 isNegative:NO];
+        sumGrades = [sumGrades decimalNumberByAdding:self.schoolInfo.historicalGPA];
+        sumGrades = [sumGrades decimalNumberByMultiplyingBy:credits];
+        sumUnits = [sumUnits decimalNumberByAdding:credits];
+        sumCredits = [sumCredits decimalNumberByAdding:credits];
+        sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:self.schoolInfo.historicalGPA];
+        sumDesiredGrades = [sumDesiredGrades decimalNumberByMultiplyingBy:credits];
+        sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:credits];
+    }
+
     for (SemesterDetails *semester in self.schoolInfo.semesterDetails)
     {
         sumCredits = [sumCredits decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@sum.units"]];

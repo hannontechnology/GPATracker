@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *schoolDetailsField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolStartYearField;
 @property (weak, nonatomic) IBOutlet UITextField *schoolEndYearField;
+@property (weak, nonatomic) IBOutlet UITextField *historicalGPAField;
+@property (weak, nonatomic) IBOutlet UITextField *historicalCreditsField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *headerText;
 
 @property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;

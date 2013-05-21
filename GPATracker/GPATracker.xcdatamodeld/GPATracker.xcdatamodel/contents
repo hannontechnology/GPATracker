@@ -26,6 +26,8 @@
         <relationship name="school" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SchoolDetails" inverseName="gradingScheme" inverseEntity="SchoolDetails" syncable="YES"/>
     </entity>
     <entity name="SchoolDetails" representedClassName="SchoolDetails" syncable="YES">
+        <attribute name="historicalCredits" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="historicalGPA" optional="YES" attributeType="Decimal" defaultValueString="0" syncable="YES"/>
         <attribute name="schoolDetails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="schoolEndYear" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="schoolName" optional="YES" attributeType="String" syncable="YES"/>
@@ -71,7 +73,7 @@
     <elements>
         <element name="CourseDetails" positionX="0" positionY="0" width="128" height="225"/>
         <element name="GradingScheme" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="SchoolDetails" positionX="0" positionY="0" width="128" height="180"/>
         <element name="SemesterDetails" positionX="0" positionY="0" width="128" height="120"/>
         <element name="SyllabusDetails" positionX="160" positionY="192" width="128" height="105"/>
         <element name="SyllabusItemDetails" positionX="160" positionY="192" width="128" height="150"/>

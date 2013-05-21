@@ -30,6 +30,8 @@
 @synthesize schoolDetailsField;
 @synthesize schoolStartYearField;
 @synthesize schoolEndYearField;
+@synthesize historicalGPAField;
+@synthesize historicalCreditsField;
 @synthesize headerText;
 
 //@synthesize keyboardToolbar;
@@ -204,6 +206,8 @@
     [self setGradingScheme:nil];
     [self setGradingScheme:nil];
     [self setKeyboardToolbar:nil];
+    [self setHistoricalGPAField:nil];
+    [self setHistoricalCreditsField:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -244,6 +248,8 @@
         schoolDetailsField.text = self.schoolInfo.schoolDetails;
         schoolStartYearField.text = self.schoolInfo.schoolStartYear.stringValue;
         schoolEndYearField.text = self.schoolInfo.schoolEndYear.stringValue;
+        historicalGPAField.text = self.schoolInfo.historicalGPA.stringValue;
+        historicalCreditsField.text = self.schoolInfo.historicalCredits.stringValue;
     }
 
 }
@@ -274,12 +280,18 @@
             self.schoolInfo.schoolName = schoolNameField.text;
             self.schoolInfo.schoolDetails = schoolDetailsField.text;
             // Cast text to NSNumber:
-            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterNoStyle];
-            NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
-            NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+            NSNumberFormatter *f1 = [[NSNumberFormatter alloc] init];
+            NSNumberFormatter *f2 = [[NSNumberFormatter alloc] init];
+            [f1 setNumberStyle:NSNumberFormatterNoStyle];
+            [f2 setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber *s_year = [f1 numberFromString:schoolStartYearField.text];
+            NSNumber *e_year = [f1 numberFromString:schoolEndYearField.text];
+            NSNumber *h_GPA  = [f2 numberFromString:historicalGPAField.text];
+            NSNumber *h_Credits = [f1 numberFromString:historicalCreditsField.text];
             self.schoolInfo.schoolStartYear = s_year;
             self.schoolInfo.schoolEndYear   = e_year;
+            self.schoolInfo.historicalGPA   = h_GPA;
+            self.schoolInfo.historicalCredits = h_Credits;
             if ([[self managedObjectContext] save:&error])
             {
                 NSLog(@"Save was successful");
@@ -311,12 +323,18 @@
         self.schoolInfo.schoolName      = schoolNameField.text;
         self.schoolInfo.schoolDetails   = schoolDetailsField.text;
         // Cast text to NSNumber:
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterNoStyle];
-        NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
-        NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+        NSNumberFormatter *f1 = [[NSNumberFormatter alloc] init];
+        NSNumberFormatter *f2 = [[NSNumberFormatter alloc] init];
+        [f1 setNumberStyle:NSNumberFormatterNoStyle];
+        [f2 setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *s_year = [f1 numberFromString:schoolStartYearField.text];
+        NSNumber *e_year = [f1 numberFromString:schoolEndYearField.text];
+        NSNumber *h_GPA  = [f2 numberFromString:historicalGPAField.text];
+        NSNumber *h_Credits = [f1 numberFromString:historicalCreditsField.text];
         self.schoolInfo.schoolStartYear = s_year;
         self.schoolInfo.schoolEndYear   = e_year;
+        self.schoolInfo.historicalGPA   = h_GPA;
+        self.schoolInfo.historicalCredits = h_Credits;
         
         if ([self.managedObjectContext save:&error])
         {
@@ -355,93 +373,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-/*- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    int selComp;
-    
-    if (textField == self.schoolNameField)
-    {
-        self.setInputType = @"Name";
-    }
-    else if (textField == self.schoolDetailsField)
-    {
-        self.setInputType = @"Details";
-    }
-    else if (textField == self.schoolStartYearField)
-    {
-        self.setInputType = @"StartYear";
-    }
-    else if (textField == self.schoolEndYearField)
-    {
-        self.setInputType = @"EndYear";
-    }
-    
-    if (self.setInputType == @"StartYear")
-    {
-        NSString *yearValue;
-        if (schoolStartYearField.text.length > 0)
-        {
-            yearValue = schoolStartYearField.text;
-            //selComp = [self.schoolStartYearField indexOfObject:yearValue];
-        }
-        else
-        {
-            NSDate *now = [NSDate date];
-            NSString *strDate = [[NSString alloc] initWithFormat:@"%@",now];
-            NSArray *arr = [strDate componentsSeparatedByString:@" "];
-            NSString *str;
-            str = [arr objectAtIndex:0];
-            NSArray *arr_my = [str componentsSeparatedByString:@"-"];
-            NSInteger date = [[arr_my objectAtIndex:2] intValue];
-            NSInteger month = [[arr_my objectAtIndex:1] intValue];
-            NSInteger year = [[arr_my objectAtIndex:0] intValue];
-            yearValue = [NSString stringWithFormat:@"%d",year];
-            semesterYearField.text = yearValue;
-            selComp = [self.semesterYearList indexOfObject:yearValue];
-        }
-    }
-    else if (self.setInputType == @"Name")
-    {
-        NSString *nameValue;
-        if (semesterNameField.text.length > 0)
-        {
-            nameValue = semesterNameField.text;
-            selComp = [self.semesterNameList indexOfObject:nameValue];
-        }
-        else
-        {
-            selComp = 0;
-        }
-    }
-    return true;
-}
-
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
-{
-    UIView *tmpCell = textField.superview.superview;
-    //GradingSchemeCell1 *cell = (GradingSchemeCell1 *)tmpCell;
-    
-    if (cell == nil)
-        return true;
-    
-    sch *selectedObject = [self.fetchedResultsController objectAtIndexPath:cell.indexPath];
-    NSLog(@"Letter Grade: %@, GPA: %@",[selectedObject letterGrade], cell.cellField1.text);
-    
-    selectedObject.gPA = [[NSDecimalNumber alloc] initWithString:cell.cellField1.text];
-    selectedObject.minGrade = [[NSDecimalNumber alloc] initWithString:cell.minGrade.text];
-    selectedObject.maxGrade = [[NSDecimalNumber alloc] initWithString:cell.maxGrade.text];
-    if (cell.btnInGPA.currentImage == [UIImage imageNamed:@"Checkbox_checked.png"])
-    {
-        selectedObject.includeInGPA = [NSNumber numberWithInt:1];
-    }
-    else
-    {
-        selectedObject.includeInGPA = [NSNumber numberWithInt:0];
-    }
-    
-    return true;
-}*/
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1 && self.setEditStatus == (NSString *)@"Edit")
@@ -479,12 +410,18 @@
                 self.schoolInfo.schoolName = schoolNameField.text;
                 self.schoolInfo.schoolDetails = schoolDetailsField.text;
                 // Cast text to NSNumber:
-                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-                [f setNumberStyle:NSNumberFormatterNoStyle];
-                NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
-                NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+                NSNumberFormatter *f1 = [[NSNumberFormatter alloc] init];
+                NSNumberFormatter *f2 = [[NSNumberFormatter alloc] init];
+                [f1 setNumberStyle:NSNumberFormatterNoStyle];
+                [f2 setNumberStyle:NSNumberFormatterDecimalStyle];
+                NSNumber *s_year = [f1 numberFromString:schoolStartYearField.text];
+                NSNumber *e_year = [f1 numberFromString:schoolEndYearField.text];
+                NSNumber *h_GPA  = [f2 numberFromString:historicalGPAField.text];
+                NSNumber *h_Credits = [f1 numberFromString:historicalCreditsField.text];
                 self.schoolInfo.schoolStartYear = s_year;
                 self.schoolInfo.schoolEndYear   = e_year;
+                self.schoolInfo.historicalGPA   = h_GPA;
+                self.schoolInfo.historicalCredits = h_Credits;
                 if ([[self managedObjectContext] save:&error])
                 {
                     NSLog(@"Save was successful");
@@ -515,12 +452,18 @@
             self.schoolInfo.schoolName      = schoolNameField.text;
             self.schoolInfo.schoolDetails   = schoolDetailsField.text;
             // Cast text to NSNumber:
-            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-            [f setNumberStyle:NSNumberFormatterNoStyle];
-            NSNumber *s_year = [f numberFromString:schoolStartYearField.text];
-            NSNumber *e_year = [f numberFromString:schoolEndYearField.text];
+            NSNumberFormatter *f1 = [[NSNumberFormatter alloc] init];
+            NSNumberFormatter *f2 = [[NSNumberFormatter alloc] init];
+            [f1 setNumberStyle:NSNumberFormatterNoStyle];
+            [f2 setNumberStyle:NSNumberFormatterDecimalStyle];
+            NSNumber *s_year = [f1 numberFromString:schoolStartYearField.text];
+            NSNumber *e_year = [f1 numberFromString:schoolEndYearField.text];
+            NSNumber *h_GPA  = [f2 numberFromString:historicalGPAField.text];
+            NSNumber *h_Credits = [f1 numberFromString:historicalCreditsField.text];
             self.schoolInfo.schoolStartYear = s_year;
             self.schoolInfo.schoolEndYear   = e_year;
+            self.schoolInfo.historicalGPA   = h_GPA;
+            self.schoolInfo.historicalCredits = h_Credits;
             
             if ([self.managedObjectContext save:&error])
             {
