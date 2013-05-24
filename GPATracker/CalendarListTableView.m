@@ -185,11 +185,14 @@ viewForFooterInSection:(NSInteger)section
     }
     
     SyllabusItemDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"MM/dd/yyy"];
     
     // TODO: create class courseListCell2 and include custom labels for display to cell
     cell.cellLabel1.text = selectedObject.syllabusDetails.courseDetails.courseCode;
-    cell.cellLabel2.text = selectedObject.itemName;
-    cell.cellLabel3.text = selectedObject.syllabusDetails.sectionName;
+    cell.cellLabel2.text = [dateFormatter stringFromDate:selectedObject.itemDueDate];
+    cell.cellLabel3.text = selectedObject.itemName;
+    cell.cellLabel4.text = selectedObject.syllabusDetails.sectionName;
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
