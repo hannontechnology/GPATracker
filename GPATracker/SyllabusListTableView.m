@@ -192,8 +192,17 @@ viewForFooterInSection:(NSInteger)section
     
     cell.cellLabel1.text = [selectedObject sectionName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
-    NSString *nsCurrentGrade  = [nf stringFromNumber:[selectedObject sectionGrade]];
-    cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    if ([selectedObject sectionGrade] != nil)
+    {
+        NSString *nsCurrentGrade  = [nf stringFromNumber:[selectedObject sectionGrade]];
+        cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
+    else
+    {
+        NSString *nsCurrentGrade  = @"--";
+        cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
+    
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     
