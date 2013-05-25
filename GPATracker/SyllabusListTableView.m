@@ -113,10 +113,30 @@ viewForFooterInSection:(NSInteger)section
     else
         [self.courseTotalWeightText setTextColor:[UIColor redColor]];
     
+    NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+
+    for (SyllabusDetails *item in self.courseDetails.syllabusDetails)
+    {
+        if (item.sectionGrade != nil)
+        {
+            sectionTotal = [item.sectionGrade decimalNumberByMultiplyingBy:item.percentBreakdown];
+            sectionTotal = [sectionTotal decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            sumTotal = [sumTotal decimalNumberByAdding:sectionTotal];
+        }
+        else if (item.sectionGrade == nil)
+        {
+            sumTotal = [sumTotal decimalNumberByAdding:item.percentBreakdown];
+        }
+    }
+    
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
     [nf setZeroSymbol:@"0.00"];
+    
+    NSString *nsPossibleGrade = [nf stringFromNumber:sumTotal];
+    self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
     
     [self setupFetchedResultsController];
     
