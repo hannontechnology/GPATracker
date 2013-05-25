@@ -126,13 +126,13 @@ viewForFooterInSection:(NSInteger)section
     {
         NSString *nsCurrentGrade  = [nf stringFromNumber:currentGrade];
         self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
-        //self.syllabusDetails.sectionGrade = nsCurrentGrade;
+        self.syllabusDetails.sectionGrade = currentGrade;
     }
     else
     {
         NSString *nsCurrentGrade  = @"--";
         self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
-        //self.syllabusDetails.sectionGrade = nsCurrentGrade;
+        self.syllabusDetails.sectionGrade = currentGrade;
     }
     
     [self setupFetchedResultsController];

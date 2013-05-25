@@ -15,6 +15,7 @@
 
 @dynamic percentBreakdown;
 @dynamic sectionName;
+@dynamic sectionGrade;
 @dynamic courseDetails;
 @dynamic syllabusItemDetails;
 

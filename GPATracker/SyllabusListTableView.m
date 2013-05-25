@@ -172,11 +172,11 @@ viewForFooterInSection:(NSInteger)section
     
     NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-    NSString *nsCurrentGrade;
     
     cell.cellLabel1.text = [selectedObject sectionName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
-    //cell.cellLabel2.text = [selectedObject.syllabusItemDetails.self ]
+    NSString *nsCurrentGrade  = [nf stringFromNumber:[selectedObject sectionGrade]];
+    cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     
