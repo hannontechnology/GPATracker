@@ -170,9 +170,6 @@ viewForFooterInSection:(NSInteger)section
     [nf setMaximumFractionDigits:1];
     [nf setZeroSymbol:@"0.0"];
     
-    NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-    NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-    
     cell.cellLabel1.text = [selectedObject sectionName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
     NSString *nsCurrentGrade  = [nf stringFromNumber:[selectedObject sectionGrade]];
