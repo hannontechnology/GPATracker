@@ -165,9 +165,18 @@ viewForFooterInSection:(NSInteger)section
     SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+    [nf setMinimumFractionDigits:1];
+    [nf setMaximumFractionDigits:1];
+    [nf setZeroSymbol:@"0.0"];
+    
+    NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSString *nsCurrentGrade;
+    
     cell.cellLabel1.text = [selectedObject sectionName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
-    
+    //cell.cellLabel2.text = [selectedObject.syllabusItemDetails.self ]
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     
