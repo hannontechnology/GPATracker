@@ -113,10 +113,30 @@ viewForFooterInSection:(NSInteger)section
     else
         [self.courseTotalWeightText setTextColor:[UIColor redColor]];
     
+    NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+
+    for (SyllabusDetails *item in self.courseDetails.syllabusDetails)
+    {
+        if (item.sectionGrade != nil)
+        {
+            sectionTotal = [item.sectionGrade decimalNumberByMultiplyingBy:item.percentBreakdown];
+            sectionTotal = [sectionTotal decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            sumTotal = [sumTotal decimalNumberByAdding:sectionTotal];
+        }
+        else if (item.sectionGrade == nil)
+        {
+            sumTotal = [sumTotal decimalNumberByAdding:item.percentBreakdown];
+        }
+    }
+    
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
     [nf setMaximumFractionDigits:2];
     [nf setZeroSymbol:@"0.00"];
+    
+    NSString *nsPossibleGrade = [nf stringFromNumber:sumTotal];
+    self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
     
     [self setupFetchedResultsController];
     
@@ -165,8 +185,23 @@ viewForFooterInSection:(NSInteger)section
     SyllabusDetails *selectedObject = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
     // TODO: create class
+    NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+    [nf setMinimumFractionDigits:1];
+    [nf setMaximumFractionDigits:1];
+    [nf setZeroSymbol:@"0.0"];
+    
     cell.cellLabel1.text = [selectedObject sectionName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
+    if ([selectedObject sectionGrade] != nil)
+    {
+        NSString *nsCurrentGrade  = [nf stringFromNumber:[selectedObject sectionGrade]];
+        cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
+    else
+    {
+        NSString *nsCurrentGrade  = @"--";
+        cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+    }
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];

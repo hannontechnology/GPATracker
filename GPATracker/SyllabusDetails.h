@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSDecimalNumber * percentBreakdown;
 @property (nonatomic, retain) NSString * sectionName;
+@property (nonatomic, retain) NSDecimalNumber * sectionGrade;
 @property (nonatomic, retain) CourseDetails *courseDetails;
 @property (nonatomic, retain) NSSet *syllabusItemDetails;
 @end
