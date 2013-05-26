@@ -158,6 +158,7 @@
     cGPA.text = [NSString stringWithFormat:@"%@",nsGPA];
     NSString *nsDGPA  = [nf stringFromNumber:dGPA];
     desiredGPA.text = [NSString stringWithFormat:@"%@",nsDGPA];
+    
 }
 
 @end
