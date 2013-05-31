@@ -84,6 +84,8 @@
     NSDecimalNumber *sumGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumDesiredUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumDesiredGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumCalculatedUnits = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumCalculatedGrades = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumSemesters = [self.schoolInfo valueForKeyPath:@"semesterDetails.@count"];
     
     if (self.schoolInfo.historicalGPA != nil && self.schoolInfo.historicalCredits != nil)
@@ -119,6 +121,19 @@
                 sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.desiredGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
                 sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
             }
+            else if (item.actualGradeGPA.maxGrade != nil && item.includeInGPA == [NSNumber numberWithInt:1])// && item.actualGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
+            {
+                NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+                sumCalculatedUnits = [sumCalculatedUnits decimalNumberByAdding:units];
+                for (GradingScheme *grade in self.schoolInfo.gradingScheme)
+                {
+                    if (item.actualGradeGPA.maxGrade <= grade.maxGrade && item.actualGradeGPA.maxGrade >= grade.minGrade)
+                    {
+                        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByAdding:grade.gPA];
+                        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByMultiplyingBy:units];
+                    }
+                }
+            }
         }
     }
     schoolCode.text = self.schoolInfo.schoolName;
@@ -133,6 +148,7 @@
 
     NSDecimalNumber *gPA;
     NSDecimalNumber *dGPA;
+    NSDecimalNumber *pGPA;
     if ([sumUnits longValue] == 0)
     {
         gPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
@@ -149,6 +165,14 @@
     {
         dGPA = [sumDesiredGrades decimalNumberByDividingBy:sumDesiredUnits];
     }
+    if ([sumCalculatedUnits longValue] == 0)
+    {
+        pGPA = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    }
+    else
+    {
+        pGPA = [sumCalculatedGrades decimalNumberByDividingBy:sumCalculatedUnits];
+    }
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
     [nf setMinimumFractionDigits:2];
@@ -158,6 +182,9 @@
     cGPA.text = [NSString stringWithFormat:@"%@",nsGPA];
     NSString *nsDGPA  = [nf stringFromNumber:dGPA];
     desiredGPA.text = [NSString stringWithFormat:@"%@",nsDGPA];
+    NSString *nsPGPA = [nf stringFromNumber:pGPA];
+    calculatedGPA.text = [NSString stringWithFormat:@"%@",nsPGPA];
+    
     
 }
 
