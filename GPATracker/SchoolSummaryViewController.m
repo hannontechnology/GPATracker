@@ -120,20 +120,17 @@
                 NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
                 sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.desiredGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
                 sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
-            }
-            else if (item.actualGradeGPA.maxGrade != nil && item.includeInGPA == [NSNumber numberWithInt:1])// && item.actualGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
-            {
-                NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
                 sumCalculatedUnits = [sumCalculatedUnits decimalNumberByAdding:units];
                 for (GradingScheme *grade in self.schoolInfo.gradingScheme)
                 {
-                    if (item.actualGradeGPA.maxGrade <= grade.maxGrade && item.actualGradeGPA.maxGrade >= grade.minGrade)
+                    if (item.desiredGradeGPA.maxGrade <= grade.maxGrade && item.desiredGradeGPA.maxGrade >= grade.minGrade)
                     {
-                        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByAdding:grade.gPA];
-                        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByMultiplyingBy:units];
+                        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByAdding:[grade.gPA decimalNumberByMultiplyingBy:units]];
                     }
                 }
-            }
+
+            }            
+            
         }
     }
     schoolCode.text = self.schoolInfo.schoolName;

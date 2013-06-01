@@ -137,7 +137,7 @@ viewForFooterInSection:(NSInteger)section
     
     NSString *nsPossibleGrade = [nf stringFromNumber:sumTotal];
     self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
-    self.courseDetails.actualGradeGPA.maxGrade = sumTotal;
+    self.courseDetails.desiredGradeGPA.maxGrade = sumTotal;
     
     [self setupFetchedResultsController];
     
