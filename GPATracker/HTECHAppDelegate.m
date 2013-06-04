@@ -23,7 +23,21 @@
     {
         NSLog(@"Failed to connect to Database!");
     }
-    // Override point for customization after application launch.
+
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        UIStoryboard *storyBoard;
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        CGFloat scale = [UIScreen mainScreen].scale;
+        result = CGSizeMake(result.width * scale, result.height * scale);
+        
+        if(result.height == 1136){
+            storyBoard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone5" bundle:nil];
+            UIViewController *initViewController = [storyBoard instantiateInitialViewController];
+            [self.window setRootViewController:initViewController];
+        }
+    }
+    
     return YES;
 }
 							

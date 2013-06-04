@@ -174,7 +174,6 @@
             }
             if (sumCalculatedMarks.longValue != 0)
             {
-                
                 NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
                 [nf setMinimumFractionDigits:0];
                 [nf setMaximumFractionDigits:0];

@@ -68,6 +68,7 @@
 		1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */; };
 		1FFE778D16C17F020037F681 /* CourseListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE778916C17F020037F681 /* CourseListTableView.m */; };
 		1FFE778E16C17F020037F681 /* CourseTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFE778A16C17F020037F681 /* CourseTableCell1.m */; };
+		1FFF3FC3175EA0AF007F7E94 /* MainStoryboard_iPhone5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FFF3FC1175EA0AF007F7E94 /* MainStoryboard_iPhone5.storyboard */; };
 		2D07636F16016CDA008BAF95 /* GradingSchemeCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */; };
 		2D975E06170D881E003EF840 /* SyllabusDetails+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D975E05170D881E003EF840 /* SyllabusDetails+Create.m */; };
 		2D9C62AE15B51FE400B82973 /* SchoolEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D9C62AD15B51FE400B82973 /* SchoolEditTableView.m */; };
@@ -197,6 +198,7 @@
 		1FFE778A16C17F020037F681 /* CourseTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableCell1.m; sourceTree = "<group>"; };
 		1FFE778B16C17F020037F681 /* CourseListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListTableView.h; sourceTree = "<group>"; };
 		1FFE778C16C17F020037F681 /* CourseTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableCell1.h; sourceTree = "<group>"; };
+		1FFF3FC2175EA0AF007F7E94 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone5.storyboard; sourceTree = "<group>"; };
 		2D07636D16016CDA008BAF95 /* GradingSchemeCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradingSchemeCell1.h; sourceTree = "<group>"; };
 		2D07636E16016CDA008BAF95 /* GradingSchemeCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradingSchemeCell1.m; sourceTree = "<group>"; };
 		2D975E04170D881E003EF840 /* SyllabusDetails+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SyllabusDetails+Create.h"; path = "GPATracker/SyllabusDetails+Create.h"; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 		1F754A58151559EA00BD72F0 /* GPATracker */ = {
 			isa = PBXGroup;
 			children = (
+				1FFF3FC1175EA0AF007F7E94 /* MainStoryboard_iPhone5.storyboard */,
 				1F2F0C321728A5A100907856 /* CalendarListTableCell1.h */,
 				1F2F0C331728A5A100907856 /* CalendarListTableCell1.m */,
 				1F2F0C341728A5A100907856 /* CalendarListTableView.h */,
@@ -532,6 +535,7 @@
 				1FD3E08F169797F900E4AB15 /* Default-568h@2x.png in Resources */,
 				1F27DA3216B81A0500E0C8C8 /* Checkbox_checked.png in Resources */,
 				1F27DA3316B81A0500E0C8C8 /* Checkbox_unchecked.png in Resources */,
+				1FFF3FC3175EA0AF007F7E94 /* MainStoryboard_iPhone5.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +672,14 @@
 				1F754A7D151559EA00BD72F0 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1FFF3FC1175EA0AF007F7E94 /* MainStoryboard_iPhone5.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FFF3FC2175EA0AF007F7E94 /* en */,
+			);
+			name = MainStoryboard_iPhone5.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
