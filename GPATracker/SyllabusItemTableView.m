@@ -126,13 +126,11 @@ viewForFooterInSection:(NSInteger)section
     {
         NSString *nsCurrentGrade  = [nf stringFromNumber:currentGrade];
         self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
-        self.syllabusDetails.sectionGrade = currentGrade;
     }
     else
     {
         NSString *nsCurrentGrade  = @"--";
         self.sectionGradeField.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
-        self.syllabusDetails.sectionGrade = nil;
     }
     
     [self setupFetchedResultsController];
@@ -197,7 +195,7 @@ viewForFooterInSection:(NSInteger)section
     NSDecimalNumber *currentGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *zero = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSString *nsCurrentGrade;
-    if ([selectedObject itemOutOf].longValue != zero.longValue)
+    if ([selectedObject itemOutOf].longValue != zero.longValue && [selectedObject itemOutOf] != nil)
     {
         currentGrade = [[selectedObject itemScore] decimalNumberByDividingBy:[selectedObject itemOutOf]];
         currentGrade = [currentGrade decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];

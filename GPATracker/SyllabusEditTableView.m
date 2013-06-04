@@ -241,7 +241,6 @@ viewForFooterInSection:(NSInteger)section
                 NSLog(@"Save Course Information");
                 self.syllabusDetails.sectionName = sectionNameField.text;
                 self.syllabusDetails.percentBreakdown = [[NSDecimalNumber alloc] initWithString:sectionPercentageField.text];
-                self.syllabusDetails.sectionGrade = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
                 self.syllabusDetails.courseDetails = self.courseDetails;
                 if ([self.managedObjectContext save:&error])
                 {

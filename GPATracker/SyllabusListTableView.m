@@ -115,7 +115,6 @@ viewForFooterInSection:(NSInteger)section
         [self.courseTotalWeightText setTextColor:[UIColor redColor]];
     
     NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-
     for (SyllabusDetails *item in self.courseDetails.syllabusDetails)
     {
         if (item.percentBreakdown != nil)
@@ -141,7 +140,10 @@ viewForFooterInSection:(NSInteger)section
                     sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
                 }
             }
-            sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+            if (itemCount.longValue != 0)
+                sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+            else
+                sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
             sectionTotal = [sectionTotal decimalNumberByMultiplyingBy:sectionPercent];
             sumTotal = [sumTotal decimalNumberByAdding:sectionTotal];
         }
@@ -155,7 +157,6 @@ viewForFooterInSection:(NSInteger)section
     NSString *nsPossibleGrade = [nf stringFromNumber:sumTotal];
     
     self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
-    self.courseDetails.desiredGradeGPA.maxGrade = sumTotal;
     
     [self setupFetchedResultsController];
     
@@ -224,7 +225,8 @@ viewForFooterInSection:(NSInteger)section
             sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
         }
     }
-    sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+    if (itemCount.longValue != 0)
+        sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
     NSString *nsSectionTotal = [nf stringFromNumber:sectionTotal];
     
     cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsSectionTotal];

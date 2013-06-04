@@ -11,6 +11,9 @@
 #import "SemesterDetails+Create.h"
 #import "CourseDetails.h"
 #import "GradingScheme+Create.h"
+#import "SyllabusDetails+Create.h"
+#import "SyllabusItemDetails+Create.h"
+#import "DataCollection.h"
 #import "LoginView.h"
 
 @interface SchoolSummaryViewController ()
@@ -98,6 +101,9 @@
         sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:self.schoolInfo.historicalGPA];
         sumDesiredGrades = [sumDesiredGrades decimalNumberByMultiplyingBy:credits];
         sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:credits];
+        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByAdding:self.schoolInfo.historicalGPA];
+        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByMultiplyingBy:credits];
+        sumCalculatedUnits = [sumCalculatedUnits decimalNumberByAdding:credits];
     }
 
     for (SemesterDetails *semester in self.schoolInfo.semesterDetails)
@@ -105,6 +111,8 @@
         sumCredits = [sumCredits decimalNumberByAdding:[semester valueForKeyPath:@"courseDetails.@sum.units"]];
         for (CourseDetails *item in semester.courseDetails)
         {
+            NSDecimalNumber *sumCalculatedMarks = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+
             totCourses ++;
             if (item.actualGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1] && item.actualGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
             {
@@ -114,23 +122,73 @@
                 sumUnits = [sumUnits decimalNumberByAdding:units];
                 sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
                 sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
-            }
-            else if (item.desiredGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1] && item.desiredGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
-            {
-                NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
-                sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.desiredGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
+                sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.actualGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
                 sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
-                sumCalculatedUnits = [sumCalculatedUnits decimalNumberByAdding:units];
-                for (GradingScheme *grade in self.schoolInfo.gradingScheme)
+            }
+            else if (item.includeInGPA == [NSNumber numberWithInt:1])
+            {
+                if (item.desiredGradeGPA != nil && item.includeInGPA == [NSNumber numberWithInt:1] && item.desiredGradeGPA.includeInGPA == [NSNumber numberWithInt:1])
                 {
-                    if (item.desiredGradeGPA.maxGrade <= grade.maxGrade && item.desiredGradeGPA.maxGrade >= grade.minGrade)
+                    NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+                    sumDesiredGrades = [sumDesiredGrades decimalNumberByAdding:[item.desiredGradeGPA.gPA decimalNumberByMultiplyingBy:units]];
+                    sumDesiredUnits = [sumDesiredUnits decimalNumberByAdding:units];
+                }
+                NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                NSDecimalNumber *sumPercent = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                for (SyllabusDetails *item2 in item.syllabusDetails)
+                {
+                    if (item2.percentBreakdown != nil)
                     {
-                        sumCalculatedGrades = [sumCalculatedGrades decimalNumberByAdding:[grade.gPA decimalNumberByMultiplyingBy:units]];
+                        NSDecimalNumber *sectionPercent = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                        NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                        NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                        sectionPercent = [item2.percentBreakdown decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+                        for (SyllabusItemDetails *item3 in item2.syllabusItemDetails)
+                        {
+                            if (item3.itemScore != nil && item3.itemOutOf != nil && item3.itemScore.longValue != 0 && item3.itemOutOf.longValue != 0)
+                            {
+                                NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                                itemTotal = [item3.itemScore decimalNumberByDividingBy:item3.itemOutOf];
+                                itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+                                itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+                                sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+                            }
+                        }
+                        if (itemCount.longValue != 0)
+                            sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+                        sectionTotal = [sectionTotal decimalNumberByMultiplyingBy:sectionPercent];
+                        sumTotal = [sumTotal decimalNumberByAdding:sectionTotal];
+                        if (sectionTotal.longValue != 0)
+                            sumPercent = [sumPercent decimalNumberByAdding:sectionPercent];
                     }
                 }
-
-            }            
-            
+                if (sumPercent.longValue < 1)
+                {
+                    sumTotal = [sumTotal decimalNumberByDividingBy:[sumPercent decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]]];
+                    sumTotal = [sumTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+                }
+                if (sumTotal.longValue > 0)
+                {
+                    sumCalculatedMarks = [sumCalculatedMarks decimalNumberByAdding:sumTotal];
+                }
+            }
+            if (sumCalculatedMarks.longValue != 0)
+            {
+                
+                NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
+                [nf setMinimumFractionDigits:0];
+                [nf setMaximumFractionDigits:0];
+                [nf setZeroSymbol:@"0"];
+                
+                NSString *nsSumCalculatedMarks = [nf stringFromNumber:sumCalculatedMarks];
+                GradingScheme *tempGrade = [self.dataCollection retrieveGradingScheme:(SchoolDetails *)self.schoolInfo percentGrade:nsSumCalculatedMarks context:self.managedObjectContext];
+                if (tempGrade != nil)
+                {
+                    NSDecimalNumber *units = [NSDecimalNumber decimalNumberWithMantissa:[item.units longValue] exponent:0 isNegative:NO];
+                    sumCalculatedGrades = [sumCalculatedGrades decimalNumberByAdding:[tempGrade.gPA decimalNumberByMultiplyingBy:units]];
+                    sumCalculatedUnits = [sumCalculatedUnits decimalNumberByAdding:units];
+                }
+            }
         }
     }
     schoolCode.text = self.schoolInfo.schoolName;
@@ -142,6 +200,8 @@
     totalSemesterCount.text = [NSString stringWithFormat:@"%@",[sumSemesters stringValue]];
     totalCourseCount.text = [NSString stringWithFormat:@"%d", totCourses];
     totalCreditHours.text = [NSString stringWithFormat:@"%@", [sumCredits stringValue]];
+    
+    
 
     NSDecimalNumber *gPA;
     NSDecimalNumber *dGPA;

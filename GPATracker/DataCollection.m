@@ -135,8 +135,8 @@ static const int yearMax = 2020;
     NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"school = %@ AND minGrade <= %@ AND maxGrade >- %@",inputSchool,inPercentGrade,inPercentGrade];
-    NSLog(@"filtering data based on school = %@ AND percentGrade = %@",inputSchool, inPercentGrade);
+    request.predicate = [NSPredicate predicateWithFormat:@"school = %@ AND minGrade < %d AND maxGrade > %d",inputSchool,inPercentGrade.longLongValue,inPercentGrade.longLongValue];
+    NSLog(@"filtering data based on school = %@ AND minGrade < %@ AND maxGrade > %@",inputSchool,inPercentGrade,inPercentGrade);
     NSError *error = nil;
     NSArray *results = [inContext executeFetchRequest:request error:&error];
     if ([results count] == 0)
