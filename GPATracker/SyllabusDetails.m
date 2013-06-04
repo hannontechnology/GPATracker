@@ -2,7 +2,7 @@
 //  SyllabusDetails.m
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-11.
+//  Created by Terry Hannon on 13-06-04.
 //
 //
 
@@ -15,7 +15,6 @@
 
 @dynamic percentBreakdown;
 @dynamic sectionName;
-@dynamic sectionGrade;
 @dynamic courseDetails;
 @dynamic syllabusItemDetails;
 

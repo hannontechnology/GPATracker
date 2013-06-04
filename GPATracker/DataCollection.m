@@ -129,6 +129,23 @@ static const int yearMax = 2020;
     GradingScheme *rtn = [results objectAtIndex:0];
     return rtn;
 }
+- (GradingScheme *)retrieveGradingScheme:(SchoolDetails *)inputSchool percentGrade:(NSString *)inPercentGrade context:(NSManagedObjectContext *)inContext
+{
+    NSString *entityName = @"GradingScheme";
+    NSLog(@"Setting up a Fetched Results Controller for the Entity name %@", entityName);
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:entityName];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"school = %@ AND minGrade <= %@ AND maxGrade >- %@",inputSchool,inPercentGrade,inPercentGrade];
+    NSLog(@"filtering data based on school = %@ AND percentGrade = %@",inputSchool, inPercentGrade);
+    NSError *error = nil;
+    NSArray *results = [inContext executeFetchRequest:request error:&error];
+    if ([results count] == 0)
+    {
+        return nil;
+    }
+    GradingScheme *rtn = [results objectAtIndex:0];
+    return rtn;
+}
 
 //Code for handling semester information
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext

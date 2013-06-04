@@ -9,6 +9,7 @@
 #import "SyllabusListTableView.h"
 #import "CourseDetails.h"
 #import "SyllabusDetails+Create.h"
+#import "SyllabusItemDetails+Create.h"
 #import "GradingScheme+Create.h"
 #import "DataCollection.h"
 #import "SchoolListTableView.h"
@@ -113,29 +114,46 @@ viewForFooterInSection:(NSInteger)section
     else
         [self.courseTotalWeightText setTextColor:[UIColor redColor]];
     
-    NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
 
     for (SyllabusDetails *item in self.courseDetails.syllabusDetails)
     {
-        if (item.sectionGrade != nil)
+        if (item.percentBreakdown != nil)
         {
-            sectionTotal = [item.sectionGrade decimalNumberByMultiplyingBy:item.percentBreakdown];
-            sectionTotal = [sectionTotal decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            NSDecimalNumber *sectionPercent = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            sectionPercent = [item.percentBreakdown decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            for (SyllabusItemDetails *item2 in item.syllabusItemDetails)
+            {
+                if (item2.itemScore != nil && item2.itemOutOf != nil && item2.itemScore.longValue != 0 && item2.itemOutOf.longValue != 0)
+                {
+                    NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+                    itemTotal = [item2.itemScore decimalNumberByDividingBy:item2.itemOutOf];
+                    itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+                    itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+                    sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+                }
+                else
+                {
+                    NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
+                    itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+                    sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+                }
+            }
+            sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+            sectionTotal = [sectionTotal decimalNumberByMultiplyingBy:sectionPercent];
             sumTotal = [sumTotal decimalNumberByAdding:sectionTotal];
-        }
-        else if (item.sectionGrade == nil)
-        {
-            sumTotal = [sumTotal decimalNumberByAdding:item.percentBreakdown];
         }
     }
     
     NSNumberFormatter * nf = [[NSNumberFormatter alloc] init];
-    [nf setMinimumFractionDigits:2];
-    [nf setMaximumFractionDigits:2];
-    [nf setZeroSymbol:@"0.00"];
+    [nf setMinimumFractionDigits:0];
+    [nf setMaximumFractionDigits:0];
+    [nf setZeroSymbol:@"0"];
     
     NSString *nsPossibleGrade = [nf stringFromNumber:sumTotal];
+    
     self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
     self.courseDetails.desiredGradeGPA.maxGrade = sumTotal;
     
@@ -193,16 +211,23 @@ viewForFooterInSection:(NSInteger)section
     
     cell.cellLabel1.text = [selectedObject sectionName];
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
-    if ([selectedObject sectionGrade] != nil)
+    NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    for (SyllabusItemDetails *item2 in selectedObject.syllabusItemDetails)
     {
-        NSString *nsCurrentGrade  = [nf stringFromNumber:[selectedObject sectionGrade]];
-        cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
+        if (item2.itemScore != nil && item2.itemOutOf != nil && item2.itemScore.longValue != 0 && item2.itemOutOf.longValue != 0)
+        {
+            NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            itemTotal = [item2.itemScore decimalNumberByDividingBy:item2.itemOutOf];
+            itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+            sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+        }
     }
-    else
-    {
-        NSString *nsCurrentGrade  = @"--";
-        cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsCurrentGrade];
-    }
+    sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+    NSString *nsSectionTotal = [nf stringFromNumber:sectionTotal];
+    
+    cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsSectionTotal];
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];

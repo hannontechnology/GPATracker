@@ -33,6 +33,7 @@
 - (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool context:(NSManagedObjectContext *)inContext;
 - (NSArray *)retrieveGradingScheme:(SchoolDetails *)inputSchool passFail:(int)isPassFail context:(NSManagedObjectContext *)inContext;
 - (GradingScheme *)retrieveGradingScheme:(SchoolDetails *)inputSchool letterGrade:(NSString *)inLetterGrade context:(NSManagedObjectContext *)inContext;
+- (GradingScheme *)retrieveGradingScheme:(SchoolDetails *)inputSchool percentGrade:(NSString *)inPercentGrade context:(NSManagedObjectContext *)inContext;
 
 // Semester Section
 - (NSArray *)retrieveSemester:(NSString *)inputSemesterName semesterYear:(NSNumber *)inputSemesterYear schoolDetails:(SchoolDetails *)inputSchoolDetails context:(NSManagedObjectContext *) inContext;

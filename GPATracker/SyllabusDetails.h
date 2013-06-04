@@ -2,7 +2,7 @@
 //  SyllabusDetails.h
 //  GPATracker
 //
-//  Created by Terry Hannon on 13-04-11.
+//  Created by Terry Hannon on 13-06-04.
 //
 //
 
@@ -15,7 +15,6 @@
 
 @property (nonatomic, retain) NSDecimalNumber * percentBreakdown;
 @property (nonatomic, retain) NSString * sectionName;
-@property (nonatomic, retain) NSDecimalNumber * sectionGrade;
 @property (nonatomic, retain) CourseDetails *courseDetails;
 @property (nonatomic, retain) NSSet *syllabusItemDetails;
 @end

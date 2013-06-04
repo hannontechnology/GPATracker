@@ -33,7 +33,6 @@
 		1F5DB9771682381C0048564D /* Profileicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9761682381C0048564D /* Profileicon.png */; };
 		1F5DB9791682399B0048564D /* CoursesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB9781682399B0048564D /* CoursesIcon.png */; };
 		1F5DB97B168246A40048564D /* circleIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5DB97A168246A40048564D /* circleIcon.png */; };
-		1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D589F1717875E003B9A58 /* SyllabusDetails.m */; };
 		1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */; };
 		1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F6D58A517188423003B9A58 /* SyllabusItemEditTableView.m */; };
 		1F754A53151559EA00BD72F0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A52151559EA00BD72F0 /* UIKit.framework */; };
@@ -53,6 +52,7 @@
 		1F95470D15B29D4B002D2D61 /* SchoolListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* SchoolListTableCell1.m */; };
 		1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
+		1F9BCE76175E5D3D001AF4F0 /* SyllabusDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BCE75175E5D3D001AF4F0 /* SyllabusDetails.m */; };
 		1FA9B0C216CC29F4009B4F1E /* CourseDetails+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9B0C016CC29F3009B4F1E /* CourseDetails+Create.m */; };
 		1FAF582115BCCF4500304676 /* CourseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF581F15BCCF4500304676 /* CourseTableView.m */; };
 		1FAF582415BCCF7100304676 /* CourseEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAF582315BCCF7100304676 /* CourseEditTableView.m */; };
@@ -135,8 +135,6 @@
 		1F5DB9761682381C0048564D /* Profileicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profileicon.png; path = Images/Profileicon.png; sourceTree = "<group>"; };
 		1F5DB9781682399B0048564D /* CoursesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CoursesIcon.png; path = Images/CoursesIcon.png; sourceTree = "<group>"; };
 		1F5DB97A168246A40048564D /* circleIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = circleIcon.png; path = Images/circleIcon.png; sourceTree = "<group>"; };
-		1F6D589E1717875E003B9A58 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
-		1F6D589F1717875E003B9A58 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
 		1F6D58A1171799B4003B9A58 /* SyllabusItemTableCell1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusItemTableCell1.h; sourceTree = "<group>"; };
 		1F6D58A2171799B5003B9A58 /* SyllabusItemTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyllabusItemTableCell1.m; sourceTree = "<group>"; };
 		1F6D58A417188422003B9A58 /* SyllabusItemEditTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SyllabusItemEditTableView.h; sourceTree = "<group>"; };
@@ -169,6 +167,8 @@
 		1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTabViewController.m; sourceTree = "<group>"; };
 		1F9B8D77156C165E00CFB46C /* DataCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataCollection.h; path = GPATracker/DataCollection.h; sourceTree = "<group>"; };
 		1F9B8D78156C165E00CFB46C /* DataCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataCollection.m; path = GPATracker/DataCollection.m; sourceTree = "<group>"; };
+		1F9BCE74175E5D3D001AF4F0 /* SyllabusDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusDetails.h; path = GPATracker/SyllabusDetails.h; sourceTree = "<group>"; };
+		1F9BCE75175E5D3D001AF4F0 /* SyllabusDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusDetails.m; path = GPATracker/SyllabusDetails.m; sourceTree = "<group>"; };
 		1FA9B0C016CC29F3009B4F1E /* CourseDetails+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CourseDetails+Create.m"; path = "GPATracker/CourseDetails+Create.m"; sourceTree = "<group>"; };
 		1FA9B0C116CC29F3009B4F1E /* CourseDetails+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CourseDetails+Create.h"; path = "GPATracker/CourseDetails+Create.h"; sourceTree = "<group>"; };
 		1FAF581F15BCCF4500304676 /* CourseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableView.m; sourceTree = "<group>"; };
@@ -260,12 +260,12 @@
 				1F029ACC174BC50B000D1EF1 /* SchoolDetails.h */,
 				1F029ACD174BC50B000D1EF1 /* SchoolDetails.m */,
 				1F447032156AD48F0045242C /* GPATracker.xcdatamodeld */,
+				1F9BCE74175E5D3D001AF4F0 /* SyllabusDetails.h */,
+				1F9BCE75175E5D3D001AF4F0 /* SyllabusDetails.m */,
 				1F029AC61746D20B000D1EF1 /* CourseDetails.h */,
 				1F029AC71746D20B000D1EF1 /* CourseDetails.m */,
 				1FC62878173AB32100767732 /* SyllabusItemDetails.h */,
 				1FC62879173AB32100767732 /* SyllabusItemDetails.m */,
-				1F6D589E1717875E003B9A58 /* SyllabusDetails.h */,
-				1F6D589F1717875E003B9A58 /* SyllabusDetails.m */,
 				1F58586716AF0B5B002A930D /* SemesterDetails.h */,
 				1F58586816AF0B5B002A930D /* SemesterDetails.m */,
 				1F58586116AF0B5B002A930D /* YearPicker.h */,
@@ -607,7 +607,6 @@
 				2DD4EF5616FEAE2100613091 /* SyllabusListTableView.m in Sources */,
 				2DD4EF5916FEAE8800613091 /* SyllabusItemTableView.m in Sources */,
 				2D975E06170D881E003EF840 /* SyllabusDetails+Create.m in Sources */,
-				1F6D58A01717875F003B9A58 /* SyllabusDetails.m in Sources */,
 				1F6D58A3171799B5003B9A58 /* SyllabusItemTableCell1.m in Sources */,
 				1F6D58A617188423003B9A58 /* SyllabusItemEditTableView.m in Sources */,
 				1F2F0C361728A5A100907856 /* CalendarListTableCell1.m in Sources */,
@@ -616,6 +615,7 @@
 				1FC6287A173AB32100767732 /* SyllabusItemDetails.m in Sources */,
 				1F029AC81746D20B000D1EF1 /* CourseDetails.m in Sources */,
 				1F029ACE174BC50B000D1EF1 /* SchoolDetails.m in Sources */,
+				1F9BCE76175E5D3D001AF4F0 /* SyllabusDetails.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
