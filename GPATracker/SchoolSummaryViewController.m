@@ -162,7 +162,7 @@
                             sumPercent = [sumPercent decimalNumberByAdding:sectionPercent];
                     }
                 }
-                if (sumPercent.longValue < 1)
+                if (sumPercent.longValue < 1 && sumPercent.longValue != 0)
                 {
                     sumTotal = [sumTotal decimalNumberByDividingBy:[sumPercent decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]]];
                     sumTotal = [sumTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
