@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel1;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel2;
 @property (weak, nonatomic) IBOutlet UILabel *cellLabel3;
-@property (weak, nonatomic) IBOutlet UILabel *cellLabelGPA;
+@property (weak, nonatomic) IBOutlet UILabel *cellLabel4;
+@property (weak, nonatomic) IBOutlet UILabel *cellLabel5;
 
 @end

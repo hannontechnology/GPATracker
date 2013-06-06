@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *courseMaxPercentText;
 @property (weak, nonatomic) IBOutlet UILabel *courseCreditsText;
 @property (weak, nonatomic) IBOutlet UILabel *courseTotalWeightText;
+@property (weak, nonatomic) IBOutlet UILabel *courseCurrPercentText;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 -(IBAction)back;

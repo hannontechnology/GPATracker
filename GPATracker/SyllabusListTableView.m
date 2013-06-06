@@ -178,6 +178,7 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
+    [self setCourseCurrPercentText:nil];
     [self setCourseTotalWeightText:nil];
 }
 
@@ -211,7 +212,7 @@ viewForFooterInSection:(NSInteger)section
     [nf setZeroSymbol:@"0.0"];
     
     cell.cellLabel1.text = [selectedObject sectionName];
-    cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
+    cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
     NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     for (SyllabusItemDetails *item2 in selectedObject.syllabusItemDetails)
@@ -229,7 +230,7 @@ viewForFooterInSection:(NSInteger)section
         sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
     NSString *nsSectionTotal = [nf stringFromNumber:sectionTotal];
     
-    cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", nsSectionTotal];
+    cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", nsSectionTotal];
     
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
