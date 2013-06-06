@@ -14,7 +14,8 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>GPARoadie.png</string>
+				<string>GPARoadie-large.png</string>
+				<string>GPARoadie-small.png</string>
 			</array>
 		</dict>
 	</dict>
