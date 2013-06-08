@@ -111,6 +111,8 @@
     schoolDetailsField.inputAccessoryView = keyboardToolbar;
     schoolStartYearField.inputAccessoryView = keyboardToolbar;
     schoolEndYearField.inputAccessoryView = keyboardToolbar;
+    historicalCreditsField.inputAccessoryView = keyboardToolbar;
+    historicalGPAField.inputAccessoryView = keyboardToolbar;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -129,6 +131,10 @@
         [schoolStartYearField resignFirstResponder];
     else if ([schoolEndYearField isFirstResponder])
         [schoolEndYearField resignFirstResponder];
+    else if ([historicalGPAField isFirstResponder])
+        [historicalGPAField resignFirstResponder];
+    else if ([historicalCreditsField isFirstResponder])
+        [historicalCreditsField resignFirstResponder];
 }
 
 - (void) prevField:(id)sender
@@ -162,6 +168,21 @@
         UITableViewCell *cell = (UITableViewCell*) [[schoolStartYearField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
+    else if ([historicalGPAField isFirstResponder])
+    {
+        [historicalGPAField resignFirstResponder];
+        [historicalGPAField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[historicalCreditsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([historicalCreditsField isFirstResponder])
+    {
+        [historicalCreditsField resignFirstResponder];
+        [historicalCreditsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[historicalGPAField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+
 }
 
 - (void) nextField:(id)sender
@@ -195,6 +216,22 @@
         UITableViewCell *cell = (UITableViewCell*) [[schoolNameField superview] superview];
         [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
     }
+
+    else if ([historicalGPAField isFirstResponder])
+    {
+        [historicalGPAField resignFirstResponder];
+        [historicalGPAField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[historicalCreditsField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+    else if ([historicalCreditsField isFirstResponder])
+    {
+        [historicalCreditsField resignFirstResponder];
+        [historicalCreditsField becomeFirstResponder];
+        UITableViewCell *cell = (UITableViewCell*) [[historicalGPAField superview] superview];
+        [self.tableView scrollToRowAtIndexPath:[self.tableView indexPathForCell:cell] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
+    }
+
 }
 
 - (void)viewDidUnload
@@ -230,10 +267,7 @@
         [self.tableView cellForRowAtIndexPath:indexPath].hidden = YES;
         return;
     }
-    //else
-    //{
-    //    self.navigationItem.hidesBackButton = NO;
-    //}
+
     if (self.schoolInfo == nil)
     {
         NSLog(@"Database Error: Could not connect to Database");
@@ -373,7 +407,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1 && self.setEditStatus == (NSString *)@"Edit")
+    if (indexPath.section == 0 && self.setEditStatus == (NSString *)@"Edit")
     {
     // Navigation logic may go here. Create and push another view controller.
     /*
@@ -487,15 +521,28 @@
 
        //Control visiability of button later
     }
+    
+    if (indexPath.section == 1)
+    {
+        [self nextField:self];
+        
+    }
 
     if (indexPath.section == 2 && self.setEditStatus == (NSString *)@"Edit")
+    {
+        NSLog(@"Change Grading Scheme");
+        [self performSegueWithIdentifier:@"segue2GradingConfirmEdit" sender:self];
+    }
+    
+    if (indexPath.section == 3 && self.setEditStatus == (NSString *)@"Edit")
     {
         NSLog(@"Delete School");
         UIActionSheet *popUp = [[UIActionSheet alloc] initWithTitle:@"Delete School" delegate:self cancelButtonTitle:@"No" destructiveButtonTitle:@"Yes" otherButtonTitles:nil];
         popUp.tag = 0;
         
-        [popUp showInView:self.view];
+        [popUp showFromTabBar:self.view];
     }
+
 }
 
 - (IBAction)Cancel:(id)sender
@@ -525,24 +572,25 @@
         {
             NSLog(@"User Click the No button");
             // Maybe do something else
-            [self.navigationController popViewControllerAnimated:YES];
         }
  
     }
     //else if (actionSheet.title == (NSString *)@"Delete School")
     else if (iTag == 0)
     {
-        switch (buttonIndex)
+        if (buttonIndex == 0)
         {
-            case 0:
                 NSLog(@"User Clicked the Yes button");
                 [self.managedObjectContext deleteObject:self.schoolInfo];
                 [self.managedObjectContext save:nil];
                 [self.navigationController popViewControllerAnimated:YES];
-                break;
-            default:
-                break;
         }
+        else if (buttonIndex == 1)
+        {
+            NSLog(@"User Clicked the No Button");
+            // Maybe do something else
+        }
+        
 
     }
 }
