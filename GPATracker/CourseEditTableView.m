@@ -260,7 +260,6 @@ viewForFooterInSection:(NSInteger)section
     //cancelButton.
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    self.navigationItem.hidesBackButton = YES;
 
     self.gradeList = [[NSMutableArray alloc] init];
     if (coursePassFailField.on)

@@ -338,8 +338,6 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    //self.navigationItem.hidesBackButton = YES;
-    [self.navigationItem setHidesBackButton:YES animated:NO];
 
     NSArray *yearList = [self.dataCollection retrieveYearPicker:self.managedObjectContext];
     self.semesterYearList = [[NSMutableArray alloc] init];
