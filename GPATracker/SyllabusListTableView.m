@@ -215,6 +215,9 @@ viewForFooterInSection:(NSInteger)section
     cell.cellLabel1.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
     NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *itemCount1 = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sectionScore = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+ 
     for (SyllabusItemDetails *item2 in selectedObject.syllabusItemDetails)
     {
         if (item2.itemScore != nil && item2.itemOutOf != nil && item2.itemScore.longValue != 0 && item2.itemOutOf.longValue != 0)
@@ -223,15 +226,33 @@ viewForFooterInSection:(NSInteger)section
             itemTotal = [item2.itemScore decimalNumberByDividingBy:item2.itemOutOf];
             itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
             itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+            itemCount1 = [itemCount1 decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
             sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+            sectionScore = [sectionScore decimalNumberByAdding:itemTotal];
+            
+        }
+        
+        else if (item2.itemScore == nil && item2.itemOutOf != nil && item2.itemOutOf.longValue !=0)
+        {
+            NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            itemTotal = [item2.itemOutOf decimalNumberByDividingBy:item2.itemOutOf];
+            itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            itemCount1 = [itemCount1 decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+            sectionScore = [sectionScore decimalNumberByAdding:itemTotal];
         }
     }
     if (itemCount.longValue != 0)
         sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
+    
+    if (itemCount1.longValue !=0)
+        sectionScore = [sectionScore decimalNumberByDividingBy:itemCount1];
+    
     NSString *nsSectionTotal = [nf stringFromNumber:sectionTotal];
+    NSString *nsSectionMax = [nf stringFromNumber:sectionScore];
     
     cell.cellLabel3.text = [NSString stringWithFormat:@"%@%%", nsSectionTotal];
-    
+    cell.cellLabel4.text = [NSString stringWithFormat:@"%@%%", nsSectionMax];
+
     cell.backgroundView = [[CustomCellBackground alloc] init];
     cell.selectedBackgroundView = [[CustomCellBackground alloc] init];
     
