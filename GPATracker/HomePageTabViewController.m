@@ -404,6 +404,12 @@
             [sender setTitle:@"Done" forState:UIControlStateNormal];
             [newViewController setEditing:YES animated:YES];
         }
+        else if (self.displayType == (NSString *)@"Calendar")
+        {
+            CalendarListTableView *newViewController = [self.childViewControllers objectAtIndex:self.pageControl.currentPage];
+            [sender setTitle:@"Done" forState:UIControlStateNormal];
+            [newViewController setEditing:YES animated:YES];
+        }
     }
     else
     {
