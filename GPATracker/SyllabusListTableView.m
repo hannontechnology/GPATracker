@@ -211,8 +211,8 @@ viewForFooterInSection:(NSInteger)section
     [nf setMaximumFractionDigits:1];
     [nf setZeroSymbol:@"0.0"];
     
-    cell.cellLabel1.text = [selectedObject sectionName];
-    cell.cellLabel2.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
+    cell.cellLabel2.text = [selectedObject sectionName];
+    cell.cellLabel1.text = [NSString stringWithFormat:@"%@%%", [selectedObject percentBreakdown].stringValue];
     NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     for (SyllabusItemDetails *item2 in selectedObject.syllabusItemDetails)

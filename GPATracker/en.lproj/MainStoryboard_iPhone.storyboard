@@ -3049,14 +3049,14 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="yNE-KK-7NP"/>
-        <segue reference="KvF-9q-C6b"/>
-        <segue reference="DG6-i7-zNC"/>
-        <segue reference="VVr-Ld-9wW"/>
-        <segue reference="1dU-6g-oZa"/>
-        <segue reference="sH2-t5-pXi"/>
         <segue reference="k7a-QP-sia"/>
-        <segue reference="oru-Wj-xvh"/>
+        <segue reference="xWR-GP-plh"/>
+        <segue reference="yNE-KK-7NP"/>
+        <segue reference="1sF-Mq-18r"/>
+        <segue reference="DG6-i7-zNC"/>
+        <segue reference="1dU-6g-oZa"/>
+        <segue reference="VVr-Ld-9wW"/>
+        <segue reference="khB-Ho-E86"/>
         <segue reference="LMs-sZ-M1E"/>
         <segue reference="iZp-yv-ib1"/>
         <segue reference="jxS-5C-xzp"/>
