@@ -237,7 +237,6 @@
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonSystemItemCancel target:self action:@selector(Cancel:)];
     //UINavigationItem *item = [[UINavigationItem alloc] initWithTitle:@"Title"];
     self.navigationItem.leftBarButtonItem = cancelButton;
-    self.navigationItem.hidesBackButton = YES;
 
     if (self.userInfo == nil)
     {
