@@ -416,6 +416,7 @@ static const NSTimeInterval kPickerAnimationTime = 0.333;
         else
         {
             //[self.pickerView selectedRowInComponent:semesterList];
+            //[self performSegueWithIdentifier:@"segueHomePageCreateCourseCal" sender:self];
             [self performSegueWithIdentifier:@"segueHomePageCreateCourse" sender:self];
         }
     }
