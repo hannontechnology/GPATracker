@@ -3027,6 +3027,7 @@
                         <outlet property="schoolNameText" destination="R29-ez-nPX" id="3rO-ch-UEy"/>
                         <outlet property="schoolYearsText" destination="QDI-LC-0DS" id="EHV-9Y-bJs"/>
                         <segue destination="OrC-GG-uQ8" kind="push" identifier="segueEditSyllabusItemFromCalendar" id="iaY-LF-wG6"/>
+                        <segue destination="J3F-p1-3o6" kind="push" identifier="segueHomePageCreateCourseCal" id="Xpp-Sd-Mcg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zhj-aN-cDz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3049,17 +3050,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="iZp-yv-ib1"/>
         <segue reference="k7a-QP-sia"/>
-        <segue reference="xWR-GP-plh"/>
+        <segue reference="Xpp-Sd-Mcg"/>
+        <segue reference="iaY-LF-wG6"/>
+        <segue reference="LMs-sZ-M1E"/>
+        <segue reference="jxS-5C-xzp"/>
+        <segue reference="VVr-Ld-9wW"/>
         <segue reference="yNE-KK-7NP"/>
         <segue reference="1sF-Mq-18r"/>
         <segue reference="DG6-i7-zNC"/>
         <segue reference="1dU-6g-oZa"/>
-        <segue reference="VVr-Ld-9wW"/>
         <segue reference="khB-Ho-E86"/>
-        <segue reference="LMs-sZ-M1E"/>
-        <segue reference="iZp-yv-ib1"/>
-        <segue reference="jxS-5C-xzp"/>
-        <segue reference="iaY-LF-wG6"/>
     </inferredMetricsTieBreakers>
 </document>

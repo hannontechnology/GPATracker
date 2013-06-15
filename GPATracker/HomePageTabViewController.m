@@ -20,6 +20,9 @@
 #import "CalendarListTableView.h"
 
 @interface HomePageTabViewController ()
+@property (strong, nonatomic) UIPickerView *pickerView;
+@property CGRect pickerViewShownFrame;
+@property CGRect pickerViewHiddenFrame;
 @end
 
 @implementation HomePageTabViewController
@@ -32,6 +35,15 @@
 @synthesize buttonPrevious;
 @synthesize buttonAddSchool;
 @synthesize buttonEditSchool;
+
+@synthesize pickerView = _pickerView;
+@synthesize pickerViewShownFrame = _pickerViewShownFrame;
+@synthesize pickerViewHiddenFrame = _pickerViewHiddenFrame;
+
+// Some Picker size values that will be handy later on.
+static const CGFloat kPickerDefaultWidth = 320.f;
+static const CGFloat kPickerDefaultHeight = 216.f;
+static const NSTimeInterval kPickerAnimationTime = 0.333;
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -341,6 +353,20 @@
         CourseEditTableView.dataCollection = self.dataCollection;
         CourseEditTableView.managedObjectContext = self.managedObjectContext;
     }
+    else if ([segue.identifier isEqualToString:@"segueHomePageCreateCourseCal"])
+    {
+        SchoolDetails *selectedObject = [self.schoolList objectAtIndex:self.pageControl.currentPage];
+        NSArray *semesterList = [self.dataCollection retrieveSemesterList:selectedObject context:self.managedObjectContext];
+       //NSArray *semesterList = [self.dataCollection retrieveSemesterList:[self.schoolList objectAtIndex:self.pageControl.currentPage] context:self.managedObjectContext];
+        SemesterDetails *selectedSemester = [semesterList objectAtIndex:[self.pickerView selectedRowInComponent:0]];
+        
+        CourseEditTableView *CourseEditTableView = [segue destinationViewController];
+        
+        CourseEditTableView.setEditStatus = @"Create";
+        CourseEditTableView.semesterDetails = selectedSemester;
+        CourseEditTableView.dataCollection = self.dataCollection;
+        CourseEditTableView.managedObjectContext = self.managedObjectContext;
+    }
     [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
@@ -382,6 +408,17 @@
         else
             [self performSegueWithIdentifier: @"segueHomePageCreateCourse" sender: self];
     }
+    else if (self.displayType == (NSString *)@"Calendar")
+    {
+        NSArray *semesterList = [self.dataCollection retrieveSemesterList:[self.schoolList objectAtIndex:self.pageControl.currentPage] context:self.managedObjectContext];
+        if ([semesterList count] == 0)
+            [self performSegueWithIdentifier: @"segueHomePageCreateSemester" sender: self];
+        else
+        {
+            //[self.pickerView selectedRowInComponent:semesterList];
+            [self performSegueWithIdentifier:@"segueHomePageCreateCourse" sender:self];
+        }
+    }
 }
 
 -(IBAction)BtnEditSchool:(id)sender
@@ -418,6 +455,9 @@
         [newViewController setEditing:NO animated:YES];
     }
 }
+
+
+
 
 - (void)viewDidUnload {
     [self setButtonLogout:nil];

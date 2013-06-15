@@ -12,7 +12,10 @@
 @class User;
 @class DataCollection;
 
-@interface HomePageTabViewController : PagerViewController
+@interface HomePageTabViewController : PagerViewController <UIPickerViewDelegate>
+{
+    IBOutlet UIToolbar *keyboardToolbar;
+}
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonLogout;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonEditProfile;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *buttonCourseList;
@@ -22,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *buttonPrevious;
 @property (weak, nonatomic) IBOutlet UIButton *buttonAddSchool;
 @property (weak, nonatomic) IBOutlet UIButton *buttonEditSchool;
+
+@property (weak, nonatomic) IBOutlet UIToolbar *keyboardToolbar;
 
 -(IBAction)Logout:(id)sender;
 -(IBAction)EditProfile:(id)sender;
