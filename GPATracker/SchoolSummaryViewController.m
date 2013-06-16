@@ -162,9 +162,11 @@
                             sumPercent = [sumPercent decimalNumberByAdding:sectionPercent];
                     }
                 }
-                if ([sumPercent decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]].longValue < 100 && sumPercent.longValue != 0)
+                NSDecimalNumber *tmpSumPercent = sumPercent;
+                tmpSumPercent = [sumPercent decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+                if (tmpSumPercent.longValue < 100 && tmpSumPercent.longValue != 0)
                 {
-                    sumTotal = [sumTotal decimalNumberByDividingBy:[sumPercent decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]]];
+                    sumTotal = [sumTotal decimalNumberByDividingBy:tmpSumPercent];
                     sumTotal = [sumTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
                 }
                 if (sumTotal.longValue > 0)

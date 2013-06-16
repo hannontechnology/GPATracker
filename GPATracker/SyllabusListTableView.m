@@ -115,6 +115,7 @@ viewForFooterInSection:(NSInteger)section
         [self.courseTotalWeightText setTextColor:[UIColor redColor]];
     
     NSDecimalNumber *sumTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+    NSDecimalNumber *sumMax = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
     for (SyllabusDetails *item in self.courseDetails.syllabusDetails)
     {
         if (item.percentBreakdown != nil)
@@ -122,6 +123,8 @@ viewForFooterInSection:(NSInteger)section
             NSDecimalNumber *sectionPercent = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
             NSDecimalNumber *sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
             NSDecimalNumber *itemCount = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            NSDecimalNumber *itemCount1 = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
+            NSDecimalNumber *sectionScore = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
             sectionPercent = [item.percentBreakdown decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
             for (SyllabusItemDetails *item2 in item.syllabusItemDetails)
             {
@@ -131,21 +134,31 @@ viewForFooterInSection:(NSInteger)section
                     itemTotal = [item2.itemScore decimalNumberByDividingBy:item2.itemOutOf];
                     itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
                     itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+                    itemCount1 = [itemCount1 decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
                     sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+                    sectionScore = [sectionScore decimalNumberByAdding:itemTotal];
                 }
                 else
                 {
                     NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
-                    itemCount = [itemCount decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
-                    sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
+                    itemCount1 = [itemCount1 decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
+                    sectionScore = [sectionScore decimalNumberByAdding:itemTotal];
                 }
             }
             if (itemCount.longValue != 0)
                 sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
             else
                 sectionTotal = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
+
+            if (itemCount1.longValue != 0)
+                sectionScore = [sectionScore decimalNumberByDividingBy:itemCount1];
+            else
+                sectionScore = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
+            
             sectionTotal = [sectionTotal decimalNumberByMultiplyingBy:sectionPercent];
+            sectionScore = [sectionScore decimalNumberByMultiplyingBy:sectionPercent];
             sumTotal = [sumTotal decimalNumberByAdding:sectionTotal];
+            sumMax = [sumMax decimalNumberByAdding:sectionScore];
         }
     }
     
@@ -155,8 +168,10 @@ viewForFooterInSection:(NSInteger)section
     [nf setZeroSymbol:@"0"];
     
     NSString *nsPossibleGrade = [nf stringFromNumber:sumTotal];
+    NSString *nsMaximumGrade = [nf stringFromNumber:sumMax];
     
-    self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
+    self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsMaximumGrade];
+    self.courseCurrPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
     
     [self setupFetchedResultsController];
     
@@ -229,14 +244,10 @@ viewForFooterInSection:(NSInteger)section
             itemCount1 = [itemCount1 decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
             sectionTotal = [sectionTotal decimalNumberByAdding:itemTotal];
             sectionScore = [sectionScore decimalNumberByAdding:itemTotal];
-            
         }
-        
-        else if (item2.itemScore == nil && item2.itemOutOf != nil && item2.itemOutOf.longValue !=0)
+        else
         {
-            NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:0.00 exponent:0 isNegative:NO];
-            itemTotal = [item2.itemOutOf decimalNumberByDividingBy:item2.itemOutOf];
-            itemTotal = [itemTotal decimalNumberByMultiplyingBy:[NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO]];
+            NSDecimalNumber *itemTotal = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
             itemCount1 = [itemCount1 decimalNumberByAdding:[NSDecimalNumber decimalNumberWithMantissa:1.00 exponent:0 isNegative:NO]];
             sectionScore = [sectionScore decimalNumberByAdding:itemTotal];
         }
@@ -244,8 +255,10 @@ viewForFooterInSection:(NSInteger)section
     if (itemCount.longValue != 0)
         sectionTotal = [sectionTotal decimalNumberByDividingBy:itemCount];
     
-    if (itemCount1.longValue !=0)
+    if (itemCount1.longValue != 0)
         sectionScore = [sectionScore decimalNumberByDividingBy:itemCount1];
+    else
+        sectionScore = [NSDecimalNumber decimalNumberWithMantissa:100.00 exponent:0 isNegative:NO];
     
     NSString *nsSectionTotal = [nf stringFromNumber:sectionTotal];
     NSString *nsSectionMax = [nf stringFromNumber:sectionScore];
