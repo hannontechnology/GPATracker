@@ -29,9 +29,22 @@
 @property (weak, nonatomic) IBOutlet UILabel *semesterCourseCount;
 @property (weak, nonatomic) IBOutlet UILabel *semesterCreditHours;
 @property (weak, nonatomic) IBOutlet UILabel *semesterGPA;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnHomePage;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnSemeserList;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCourseList;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCalendar;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnProfile;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *btnLogout;
+@property (strong, nonatomic) NSString *viewType;
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;
 
 -(void)DisplayInfo;
+-(IBAction)GotoHomePage:(id)sender;
+-(IBAction)GotoSemesterList:(id)sender;
+-(IBAction)GotoCourseList:(id)sender;
+-(IBAction)GotoCalendar:(id)sender;
+-(IBAction)EditProfile:(id)sender;
+-(IBAction)Logout:(id)sender;
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1497,6 +1497,38 @@
                             <outlet property="delegate" destination="0oZ-Xb-naF" id="sCg-u9-JW6"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem image="BlueHomeButton.png" id="co8-YU-Ube">
+                            <connections>
+                                <action selector="GotoHomePage:" destination="0oZ-Xb-naF" id="vpc-ai-vht"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="circleIcon.png" id="WuF-9y-qvU">
+                            <connections>
+                                <action selector="GotoSemesterList:" destination="0oZ-Xb-naF" id="4VD-lY-id0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="CoursesIcon.png" id="eai-Up-Ln4">
+                            <connections>
+                                <action selector="GotoCourseList:" destination="0oZ-Xb-naF" id="rBl-aR-GNp"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="CalendarIcon.png" id="J2O-C7-B1K">
+                            <connections>
+                                <action selector="GotoCalendar:" destination="0oZ-Xb-naF" id="3oO-SD-I7N"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="ProfileButton.png" id="He2-Ey-g8d">
+                            <connections>
+                                <action selector="EditProfile:" destination="0oZ-Xb-naF" id="1SA-00-2D8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="LogoffButton.png" id="ObV-ki-a2H">
+                            <connections>
+                                <action selector="Logout:" destination="0oZ-Xb-naF" id="XAw-A2-YGf"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Course List" id="A0v-Uq-O6S">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5IJ-xf-1oc">
                             <connections>
@@ -1510,6 +1542,12 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="btnCalendar" destination="J2O-C7-B1K" id="cuG-rw-WQf"/>
+                        <outlet property="btnCourseList" destination="eai-Up-Ln4" id="6Qr-EM-UPh"/>
+                        <outlet property="btnHomePage" destination="co8-YU-Ube" id="vHT-Ym-6sm"/>
+                        <outlet property="btnLogout" destination="ObV-ki-a2H" id="4dG-UW-iAQ"/>
+                        <outlet property="btnProfile" destination="He2-Ey-g8d" id="8Qf-i3-7hK"/>
+                        <outlet property="btnSemeserList" destination="WuF-9y-qvU" id="JUi-DC-qN5"/>
                         <outlet property="semesterCourseCount" destination="Y6Z-sy-0dZ" id="Jfl-Jf-O29"/>
                         <outlet property="semesterCreditHours" destination="nS8-8c-Zbf" id="VDx-Tm-aSL"/>
                         <outlet property="semesterGPA" destination="azf-Cq-Rbj" id="zyG-xy-QdY"/>
@@ -1517,6 +1555,9 @@
                         <segue destination="J3F-p1-3o6" kind="push" identifier="segueEditCourse" id="Zx4-Yb-B7c"/>
                         <segue destination="USk-0t-HId" kind="push" identifier="segueCourseList2SemesterList" id="LMs-sZ-M1E"/>
                         <segue destination="wtt-27-mum" kind="push" identifier="segueCourseTable2SyllabusList" id="iZp-yv-ib1"/>
+                        <segue destination="I4e-vy-Asq" kind="push" identifier="segueCourseList2HomePage" id="ySj-rs-Z44"/>
+                        <segue destination="MG7-Ge-mPq" kind="push" identifier="segueCourseList2EditProfile" id="wGk-Ut-19X"/>
+                        <segue destination="2" kind="modal" identifier="segueCourseListLogout" id="eHv-v6-Abp"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWv-2o-iEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1995,6 +2036,7 @@
                         </subviews>
                         <color key="backgroundColor" red="0.072161758739999998" green="0.5724715937" blue="0.70903125" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" id="xQr-7q-avK"/>
                     <connections>
                         <outlet property="cGPA" destination="Tup-Fe-aC4" id="b4q-8x-1tS"/>
                         <outlet property="calculatedGPA" destination="aLT-tt-GBx" id="hW1-RQ-HdS"/>
@@ -3050,17 +3092,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="iZp-yv-ib1"/>
-        <segue reference="k7a-QP-sia"/>
-        <segue reference="Xpp-Sd-Mcg"/>
         <segue reference="iaY-LF-wG6"/>
+        <segue reference="1sF-Mq-18r"/>
+        <segue reference="ySj-rs-Z44"/>
+        <segue reference="k7a-QP-sia"/>
+        <segue reference="oru-Wj-xvh"/>
+        <segue reference="eHv-v6-Abp"/>
+        <segue reference="wGk-Ut-19X"/>
+        <segue reference="iZp-yv-ib1"/>
         <segue reference="LMs-sZ-M1E"/>
         <segue reference="jxS-5C-xzp"/>
-        <segue reference="VVr-Ld-9wW"/>
-        <segue reference="yNE-KK-7NP"/>
-        <segue reference="1sF-Mq-18r"/>
-        <segue reference="DG6-i7-zNC"/>
-        <segue reference="1dU-6g-oZa"/>
         <segue reference="khB-Ho-E86"/>
+        <segue reference="DG6-i7-zNC"/>
     </inferredMetricsTieBreakers>
 </document>
