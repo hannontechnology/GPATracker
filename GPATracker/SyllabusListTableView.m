@@ -173,8 +173,7 @@ viewForFooterInSection:(NSInteger)section
     self.courseMaxPercentText.text = [NSString stringWithFormat:@"%@%%", nsMaximumGrade];
     self.courseCurrPercentText.text = [NSString stringWithFormat:@"%@%%", nsPossibleGrade];
     
-    [self setupFetchedResultsController];
-    
+    [self setupFetchedResultsController];    
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
