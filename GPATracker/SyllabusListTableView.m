@@ -15,6 +15,10 @@
 #import "SchoolListTableView.h"
 #import "CourseTableView.h"
 #import "CourseListTableView.h"
+#import "HomePageTabViewController.h"
+#import "SemesterDetails.h"
+#import "LoginView.h"
+#import "ProfileEditTableView.h"
 #import "SyllabusListTableCell1.h"
 #import "SyllabusEditTableView.h"
 #import "SyllabusItemTableView.h"
@@ -85,6 +89,34 @@ viewForFooterInSection:(NSInteger)section
 -(CGFloat) tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 28;
+}
+
+- (IBAction)GotoHomePage:(id)sender {
+    self.viewType = @"Schools";
+    [self performSegueWithIdentifier:@"segueSyllabusList2HomePage" sender: self];
+}
+
+- (IBAction)GotoSemesterList:(id)sender {
+    self.viewType = @"Semesters";
+    [self performSegueWithIdentifier:@"segueSyllabusList2HomePage" sender: self];
+}
+
+- (IBAction)GotoCourseList:(id)sender {
+    self.viewType = @"Courses";
+    [self performSegueWithIdentifier:@"segueSyllabusList2HomePage" sender: self];
+}
+
+- (IBAction)GotoCalendar:(id)sender {
+    self.viewType = @"Calendar";
+    [self performSegueWithIdentifier:@"segueSyllabusList2HomePage" sender: self];
+}
+
+- (IBAction)EditProfile:(id)sender {
+    [self performSegueWithIdentifier: @"segueSyllabusList2EditProfile" sender: self];
+}
+
+- (IBAction)Logout:(id)sender {
+    [self performSegueWithIdentifier: @"segueSyllabusListLogout" sender: self];
 }
 
 -(IBAction)back
@@ -192,8 +224,15 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
+    [self setBtnLogout:nil];
+    [self setBtnProfile:nil];
+    [self setBtnCalendar:nil];
+    [self setBtnCourseList:nil];
+    [self setBtnSemesterList:nil];
+    [self setBtnHomePage:nil];
     [self setCourseCurrPercentText:nil];
     [self setCourseTotalWeightText:nil];
+    [super viewDidUnload];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -368,6 +407,45 @@ viewForFooterInSection:(NSInteger)section
         syllabusEditTableView.managedObjectContext = self.managedObjectContext;
         syllabusEditTableView.setEditStatus = @"Edit";
     }
+    else if ([segue.identifier isEqualToString:@"segueCourseList2HomePage"])
+    {
+        HomePageTabViewController *homePageTabViewController = [segue destinationViewController];
+        
+        homePageTabViewController.userInfo = self.courseDetails.semesterDetails.schoolDetails.user;
+        //homePageTabViewController.userInfo = self.userInfo;
+        homePageTabViewController.dataCollection = self.dataCollection;
+        homePageTabViewController.managedObjectContext = self.managedObjectContext;
+        homePageTabViewController.displayType = self.viewType;
+        if ([self.viewType isEqual:@"Schools"])
+            [homePageTabViewController viewSchools];
+        else if ([self.viewType isEqual:@"Semesters"])
+            [homePageTabViewController viewSemesters];
+        else if ([self.viewType isEqual:@"Courses"])
+            [homePageTabViewController viewCourses];
+        else if ([self.viewType isEqual:@"Calendar"])
+            [homePageTabViewController viewCalendar];
+    }
+	else if ([segue.identifier isEqualToString:@"segueSyllabusListLogout"])
+	{
+        LoginView *LoginView = [segue destinationViewController];
+        
+        LoginView.setLogoutStatus = @"Logout";
+        //LoginView.userInfo = self.userInfo;
+        LoginView.userInfo = self.courseDetails.semesterDetails.schoolDetails.user;
+        LoginView.dataCollection = self.dataCollection;
+        LoginView.managedObjectContext = self.managedObjectContext;
+	}
+    else if ([segue.identifier isEqualToString:@"segueSyllabusList2EditProfile"])
+    {
+        ProfileEditTableView *ProfileEditTableView = [segue destinationViewController];
+        
+        ProfileEditTableView.setEditStatus = @"Edit";
+        //ProfileEditTableView.userInfo = self.userInfo;
+        ProfileEditTableView.userInfo = self.courseDetails.semesterDetails.schoolDetails.user;
+        ProfileEditTableView.dataCollection = self.dataCollection;
+        ProfileEditTableView.managedObjectContext = self.managedObjectContext;
+    }
+
 }
 
 
