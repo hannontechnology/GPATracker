@@ -251,7 +251,7 @@
         firstNameField.text = self.userInfo.userFirstName;
         lastNameField.text  = self.userInfo.userLastName;
         emailField.text     = self.userInfo.userEmail;
-        if (self.userInfo.autoLogon == [NSNumber numberWithBool:YES])
+        if (self.userInfo.autoLogon == [NSNumber numberWithInt:1])
         {
             autoLoginField.on = YES;
         }
