@@ -407,12 +407,11 @@ viewForFooterInSection:(NSInteger)section
         syllabusEditTableView.managedObjectContext = self.managedObjectContext;
         syllabusEditTableView.setEditStatus = @"Edit";
     }
-    else if ([segue.identifier isEqualToString:@"segueCourseList2HomePage"])
+    else if ([segue.identifier isEqualToString:@"segueSyllabusList2HomePage"])
     {
         HomePageTabViewController *homePageTabViewController = [segue destinationViewController];
         
         homePageTabViewController.userInfo = self.courseDetails.semesterDetails.schoolDetails.user;
-        //homePageTabViewController.userInfo = self.userInfo;
         homePageTabViewController.dataCollection = self.dataCollection;
         homePageTabViewController.managedObjectContext = self.managedObjectContext;
         homePageTabViewController.displayType = self.viewType;

@@ -338,12 +338,14 @@
                 NSArray *schooList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
                 if ([schooList count] == 0)
                 {
-                    //[self performSegueWithIdentifier: @"segueProfileCreateSchool" sender: self];
                     [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
                 }
                 else
                 {
-                    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                    if (self.navigationController == nil)
+                        [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                    else
+                        [self.navigationController popViewControllerAnimated:YES];
                 }
             }
             else 
@@ -374,12 +376,14 @@
             NSArray *schooList = [self.dataCollection retrieveSchoolList:self.userInfo context:self.managedObjectContext];
             if ([schooList count] == 0)
             {
-                //[self performSegueWithIdentifier: @"segueProfileCreateSchool" sender: self];
                 [self performSegueWithIdentifier: @"segueProfile2Login" sender: self];
             }
             else
             {
-                [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                if (self.navigationController == nil)
+                    [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+                else
+                    [self.navigationController popViewControllerAnimated:YES];
             }
         }
         else 
@@ -411,7 +415,10 @@
         }
         else
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            if (self.navigationController == nil)
+                [self performSegueWithIdentifier: @"segueProfile2HomePage" sender: self];
+            else
+                [self.navigationController popViewControllerAnimated:YES];
         }
     }
     else if (buttonIndex == 1)
