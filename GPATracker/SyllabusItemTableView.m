@@ -152,15 +152,12 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
-    [self setEditProfile:nil];
     [self setBtnProfile:nil];
     [self setBtnLogout:nil];
-    [self setBtnEditProfile:nil];
     [self setBtnCalendar:nil];
     [self setBtnCourseList:nil];
     [self setBtnSemesterList:nil];
     [self setBtnHomePage:nil];
-    [self setBtnHome:nil];
     [self setSectionGradeField:nil];
     [self setSectionWeightField:nil];
     [self setSectionNameField:nil];
