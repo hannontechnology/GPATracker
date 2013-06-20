@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -2666,6 +2666,38 @@
                             <outlet property="delegate" destination="uYL-hK-7nw" id="Pri-HF-tWb"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem image="BlueHomeButton.png" id="YGl-ms-3aX">
+                            <connections>
+                                <action selector="GotoHomePage:" destination="uYL-hK-7nw" id="UdW-lF-DVq"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="circleIcon.png" id="V6v-Pp-hGc">
+                            <connections>
+                                <action selector="GotoSemesterList:" destination="uYL-hK-7nw" id="xBU-EF-Bzs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="CoursesIcon.png" id="PwE-Qj-W1L">
+                            <connections>
+                                <action selector="GotoCourseList:" destination="uYL-hK-7nw" id="0bz-Dm-nmn"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="CalendarIcon.png" id="jVc-zI-AX0">
+                            <connections>
+                                <action selector="GotoCalendar:" destination="uYL-hK-7nw" id="0ov-c5-Snz"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="ProfileButton.png" id="nZB-67-3Co">
+                            <connections>
+                                <action selector="EditProfile:" destination="uYL-hK-7nw" id="a6h-0S-Za8"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem image="LogoffButton.png" id="pP5-2Y-v9s">
+                            <connections>
+                                <action selector="Logout:" destination="uYL-hK-7nw" id="65B-MI-38a"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Syllabus Items" id="Z3O-ht-Dg3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="m62-nD-6Zg">
                             <connections>
@@ -2679,6 +2711,15 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="EditProfile" destination="nZB-67-3Co" id="HmO-Ox-AZa"/>
+                        <outlet property="btnCalendar" destination="jVc-zI-AX0" id="MOX-Hb-7Td"/>
+                        <outlet property="btnCourseList" destination="PwE-Qj-W1L" id="pGn-IT-NGs"/>
+                        <outlet property="btnEditProfile" destination="nZB-67-3Co" id="yTd-aY-Qgr"/>
+                        <outlet property="btnHome" destination="YGl-ms-3aX" id="Hs0-co-jn2"/>
+                        <outlet property="btnHomePage" destination="YGl-ms-3aX" id="YU0-g2-TXy"/>
+                        <outlet property="btnLogout" destination="pP5-2Y-v9s" id="TX5-mw-RHa"/>
+                        <outlet property="btnProfile" destination="nZB-67-3Co" id="fCJ-Eh-Ag2"/>
+                        <outlet property="btnSemesterList" destination="V6v-Pp-hGc" id="B9M-Iy-MDn"/>
                         <outlet property="sectionGradeField" destination="F4T-Db-Smj" id="IBk-lx-7bG"/>
                         <outlet property="sectionNameField" destination="Tzg-mh-BAH" id="5ha-2r-hcd"/>
                         <outlet property="sectionWeightField" destination="JN6-cw-7Nj" id="Vs5-Ek-3U7"/>
@@ -3118,17 +3159,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="HPn-d4-4UI"/>
+        <segue reference="iZp-yv-ib1"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="oru-Wj-xvh"/>
         <segue reference="LMs-sZ-M1E"/>
-        <segue reference="iZp-yv-ib1"/>
-        <segue reference="gYM-Wx-Tra"/>
         <segue reference="jxS-5C-xzp"/>
+        <segue reference="gYM-Wx-Tra"/>
         <segue reference="Icv-fM-J1b"/>
-        <segue reference="HPn-d4-4UI"/>
         <segue reference="1sF-Mq-18r"/>
         <segue reference="khB-Ho-E86"/>
         <segue reference="DG6-i7-zNC"/>
-        <segue reference="iaY-LF-wG6"/>
+        <segue reference="sSb-sX-uVt"/>
     </inferredMetricsTieBreakers>
 </document>

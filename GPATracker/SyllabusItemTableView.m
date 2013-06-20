@@ -152,6 +152,15 @@ viewForFooterInSection:(NSInteger)section
 
 - (void)viewDidUnload
 {
+    [self setEditProfile:nil];
+    [self setBtnProfile:nil];
+    [self setBtnLogout:nil];
+    [self setBtnEditProfile:nil];
+    [self setBtnCalendar:nil];
+    [self setBtnCourseList:nil];
+    [self setBtnSemesterList:nil];
+    [self setBtnHomePage:nil];
+    [self setBtnHome:nil];
     [self setSectionGradeField:nil];
     [self setSectionWeightField:nil];
     [self setSectionNameField:nil];
@@ -312,4 +321,21 @@ viewForFooterInSection:(NSInteger)section
 }
 
 
+- (IBAction)GotoHomePage:(id)sender {
+}
+
+- (IBAction)GotoSemesterList:(id)sender {
+}
+
+- (IBAction)GotoCourseList:(id)sender {
+}
+
+- (IBAction)GotoCalendar:(id)sender {
+}
+
+- (IBAction)EditProfile:(id)sender {
+}
+
+- (IBAction)Logout:(id)sender {
+}
 @end
