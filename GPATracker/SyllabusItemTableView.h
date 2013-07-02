@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
+@property (strong, nonatomic) User *userInfo;
 @property (strong, nonatomic) SyllabusDetails *syllabusDetails;
 @property (strong, nonatomic) DataCollection *dataCollection;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -32,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnCalendar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnProfile;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *btnLogout;
+@property (strong, nonatomic) NSString *viewType;
 
 
 -(IBAction)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer;

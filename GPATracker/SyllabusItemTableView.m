@@ -10,8 +10,22 @@
 #import "SyllabusDetails+Create.h"
 #import "SyllabusItemDetails.h"
 #import "SyllabusItemEditTableView.h"
+#import "CourseDetails.h"
+#import "SyllabusDetails+Create.h"
+#import "SyllabusItemDetails+Create.h"
+#import "GradingScheme+Create.h"
 #import "DataCollection.h"
+#import "SchoolListTableView.h"
+#import "CourseTableView.h"
+#import "CourseListTableView.h"
+#import "HomePageTabViewController.h"
+#import "SemesterDetails.h"
+#import "LoginView.h"
+#import "ProfileEditTableView.h"
 #import "SyllabusItemTableCell1.h"
+#import "SyllabusEditTableView.h"
+#import "SyllabusItemTableView.h"
+#import "SchoolDetails+Create.h"
 #import "CustomCellBackground.h"
 #import "CustomHeader.h"
 #import "CustomFooter.h"
@@ -24,6 +38,7 @@
 @synthesize sectionGradeField;
 @synthesize sectionWeightField;
 
+@synthesize userInfo = _userInfo;
 @synthesize syllabusDetails = _syllabusDetails;
 @synthesize selectedIndexPath = _selectedIndexPath;
 @synthesize dataCollection = _dataCollection;
@@ -79,6 +94,34 @@ viewForFooterInSection:(NSInteger)section
 -(IBAction)back
 {
     //[self performSegueWithIdentifier: @"segueSemesterList2SchoolList" sender: self];
+}
+
+- (IBAction)GotoHomePage:(id)sender {
+    self.viewType = @"Schools";
+    [self performSegueWithIdentifier:@"segueSyllabusItemList2HomePage" sender:self];
+}
+
+- (IBAction)GotoSemesterList:(id)sender {
+    self.viewType = @"Semesters";
+    [self performSegueWithIdentifier:@"segueSyllabusItemList2HomePage" sender:self];
+}
+
+- (IBAction)GotoCourseList:(id)sender {
+    self.viewType = @"Courses";
+    [self performSegueWithIdentifier:@"segueSyllabusItemList2HomePage" sender:self];
+}
+
+- (IBAction)GotoCalendar:(id)sender {
+    self.viewType = @"Calendar";
+    [self performSegueWithIdentifier:@"segueSyllabusItemList2HomePage" sender:self];
+}
+
+- (IBAction)EditProfile:(id)sender {
+    [self performSegueWithIdentifier:@"segueSyllabusItemList2EditProfile" sender:self];
+}
+
+- (IBAction)Logout:(id)sender {
+    [self performSegueWithIdentifier:@"segueSyllabusItemListLogout" sender:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -293,6 +336,41 @@ viewForFooterInSection:(NSInteger)section
         syllabusItemEditTableView.dataCollection = self.dataCollection;
         syllabusItemEditTableView.managedObjectContext = self.managedObjectContext;
     }
+    else if ([segue.identifier isEqualToString:@"segueSyllabusItemList2HomePage"])
+    {
+        HomePageTabViewController *homePageTabViewController = [segue destinationViewController];
+        
+        homePageTabViewController.userInfo = self.syllabusDetails.courseDetails.semesterDetails.schoolDetails.user;
+        homePageTabViewController.dataCollection = self.dataCollection;
+        homePageTabViewController.managedObjectContext = self.managedObjectContext;
+        homePageTabViewController.displayType = self.viewType;
+        if ([self.viewType isEqual:@"Schools"])
+            [homePageTabViewController viewSchools];
+        else if ([self.viewType isEqual:@"Semesters"])
+            [homePageTabViewController viewSemesters];
+        else if ([self.viewType isEqual:@"Courses"])
+            [homePageTabViewController viewCourses];
+        else if ([self.viewType isEqual:@"Calendar"])
+            [homePageTabViewController viewCalendar];
+    }
+    else if ([segue.identifier isEqualToString:@"segueSyllabusItemListLogout"])
+	{
+        LoginView *LoginView = [segue destinationViewController];
+        
+        LoginView.setLogoutStatus = @"Logout";
+        LoginView.userInfo = self.syllabusDetails.courseDetails.semesterDetails.schoolDetails.user;
+        LoginView.dataCollection = self.dataCollection;
+        LoginView.managedObjectContext = self.managedObjectContext;
+	}
+    else if ([segue.identifier isEqualToString:@"segueSyllabusItemList2EditProfile"])
+    {
+        ProfileEditTableView *ProfileEditTableView = [segue destinationViewController];
+        
+        ProfileEditTableView.setEditStatus = @"Edit";
+        ProfileEditTableView.userInfo = self.syllabusDetails.courseDetails.semesterDetails.schoolDetails.user;
+        ProfileEditTableView.dataCollection = self.dataCollection;
+        ProfileEditTableView.managedObjectContext = self.managedObjectContext;
+    }
 }
 
 
@@ -318,21 +396,5 @@ viewForFooterInSection:(NSInteger)section
 }
 
 
-- (IBAction)GotoHomePage:(id)sender {
-}
 
-- (IBAction)GotoSemesterList:(id)sender {
-}
-
-- (IBAction)GotoCourseList:(id)sender {
-}
-
-- (IBAction)GotoCalendar:(id)sender {
-}
-
-- (IBAction)EditProfile:(id)sender {
-}
-
-- (IBAction)Logout:(id)sender {
-}
 @end

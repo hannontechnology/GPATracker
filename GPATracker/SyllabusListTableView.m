@@ -429,7 +429,6 @@ viewForFooterInSection:(NSInteger)section
         LoginView *LoginView = [segue destinationViewController];
         
         LoginView.setLogoutStatus = @"Logout";
-        //LoginView.userInfo = self.userInfo;
         LoginView.userInfo = self.courseDetails.semesterDetails.schoolDetails.user;
         LoginView.dataCollection = self.dataCollection;
         LoginView.managedObjectContext = self.managedObjectContext;
@@ -439,7 +438,6 @@ viewForFooterInSection:(NSInteger)section
         ProfileEditTableView *ProfileEditTableView = [segue destinationViewController];
         
         ProfileEditTableView.setEditStatus = @"Edit";
-        //ProfileEditTableView.userInfo = self.userInfo;
         ProfileEditTableView.userInfo = self.courseDetails.semesterDetails.schoolDetails.user;
         ProfileEditTableView.dataCollection = self.dataCollection;
         ProfileEditTableView.managedObjectContext = self.managedObjectContext;

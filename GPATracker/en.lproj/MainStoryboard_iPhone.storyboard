@@ -2724,6 +2724,9 @@
                         <outlet property="sectionNameField" destination="Tzg-mh-BAH" id="5ha-2r-hcd"/>
                         <outlet property="sectionWeightField" destination="JN6-cw-7Nj" id="Vs5-Ek-3U7"/>
                         <segue destination="OrC-GG-uQ8" kind="push" identifier="segueEditSyllabusItemFromList" id="PW4-ds-YHd"/>
+                        <segue destination="I4e-vy-Asq" kind="push" identifier="segueSyllabusItemList2HomePage" id="gdU-3N-FRi"/>
+                        <segue destination="2" kind="push" identifier="segueSyllabusItemListLogout" id="icH-Sm-yYU"/>
+                        <segue destination="MG7-Ge-mPq" kind="push" identifier="segueSyllabusItemList2EditProfile" id="szH-jv-pzg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fJR-Ad-sg4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3159,17 +3162,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="HPn-d4-4UI"/>
+        <segue reference="icH-Sm-yYU"/>
         <segue reference="iZp-yv-ib1"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="oru-Wj-xvh"/>
         <segue reference="LMs-sZ-M1E"/>
         <segue reference="jxS-5C-xzp"/>
-        <segue reference="gYM-Wx-Tra"/>
-        <segue reference="Icv-fM-J1b"/>
+        <segue reference="gdU-3N-FRi"/>
+        <segue reference="szH-jv-pzg"/>
+        <segue reference="sSb-sX-uVt"/>
         <segue reference="1sF-Mq-18r"/>
         <segue reference="khB-Ho-E86"/>
         <segue reference="DG6-i7-zNC"/>
-        <segue reference="sSb-sX-uVt"/>
     </inferredMetricsTieBreakers>
 </document>
