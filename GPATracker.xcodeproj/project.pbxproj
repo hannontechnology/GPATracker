@@ -49,6 +49,7 @@
 		1F754A76151559EA00BD72F0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F754A54151559EA00BD72F0 /* Foundation.framework */; };
 		1F754A7E151559EA00BD72F0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F754A7C151559EA00BD72F0 /* InfoPlist.strings */; };
 		1F754A81151559EA00BD72F0 /* GPATrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F754A80151559EA00BD72F0 /* GPATrackerTests.m */; };
+		1F8010A41793A12B00DEC7BE /* MainStoryboard_iPhone5.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8010A21793A12B00DEC7BE /* MainStoryboard_iPhone5.storyboard */; };
 		1F95470D15B29D4B002D2D61 /* SchoolListTableCell1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F95470B15B29D4B002D2D61 /* SchoolListTableCell1.m */; };
 		1F9B1AD615FEBD520059E26D /* HomePageTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B1AD515FEBD520059E26D /* HomePageTabViewController.m */; };
 		1F9B8D79156C165E00CFB46C /* DataCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9B8D78156C165E00CFB46C /* DataCollection.m */; };
@@ -162,6 +163,7 @@
 		1F754A7D151559EA00BD72F0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F754A7F151559EA00BD72F0 /* GPATrackerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GPATrackerTests.h; sourceTree = "<group>"; };
 		1F754A80151559EA00BD72F0 /* GPATrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GPATrackerTests.m; sourceTree = "<group>"; };
+		1F8010A31793A12B00DEC7BE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = GPATracker/en.lproj/MainStoryboard_iPhone5.storyboard; sourceTree = "<group>"; };
 		1F91E44215C4691B0088A2AF /* SchoolDetails+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SchoolDetails+Create.h"; path = "GPATracker/SchoolDetails+Create.h"; sourceTree = "<group>"; };
 		1F91E44315C4691B0088A2AF /* SchoolDetails+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "SchoolDetails+Create.m"; path = "GPATracker/SchoolDetails+Create.m"; sourceTree = "<group>"; };
 		1F95470B15B29D4B002D2D61 /* SchoolListTableCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SchoolListTableCell1.m; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 		1F754A43151559EA00BD72F0 = {
 			isa = PBXGroup;
 			children = (
+				1F8010A21793A12B00DEC7BE /* MainStoryboard_iPhone5.storyboard */,
 				1F754A58151559EA00BD72F0 /* GPATracker */,
 				1F754A79151559EA00BD72F0 /* GPATrackerTests */,
 				1F754A51151559EA00BD72F0 /* Frameworks */,
@@ -544,6 +547,7 @@
 				1FE73AFD17603839007AD218 /* GPARoadie.png in Resources */,
 				1FE73AFF17603A57007AD218 /* GPARoadie-large.png in Resources */,
 				1FE73B0117603A62007AD218 /* GPARoadie-small.png in Resources */,
+				1F8010A41793A12B00DEC7BE /* MainStoryboard_iPhone5.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +684,14 @@
 				1F754A7D151559EA00BD72F0 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F8010A21793A12B00DEC7BE /* MainStoryboard_iPhone5.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F8010A31793A12B00DEC7BE /* en */,
+			);
+			name = MainStoryboard_iPhone5.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
