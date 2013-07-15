@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -3156,23 +3156,386 @@
         <image name="ProfileButton.png" width="20" height="20"/>
         <image name="circleIcon.png" width="20" height="20"/>
     </resources>
+    <classes>
+        <class className="CalendarListTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarListTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel4" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CalendarListTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CalendarListTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="back"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="schoolCGPAText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolDescText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolNameText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolYearsText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CoreDataTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CoreDataTableViewController.h"/>
+        </class>
+        <class className="CourseEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="switchPassFail:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="courseActualGradeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseDescriptionField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseDesiredGradeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="courseEnableSyllabus" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="courseIncludeInGPAField" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="courseNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="coursePassFailField" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="courseUnitsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="CourseListTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseListTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CourseListTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseListTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="back"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="schoolCGPAText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolDescText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolNameText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolYearsText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CourseTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CourseTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CourseTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="EditProfile:"/>
+                <relationship kind="action" name="GotoCalendar:"/>
+                <relationship kind="action" name="GotoCourseList:"/>
+                <relationship kind="action" name="GotoHomePage:"/>
+                <relationship kind="action" name="GotoSemesterList:"/>
+                <relationship kind="action" name="Logout:"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="btnCalendar" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnCourseList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnHomePage" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnLogout" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnProfile" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnSemeserList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="semesterCourseCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="semesterCreditHours" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="semesterGPA" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="semesterNameText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="GradingSchemeCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="btnInGPA" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="cellField1" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="maxGrade" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="minGrade" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="GradingSchemeSelectTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeSelectTableView.h"/>
+        </class>
+        <class className="GradingSchemeTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GradingSchemeTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Save:"/>
+                <relationship kind="action" name="checkIsGPA:"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="HomePageTabViewController" superclassName="PagerViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomePageTabViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="BtnAddSchool:"/>
+                <relationship kind="action" name="BtnEditSchool:"/>
+                <relationship kind="action" name="BtnNextPage:"/>
+                <relationship kind="action" name="BtnPreviousPage:"/>
+                <relationship kind="action" name="DisplayCourses:"/>
+                <relationship kind="action" name="DisplaySchools:"/>
+                <relationship kind="action" name="DisplaySemesters:"/>
+                <relationship kind="action" name="EditProfile:"/>
+                <relationship kind="action" name="Logout:"/>
+                <relationship kind="outlet" name="buttonAddSchool" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonCourseList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="buttonEditProfile" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="buttonEditSchool" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonLogout" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="buttonNext" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonPrevious" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="buttonSchoolList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="buttonSemesterList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="LoginView" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginView.h"/>
+            <relationships>
+                <relationship kind="action" name="ForgotPassword:"/>
+                <relationship kind="action" name="Login:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginSelector" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="status" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="PagerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PagerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="changePage:"/>
+                <relationship kind="outlet" name="pageControl" candidateClass="UIPageControl"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="ProfileEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProfileEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="autoLoginField" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="emailField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="firstNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="lastNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="passwordField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="userNameField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SchoolEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="Save:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="gradingScheme" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="historicalCreditsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="historicalGPAField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="schoolDetailsField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolEndYearField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="schoolStartYearField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SchoolListTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolListTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SchoolListTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolListTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+            </relationships>
+        </class>
+        <class className="SchoolSummaryViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SchoolSummaryViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cGPA" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="calculatedGPA" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="creditHours" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="desiredGPA" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolCode" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolName" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolYears" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="semesterCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalCourseCount" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalCreditHours" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalSemesterCount" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SemesterEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="semesterNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="semesterYearField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SemesterListTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterListTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabelGPA" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SemesterTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SemesterTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="schoolCGPAText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolDescText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolNameText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="schoolYearsText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SyllabusEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Accept:"/>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="switchPassFail:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="sectionNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="sectionPercentageField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="SyllabusItemEditTableView" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusItemEditTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="Cancel:"/>
+                <relationship kind="action" name="Save:"/>
+                <relationship kind="action" name="switchPassFail:"/>
+                <relationship kind="action" name="textFieldReturn:"/>
+                <relationship kind="outlet" name="headerText" candidateClass="UINavigationItem"/>
+                <relationship kind="outlet" name="itemCompleteSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="itemDueDateField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemGradeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemIncludeSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="itemNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="itemOutOfField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="keyboardToolbar" candidateClass="UIToolbar"/>
+            </relationships>
+        </class>
+        <class className="SyllabusItemTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusItemTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabelBck" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SyllabusItemTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusItemTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="EditProfile:"/>
+                <relationship kind="action" name="GotoCalendar:"/>
+                <relationship kind="action" name="GotoCourseList:"/>
+                <relationship kind="action" name="GotoHomePage:"/>
+                <relationship kind="action" name="GotoSemesterList:"/>
+                <relationship kind="action" name="Logout:"/>
+                <relationship kind="action" name="back"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="btnCalendar" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnCourseList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnHomePage" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnLogout" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnProfile" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnSemesterList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sectionGradeField" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sectionNameField" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="sectionWeightField" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SyllabusListTableCell1" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusListTableCell1.h"/>
+            <relationships>
+                <relationship kind="outlet" name="cellLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel3" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel4" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="cellLabel5" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="SyllabusListTableView" superclassName="CoreDataTableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SyllabusListTableView.h"/>
+            <relationships>
+                <relationship kind="action" name="EditProfile:"/>
+                <relationship kind="action" name="GotoCalendar:"/>
+                <relationship kind="action" name="GotoCourseList:"/>
+                <relationship kind="action" name="GotoHomePage:"/>
+                <relationship kind="action" name="GotoSemesterList:"/>
+                <relationship kind="action" name="Logout:"/>
+                <relationship kind="action" name="back"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="alert" candidateClass="UIAlertView"/>
+                <relationship kind="outlet" name="btnCalendar" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnCourseList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnHomePage" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnLogout" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnProfile" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="btnSemesterList" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="courseCodeText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseCreditsText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseCurrPercentText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseDesiredGradeText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseMaxPercentText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseMinPercentText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseNameText" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="courseTotalWeightText" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="icH-Sm-yYU"/>
+        <segue reference="VVr-Ld-9wW"/>
+        <segue reference="gdU-3N-FRi"/>
         <segue reference="iZp-yv-ib1"/>
         <segue reference="k7a-QP-sia"/>
-        <segue reference="oru-Wj-xvh"/>
+        <segue reference="xWR-GP-plh"/>
         <segue reference="LMs-sZ-M1E"/>
         <segue reference="jxS-5C-xzp"/>
-        <segue reference="gdU-3N-FRi"/>
-        <segue reference="szH-jv-pzg"/>
         <segue reference="sSb-sX-uVt"/>
-        <segue reference="1sF-Mq-18r"/>
+        <segue reference="1dU-6g-oZa"/>
         <segue reference="khB-Ho-E86"/>
+        <segue reference="1sF-Mq-18r"/>
         <segue reference="DG6-i7-zNC"/>
     </inferredMetricsTieBreakers>
 </document>
