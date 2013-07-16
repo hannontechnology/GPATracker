@@ -9,7 +9,7 @@
             <objects>
                 <viewController id="2" customClass="LoginView" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Username:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="f6g-Wo-Mj8">
@@ -52,7 +52,7 @@
                                 </connections>
                             </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="4Uo-nV-Uro">
-                                <rect key="frame" x="0.0" y="503" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="415" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem title="Forgot Password?" width="149" id="cdt-np-Cgn">
@@ -2714,11 +2714,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="EditProfile" destination="nZB-67-3Co" id="HmO-Ox-AZa"/>
                         <outlet property="btnCalendar" destination="jVc-zI-AX0" id="MOX-Hb-7Td"/>
                         <outlet property="btnCourseList" destination="PwE-Qj-W1L" id="pGn-IT-NGs"/>
-                        <outlet property="btnEditProfile" destination="nZB-67-3Co" id="yTd-aY-Qgr"/>
-                        <outlet property="btnHome" destination="YGl-ms-3aX" id="Hs0-co-jn2"/>
                         <outlet property="btnHomePage" destination="YGl-ms-3aX" id="YU0-g2-TXy"/>
                         <outlet property="btnLogout" destination="pP5-2Y-v9s" id="TX5-mw-RHa"/>
                         <outlet property="btnProfile" destination="nZB-67-3Co" id="fCJ-Eh-Ag2"/>
@@ -3167,13 +3164,13 @@
     <inferredMetricsTieBreakers>
         <segue reference="GjO-wZ-Znt"/>
         <segue reference="jxS-5C-xzp"/>
+        <segue reference="szH-jv-pzg"/>
         <segue reference="sSb-sX-uVt"/>
         <segue reference="gdU-3N-FRi"/>
+        <segue reference="icH-Sm-yYU"/>
         <segue reference="sH2-t5-pXi"/>
         <segue reference="KvF-9q-C6b"/>
         <segue reference="xWR-GP-plh"/>
-        <segue reference="1dU-6g-oZa"/>
-        <segue reference="VVr-Ld-9wW"/>
         <segue reference="Vzz-SA-ORC"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="LMs-sZ-M1E"/>

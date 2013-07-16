@@ -2711,11 +2711,8 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="EditProfile" destination="nZB-67-3Co" id="HmO-Ox-AZa"/>
                         <outlet property="btnCalendar" destination="jVc-zI-AX0" id="MOX-Hb-7Td"/>
                         <outlet property="btnCourseList" destination="PwE-Qj-W1L" id="pGn-IT-NGs"/>
-                        <outlet property="btnEditProfile" destination="nZB-67-3Co" id="yTd-aY-Qgr"/>
-                        <outlet property="btnHome" destination="YGl-ms-3aX" id="Hs0-co-jn2"/>
                         <outlet property="btnHomePage" destination="YGl-ms-3aX" id="YU0-g2-TXy"/>
                         <outlet property="btnLogout" destination="pP5-2Y-v9s" id="TX5-mw-RHa"/>
                         <outlet property="btnProfile" destination="nZB-67-3Co" id="fCJ-Eh-Ag2"/>
@@ -3162,17 +3159,17 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="VVr-Ld-9wW"/>
-        <segue reference="gdU-3N-FRi"/>
+        <segue reference="icH-Sm-yYU"/>
         <segue reference="iZp-yv-ib1"/>
         <segue reference="k7a-QP-sia"/>
         <segue reference="xWR-GP-plh"/>
-        <segue reference="LMs-sZ-M1E"/>
-        <segue reference="jxS-5C-xzp"/>
-        <segue reference="sSb-sX-uVt"/>
-        <segue reference="1dU-6g-oZa"/>
+        <segue reference="gdU-3N-FRi"/>
         <segue reference="khB-Ho-E86"/>
         <segue reference="1sF-Mq-18r"/>
         <segue reference="DG6-i7-zNC"/>
+        <segue reference="LMs-sZ-M1E"/>
+        <segue reference="jxS-5C-xzp"/>
+        <segue reference="szH-jv-pzg"/>
+        <segue reference="sSb-sX-uVt"/>
     </inferredMetricsTieBreakers>
 </document>
