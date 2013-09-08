@@ -65,6 +65,8 @@
 		1FC4B4FA15BC94040079767C /* SemesterEditTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC4B4F915BC94040079767C /* SemesterEditTableView.m */; };
 		1FC6287A173AB32100767732 /* SyllabusItemDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC62879173AB32100767732 /* SyllabusItemDetails.m */; };
 		1FD3E08F169797F900E4AB15 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */; };
+		1FE1641A17DBDFF300607EF5 /* Login Screen Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE1641917DBDFF300607EF5 /* Login Screen Background.png */; };
+		1FE1641C17DBEF2200607EF5 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE1641B17DBEF2200607EF5 /* Background.png */; };
 		1FE4D0B01659ABCD00B408A1 /* PagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */; };
 		1FE4D0B41659AEA300B408A1 /* SchoolSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE4D0B31659AEA300B408A1 /* SchoolSummaryViewController.m */; };
 		1FE73AFD17603839007AD218 /* GPARoadie.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FE73AFC17603839007AD218 /* GPARoadie.png */; };
@@ -194,6 +196,8 @@
 		1FC62878173AB32100767732 /* SyllabusItemDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SyllabusItemDetails.h; path = GPATracker/SyllabusItemDetails.h; sourceTree = "<group>"; };
 		1FC62879173AB32100767732 /* SyllabusItemDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SyllabusItemDetails.m; path = GPATracker/SyllabusItemDetails.m; sourceTree = "<group>"; };
 		1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		1FE1641917DBDFF300607EF5 /* Login Screen Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Login Screen Background.png"; path = "Images/Login Screen Background.png"; sourceTree = "<group>"; };
+		1FE1641B17DBEF2200607EF5 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = Images/Background.png; sourceTree = "<group>"; };
 		1FE4D0AE1659ABCD00B408A1 /* PagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagerViewController.h; sourceTree = "<group>"; };
 		1FE4D0AF1659ABCD00B408A1 /* PagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagerViewController.m; sourceTree = "<group>"; };
 		1FE4D0B21659AEA300B408A1 /* SchoolSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchoolSummaryViewController.h; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 		1F5DB97C168248880048564D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1FE1641B17DBEF2200607EF5 /* Background.png */,
+				1FE1641917DBDFF300607EF5 /* Login Screen Background.png */,
 				1F27DA3016B81A0500E0C8C8 /* Checkbox_checked.png */,
 				1F27DA3116B81A0500E0C8C8 /* Checkbox_unchecked.png */,
 				1FD3E08E169797F900E4AB15 /* Default-568h@2x.png */,
@@ -548,6 +554,8 @@
 				1FE73AFF17603A57007AD218 /* GPARoadie-large.png in Resources */,
 				1FE73B0117603A62007AD218 /* GPARoadie-small.png in Resources */,
 				1F8010A41793A12B00DEC7BE /* MainStoryboard_iPhone5.storyboard in Resources */,
+				1FE1641A17DBDFF300607EF5 /* Login Screen Background.png in Resources */,
+				1FE1641C17DBEF2200607EF5 /* Background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
